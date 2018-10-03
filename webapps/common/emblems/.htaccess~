@@ -1,6 +1,0 @@
-RewriteEngine on
-
-
-RewriteRule ^(.+\.png)$ /webapps/common/emblems/get.php?usage=1 [L]
-RewriteRule ^(.+\.gif)$ /webapps/common/emblems/get.php?usage=1 [L]
-

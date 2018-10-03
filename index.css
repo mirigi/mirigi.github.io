@@ -1,0 +1,126 @@
+/* Ultra Light Family */
+@font-face {
+    font-family: 'NimbusSansNovus-UL';
+    src: url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-ul/1C3295_4_0.eot');                                    /* IE9 Compat Modes */
+    src: url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-ul/1C3295_4_0.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-ul/1C3295_4_0.woff') format('woff'),                    /* Modern browsers */
+         url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-ul/1C3295_4_0.ttf') format('truetype');                 /* Safari, Android, iOS */
+}
+
+/* Light Family  */ 
+@font-face {
+    font-family: 'NimbusSansNovus-L';
+    font-weight: normal;
+    font-style: normal;
+    src: url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_1_0.eot');
+    src: url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_1_0.eot?#iefix') format('embedded-opentype'),
+         url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_1_0.woff') format('woff'),
+         url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_1_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NimbusSansNovus-L';
+    font-weight: normal;
+    font-style: italic;
+    src: url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_2_0.eot');
+    src: url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_2_0.eot?#iefix') format('embedded-opentype'),
+         url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_2_0.woff') format('woff'),
+         url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_2_0.ttf') format('truetype');
+}
+ 
+@font-face {
+    font-family: 'NimbusSansNovus-L';
+    font-weight: bold;
+    font-style: normal;
+    src: url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_3_0.eot');
+    src: url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_3_0.eot?#iefix') format('embedded-opentype'),
+         url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_3_0.woff') format('woff'),
+         url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_3_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NimbusSansNovus-L';
+    font-weight: bold;
+    font-style: italic;
+    src: url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_0_0.eot');
+    src: url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_0_0.eot?#iefix') format('embedded-opentype'),
+         url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_0_0.woff') format('woff'),
+         url('http://static.mirigi.com/tumblr/fonts/nimbussansnovus-l/1D462E_0_0.ttf') format('truetype');
+}
+
+
+html {
+    background: none;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family:'NimbusSansNovus-L', Georgia;    
+    font-size: 18px;
+    background-image:  url('index_bg.png'); 
+    background-repeat: repeat-x;
+    background-position: center top;
+}
+
+h1,h2,h3,h4 {
+    font-family: 'NimbusSansNovus-UL', Georgia;
+    font-weight: normal;
+}
+
+#building {
+    padding: 0;
+    margin: 0 auto auto auto;
+    width: 960px;
+    height: 480px;
+    background-image: url('index_building.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+#nav {
+    padding-right: 30px;
+    color: #437BB7; 
+    text-align: right;
+    line-height: 250px;
+}
+#nav a {
+    text-decoration: none;
+    color: #437BB7;        
+}
+
+#motto {
+    font-family: 'NimbusSansNovus-UL';
+    font-size: 2.5em;
+    color: #609FE2;
+    padding-left: 520px;
+    line-height: 100px;
+}
+
+#text {
+    font-family: 'NimbusSansNovus-UL', Georgia;
+    font-weight: normal;
+    font-size: 1.4em;
+    padding: 0;
+    margin: 40px auto auto auto;
+    width: 900px;
+    color: #666666;
+}
+
+#text a {
+    color: #666666;
+}
+
+#footer {
+    margin-top: 50px;
+    text-align: center;
+    color: #999999;
+    font-size: 0.8em;
+}
+#footer a {
+    color: #999999;
+    text-decoration: none;
+}
+#footer a:hover {
+    text-decoration: underline;    
+}

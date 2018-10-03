@@ -1,0 +1,4 @@
+# RewriteEngine on
+# 
+# RewriteRule ^make/(.*)$ /webapps/common/emblems/get.php?make=$1
+# 

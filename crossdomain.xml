@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+  <allow-access-from domain="*.chumby.com"/>
+  <allow-access-from domain="*.giftsaddict.com"/>
+  <allow-access-from domain="*.ivymia.com"/>
+  <allow-access-from domain="*.jbmiami.com"/>
+  <allow-access-from domain="*.jomiami.com"/>
+  <allow-access-from domain="*.kalio.net"/>
+  <allow-access-from domain="*.mirigi.com"/>
+  <allow-access-from domain="*.mondueri.com"/>
+  <allow-access-from domain="localhost"/>
+
+  <allow-http-request-headers-from domain="*.chumby.com" headers="Cookie"/>
+  <allow-http-request-headers-from domain="*.ivymia.com" headers="Cookie"/>
+  <allow-http-request-headers-from domain="*.jbmiami.com" headers="Cookie"/>
+  <allow-http-request-headers-from domain="*.jomiami.com" headers="Cookie"/>
+  <allow-http-request-headers-from domain="*.kalio.net" headers="Cookie"/>
+  <allow-http-request-headers-from domain="*.mirigi.com" headers="Cookie"/>
+  <allow-http-request-headers-from domain="*.mondueri.com" headers="Cookie"/>
+
+
+</cross-domain-policy>

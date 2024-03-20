@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Split HTML View</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+        header, footer {
+            background: #000 !important;
+            color: #fff !important;
+            text-align: center;
+            padding: 1rem;
+        }
+        header {
+          padding:2rem !important;
+          padding-top:3rem !important;
+        }
+        .content {
+            flex: 1;
+            background: #ddd !important;
+            color: black !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+       .contact-section .social a {
+        background: rgba(2,2,2,.3);
+        color: rgba(2,2,2,.9);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+            <h1 class="text-white-80 mx-auto mt-2 mb-5">At your service</h1>
+            <h6 class="text-white-50 mx-auto mt-2 mb-5">Install Mirigi app in your mobile devices</h6>
+    </header>
+    <div class="content contact-section" style="padding:0">
+            <div class="social d-flex justify-content-center" style="margin-top:0">
+              <a href="https://play.google.com/store/apps/details?id=com.ikatu.mirigi&hl=es_419" class="mx-2">
+                <i class="fab fa-android"></i><br/>
+                <small> Android</small>
+              </a>
+              <a href="https://apps.apple.com/gm/app/mirigi/id1076011022" class="mx-2">
+                <i class="fab fa-app-store-ios"></i><br/>
+                <small >iOS</small><br/><span style="opacity:0; font-size: 0.1px;margin-top:-5rem">ipad tablet iphone</span>
+              </a>
+            </div>
+    </div>
+      <footer class=" small text-center text-white-50" >
+        <div class="container">
+          <div class="row">
+            <div class="mx-auto">
+              Made with 
+              <i class="fas fa-heart"></i>
+              by <a href="https://www.khimo.com">Khimo</a>&nbsp;!
+            </div>
+          </div>
+        </div>
+    </footer>
+
+</body>
+</html>

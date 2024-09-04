@@ -1,0 +1,14 @@
+{% assign urlfirst = page.path  | split: "/" | first %}
+{% case urlfirst %}
+{# valid langs: https://www.w3.org/2005/05/font-size-test/starhtml-test.html #}
+    {% when "es" %}
+      {% assign lang = urlfirst %}
+    {% else %}
+      {% assign lang = "en" %}
+    {% endcase %}
+
+{% include header.html lang=lang %}
+
+{{ content  }}
+
+{% include footer.html lang=lang %}

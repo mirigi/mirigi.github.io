@@ -1,0 +1,11 @@
+---
+title: "AUTOMATIZACIÓN DE EDIFICIOS"
+image: "/img_mirigi/touchpanelJadesignature.jpg"
+layout: feature
+description: "Empodera a tu personal y residentes con una integración perfecta de automatización de edificios. Desbloquea comodidades, monitorea áreas comunes y mejora la seguridad, todo desde una plataforma unificada."
+---
+
+¡Descubre el futuro de la vida con las **capacidades de integración de vanguardia** de Mirigi! Conéctate sin problemas con el sistema inteligente del hogar del residente u otros sistemas de automatización de edificios para ofrecer una **experiencia inigualable** tanto para residentes como para el personal. Imagina un mundo donde tu estación de puerta principal, ascensores y sistemas de control de acceso funcionen en **perfecta armonía**, todo a través de la **plataforma unificada** de Mirigi. Di adiós a la molestia de manejar múltiples tarjetas de acceso o llaves, disfruta de **mayor comodidad y seguridad** mientras accedes a comodidades como la barbacoa o las canchas de tenis sin esfuerzo. Con Mirigi, cada interacción es **suave e ininterrumpida**, ya sea que estés entrando al edificio o disfrutando de las instalaciones. Además, Mirigi te empodera con la capacidad de integrar varios sistemas automatizados, permitiendo **operaciones autónomas** como configurar etiquetas en la puerta automatizada directamente desde la aplicación Mirigi, **siempre que la puerta ofrezca una API**.
+
+Para el personal, Mirigi **revoluciona las tareas de gestión** y aumenta la **eficiencia operativa**. Con un **sistema centralizado** que monitorea y opera diversas funciones del edificio, el personal puede abordar rápidamente cualquier problema, asegurando que el edificio funcione como una **máquina bien engrasada**. Esta integración minimiza las intervenciones manuales, permitiendo al personal centrarse en brindar un **servicio excepcional** a los residentes. El poder de monitorear sistemas de forma remota significa que los problemas potenciales se identifican y resuelven antes de que afecten a los residentes, **elevando la experiencia de vida general** en el MDU. Mirigi también mejora la capacidad de integrar diferentes sistemas automatizados, facilitando **operaciones autónomas** como configurar etiquetas en la puerta automatizada directamente desde la aplicación Mirigi, cuando la puerta proporciona la API para eso.
+

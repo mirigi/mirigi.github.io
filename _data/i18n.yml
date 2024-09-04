@@ -1,0 +1,12 @@
+en:
+  label: "English"
+  icon: "🇬🇧"
+  about: "About"
+  features: "Features"
+  contacts: "Contacts"
+es:
+  label: "Spanish"
+  icon: "🇪🇸"
+  about: "Acerca"
+  features: "Características"
+  contacts: "Contactos"

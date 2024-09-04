@@ -1,6 +1,6 @@
 /*!
  * Start Bootstrap - Grayscale v5.0.8 (https://startbootstrap.com/template-overviews/grayscale)
- * Copyright 2013-2019 Start Bootstrap
+ * Copyright 2013-2024 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/master/LICENSE)
  */
 
@@ -181,13 +181,13 @@
 }
 
 .projects-section .project-text {
-  padding: 3rem;
+  padding: 2rem 4rem;
   font-size: 90%;
 }
 
 @media (min-width: 992px) {
   .projects-section .project-text {
-    padding: 5rem;
+    padding: 2rem 4rem;
   }
   .projects-section .project-text hr {
     border-color: #999;
@@ -4468,17 +4468,15 @@ input[type="button"].btn-block {
   background-color: #007bff;
   border: 0;
   border-radius: 1rem;
-  -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   -moz-appearance: none;
   appearance: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .custom-range::-moz-range-thumb {
-    -webkit-transition: none;
+    -moz-transition: none;
     transition: none;
   }
 }
@@ -4506,16 +4504,14 @@ input[type="button"].btn-block {
   background-color: #007bff;
   border: 0;
   border-radius: 1rem;
-  -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -ms-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   appearance: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .custom-range::-ms-thumb {
-    -webkit-transition: none;
+    -ms-transition: none;
     transition: none;
   }
 }
@@ -8556,7 +8552,6 @@ button.bg-dark:focus {
 }
 
 .position-sticky {
-  position: -webkit-sticky !important;
   position: sticky !important;
 }
 
@@ -8576,9 +8571,8 @@ button.bg-dark:focus {
   z-index: 1030;
 }
 
-@supports ((position: -webkit-sticky) or (position: sticky)) {
+@supports (position: sticky) {
   .sticky-top {
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1020;
@@ -10929,8 +10923,8 @@ img.image-container {
   }
 }
 .about-section .image-container  {
-    min-height: 60rem; 
-    max-height: 70rem;
+    min-height: 20rem; 
+    max-height: 30rem;
 }
 
 @media (max-width: 1200px) {
@@ -10953,7 +10947,7 @@ img.image-container {
 */
 .image-container {
   overflow: hidden;
-  height: 40vh;
+  height: 20vh;
 }
 
 .image-container img {
@@ -10963,25 +10957,26 @@ img.image-container {
   object-position: 0 0%;
   min-height: 100%;
   min-width: 100%;
-  max-width: 100%;
+  max-width: 150%;
+  overflow: hidden;
 }
 
 .about-section .image-container {
-  height: 50vh;
+  height: 20vh;
 }
 
 @media (min-width: 992px) {
   .feature .image-container {
-    height: 50rem;
+    height: 20rem;
   }
 }
 
 @media (min-width: 1200px) {
   .feature .image-container {
-    height: 40rem;
+    height: 20rem;
   }
   .about-section .image-container {
-    min-height: 60rem;
+    min-height: 30rem;
   }
 }
 

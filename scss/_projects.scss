@@ -1,10 +1,10 @@
 .projects-section {
   padding: 4rem 0;
   .project-text {
-    padding: 3rem;
+    padding: 2rem 4rem;
     font-size: 90%;
     @media (min-width: 992px) {
-      padding: 5rem;
+      padding: 2rem 4rem;
       hr {
         border-color: $primary;
         border-width: 1px;

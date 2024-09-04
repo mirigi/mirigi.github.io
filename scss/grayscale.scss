@@ -104,8 +104,8 @@ img.image-container {
   }
 }
 .about-section .image-container  {
-    min-height: 60rem; 
-    max-height: 70rem;
+    min-height: 20rem; 
+    max-height: 30rem;
 }
 
 @media (max-width: 1200px) {
@@ -130,34 +130,35 @@ img.image-container {
 // all and smaller devices
 .image-container {
   overflow: hidden;
-  height: 40vh; 
+  height: 20vh; 
   img  {
     object-fit: cover; 
     object-position: 0 0%;
     min-height: 100%;
     min-width: 100%;
-    max-width: 100%;
+    max-width: 150%;
+    overflow: hidden;
   }
 }
 .about-section .image-container  {
-    height: 50vh;
+    height: 20vh;
 }
 
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
   .feature .image-container {
-    height: 50rem;
+    height: 20rem;
   }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .feature .image-container {
-    height: 40rem;
+    height: 20rem;
   }
   .about-section .image-container {
-    min-height: 60rem; 
+    min-height: 30rem; 
   }
 }
 

@@ -1,5 +1,5 @@
 ---
-layout: landing
+layout: index
 lang: en
 header: At Your Service
 subheader: Smart digital concierge

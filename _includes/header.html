@@ -39,21 +39,24 @@
               <small>
             {% assign langselector = '/' | append: page.lang  | append: '/'%}
               {% for lang in site.languages %}
-              <a href="{{ '/'| append: lang |  append: ( page.url | replace_first: langselector,'/') }}">
-                {{ site.data.i18n[lang].label }} {{ site.data.i18n[lang].icon }}
+              <a href="{{ '/'| append: lang |  append: ( page.url | replace_first: langselector,'/') }}" title="{{site.data[lang].label }}">
+                {{ lang | upcase }} {{ site.data[lang].icon }}
               </a>&nbsp;
           {% endfor %}
               </small>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{langselector}}#about">{{site.data.i18n[page.lang].about}}</a>
+            <a class="nav-link js-scroll-trigger" href="{{langselector}}#about">{{site.data[page.lang].about}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{langselector}}#features">{{site.data.i18n[page.lang].features}}</a>
+            <a class="nav-link js-scroll-trigger" href="{{langselector}}#features">{{site.data[page.lang].features}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{langselector}}#contacts">{{site.data.i18n[page.lang].contacts}}</a>
+            <a class="nav-link js-scroll-trigger" href="{{langselector}}#customers">{{site.data[page.lang].customers}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{{langselector}}#contacts">{{site.data[page.lang].contacts}}</a>
           </li>
 
         </ul>

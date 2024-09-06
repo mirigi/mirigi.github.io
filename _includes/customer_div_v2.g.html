@@ -1,0 +1,40 @@
+
+
+<div class="showcase">
+  {% if customer.image contains "http://" or customer.image contains "https://" or customer.image[0] == "/" %} 
+  {% assign image = customer.image %} 
+  {% else %}
+  {% assign image = "/customers/" | append: customer.image %}
+  {% endif %}
+  <!-- 
+    <div class="col-xl-6 col-lg-6 image-container" style="background-image: url('{{ image }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    //-->
+    <div class="image" style="background-image: url('{{ image }}')">
+
+      <p class="photo_credits">
+        {{customer.image_credits}}
+      </p>
+    </div>
+    <div class="content" style="min-height:50vh;">
+      <div class="text-center h-100 project">
+        <div class="d-flex h-100">
+          <div class="project-text w-100 my-auto text-lg-left">
+            <h4 class="text-black" style="text-transform: uppercase;">{{ customer.name }}</h4>
+            <p class="text-black-50" >{{ customer.details[page.lang] | markdownify }}</p>
+            <hr class="d-none d-lg-block mb-0 ml-0">
+            {% if customer.link %}
+            <a href="{{customer.link}}">
+              {{site.data[page.lang].more_info}}
+            </a>
+            {% endif %}
+            {% if customer.maplink %}
+            <a href="{{customer.maplink}}">
+              {{site.data[page.lang].location}}
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+

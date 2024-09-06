@@ -1,6 +1,7 @@
 ---
 title: "AMENITIES RESERVATIONS"
 image: "/img_mirigi/amenities2.jpg"
+image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
 description: Browse available amenities and reserve the best time for you, from anywhere. Ask Mirigi to remind you so you don't forget.
 ---

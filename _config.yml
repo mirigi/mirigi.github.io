@@ -1,0 +1,64 @@
+title: Mirigi
+description: At Your Service
+baseurl: ""
+url: ""
+exclude: ["README.md"]
+sass:
+  sass_dir: scss/
+
+lang: en
+languages:
+  - en
+  - es
+  - fr
+
+
+collections:
+  features:
+    output: true
+  customers:
+    output: true
+
+collections_dir: "collections"
+
+# By default data is in english:
+# ref: https://jekyllrb.com/docs/configuration/front-matter-defaults/
+defaults:
+  - scope:
+      path: 'collections/_features/en'
+      type: 'features'
+    values:
+      permalink: 'en/features/:title'
+      lang: "en"
+  - scope:
+      path: 'collections/_features/es'
+      type: 'features'
+    values:
+      permalink: 'es/caracteristicas/:title'
+      lang: "es"
+  - scope:
+      path: 'collections/_features/fr'
+      type: 'features'
+    values:
+      permalink: 'fr/caracteristiques/:name'
+      lang: "fr"
+  - scope:
+      path: "en/"
+    values:
+      lang: "en"
+  - scope:
+      path: "es/"
+    values:
+      lang: "es"
+  - scope:
+      path: "fr/"
+    values:
+      lang: "fr"
+
+
+
+
+#jekyll plugins for TOC and sitemap
+plugins:
+  #- jekyll-toc
+  - jekyll-sitemap

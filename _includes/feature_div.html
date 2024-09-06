@@ -1,49 +1,55 @@
-<div class="row align-items-center no-gutters mb-4 mb-lg-0 feature">
-  {% if feature.content.size > 1 %}
-  <a href="{{feature.url}}">
-  {% endif %}
+{% if feature.content.size > 1 %}
+<a href="{{feature.url}}">
+{% endif %}
+{% if feature.image contains "http://" or feature.image contains "https://" or feature.image | slice: 0, 1 == "/" %} 
+{% assign image = feature.image %} 
+{% else %}
+{% assign image = "/" | append:page.url | append: "/" | append: feature.image %}
+{% endif %}
   {% if is_even == 0 %}
-  <div class="col-xl-7 col-lg-6 image-container">
-    <img class="ximg-fluid" src="{{ feature.image }}" alt="">
-    <p class="photo_credits">
-      @<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>
-    </p>
-  </div>
-  <div class="col-xl-5 col-lg-6">
-    <div class="project-text w-100 my-auto text-center text-lg-left">
-      <h4 style="text-transform: uppercase;">{{ feature.title }}</h4>
-      <p>{{ feature.description | markdownify }}</p>
-      <hr class="d-none d-lg-block mb-0 ml-0">
-      {% if feature.content.size > 1 %}
-        <a href="{{feature.url}}">
-          More info
-        </a>
-      {% endif %}
+  <div class="showcase bigimage dark">
+    <div class="image"  style="background-image: url('{{ image }}')">
+      <p class="photo_credits">
+        @<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>
+      </p>
     </div>
-  </div>
-  {% else %}
-  <div class="col-xl-5 col-lg-6 order-lg-first">
-    <div class="text-center h-100 project">
-      <div class="d-flex h-100">
-        <div class="project-text w-100 my-auto text-center text-lg-right">
-          <h4>{{ feature.title }}</h4>
-          <p>{{ feature.description | markdownify }}</p>
-          <hr class="d-none d-lg-block mb-0 mr-0">
-          {% if feature.content.size > 1 %}
-            <a href="{{feature.url}}">More info</a>
-          {% endif %}
-        </div>
+    <div class="content">
+      <div class="project-text w-100 my-auto text-center text-lg-left">
+        <h4 style="text-transform: uppercase;" class="text-white">{{ feature.title }}</h4>
+        <p>{{ feature.description | markdownify }}</p>
+        <hr class="d-none d-lg-block mb-0 ml-0">
+        {% if feature.content.size > 1 %}
+        <a href="{{feature.url}}">
+          {{site.data[page.lang].more_info}}
+        </a>
+        {% endif %}
       </div>
     </div>
   </div>
-  <div class="col-xl-7 col-lg-6 image-container">
-    <img class="ximg-fluid" src="{{ feature.image }}" alt="">
-    <p class="photo_credits">
-      @<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>
-    </p>
+    {% else %}
+  <div class="showcase bigimage reverse dark">
+    <div class="image"  style="background-image: url('{{ image }}')">
+      <p class="photo_credits">
+        @<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>
+      </p>
+    </div>
+    <div class="content">
+        <div class="project-text w-100 my-auto text-center text-lg-right">
+        <h4 style="text-transform: uppercase;" class="text-white">{{ feature.title }}</h4>
+        <p>{{ feature.description | markdownify }}</p>
+        <hr class="d-none d-lg-block mb-0 mr-0">
+        {% if feature.content.size > 1 %}
+        <a href="{{feature.url}}">
+          {{site.data[page.lang].more_info}}
+        </a>
+        {% endif %}
+      </div>
+    </div>
   </div>
+
+
+
   {% endif %}
   {% if feature.content.size > 1 %}
-  </a>
-  {% endif %}
-</div>
+</a>
+{% endif %}

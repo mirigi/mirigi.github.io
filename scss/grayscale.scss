@@ -7,6 +7,7 @@
 @import 'projects.scss';
 @import 'signup.scss';
 @import 'contact.scss';
+@import 'showcase_fede.scss';
 @import '../vendor/bootstrap/css/bootstrap';
 
 body {
@@ -83,67 +84,24 @@ footer {
     }
   }
 
-/*
-img.image-container {
-    object-fit: cover; 
-    min-height: 56rem; 
-    object-position: 0 0;
-}
-*/
-/*
-.image-container {
-  overflow: hidden;
-    min-height: 35rem; 
-    max-height: 45rem;
-  img  {
-    object-fit: cover; 
-    object-position: 0 0;
-    height: 35rem;
-    min-width: 100%;
-    max-width: 100%;
-  }
-}
-.about-section .image-container  {
-    min-height: 20rem; 
-    max-height: 30rem;
-}
 
-@media (max-width: 1200px) {
-.feature .image-container {
-   min-height: 25rem;
-   max-height: 40rem;
-  img  {
-    height: 35rem;
-  }
-  }
-  .about-section .image-container {
-    min-height: 40rem; 
-    max-height: 50vh;
-    img  {
-      height: 50vh;
-    }
-  }
-}
 
-*/
 
 // all and smaller devices
 .image-container {
+  position: relative;
   overflow: hidden;
-  height: 20vh; 
-  img  {
-    object-fit: cover; 
-    object-position: 0 0%;
-    min-height: 100%;
-    min-width: 100%;
-    max-width: 150%;
-    overflow: hidden;
-  }
+  height: 100%;
 }
-.about-section .image-container  {
-    height: 20vh;
+.about-section {
+  min-height: 20vh;
 }
 
+.row.feature {
+  min-height: 20rem;
+}
+
+/*
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
@@ -155,14 +113,14 @@ img.image-container {
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .feature .image-container {
-    height: 20rem;
+    max-height: 20rem;
   }
   .about-section .image-container {
     min-height: 30rem; 
   }
 }
 
-
+*/
 
 
 .bg-mirigi-dark {
@@ -209,6 +167,10 @@ img.image-container {
 
 .image-container {
   position: relative;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover !important;
 }
 .image-container .photo_credits {
   transform: rotate(-90deg);
@@ -227,3 +189,9 @@ img.image-container {
     text-shadow: 0 0 10px rgba(0,0,0,.5);
   }
 }
+
+
+
+
+
+

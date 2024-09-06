@@ -2,6 +2,7 @@
 name: "Jade Beach"
 address: "17001 Collins Avenue in Sunny Isles Beach, Florida, USA"
 image: https://www.jadebeachsunnyisles.com/wp-content/uploads/2014/06/banner1.png
+image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 icon: 
 maplink: https://maps.app.goo.gl/EVUXegpLRBz7W2Fb6
 link: https://maps.app.goo.gl/EVUXegpLRBz7W2Fb6

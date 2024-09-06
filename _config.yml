@@ -24,6 +24,7 @@ collections_dir: "collections"
 # By default data is in english:
 # ref: https://jekyllrb.com/docs/configuration/front-matter-defaults/
 defaults:
+  # Features collection:
   - scope:
       path: 'collections/_features/en'
       type: 'features'
@@ -42,6 +43,26 @@ defaults:
     values:
       permalink: 'fr/caracteristiques/:name'
       lang: "fr"
+  # customers collection:
+  - scope:
+      path: 'collections/_customers/en'
+      type: 'customers'
+    values:
+      permalink: 'en/customers/:title'
+      lang: "en"
+  - scope:
+      path: 'collections/_customers/es'
+      type: 'customers'
+    values:
+      permalink: 'es/clientes/:title'
+      lang: "es"
+  - scope:
+      path: 'collections/_customers/fr'
+      type: 'customers'
+    values:
+      permalink: 'fr/clients/:name'
+      lang: "fr"
+  # Translations
   - scope:
       path: "en/"
     values:

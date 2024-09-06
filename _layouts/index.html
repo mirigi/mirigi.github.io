@@ -54,7 +54,8 @@ layout: default
 
     <div id="customerCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
-        {% for customer in site.customers %}
+        {% assign customers = site.customers | where: 'lang',page.lang %}
+        {% for customer in customers %}
         {% if forloop.first %}
         <div class="carousel-item active">
           {% else %}

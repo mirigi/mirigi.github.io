@@ -1,14 +1,19 @@
-  <footer class="small text-center text-white-50">
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto">
-          Made with
-          <i class="fas fa-heart"></i>
-          by <a href="https://www.khimo.com">Khimo</a>!
-        </div>
+<footer class="small text-center text-white-50">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto">
+        <a href="/{{page.lang}}/policy.html">Privacy policy</a> <span>&copy; {{ "now" | date: "%Y" }}</span>
       </div>
     </div>
-  </footer>
+    <div class="row">
+      <div class="mx-auto">
+        Made with
+        <i class="fas fa-heart"></i>
+        by <a href="https://www.khimo.com">Khimo</a>!
+      </div>
+    </div>
+  </div>
+</footer>
 
   <script src="{{ '/vendor/jquery/jquery.min.js' | relative_url }}"></script>
   <script src="{{ '/vendor/bootstrap/js/bootstrap.bundle.min.js' | relative_url }}"></script>

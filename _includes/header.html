@@ -37,9 +37,11 @@
           <li class="nav-item">
             <div class="nav-link">
               <small>
-            {% assign langselector = '/' | append: page.lang  | append: '/'%}
+            {% assign langselector = '/' | append: page.lang  | append: '/' %}
+            {% assign pageBaseUrl =  page.url | replace_first: langselector,"/" %}  
+            {% assign pageBaseUrl =  "/" %} <!-- Assignning empty path so we always go to landing, different languages have different file name so we can not redirect by name //-->
               {% for lang in site.languages %}
-              <a href="{{ '/'| append: lang |  append: ( page.url | replace_first: langselector,'/') }}" title="{{site.data[lang].label }}">
+              <a href="{{ '/'| append: lang |  append: pageBaseUrl }}" title="{{site.data[lang].label }}">
                 {{ lang | upcase }} {{ site.data[lang].icon }}
               </a>&nbsp;
           {% endfor %}

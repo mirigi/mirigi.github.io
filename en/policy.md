@@ -1,6 +1,7 @@
 ---
 title: "Mirigi Privacy Policy"
 layout: defaultcontent
+lang: en
 ---
 
 # Mirigi Privacy Policy

@@ -8,7 +8,7 @@ La fonctionnalité **"CAMÉRAS"** de la solution de conciergerie numérique Miri
 
 Accessible sur toutes les plateformes prises en charge, la **caméra de la piscine** et les autres flux de caméras offrent une expérience de visionnage fluide, permettant aux utilisateurs de rester informés des conditions actuelles des installations de leur immeuble. Qu'il s'agisse de vérifier le taux d'occupation de la piscine ou de surveiller l'activité du hall d'entrée, la fonctionnalité de diffusion en direct améliore l'expérience de vie globale en offrant tranquillité d'esprit et commodité d'un simple clic.
 
-De plus, l'intégration de cette fonctionnalité dans la solution de conciergerie numérique Mirigi souligne l'engagement à tirer parti de la technologie pour améliorer la vie résidentielle. En permettant aux résidents de prendre des décisions éclairées sur l'utilisation des espaces communs, la fonctionnalité de caméra favorise non seulement la sécurité, mais améliore également la qualité de vie au sein de la communauté.
+De plus, l'intégration de cette fonctionnalité dans la solution de conciergerie numérique Mirigi souligne l'engagement à tirer parti de la technologie pour améliorer la vie résidentielle. En permettant aux résidents de prendre des décisions claires sur l'utilisation des espaces communs, la fonctionnalité de caméra favorise non seulement la sécurité, mais améliore également la qualité de vie au sein de la communauté.
 
 
 

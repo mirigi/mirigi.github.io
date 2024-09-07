@@ -1,8 +1,8 @@
 ---
 title: "Votre immeuble, votre application"
-image: "/img_mirigi/additional_v4.jpg"
+image: "/img/features/fully-customizable.jpg"
 layout: feature
-description: "Transformez l'image de marque de votre immeuble avec les applications mobiles personnalisées Mirigi !"
+description: "Transformez l'image de marque de votre immeuble avec les applications mobiles personnalisées Mirigi !"
 ---
 
 La plateforme Mirigi permet aux promoteurs immobiliers d'améliorer leur image de marque en lançant des applications personnalisées sur les principales boutiques d'applications mobiles telles que l'Apple App Store et le Google Play Store. Avec la possibilité d'afficher le nom de votre immeuble, ces applications deviennent un outil puissant pour améliorer la commodité et l'engagement des utilisateurs. En établissant une présence dans ces boutiques d'applications, votre application spécifique à l'immeuble peut captiver un public plus large, attirant des locataires ou des clients potentiels qui apprécient la technologie de pointe et la commodité sans faille.

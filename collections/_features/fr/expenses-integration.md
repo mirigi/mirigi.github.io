@@ -1,6 +1,6 @@
 ---
 title: "Intégration des dépenses"
-image: "/img_mirigi/blueliving.jpg"
+image: "/img/features/expenses.jpg"
 layout: feature
 description: "Rapport des dépenses et paiement en ligne."
 ---

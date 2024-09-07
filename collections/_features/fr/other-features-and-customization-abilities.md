@@ -1,6 +1,6 @@
 ---
 title: "Personnalisable et évolutif"
-image: "/img_mirigi/additional_v4.jpg"
+image: "/img/features/bespoke.jpg"
 layout: feature
 description: "La solution Mirigi est **en constante évolution** et prête à s'adapter à **vos besoins**"
 ---

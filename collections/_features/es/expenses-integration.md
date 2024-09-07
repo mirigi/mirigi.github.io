@@ -1,6 +1,6 @@
 ---
 title: "Integración de gastos"
-image: "/img_mirigi/blueliving.jpg"
+image: "/img/features/expenses.jpg"
 layout: feature
 description: "Informe de gastos y pago en línea."
 ---

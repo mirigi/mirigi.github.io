@@ -1,6 +1,6 @@
 ---
 title: "Tu edificio, tu aplicación"
-image: "/img_mirigi/additional_v4.jpg"
+image: "/img/features/fully-customizable.jpg"
 layout: feature
 description: "¡Transforme la marca de su edificio con las aplicaciones móviles personalizadas de Mirigi!"
 ---

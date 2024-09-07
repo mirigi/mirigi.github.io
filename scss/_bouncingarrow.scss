@@ -1,0 +1,32 @@
+.arrow-container {
+  position: relative;
+
+
+  .arrow {
+    position: absolute;
+    bottom: 20px;
+    overflow: hidden;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 40px;
+    height: 40px;
+    border-top: 1px solid rgba(0,0,0,.4);;
+    border-right: 0px;
+    border-bottom: 0px;
+    border-left: 1px solid rgba(0,0,0,.4);
+    animation: bounce 1s infinite;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateX(-50%) translateY(0) rotate(45deg);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0) rotate(45deg);
+  }
+}
+

@@ -1,6 +1,6 @@
 ---
 title: "Expenses integration"
-image: "/img_mirigi/blueliving.jpg"
+image: "/img/features/expenses.jpg"
 layout: feature
 description: "Expenses report and online paying."
 ---

@@ -5,3 +5,11 @@
     margin-bottom: 5rem;
   }
 }
+.about-section {
+  min-height: 20vh;
+}
+@media (max-width: 1200px ) {
+  .about-section .image-container {
+    max-height: 15rem; 
+  }
+}

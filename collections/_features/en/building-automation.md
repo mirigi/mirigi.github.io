@@ -1,6 +1,7 @@
 ---
 title: "BUILDING AUTOMATION"
 image: "/img_mirigi/touchpanelJadesignature.jpg"
+image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
 description: " Empower your staff and residents with seamless building automation integration. Unlock amenities, monitor common areas, and enhance security—all from one unified platform."
 ---

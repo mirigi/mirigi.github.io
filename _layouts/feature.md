@@ -10,7 +10,7 @@
 <section class="about-section bg-light">
   <div class="container">
     <div class="row no-gutters mb-4 mb-lg-5" style="overflow:hidden">
-      <div class="col-xl-4 ">
+      <div class="col-xl-4 image-container">
         <img class="ximg-fluid" src="{{page.image}}" alt="" style="min-height:100%;min-width:100%;   object-fit: cover;" >
       </div>
         <div class="col-xl-8 fadeout-background" id="about">

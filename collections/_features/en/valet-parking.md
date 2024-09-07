@@ -1,6 +1,7 @@
 ---
 title: "VALET PARKING"
 image: "/img_mirigi/valet.jpg"
+image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
 description: "Request your car effortlessly with Mirigi's valet parking feature."
 ---

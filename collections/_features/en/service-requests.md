@@ -1,6 +1,7 @@
 ---
 title: "SERVICE REQUESTS"
 image: "/img_mirigi/blueliving.jpg"
+image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
 description: "Easily submit and track service requests with Mirigi."
 ---

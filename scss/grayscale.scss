@@ -72,14 +72,14 @@ footer {
   .featured-text-left {
     padding: 2rem;
     @media (min-width: 1200px) {
-      padding: 0 2rem 0 0;
+      padding: 2rem;
       border-right: 0.5rem solid $primary;
     }
   }
   .featured-text, .featured-text-right {
     padding: 2rem;
     @media (min-width: 1200px) {
-      padding: 0 0 0 2rem;
+      padding: 2rem;
       border-left: 0.5rem solid $primary;
     }
   }
@@ -93,34 +93,13 @@ footer {
   overflow: hidden;
   height: 100%;
 }
-.about-section {
-  min-height: 20vh;
-}
 
 .row.feature {
   min-height: 20rem;
 }
 
-/*
 
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) { 
-  .feature .image-container {
-    height: 20rem;
-  }
-}
 
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .feature .image-container {
-    max-height: 20rem;
-  }
-  .about-section .image-container {
-    min-height: 30rem; 
-  }
-}
-
-*/
 
 
 .bg-mirigi-dark {

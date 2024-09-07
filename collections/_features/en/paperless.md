@@ -1,6 +1,7 @@
 ---
 title: "PAPERLESS"
 image: "/img_mirigi/table.jpg"
+image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
 description: "Embrace sustainability with Mirigi's eco-friendly communication solution, powered by **AI**."
 ---

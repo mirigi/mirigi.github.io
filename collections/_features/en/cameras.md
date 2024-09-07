@@ -1,6 +1,7 @@
 ---
 title: "CAMERAS"
-image: "/img_mirigi/pool.jpg"
+image: "/img/features/camera-1.jpg"
+image_credits: ''
 layout: feature
 description: "Is the pool too crowded? Check through the pool-cam! Live streaming of the building's installed cameras is available on all supported platforms."
 ---

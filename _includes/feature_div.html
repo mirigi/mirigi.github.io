@@ -1,6 +1,3 @@
-{% if feature.content.size > 1 %}
-<a href="{{feature.url}}">
-{% endif %}
 {% if feature.image contains "http://" or feature.image contains "https://" or feature.image | slice: 0, 1 == "/" %} 
 {% assign image = feature.image %} 
 {% else %}
@@ -10,7 +7,7 @@
   <div class="showcase bigimage dark">
     <div class="image"  style="background-image: url('{{ image }}')">
       <p class="photo_credits">
-        @<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>
+        {{feature.image_credits}}
       </p>
     </div>
     <div class="content">
@@ -30,7 +27,7 @@
   <div class="showcase bigimage reverse dark">
     <div class="image"  style="background-image: url('{{ image }}')">
       <p class="photo_credits">
-        @<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>
+        {{feature.image_credits}}
       </p>
     </div>
     <div class="content">
@@ -50,6 +47,3 @@
 
 
   {% endif %}
-  {% if feature.content.size > 1 %}
-</a>
-{% endif %}

@@ -1,6 +1,7 @@
 ---
 title: "CÁMARAS"
-image: "/img_mirigi/pool.jpg"
+image: "/img/features/camera-1.jpg"
+image_credits: ''
 layout: feature
 description: "¿Está la piscina demasiado llena? ¡Compruébelo a través de la cámara de la piscina! La transmisión en vivo de las cámaras instaladas en el edificio está disponible en todas las plataformas compatibles."
 ---

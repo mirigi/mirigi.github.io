@@ -1,6 +1,6 @@
 ---
 title: "CAMÉRAS"
-image: "/img_mirigi/pool.jpg"
+image: "/img/features/camera-1.jpg"
 layout: feature
 description: "La piscine est-elle trop fréquentée ? Vérifiez par le biais de la caméra de la piscine ! La diffusion en direct des caméras installées dans l'immeuble est disponible sur toutes les plateformes prises en charge."
 ---

@@ -285,8 +285,12 @@
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
-  min-height: 20vh;
+  min-height: 40vh;
   margin: 1ex 0;
+}
+
+.showcase > .image {
+  min-height: 30vh;
 }
 
 .showcase > .image,
@@ -377,21 +381,13 @@
   color: rgba(255, 255, 255, 0.5) !important;
 }
 
-@media (max-width: 1200px) {
-  .showcase > .image,
-  .showcase > .content {
-    -webkit-box-flex: 1 !important;
-    -ms-flex: 1 1 50% !important;
-    flex: 1 1 50% !important;
-  }
-}
-
 @media (max-width: 992px) {
   .showcase > .image,
   .showcase > .content {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 100%;
     flex: 1 1 100%;
+    padding: 0;
   }
   .showcase.reverse {
     -webkit-box-orient: vertical;

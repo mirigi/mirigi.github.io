@@ -14,9 +14,12 @@ $media-bigimage-width: 1200px;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  min-height: 20vh;
+  min-height: 40vh;
   margin: 1ex 0;
 
+  > .image {
+    min-height: 30vh
+  }
   > .image,
   > .content {
     flex: $showcase-flex;
@@ -91,7 +94,7 @@ $media-bigimage-width: 1200px;
   .showcase {
     > .image,
     > .content {
-      flex: $showcase-flex !important;
+ //    flex: $showcase-flex !important;
     }
   }
 }
@@ -100,6 +103,7 @@ $media-bigimage-width: 1200px;
     > .image,
     > .content {
       flex: 1 1 100%;
+      padding: 0;
     }
     &.reverse {
       flex-direction: column;

@@ -1,12 +1,12 @@
 ---
-title: "PAPERLESS"
+title: "Leveraging AI to Improve Communication"
 image: "/img_mirigi/table.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
-description: "Embrace sustainability with Mirigi's eco-friendly communication solution, powered by **AI**."
+description: "Elevate resident communications with Mirigi's AI-driven, eco-friendly solution."
 ---
 
-**Mirigi's paperless feature** offers an eco-friendly way to send messages to residents, who can receive them on their mobile phones or touch panels. This feature not only reduces the environmental impact of paper usage but also enhances communication efficiency by ensuring that residents receive important information promptly and conveniently.
+**Mirigi's paperless feature** provides an innovative, eco-friendly method for delivering messages to residents, accessible via their mobile devices or touch panels. This not only significantly reduces the environmental footprint associated with paper use but also optimizes communication by ensuring residents receive crucial information swiftly and conveniently.
 
-From the staff's perspective, this feature streamlines the communication process, reducing the need for physical mailings and minimizing administrative workload. The digital system ensures that all messages are recorded accurately, providing staff with a clear overview of communication history. This not only improves operational efficiency but also enhances the quality of service provided to residents, as staff can focus on addressing residents' needs rather than managing paper-based communications. The messaging system comes with a very unique **AI assistant** that utilizes its previous knowledge to help the staff create the perfect message with less effort.
+For staff members, this feature revolutionizes the communication process by **integrating AI**, which reduces reliance on physical mailings and alleviates administrative burdens. The digital system, powered by AI, guarantees precise message recording, offering staff a comprehensive view of communication history. This advancement not only boosts operational efficiency but also elevates the quality of service to residents, allowing staff to concentrate on fulfilling residents' needs rather than managing paper-based tasks. The messaging system is equipped with a sophisticated **AI assistant** that leverages its extensive knowledge to assist staff in crafting the perfect message with minimal effort.
 

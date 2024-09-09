@@ -35,13 +35,13 @@ defaults:
       path: 'collections/_features/es'
       type: 'features'
     values:
-      permalink: 'es/caracteristicas/:title'
+      permalink: 'es/funcionalidades/:title'
       lang: "es"
   - scope:
       path: 'collections/_features/fr'
       type: 'features'
     values:
-      permalink: 'fr/caracteristiques/:name'
+      permalink: 'fr/caracteristiques/:title'
       lang: "fr"
   # customers collection:
   - scope:

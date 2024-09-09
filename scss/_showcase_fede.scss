@@ -3,8 +3,10 @@ $showcase-padding: 5vh 5vw;
 $showcase-bg-color: #f0f0f0;
 $showcase-dark-bg-color: #58595b;
 $showcase-dark-color: rgba(255, 255, 255, .5);
-$bigimage-flex-image: 1 1 54%;
-$bigimage-flex-content: 1 1 46%;
+$bigimage-flex-image: 1 1 52%;
+$bigimage-flex-content: 1 1 45%;
+$smallimage-flex-image: 1 1 15%;
+$smallimage-flex-content: 1 1 80%;
 $media-max-width: 992px;
 $media-bigimage-width: 1200px;
 
@@ -22,6 +24,8 @@ $media-bigimage-width: 1200px;
     justify-content: center;
     align-items: center;
     padding: $showcase-padding;
+    margin:0;
+    border: 0;
   }
 
   > .image {
@@ -63,6 +67,15 @@ $media-bigimage-width: 1200px;
     }
     > .content {
       flex: $bigimage-flex-content;
+    }
+  }
+
+  &.smallimage {
+    > .image {
+      flex: $smallimage-flex-image;
+    }
+    > .content {
+      flex: $smallimage-flex-content;
     }
   }
 

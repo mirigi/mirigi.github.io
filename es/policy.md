@@ -6,7 +6,7 @@ lang: es
 
 # Política de Privacidad de Mirigi
 
-La privacidad de los datos es importante para nuestra empresa (referida en este documento como "nosotros"), respetamos los derechos de privacidad de los usuarios y reconocemos la importancia de proteger la información recopilada sobre usted. Esta Política de Privacidad explica cómo se recopila, utiliza y divulga la información cuando se utiliza el producto Mirigi ("servicio"). Mirigi es un software de servicio de conserjería para el mercado residencial que proporciona al usuario ("usted") funciones de automatización del hogar a través de servicios como Khimo o Lutron y permite una comunicación eficiente con el personal del edificio para proporcionar servicios como Seguimiento de Entregas, Reservas de Amenidades, Notificaciones y más.
+La privacidad de los datos es importante para nuestra empresa (referida en este documento como "nosotros"), respetamos los derechos de privacidad de los usuarios y reconocemos la importancia de proteger la información recopilada sobre usted. Esta Política de Privacidad explica cómo se recopila, utiliza y divulga la información cuando se utiliza el producto Mirigi ("servicio"). Mirigi es un software de servicio de conserjería digital para condominios que proporciona al usuario ("usted") funciones de automatización del hogar a través de servicios como Khimo o Lutron y permite una comunicación eficiente con el personal del edificio para proporcionar servicios como Seguimiento de Entregas, Reservas de Amenidades, Notificaciones y más.
 
 ## ¿Quiénes somos?
 

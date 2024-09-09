@@ -1,46 +1,65 @@
-$showcase-flex: 1 1 50%;
 $showcase-padding: 5vh 5vw;
 $showcase-bg-color: #f0f0f0;
 $showcase-dark-bg-color: #58595b;
 $showcase-dark-color: rgba(255, 255, 255, .5);
-$bigimage-flex-image: 1 1 52%;
+
+
+$showcase-flex: 0 1 50%;
+
+$bigimage-flex-image: 1 1 55%;
 $bigimage-flex-content: 1 1 45%;
-$smallimage-flex-image: 1 1 15%;
+
+$smallimage-flex-image: 1 1 20%;
 $smallimage-flex-content: 1 1 80%;
+
 $media-max-width: 992px;
 $media-bigimage-width: 1200px;
 
 .showcase {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: stretch;
   min-height: 40vh;
-  margin: 1ex 0;
-
+  margin: 2ex 0;
+  background-color: $showcase-bg-color;
   > .image {
-    min-height: 30vh
+    min-height: 30vh;
   }
   > .image,
   > .content {
+    text-align: left;
     flex: $showcase-flex;
-    display: flex;
-    justify-content: center;
     align-items: center;
     padding: $showcase-padding;
-    margin:0;
+    margin: 0;
     border: 0;
+    font-size: 0.9rem;
+    h1, h2, h3, h4, h5, h6 {
+      color: black;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+    }
   }
-
+  > .content {
+    align-self: center; /* Vertically align item2 */
+    hr {
+      border-color: $primary;
+      border-width: 1px;
+      width: 30%;
+      display: inline-block;
+    }
+  }
   > .image {
     position: relative;
     background-image: url('path/to/your/image.jpg');
     background-size: cover;
     background-position: center;
   }
-  .image >  .photo_credits {
+  .image > .photo_credits {
     transform: rotate(-90deg);
     transform-origin: 5px 5px;
-    opacity: .8;
+    opacity: 0.8;
     font-size: 10px;
     margin: 0;
     bottom: 0;
@@ -48,22 +67,20 @@ $media-bigimage-width: 1200px;
     padding: 1px;
     position: absolute;
     color: white !important;
-    text-shadow: 0 0 5px rgba(0,0,0,1);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 1);
     a {
       color: white !important;
-      text-shadow: 0 0 5px rgba(0,0,0,1);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 1);
     }
   }
-
-  > .content {
-    background-color: $showcase-bg-color;
-  }
-
   &.reverse {
     flex-direction: row-reverse;
     text-align: right;
+    > .content {
+      margin: 0;
+      text-align: right;
+    }
   }
-
   &.bigimage {
     > .image {
       flex: $bigimage-flex-image;
@@ -72,7 +89,6 @@ $media-bigimage-width: 1200px;
       flex: $bigimage-flex-content;
     }
   }
-
   &.smallimage {
     > .image {
       flex: $smallimage-flex-image;
@@ -81,32 +97,42 @@ $media-bigimage-width: 1200px;
       flex: $smallimage-flex-content;
     }
   }
-
   &.dark {
+    background-color: $showcase-dark-bg-color;
+    color: white;
+    a:hover {
+      color: white;
+    }
     > .content {
-      background-color: $showcase-dark-bg-color;
+      h1, h2, h3, h4, h5, h6 {
+        color: white;
+      }
+    }
+    > .content {
       color: $showcase-dark-color !important;
     }
   }
 }
 
+
 @media (max-width: $media-bigimage-width) {
   .showcase {
     > .image,
     > .content {
- //    flex: $showcase-flex !important;
+      //    flex: $showcase-flex !important;
     }
   }
 }
 @media (max-width: $media-max-width) {
   .showcase {
+    &, &.reverse {
+      flex-direction: column;
+    }
     > .image,
     > .content {
-      flex: 1 1 100%;
-      padding: 0;
-    }
-    &.reverse {
-      flex-direction: column;
+      flex: 0 0 100%;
+      padding: 1rem;
+      text-align: center !important;
     }
   }
 }

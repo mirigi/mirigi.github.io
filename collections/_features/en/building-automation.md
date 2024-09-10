@@ -4,7 +4,7 @@ image: "/img_mirigi/touchpanelJadesignature.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
 keywords: building automation, smart building, integration, access control, security, efficiency
-description: "Integrate building automation seamlessly with Mirigi."
+description: "Seamlessly integrate building automation systems with Mirigi for enhanced security, convenience, and efficiency."
 ---
 
 Discover the future of living with Mirigi's **cutting-edge integration capabilities**! Seamlessly connect with the resident smart-home system or other building automation systems to deliver an **unparalleled experience**for both residents and staff. Imagine a world where your front door station, elevators, and access control systems work in **perfect harmony**, all through Mirigi's **unified platform**. Say goodbye to the hassle of juggling multiple access cards or keysenjoy **enhanced convenience and security** as you access amenities like the barbecue or tennis courts effortlessly. With Mirigi, every interaction is **smooth and uninterrupted**, whether you're entering the building or enjoying the facilities. Plus, Mirigi empowers you with the ability to integrate various automated systems, enabling **autonomous operations** like setting up tags in the automated gate directly from the Mirigi app, **provided the gate offers an API**.

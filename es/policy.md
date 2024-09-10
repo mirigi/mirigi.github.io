@@ -3,7 +3,7 @@ title: Política de Privacidad de Mirigi
 layout: defaultcontent
 lang: es
 keywords: política de privacidad, protección de datos, RGPD, datos del usuario, seguridad
-description: "La Política de Privacidad de Mirigi describe cómo se recopilan, utilizan y protegen los datos de los usuarios."
+description: "La Política de Privacidad de Mirigi describe cómo recopilamos, usamos y protegemos los datos de los usuarios, garantizando la privacidad y seguridad."
 ---
 
 # Política de Privacidad de Mirigi

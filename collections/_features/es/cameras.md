@@ -4,7 +4,7 @@ image: "/img/features/camera-1.jpg"
 image_credits: ''
 layout: feature
 keywords: cámaras, cámaras de seguridad, vigilancia, transmisión en vivo, monitoreo remoto, seguridad
-description: "Monitorea áreas del edificio en tiempo real con la función de cámara de Mirigi."
+description: "Monitorea las áreas del edificio en tiempo real con la función de cámara de Mirigi para mayor seguridad y tranquilidad."
 ---
 La función **"CÁMARAS"** en la solución de conserjería digital Mirigi ofrece a los residentes y usuarios la posibilidad de monitorear varias áreas de su edificio en tiempo real. Al proporcionar acceso de transmisión en vivo a las cámaras instaladas en el edificio, los usuarios pueden verificar cómodamente el estado de los espacios compartidos, como la piscina, directamente desde sus dispositivos. Esta funcionalidad es particularmente útil para aquellos que desean evitar áreas concurridas o simplemente quieren garantizar la seguridad de su entorno.
 

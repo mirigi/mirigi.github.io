@@ -3,7 +3,7 @@ title: Demandes de Service
 image: "/img_mirigi/blueliving.jpg"
 layout: feature
 keywords: demandes de service, maintenance, communication, commentaires, efficacité, satisfaction résident
-description: "Soumettez et suivez les demandes de service efficacement avec Mirigi."
+description: "Soumettez et suivez les demandes de service de manière efficace avec Mirigi pour des réponses rapides."
 ---
 
 La **fonctionnalité de demandes de service de Mirigi** permet aux résidents de remplir des formulaires personnalisés sur leur écran tactile ou leur smartphone pour effectuer des demandes spéciales. Ces demandes sont envoyées au membre du personnel désigné et peuvent être suivies par les gestionnaires, qui recevront les commentaires des utilisateurs une fois le problème résolu. Cette fonctionnalité offre aux résidents un moyen pratique et efficace de communiquer leurs besoins, garantissant que leurs demandes sont traitées rapidement et efficacement.

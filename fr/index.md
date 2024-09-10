@@ -10,8 +10,8 @@ customersTitle: Nos clients de luxe incluent
 customersText: Contemplez les merveilles architecturales qui font confiance à Mirigi pour leur excellence opérationnelle. Ces bâtiments emblématiques font partie de notre clientèle estimée, montrant l'intégration transparente et l'efficacité supérieure que Mirigi apporte.
 contactText: Rejoignez les rangs de ces structures distinguées et levez le potentiel de votre immeuble avec Mirigi. Contactez-nous via l'un de nos canaux pour planifier une démonstration et découvrir comment les services de conciergerie numérique de Mirigi peuvent dynamiser votre développement. Vivez la transformation et l'innovation que seul Mirigi peut offrir !
 title: Service de Conciergerie Numérique Mirigi
-keywords: conciergerie intelligente, gestion immobilière, expérience résident, immeuble intelligent, automatisation, vie de luxe
-description: "Mirigi améliore les interactions entre résidents et bâtiments grâce à un service de conciergerie intelligent, offrant des interfaces de luxe pour les réservations, le voiturier et les livraisons."
+keywords: conciergerie intelligente, gestion immobilière, expérience résident, vie de luxe, automatisation, immeuble intelligent
+description: "Mirigi améliore les interactions résident-bâtiment grâce à un service de conciergerie intelligent, interfaces de luxe pour réservations, etc."
 ---
 Découvrez l'avenir de la vie en copropriété avec Mirigi, le service de conciergerie révolutionnaire qui transforme les interactions entre résidents et immeubles en expériences numériques fluides. Élevez votre style de vie avec des interfaces de luxe pour les réservations, le service de voiturier, les flux de travail, les livraisons et <a href='#features' class='js-scroll-trigger'>plus encore</a>.
 

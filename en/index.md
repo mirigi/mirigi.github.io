@@ -9,9 +9,9 @@ phoneLabel: Phone
 customersTitle: Our luxury customers include
 customersText: Behold the architectural marvels that trust Mirigi for their operational excellence. These iconic buildings are part of our esteemed clientele, showcasing the seamless integration and superior efficiency that Mirigi brings. 
 contactText: Join the ranks of these distinguished structures and elevate your building's potential with Mirigi. Contact us through any of our channels to schedule a demonstration and discover how Mirigi's digital counseling can boost your development! Experience the transformation and innovation that only Mirigi can offer.
-title: Mirigi Smart Concierge
-keywords: smart concierge, building management, resident experience, smart building, automation, luxury living
-description: "Mirigi enhances resident-building interactions with a smart concierge service, offering luxury interfaces for reservations, valet parking, and deliveries, accessible via mobile or in-wall touch panels."
+title: Mirigi Smart Concierge 
+keywords: smart concierge, building management, resident experience, luxury living, automation, smart building
+description: "Mirigi's smart concierge enhances resident-building interactions, offering luxury interfaces for reservations, valet parking, and more."
 ---
 Experience the future of condominium living with Mirigi, the groundbreaking concierge service that transforms resident-building interactions into seamless digital experiences. Elevate your lifestyle with luxury interfaces for reservations, valet parking, workflows, deliveries, and <a href='#features' class='js-scroll-trigger'>more</a>.
 

@@ -4,7 +4,7 @@ image: "/img_mirigi/table.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
 keywords: paperless, communication, eco-friendly, AI, efficiency, resident engagement
-description: "Communicate efficiently and eco-friendly with Mirigi's paperless feature."
+description: "Embrace eco-friendly and efficient communication with Mirigi's paperless feature, delivering messages directly to residents."
 ---
 
 **Mirigi's paperless feature** provides an innovative, eco-friendly method for delivering messages to residents, accessible via their mobile devices or touch panels. This not only significantly reduces the environmental footprint associated with paper use but also optimizes communication by ensuring residents receive crucial information swiftly and conveniently.

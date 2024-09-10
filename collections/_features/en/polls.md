@@ -4,7 +4,7 @@ image: "/img/features/polls.webp"
 image_credits: ''
 layout: feature
 keywords: polls, voting, surveys, resident feedback, decision-making, community engagement
-description: "Conduct polls and gather resident feedback easily with Mirigi."
+description: "Easily conduct digital polls and gather resident feedback with Mirigi, fostering community engagement and informed decision-making."
 ---
 The **"DIGITAL POLL SYSTEM"** feature in the Mirigi digital concierge solution empowers staff members to conduct polls across all unit residents efficiently. By facilitating voting by unit and counting by unit stake or unit, this system ensures a fair and representative decision-making process within the community. Residents can conveniently participate in polls using any of the supported platforms, including in-wall panels, tablets, mobile devices, and web interfaces.
 

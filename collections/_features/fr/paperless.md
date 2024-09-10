@@ -3,7 +3,7 @@ title: Communication Sans Papier
 image: "/img_mirigi/table.jpg"
 layout: feature
 keywords: sans papier, communication, écologique, IA, efficacité, engagement résident
-description: "Communiquez efficacement et de manière écologique avec la fonction sans papier de Mirigi."
+description: "Optez pour une communication écologique et efficace avec la fonction sans papier de Mirigi."
 ---
 
 La **fonctionnalité sans papier de Mirigi** offre un moyen écologique d'envoyer des messages aux résidents, qui peuvent les recevoir sur leur téléphone portable ou sur des panneaux tactiles. Cette fonctionnalité réduit non seulement l'impact environnemental de l'utilisation du papier, mais améliore également l'efficacité de la communication en garantissant que les résidents reçoivent les informations importantes rapidement et de manière pratique.

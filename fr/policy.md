@@ -3,7 +3,7 @@ title: Politique de Confidentialité de Mirigi
 layout: defaultcontent
 lang: fr
 keywords: politique de confidentialité, protection des données, RGPD, données utilisateur, sécurité
-description: "La Politique de Confidentialité de Mirigi décrit comment les données des utilisateurs sont collectées, utilisées et protégées."
+description: "La Politique de Confidentialité de Mirigi décrit comment nous collectons, utilisons et protégeons les données des utilisateurs."
 ---
 
 # Politique de Confidentialité de Mirigi

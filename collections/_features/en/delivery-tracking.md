@@ -3,7 +3,7 @@ title: Delivery Tracking
 image: "/img_mirigi/delivery2.jpg"
 layout: feature
 keywords: delivery tracking, package management, notifications, real-time updates, security, convenience
-description: "Track deliveries in real-time and receive notifications with Mirigi."
+description: "Track your deliveries in real-time and receive instant notifications with Mirigi's convenient delivery tracking feature."
 ---
 
 **Mirigi's delivery tracking feature** offers a seamless experience for both residents and staff by enhancing package management. Residents are informed in **real-time** when a package is received, ensuring transparency and efficiency. This feature eliminates the need for residents to constantly check package trackers, providing them with peace of mind and convenience.

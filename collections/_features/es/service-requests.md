@@ -2,7 +2,7 @@
 title: Solicitudes de Servicio
 image: "/img_mirigi/blueliving.jpg"
 layout: feature
-keyword: solicitudes de servicio, mantenimiento, comunicación, comentarios, eficiencia, satisfacción del residente
+keywords: solicitudes de servicio, mantenimiento, comunicación, comentarios, eficiencia, satisfacción del residente
 description: Envíe y rastree fácilmente las solicitudes de servicio con Mirigi.
 ---
 

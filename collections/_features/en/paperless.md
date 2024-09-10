@@ -3,7 +3,7 @@ title: Paperless Communication
 image: "/img_mirigi/table.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
-keyword: paperless, communication, eco-friendly, AI, efficiency, resident engagement
+keywords: paperless, communication, eco-friendly, AI, efficiency, resident engagement
 description: Elevate resident communications with Mirigi's AI-driven, eco-friendly solution.
 ---
 

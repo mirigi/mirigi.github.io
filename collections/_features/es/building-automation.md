@@ -2,7 +2,7 @@
 title: Automatización de Edificios
 image: "/img_mirigi/touchpanelJadesignature.jpg"
 layout: feature
-keyword: automatización de edificios, edificio inteligente, integración, control de acceso, seguridad, eficiencia
+keywords: automatización de edificios, edificio inteligente, integración, control de acceso, seguridad, eficiencia
 description: Empodere a su personal y residentes con una integración perfecta de la automatización de edificios. Desbloquee amenidades, monitoree áreas comunes y mejore la seguridad, todo desde una plataforma unificada.
 ---
 

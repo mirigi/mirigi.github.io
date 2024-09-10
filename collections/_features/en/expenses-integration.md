@@ -2,7 +2,7 @@
 title: Expenses Integration
 image: "/img/features/expenses.jpg"
 layout: feature
-keyword: expenses, integration, payments, billing, accounting, automation
+keywords: expenses, integration, payments, billing, accounting, automation
 description: Expenses report and online paying.
 ---
 

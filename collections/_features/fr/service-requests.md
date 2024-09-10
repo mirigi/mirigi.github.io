@@ -2,7 +2,7 @@
 title: Demandes de Service
 image: "/img_mirigi/blueliving.jpg"
 layout: feature
-keyword: demandes de service, maintenance, communication, commentaires, efficacité, satisfaction résident
+keywords: demandes de service, maintenance, communication, commentaires, efficacité, satisfaction résident
 description: Soumettez et suivez facilement les demandes de service avec Mirigi.
 ---
 

@@ -2,7 +2,7 @@
 title: Automatisation des Bâtiments
 image: "/img_mirigi/touchpanelJadesignature.jpg"
 layout: feature
-keyword: automatisation des bâtiments, immeuble intelligent, intégration, contrôle d'accès, sécurité, efficacité
+keywords: automatisation des bâtiments, immeuble intelligent, intégration, contrôle d'accès, sécurité, efficacité
 description: Donnez à votre personnel et à vos résidents les moyens d'intégrer de manière transparente l'automatisation des bâtiments. Déverrouillez les installations, surveillez les espaces communs et améliorez la sécurité, le tout à partir d'une plateforme unifiée.
 ---
 

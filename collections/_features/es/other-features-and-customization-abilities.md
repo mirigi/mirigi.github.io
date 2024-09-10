@@ -2,7 +2,7 @@
 title: Soluciones a Medida
 image: "/img/features/bespoke.jpg"
 layout: feature
-keyword: soluciones a medida, personalización, módulos, desarrollo de aplicaciones, flexibilidad, innovación
+keywords: soluciones a medida, personalización, módulos, desarrollo de aplicaciones, flexibilidad, innovación
 description: La plataforma de Mirigi evoluciona con las necesidades del usuario, ofreciendo módulos a medida y aplicaciones personalizadas para experiencias de construcción únicas.
 ---
 

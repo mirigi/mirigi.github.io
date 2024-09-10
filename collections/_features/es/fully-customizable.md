@@ -2,7 +2,7 @@
 title: Totalmente Personalizable
 image: "/img/features/fully-customizable.jpg"
 layout: feature
-keyword: personalización, marca, aplicación móvil, tienda de aplicaciones, experiencia del usuario, flexibilidad
+keywords: personalización, marca, aplicación móvil, tienda de aplicaciones, experiencia del usuario, flexibilidad
 description: ¡Transforme la marca de su edificio con las aplicaciones móviles personalizadas de Mirigi!
 ---
 

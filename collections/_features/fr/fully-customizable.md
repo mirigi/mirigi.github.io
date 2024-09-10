@@ -2,7 +2,7 @@
 title: Entièrement Personnalisable
 image: "/img/features/fully-customizable.jpg"
 layout: feature
-keyword: personnalisation, image de marque, application mobile, boutique d'applications, expérience utilisateur, flexibilité
+keywords: personnalisation, image de marque, application mobile, boutique d'applications, expérience utilisateur, flexibilité
 description: Transformez l'image de marque de votre immeuble avec les applications mobiles personnalisées Mirigi!
 ---
 

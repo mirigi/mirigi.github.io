@@ -3,7 +3,7 @@ title: Valet Parking
 image: "/img_mirigi/valet.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
-keyword: valet parking, car requests, real-time tracking, notifications, convenience, efficiency
+keywords: valet parking, car requests, real-time tracking, notifications, convenience, efficiency
 description: Request your car effortlessly with Mirigi's valet parking feature.
 ---
 

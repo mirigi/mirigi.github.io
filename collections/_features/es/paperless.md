@@ -2,7 +2,7 @@
 title: Comunicación Sin Papel
 image: "/img_mirigi/table.jpg"
 layout: feature
-keyword: sin papel, comunicación, ecológico, IA, eficiencia, participación del residente
+keywords: sin papel, comunicación, ecológico, IA, eficiencia, participación del residente
 description: Adopte la sostenibilidad con la solución de comunicación ecológica de Mirigi, impulsada por IA.
 ---
 

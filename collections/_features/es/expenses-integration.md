@@ -2,7 +2,7 @@
 title: Integración de Gastos
 image: "/img/features/expenses.jpg"
 layout: feature
-keyword: gastos, integración, pagos, facturación, contabilidad, automatización
+keywords: gastos, integración, pagos, facturación, contabilidad, automatización
 description: Informe de gastos y pago en línea.
 ---
 

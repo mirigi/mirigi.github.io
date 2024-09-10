@@ -2,7 +2,7 @@
 title: Intégration des Dépenses
 image: "/img/features/expenses.jpg"
 layout: feature
-keyword: dépenses, intégration, paiements, facturation, comptabilité, automatisation
+keywords: dépenses, intégration, paiements, facturation, comptabilité, automatisation
 description: Rapport des dépenses et paiement en ligne.
 ---
 

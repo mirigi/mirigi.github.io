@@ -2,7 +2,7 @@
 title: Service de Voiturier
 image: "/img_mirigi/valet.jpg"
 layout: feature
-keyword: service de voiturier, demandes de voiture, suivi en temps réel, notifications, commodité, efficacité
+keywords: service de voiturier, demandes de voiture, suivi en temps réel, notifications, commodité, efficacité
 description: Demandez votre voiture sans effort grâce à la fonctionnalité de service de voiturier de Mirigi.
 ---
 

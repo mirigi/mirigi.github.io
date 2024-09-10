@@ -3,7 +3,7 @@ title: Service Requests
 image: "/img_mirigi/blueliving.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
-keyword: service requests, maintenance, communication, feedback, efficiency, resident satisfaction
+keywords: service requests, maintenance, communication, feedback, efficiency, resident satisfaction
 description: Easily submit and track service requests with Mirigi.
 ---
 

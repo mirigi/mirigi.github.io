@@ -2,7 +2,7 @@
 title: Communication Sans Papier
 image: "/img_mirigi/table.jpg"
 layout: feature
-keyword: sans papier, communication, écologique, IA, efficacité, engagement résident
+keywords: sans papier, communication, écologique, IA, efficacité, engagement résident
 description: Adoptez le développement durable avec la solution de communication écologique de Mirigi, optimisée par l'IA.
 ---
 

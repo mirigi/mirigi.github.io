@@ -2,7 +2,7 @@
 title: Delivery Tracking
 image: "/img_mirigi/delivery2.jpg"
 layout: feature
-keyword: delivery tracking, package management, notifications, real-time updates, security, convenience
+keywords: delivery tracking, package management, notifications, real-time updates, security, convenience
 description: Don't check the package tracker, let Mirigi notify you when your delivery arrives.
 ---
 

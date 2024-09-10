@@ -2,7 +2,7 @@
 title: Caméras
 image: "/img/features/camera-1.jpg"
 layout: feature
-keyword: caméras, caméras de sécurité, surveillance, diffusion en direct, surveillance à distance, sécurité
+keywords: caméras, caméras de sécurité, surveillance, diffusion en direct, surveillance à distance, sécurité
 description: La piscine est-elle trop fréquentée ? Vérifiez par le biais de la caméra de la piscine ! La diffusion en direct des caméras installées dans l'immeuble est disponible sur toutes les plateformes prises en charge.
 ---
 La fonctionnalité **"CAMÉRAS"** de la solution de conciergerie numérique Mirigi offre aux résidents et aux utilisateurs la possibilité de surveiller en temps réel diverses zones de leur immeuble. En fournissant un accès en direct aux caméras installées dans l'immeuble, les utilisateurs peuvent facilement vérifier l'état des espaces partagés, tels que la piscine, directement depuis leurs appareils. Cette fonctionnalité est particulièrement utile pour ceux qui souhaitent éviter les zones bondées ou simplement s'assurer de la sécurité de leur environnement.

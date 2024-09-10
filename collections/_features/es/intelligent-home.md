@@ -2,7 +2,7 @@
 title: Hogar Inteligente
 image: "/img_mirigi/kitchen.jpg"
 layout: "feature"
-keyword: hogar inteligente, casa inteligente, domótica, BeoLiving Intelligence, Khimo, Bang & Olufsen, control, comodidad
+keywords: hogar inteligente, casa inteligente, domótica, BeoLiving Intelligence, Khimo, Bang & Olufsen, control, comodidad
 description: Controla tu hogar desde cualquier lugar con la integración de hogar inteligente de Mirigi.
 ---
 

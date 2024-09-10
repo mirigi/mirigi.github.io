@@ -3,7 +3,7 @@ title: Cameras
 image: "/img/features/camera-1.jpg"
 image_credits: ''
 layout: feature
-keyword: cameras, security cameras, surveillance, live streaming, remote monitoring, safety
+keywords: cameras, security cameras, surveillance, live streaming, remote monitoring, safety
 description: Is the pool too crowded? Check through the pool-cam! Live streaming of the building's installed cameras is available on all supported platforms.
 ---
 The **"CAMERAS"** feature in the Mirigi digital concierge solution offers residents and users the ability to monitor various areas of their building in real-time. By providing live streaming access to the building's installed cameras, users can conveniently check the status of shared spaces, such as the pool, directly from their devices. This functionality is particularly useful for those who wish to avoid crowded areas or simply want to ensure the safety and security of their surroundings.

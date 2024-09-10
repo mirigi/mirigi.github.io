@@ -2,7 +2,7 @@
 title: Solutions sur Mesure
 image: "/img/features/bespoke.jpg"
 layout: feature
-keyword: solutions sur mesure, personnalisation, modules, développement d'applications, flexibilité, innovation
+keywords: solutions sur mesure, personnalisation, modules, développement d'applications, flexibilité, innovation
 description: La plateforme Mirigi évolue avec les besoins des utilisateurs, offrant des modules sur mesure et des applications personnalisées pour des expériences immobilières uniques.
 ---
 

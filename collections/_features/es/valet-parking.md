@@ -2,7 +2,7 @@
 title: Servicio de Valet Parking
 image: "/img_mirigi/valet.jpg"
 layout: feature
-keyword: valet parking, solicitudes de automóviles, seguimiento en tiempo real, notificaciones, comodidad, eficiencia
+keywords: valet parking, solicitudes de automóviles, seguimiento en tiempo real, notificaciones, comodidad, eficiencia
 description: Solicite su automóvil sin esfuerzo con la función de valet parking de Mirigi.
 ---
 

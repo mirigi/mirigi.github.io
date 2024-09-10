@@ -2,7 +2,7 @@
 title: Suivi des Livraisons
 image: "/img_mirigi/delivery2.jpg"
 layout: feature
-keyword: suivi des livraisons, gestion des colis, notifications, mises à jour en temps réel, sécurité, commodité
+keywords: suivi des livraisons, gestion des colis, notifications, mises à jour en temps réel, sécurité, commodité
 description: Ne vérifiez pas le suivi des colis, laissez Mirigi vous avertir lorsque votre livraison arrive.
 ---
 

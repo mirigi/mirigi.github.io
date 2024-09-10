@@ -10,7 +10,7 @@ customersTitle: Nuestros clientes de lujo incluyen
 customersText: Contemple las maravillas arquitectnicas que confían en Mirigi por su excelencia operativa. Estos edificios icónicos son parte de nuestra estimada clientela, mostrando la integración perfecta y la eficiencia superior que Mirigi aporta.
 contactText: Únase a las filas de estas distinguidas estructuras y eleve el potencial de su edificio con Mirigi. Contáctenos a través de cualquiera de nuestros canales para programar una demostración y descubrir cómo los servicios de conserjería digital de Mirigi pueden impulsar su desarrollo. Experimente la transformación e innovación que solo Mirigi puede ofrecer!
 title: Conserjería Digital Mirigi
-keyword: conserjería inteligente, gestión de edificios, experiencia del residente, edificio inteligente, automatización, vida de lujo
+keywords: conserjería inteligente, gestión de edificios, experiencia del residente, edificio inteligente, automatización, vida de lujo
 description: Mirigi revoluciona la vida en los condominios al ofrecer un servicio de conserjería inteligente que mejora las interacciones entre los residentes y el edificio. Proporciona interfaces de lujo para varios servicios como reservas, valet parking y entregas, accesibles a través de dispositivos móviles o paneles táctiles en la pared. Mirigi empodera al personal del edificio para ofrecer un servicio excepcional de manera eficiente, optimizando las operaciones y aumentando la productividad. Con la integración en la automatización del edificio, los residentes disfrutan de un control sin precedentes sobre sus espacios de vida, incluyendo características de seguridad.
 
 ---

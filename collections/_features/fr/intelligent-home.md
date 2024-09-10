@@ -2,7 +2,7 @@
 title: Maison Intelligente
 image: "/img_mirigi/kitchen.jpg"
 layout: "feature"
-keyword: maison intelligente, domotique, BeoLiving Intelligence, Khimo, Bang & Olufsen, contrôle, commodité
+keywords: maison intelligente, domotique, BeoLiving Intelligence, Khimo, Bang & Olufsen, contrôle, commodité
 description: Contrôlez votre maison de n'importe où grâce à l'intégration domotique de Mirigi.
 ---
 

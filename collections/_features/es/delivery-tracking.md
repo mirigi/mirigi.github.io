@@ -2,7 +2,7 @@
 title: Seguimiento de Entregas
 image: "/img_mirigi/delivery2.jpg"
 layout: feature
-keyword: seguimiento de entregas, gestión de paquetes, notificaciones, actualizaciones en tiempo real, seguridad, comodidad
+keywords: seguimiento de entregas, gestión de paquetes, notificaciones, actualizaciones en tiempo real, seguridad, comodidad
 description: No revise el rastreador de paquetes, deje que Mirigi le notifique cuando llegue su entrega.
 ---
 

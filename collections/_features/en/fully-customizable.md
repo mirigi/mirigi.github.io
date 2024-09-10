@@ -2,7 +2,7 @@
 title: Fully Customizable
 image: "/img/features/fully-customizable.jpg"
 layout: feature
-keyword: customization, branding, mobile app, app store, user experience, flexibility
+keywords: customization, branding, mobile app, app store, user experience, flexibility
 description: Transform Your Building's Brand with Custom Mirigi Mobile Apps!
 ---
 

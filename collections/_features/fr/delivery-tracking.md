@@ -3,7 +3,7 @@ title: Suivi des Livraisons
 image: "/img_mirigi/delivery2.jpg"
 layout: feature
 keyword: suivi des livraisons, gestion des colis, notifications, mises à jour en temps réel, sécurité, commodité
-description: Ne vérifiez pas le suivi des colis : laissez Mirigi vous avertir lorsque votre livraison arrive.
+description: Ne vérifiez pas le suivi des colis, laissez Mirigi vous avertir lorsque votre livraison arrive.
 ---
 
 La **fonctionnalité de suivi des livraisons de Mirigi** offre une expérience transparente aux résidents et au personnel en améliorant la gestion des colis. Les résidents sont informés en **temps réel** lorsqu'un colis est reçu, garantissant ainsi la transparence et l'efficacité. Cette fonctionnalité élimine le besoin pour les résidents de vérifier constamment le suivi des colis, leur offrant ainsi tranquillité d'esprit et commodité.

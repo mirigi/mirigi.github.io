@@ -2,6 +2,16 @@
 <html lang="{{ page.lang }}">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DZM0N6KBQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-6DZM0N6KBQ');
+  </script>
+
   <meta charset="utf-8">
   <title>{{ page.title | default: page.name | default: site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}">

@@ -8,7 +8,7 @@ description: This Privacy Policy outlines how Mirigi collects, uses, and protect
 
 # Mirigi Privacy Policy
 
-Data privacy is important to our company (referred to in this document as "us"), we respect the privacy rights of users and recognize the importance of protecting information collected about you. This Privacy Policy explains how information is collected, used, and disclosed when using the Mirigi product ("service"). Mirigi is a concierge service software for the residential market that provides the user ("you") with home automation features through services such as Khimo or Lutron and allows efficient communication with the building staff to provide services such as Delivery Tracking, Amenities Reservations, Notifications, and more.
+Data privacy is important to our company (referred to in this document as "us"), we respect the privacy rights of users and recognize the importance of protecting information collected about you. This Privacy Policy explains how information is collected, used, and disclosed when using the Mirigi product ("service"). Mirigi is a smart concierge service software for the residential market that provides the user ("you") with home automation features through services such as Khimo or Lutron and allows efficient communication with the building staff to provide services such as Delivery Tracking, Amenities Reservations, Notifications, and more.
 
 ## Who are we?
 

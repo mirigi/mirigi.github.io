@@ -9,9 +9,9 @@ phoneLabel: Phone
 customersTitle: Our luxury customers include
 customersText: Behold the architectural marvels that trust Mirigi for their operational excellence. These iconic buildings are part of our esteemed clientele, showcasing the seamless integration and superior efficiency that Mirigi brings. 
 contactText: Join the ranks of these distinguished structures and elevate your building's potential with Mirigi. Contact us through any of our channels to schedule a demonstration and discover how Mirigi's digital counseling can boost your development! Experience the transformation and innovation that only Mirigi can offer.
-title: Mirigi Digital Concierge
-keyword: digital concierge, building management, resident experience, smart building, automation, luxury living
-description: Mirigi revolutionizes condominium living by offering a digital concierge service that enhances resident-building interactions. It provides luxury interfaces for various services like reservations, valet parking, and deliveries, accessible via mobile devices or in-wall touch panels. Mirigi empowers building staff to deliver exceptional service efficiently, streamlining operations and boosting productivity. With integration into building automation, residents enjoy unprecedented control over their living spaces, including security features. 
+title: Mirigi Smart Concierge
+keyword: smart concierge, building management, resident experience, smart building, automation, luxury living
+description: Mirigi revolutionizes condominium living by offering a smart concierge service that enhances resident-building interactions. It provides luxury interfaces for various services like reservations, valet parking, and deliveries, accessible via mobile devices or in-wall touch panels. Mirigi empowers building staff to deliver exceptional service efficiently, streamlining operations and boosting productivity. With integration into building automation, residents enjoy unprecedented control over their living spaces, including security features. 
 ---
 Experience the future of condominium living with Mirigi, the groundbreaking concierge service that transforms resident-building interactions into seamless digital experiences. Elevate your lifestyle with luxury interfaces for reservations, valet parking, workflows, deliveries, and <a href='#features' class='js-scroll-trigger'>more</a>.
 

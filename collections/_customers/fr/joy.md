@@ -6,6 +6,6 @@ link: https://www.joymvd.com.uy/
 image_credits: ''
 title: Joy Montevideo
 keywords: Joy Montevideo, Uruguay, appartements de luxe, vie moderne, vues uniques
-description: Une nouvelle façon de vivre en Uruguay avec des vues uniques, des typologies variées et une atmosphère inspirante qui exprime le style au-delà de l'apparence.
+description: "Joy Montevideo : une nouvelle façon de vivre en Uruguay."
 ---
 Une nouvelle façon de vivre en Uruguay avec des vues uniques, des typologies variées et une atmosphère inspirante qui exprime le style au-delà de l'apparence.

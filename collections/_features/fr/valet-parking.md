@@ -3,7 +3,7 @@ title: Service de Voiturier
 image: "/img_mirigi/valet.jpg"
 layout: feature
 keywords: service de voiturier, demandes de voiture, suivi en temps réel, notifications, commodité, efficacité
-description: Demandez votre voiture sans effort grâce à la fonctionnalité de service de voiturier de Mirigi.
+description: "Demandez et suivez votre voiture avec la fonction service de voiturier de Mirigi."
 ---
 
 La **fonctionnalité de service de voiturier de Mirigi** permet aux résidents de demander leur voiture de n'importe où, même via Alexa. Les résidents peuvent suivre leur demande en **temps réel** et recevoir une notification sur leur téléphone portable lorsque leur voiture est prête, leur offrant ainsi commodité et tranquillité d'esprit.

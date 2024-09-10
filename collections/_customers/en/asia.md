@@ -7,6 +7,6 @@ link: https://www.brickellkeymiami.com/asia-condo.htm
 maplink: https://maps.app.goo.gl/R6Dn5ANfy5e1P3Kz9 
 title: Asia Condo
 keywords: Asia Condo, Brickell Key, Miami, luxury condominium, waterfront living
-description: Asia Condo is a prestigious luxury condominium building located in the exclusive Brickell Key island in Miami, Florida.
+description: "Asia Condo, a luxury condominium in Brickell Key, Miami."
 ---
 Asia Condo is a luxury condominium building located in Brickell Key, Miami, Florida.

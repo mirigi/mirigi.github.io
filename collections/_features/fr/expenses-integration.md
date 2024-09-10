@@ -3,7 +3,7 @@ title: Intégration des Dépenses
 image: "/img/features/expenses.jpg"
 layout: feature
 keywords: dépenses, intégration, paiements, facturation, comptabilité, automatisation
-description: Rapport des dépenses et paiement en ligne.
+description: "Intégrez la gestion des dépenses et les paiements en ligne avec Mirigi."
 ---
 
 Mirigi s'intègre parfaitement à divers **systèmes de gestion des dépenses**, permettant aux résidents de consulter facilement leurs **dépenses**, de visualiser le montant **dû** et d'effectuer des **paiements en ligne**. Cette intégration garantit que toutes les transactions des utilisateurs sont automatiquement communiquées au système de gestion des dépenses pour un **traitement simplifié**.

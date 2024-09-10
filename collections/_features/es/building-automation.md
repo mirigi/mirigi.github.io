@@ -3,7 +3,7 @@ title: Automatización de Edificios
 image: "/img_mirigi/touchpanelJadesignature.jpg"
 layout: feature
 keywords: automatización de edificios, edificio inteligente, integración, control de acceso, seguridad, eficiencia
-description: Empodere a su personal y residentes con una integración perfecta de la automatización de edificios. Desbloquee amenidades, monitoree áreas comunes y mejore la seguridad, todo desde una plataforma unificada.
+description: "Integra la automatización de edificios a la perfección con Mirigi."
 ---
 
 ¡Descubra el futuro de la vida con las **capacidades de integración de vanguardia** de Mirigi! Conéctese sin problemas con el sistema de hogar inteligente del residente u otros sistemas de automatización de edificios para brindar una **experiencia inigualable** tanto para los residentes como para el personal. Imagine un mundo donde su estación de puerta principal, ascensores y sistemas de control de acceso funcionan en **perfecta armonía**, todo a través de la **plataforma unificada** de Mirigi. Dígale adiós a la molestia de hacer malabarismos con múltiples tarjetas de acceso o llaves: disfrute de **mayor comodidad y seguridad** al acceder a servicios como la barbacoa o las canchas de tenis sin esfuerzo. Con Mirigi, cada interacción es **fluida e ininterrumpida**, ya sea que esté entrando al edificio o disfrutando de las instalaciones. Además, Mirigi le permite integrar varios sistemas automatizados, lo que permite **operaciones autónomas** como configurar etiquetas en la puerta automatizada directamente desde la aplicación Mirigi, **siempre que la puerta ofrezca una API**.

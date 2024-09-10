@@ -3,7 +3,7 @@ title: Totalmente Personalizable
 image: "/img/features/fully-customizable.jpg"
 layout: feature
 keywords: personalización, marca, aplicación móvil, tienda de aplicaciones, experiencia del usuario, flexibilidad
-description: ¡Transforme la marca de su edificio con las aplicaciones móviles personalizadas de Mirigi!
+description: "Personaliza Mirigi con la marca y las características de tu edificio."
 ---
 
 La plataforma de Mirigi permite a los desarrolladores de edificios elevar su marca mediante el lanzamiento de aplicaciones personalizadas en las principales tiendas de aplicaciones móviles como Apple App Store y Google Play Store. Con la opción de mostrar el nombre de su edificio, estas aplicaciones se convierten en una herramienta poderosa para mejorar la comodidad y el compromiso del usuario. Al establecer una presencia en estas tiendas de aplicaciones, la aplicación específica de su edificio puede cautivar a un público más amplio, atrayendo a posibles inquilinos o clientes que aprecian la tecnología de punta y la comodidad sin interrupciones.

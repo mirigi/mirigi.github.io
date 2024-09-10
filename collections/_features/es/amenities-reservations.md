@@ -4,7 +4,7 @@ image: "/img_mirigi/amenities2.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
 keywords: amenidades, reservas, reserva, programación, conveniencia, experiencia del residente
-description: Explora las amenidades disponibles y reserva el mejor momento para ti, desde cualquier lugar. Pídele a Mirigi que te recuerde para que no lo olvides.
+description: "Reserva amenidades del edificio fácilmente con Mirigi."
 ---
 La función de reserva de amenidades de Mirigi ofrece una experiencia impecable para los residentes de condominios al permitirles explorar y reservar amenidades como la barbacoa o las canchas de tenis a su conveniencia. Esta funcionalidad empodera a los residentes para planificar sus actividades de ocio sin la molestia de la programación manual, asegurando que puedan asegurar sus franjas horarias preferidas desde cualquier lugar. Al integrar un sistema de recordatorios, Mirigi ayuda a los residentes a administrar sus horarios de manera efectiva, reduciendo la probabilidad de reservas perdidas y mejorando su experiencia de vida en general.
 

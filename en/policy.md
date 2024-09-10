@@ -3,7 +3,7 @@ title: Mirigi Privacy Policy
 layout: defaultcontent
 lang: en
 keywords: privacy policy, data protection, GDPR, user data, security
-description: This Privacy Policy outlines how Mirigi collects, uses, and protects user data in accordance with data privacy regulations.
+description: "Mirigi's Privacy Policy outlines how user data is collected, used, and protected."
 ---
 
 # Mirigi Privacy Policy

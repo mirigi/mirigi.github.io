@@ -2,7 +2,7 @@
 layout: index
 lang: en
 header: At Your Service
-subheader: Smart digital concierge
+subheader: Smart concierge
 aboutTitle: SMART CONCIERGE
 emailLabel: Email
 phoneLabel: Phone
@@ -11,7 +11,7 @@ customersText: Behold the architectural marvels that trust Mirigi for their oper
 contactText: Join the ranks of these distinguished structures and elevate your building's potential with Mirigi. Contact us through any of our channels to schedule a demonstration and discover how Mirigi's digital counseling can boost your development! Experience the transformation and innovation that only Mirigi can offer.
 title: Mirigi Smart Concierge
 keywords: smart concierge, building management, resident experience, smart building, automation, luxury living
-description: Mirigi revolutionizes condominium living by offering a smart concierge service that enhances resident-building interactions. It provides luxury interfaces for various services like reservations, valet parking, and deliveries, accessible via mobile devices or in-wall touch panels. Mirigi empowers building staff to deliver exceptional service efficiently, streamlining operations and boosting productivity. With integration into building automation, residents enjoy unprecedented control over their living spaces, including security features. 
+description: "Mirigi enhances resident-building interactions with a smart concierge service, offering luxury interfaces for reservations, valet parking, and deliveries, accessible via mobile or in-wall touch panels."
 ---
 Experience the future of condominium living with Mirigi, the groundbreaking concierge service that transforms resident-building interactions into seamless digital experiences. Elevate your lifestyle with luxury interfaces for reservations, valet parking, workflows, deliveries, and <a href='#features' class='js-scroll-trigger'>more</a>.
 

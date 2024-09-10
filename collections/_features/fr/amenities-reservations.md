@@ -4,7 +4,7 @@ image: "/img_mirigi/amenities2.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
 keywords: installations, réservations, réservation, planification, commodité, expérience résident
-description: Parcourez les installations disponibles et réservez le meilleur moment pour vous, où que vous soyez. Demandez à Mirigi de vous rappeler afin de ne pas oublier.
+description: "Réservez facilement les installations du bâtiment avec Mirigi."
 ---
 La fonctionnalité de réservation d'installations de Mirigi offre une expérience transparente aux résidents des copropriétés en leur permettant de parcourir et de réserver des installations telles que le barbecue ou les courts de tennis à leur convenance. Cette fonctionnalité permet aux résidents de planifier leurs activités de loisirs sans les tracas de la planification manuelle, garantissant qu'ils peuvent réserver leurs créneaux horaires préférés de n'importe où. En intégrant un système de rappel, Mirigi aide les résidents à gérer efficacement leurs horaires, réduisant ainsi la probabilité de réservations manquées et améliorant leur expérience de vie globale.
 

@@ -3,7 +3,7 @@ title: Servicio de Valet Parking
 image: "/img_mirigi/valet.jpg"
 layout: feature
 keywords: valet parking, solicitudes de automóviles, seguimiento en tiempo real, notificaciones, comodidad, eficiencia
-description: Solicite su automóvil sin esfuerzo con la función de valet parking de Mirigi.
+description: "Solicita y rastrea tu coche con la función de valet parking de Mirigi."
 ---
 
 **La función de valet parking de Mirigi** permite a los residentes solicitar su automóvil desde cualquier lugar, incluso a través de Alexa. Los residentes pueden rastrear su solicitud en **tiempo real** y recibir una notificación en su teléfono móvil cuando su automóvil esté listo, brindándoles comodidad y tranquilidad.

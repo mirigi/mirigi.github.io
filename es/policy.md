@@ -3,7 +3,7 @@ title: Política de Privacidad de Mirigi
 layout: defaultcontent
 lang: es
 keywords: política de privacidad, protección de datos, RGPD, datos del usuario, seguridad
-description: Esta Política de Privacidad describe cómo Mirigi recopila, utiliza y protege los datos de los usuarios de acuerdo con las normativas de privacidad de datos.
+description: "La Política de Privacidad de Mirigi describe cómo se recopilan, utilizan y protegen los datos de los usuarios."
 ---
 
 # Política de Privacidad de Mirigi
@@ -16,7 +16,7 @@ Khimo es una empresa que desarrolla y proporciona soluciones para edificios inte
 
 ## ¿Qué haremos con su información personal?
 
-Al utilizar nuestro servicio, usted proporciona a sabiendas información personal que se almacena en nuestros servidores. Esta información solo se utilizará para proporcionarle las funciones de nuestro servicio y siempre de la manera que usted razonablemente esperara.
+Al utilizar nuestro servicio, usted proporciona a sabiendas información personal que se almacena en nuestros servidores. Esta información solo se utilizará para proporcionarle las funciones de nuestro servicio y siempre de la manera que usted razonablemente esperaría.
 
 Los archivos de registro de todo el procesamiento que se realiza en Mirigi se guardan en los servidores. Estos archivos de registro nos ayudan a depurar y corregir cualquier posible error y no se utilizarán para ningún otro propósito que no sea ese. Los registros podrían contener cualquiera de los datos personales enumerados a continuación.
 

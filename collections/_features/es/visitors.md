@@ -1,9 +1,10 @@
 ---
-title: "Autorización de visitantes"
+title: Autorización de Visitantes
 image: "/img/features/visitors.jpg"
 image_credits: ''
 layout: feature
-description: "Autorizar visitantes en un abrir y cerrar de ojos"
+keyword: autorización de visitantes, gestión de invitados, control de acceso, seguridad, comodidad, eficiencia
+description: Autorizar visitantes en un abrir y cerrar de ojos
 ---
 La función **"AUTORIZACIÓN DE VISITANTES"** en la solución de conserjería digital Mirigi permite a los residentes agilizar el proceso de entrada de sus invitados. Al permitir que los residentes pre-registren a los visitantes, este módulo garantiza un paso sin problemas a través de los puntos de control de seguridad, eliminando retrasos innecesarios. Los residentes pueden autorizar a personas y vehículos para visitas únicas o recurrentes, lo que permite a los miembros del personal o a los sistemas de puertas automatizadas otorgar acceso sin causar ningún inconveniente o molestia.
 

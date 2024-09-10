@@ -1,7 +1,8 @@
 ---
-title: Bespoke Solutions for Modern Buildings
+title: Bespoke Solutions
 image: "/img/features/bespoke.jpg"
 layout: feature
+keyword: bespoke solutions, customization, modules, app development, flexibility, innovation
 description: Mirigi's platform evolves with user needs, offering bespoke modules and custom apps for unique building experiences.
 ---
 

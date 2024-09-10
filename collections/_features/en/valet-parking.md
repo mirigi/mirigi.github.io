@@ -1,9 +1,10 @@
 ---
-title: "VALET PARKING"
+title: Valet Parking
 image: "/img_mirigi/valet.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
-description: "Request your car effortlessly with Mirigi's valet parking feature."
+keyword: valet parking, car requests, real-time tracking, notifications, convenience, efficiency
+description: Request your car effortlessly with Mirigi's valet parking feature.
 ---
 
 **Mirigi's valet parking feature** allows residents to request their car from anywhere, even through Alexa. Residents can track their request in **real-time** and receive a notification on their mobile phone when their car is ready, providing them with convenience and peace of mind.

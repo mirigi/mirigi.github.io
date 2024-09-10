@@ -1,7 +1,9 @@
 ---
-title: "Mirigi Privacy Policy"
+title: Mirigi Privacy Policy
 layout: defaultcontent
 lang: en
+keyword: privacy policy, data protection, GDPR, user data, security
+description: This Privacy Policy outlines how Mirigi collects, uses, and protects user data in accordance with data privacy regulations.
 ---
 
 # Mirigi Privacy Policy

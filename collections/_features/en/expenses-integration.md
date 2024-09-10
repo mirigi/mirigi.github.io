@@ -1,8 +1,9 @@
 ---
-title: "Expenses integration"
+title: Expenses Integration
 image: "/img/features/expenses.jpg"
 layout: feature
-description: "Expenses report and online paying."
+keyword: expenses, integration, payments, billing, accounting, automation
+description: Expenses report and online paying.
 ---
 
 Mirigi seamlessly integrates with various **expense management systems**, empowering residents to effortlessly view their **expenses**, see the currently **owed amount**, and make **online payments**. This integration ensures that all user transactions are automatically communicated to the expense management system for **streamlined processing**.

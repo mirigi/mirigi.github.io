@@ -1,12 +1,14 @@
 ---
-title: "Politique de Confidentialité de Mirigi"
+title: Politique de Confidentialité de Mirigi
 layout: defaultcontent
 lang: fr
+keyword: politique de confidentialité, protection des données, RGPD, données utilisateur, sécurité
+description: Cette Politique de Confidentialité décrit comment Mirigi collecte, utilise et protège les données des utilisateurs conformément aux réglementations sur la confidentialité des données.
 ---
 
 # Politique de Confidentialité de Mirigi
 
-La confidentialité des données est importante pour notre entreprise (désignée dans ce document par « nous »), nous respectons les droits de confidentialité des utilisateurs et reconnaissons l'importance de la protection des informations collectées vous concernant. Cette Politique de Confidentialité explique comment les informations sont collectées, utilisées et divulguées lors de l'utilisation du produit Mirigi (le « service »). Mirigi est un logiciel de service de conciergerie pour le marché résidentiel qui fournit à l'utilisateur (« vous ») des fonctionnalités domotiques via des services tels que Khimo ou Lutron et permet une communication efficace avec le personnel de l'immeuble afin de fournir des services tels que le suivi des livraisons, les réservations d'équipements, les notifications, etc.
+La confidentialité des données est importante pour notre entreprise (désignée dans ce document par "nous"), nous respectons les droits de confidentialité des utilisateurs et reconnaissons l'importance de la protection des informations collectées vous concernant. Cette Politique de Confidentialité explique comment les informations sont collectées, utilisées et divulguées lors de l'utilisation du produit Mirigi (le "service"). Mirigi est un logiciel de service de conciergerie pour le marché résidentiel qui fournit à l'utilisateur ("vous") des fonctionnalités domotiques via des services tels que Khimo ou Lutron et permet une communication efficace avec le personnel de l'immeuble afin de fournir des services tels que le suivi des livraisons, les réservations d'équipements, les notifications, etc.
 
 ## Qui sommes-nous ?
 
@@ -44,7 +46,7 @@ Pour contrôler votre domicile, le service doit obtenir des données de Khimo. E
 
 ## Comment pouvez-vous accéder à vos informations personnelles, les effacer ou les mettre à jour ?
 
-Si vous souhaitez accéder à, consulter, mettre à jour ou supprimer des informations personnelles que nous détenons, vous pouvez écrire à [support@mirigi.com](mailto:support@mirigi.com) avec vos demandes.
+Si vous souhaitez accéder, consulter, mettre à jour ou supprimer des informations personnelles que nous détenons, vous pouvez écrire à [support@mirigi.com](mailto:support@mirigi.com) avec vos demandes.
 
 ## Où stockons-nous vos informations ?
 

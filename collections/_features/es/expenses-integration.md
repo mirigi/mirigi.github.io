@@ -1,8 +1,9 @@
 ---
-title: "Integración de gastos"
+title: Integración de Gastos
 image: "/img/features/expenses.jpg"
 layout: feature
-description: "Informe de gastos y pago en línea."
+keyword: gastos, integración, pagos, facturación, contabilidad, automatización
+description: Informe de gastos y pago en línea.
 ---
 
 Mirigi se integra a la perfección con varios **sistemas de gestión de gastos**, lo que permite a los residentes ver sin esfuerzo sus **gastos**, ver la cantidad **actualmente adeudada** y realizar **pagos en línea**. Esta integración garantiza que todas las transacciones de los usuarios se comuniquen automáticamente al sistema de gestión de gastos para un **procesamiento optimizado**.

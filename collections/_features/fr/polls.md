@@ -1,9 +1,10 @@
 ---
-title: "Sondages"
+title: Sondages Numériques
 image: "/img/features/polls.webp"
 image_credits: ''
 layout: feature
-description: "Prenez des décisions plus rapidement"
+keyword: sondages, vote, enquêtes, commentaires des résidents, prise de décision, engagement communautaire
+description: Prenez des décisions plus rapidement
 ---
 La fonctionnalité **"SYSTÈME DE SONDAGE NUMÉRIQUE"** de la solution de conciergerie numérique Mirigi permet aux membres du personnel de réaliser efficacement des sondages auprès de tous les résidents des unités. En facilitant le vote par unité et le décompte par quote-part ou par unité, ce système garantit un processus décisionnel juste et représentatif au sein de la communauté. Les résidents peuvent facilement participer aux sondages en utilisant l'une des plateformes prises en charge, notamment les panneaux muraux, les tablettes, les appareils mobiles et les interfaces Web.
 

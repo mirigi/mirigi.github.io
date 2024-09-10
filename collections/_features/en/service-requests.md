@@ -1,9 +1,10 @@
 ---
-title: "SERVICE REQUESTS"
+title: Service Requests
 image: "/img_mirigi/blueliving.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
-description: "Easily submit and track service requests with Mirigi."
+keyword: service requests, maintenance, communication, feedback, efficiency, resident satisfaction
+description: Easily submit and track service requests with Mirigi.
 ---
 
 **Mirigi's service requests feature** allows residents to fill out custom forms on their touch screen or smartphone to make special requests. These requests are sent to the designated staff member and can be monitored by managers, who will receive user feedback after the issue is resolved. This feature provides residents with a convenient and efficient way to communicate their needs, ensuring that their requests are addressed promptly and effectively.

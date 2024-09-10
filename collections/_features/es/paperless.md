@@ -1,8 +1,9 @@
 ---
-title: "SIN PAPEL"
+title: Comunicación Sin Papel
 image: "/img_mirigi/table.jpg"
 layout: feature
-description: "Adopte la sostenibilidad con la solución de comunicación ecológica de Mirigi, impulsada por **IA**."
+keyword: sin papel, comunicación, ecológico, IA, eficiencia, participación del residente
+description: Adopte la sostenibilidad con la solución de comunicación ecológica de Mirigi, impulsada por IA.
 ---
 
 **La función sin papel de Mirigi** ofrece una forma ecológica de enviar mensajes a los residentes, quienes pueden recibirlos en sus teléfonos móviles o paneles táctiles. Esta función no solo reduce el impacto ambiental del uso de papel, sino que también mejora la eficiencia de la comunicación al garantizar que los residentes reciban información importante de forma rápida y conveniente.

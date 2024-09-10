@@ -1,9 +1,10 @@
 ---
-title: "Leveraging AI to Improve Communication"
+title: Paperless Communication
 image: "/img_mirigi/table.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
-description: "Elevate resident communications with Mirigi's AI-driven, eco-friendly solution."
+keyword: paperless, communication, eco-friendly, AI, efficiency, resident engagement
+description: Elevate resident communications with Mirigi's AI-driven, eco-friendly solution.
 ---
 
 **Mirigi's paperless feature** provides an innovative, eco-friendly method for delivering messages to residents, accessible via their mobile devices or touch panels. This not only significantly reduces the environmental footprint associated with paper use but also optimizes communication by ensuring residents receive crucial information swiftly and conveniently.

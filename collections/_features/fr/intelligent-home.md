@@ -1,8 +1,9 @@
 ---
-title: "MAISON INTELLIGENTE"
+title: Maison Intelligente
 image: "/img_mirigi/kitchen.jpg"
 layout: "feature"
-description: "Contrôlez votre maison de n'importe où grâce à l'intégration domotique de Mirigi."
+keyword: maison intelligente, domotique, BeoLiving Intelligence, Khimo, Bang & Olufsen, contrôle, commodité
+description: Contrôlez votre maison de n'importe où grâce à l'intégration domotique de Mirigi.
 ---
 
 La **fonctionnalité de maison intelligente de Mirigi** offre aux résidents une solution entièrement intégrée en utilisant la puissance de [BeoLiving Intelligence, le contrôleur domotique de Khimo et Bang & Olufsen](https://www.khimo.com/#products-bli). Les résidents peuvent contrôler leur maison via la même application sur leur smartphone ou tout appareil compatible avec Internet (par exemple, iPad, iPod touch) depuis n'importe où dans le monde, offrant une commodité et un contrôle inégalés sur leur environnement de vie.

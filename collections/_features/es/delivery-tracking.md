@@ -1,8 +1,9 @@
 ---
-title: "SEGUIMIENTO DE ENTREGAS"
+title: Seguimiento de Entregas
 image: "/img_mirigi/delivery2.jpg"
 layout: feature
-description: "No revise el rastreador de paquetes: deje que Mirigi le notifique cuando llegue su entrega."
+keyword: seguimiento de entregas, gestión de paquetes, notificaciones, actualizaciones en tiempo real, seguridad, comodidad
+description: No revise el rastreador de paquetes: deje que Mirigi le notifique cuando llegue su entrega.
 ---
 
 **La función de seguimiento de entregas de Mirigi** ofrece una experiencia impecable tanto para los residentes como para el personal al mejorar la gestión de paquetes. Los residentes son informados en **tiempo real** cuando se recibe un paquete, lo que garantiza la transparencia y la eficiencia. Esta función elimina la necesidad de que los residentes revisen constantemente los rastreadores de paquetes, brindándoles tranquilidad y comodidad.

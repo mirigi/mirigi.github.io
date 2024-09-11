@@ -47,6 +47,11 @@ defaults:
       lang: "fr"
   # customers collection:
   - scope:
+      path: 'collections/_customers'
+      type: 'customers'
+    values:
+      layout: customer
+  - scope:
       path: 'collections/_customers/en'
       type: 'customers'
     values:

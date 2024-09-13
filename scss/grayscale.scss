@@ -48,7 +48,7 @@ footer {
 /*
 */
 .masthead {
-  background: linear-gradient(to bottom, transparent 0%,#{fade-out($white, .8)} 75%,$white 100%), url('../img_mirigi/bg-masthead.jpg') !important;
+  background: linear-gradient(to bottom, transparent 0%,#{fade-out($white, .8)} 75%,$white 100%), url('/img/others/bg-masthead.webp') !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-attachment: scroll !important;
@@ -58,10 +58,7 @@ footer {
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
   }
-  h2 {
-    color: $primary !important;
-  }
-  h1, h2 {
+  h1, h2, h3 {
     text-shadow: 0 0 1px fade-out($black, .7);
   }
 }

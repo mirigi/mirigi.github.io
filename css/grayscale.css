@@ -92,8 +92,8 @@
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.3)), color-stop(75%, rgba(22, 22, 22, 0.7)), to(#161616)), url("../img/bg-masthead.jpg");
-  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url("../img/bg-masthead.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.3)), color-stop(75%, rgba(22, 22, 22, 0.7)), to(#161616)), url("../img/bg-masthead.webp");
+  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url("../img/bg-masthead.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -111,8 +111,7 @@
 }
 
 .masthead h2 {
-  max-width: 20rem;
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -133,8 +132,7 @@
     letter-spacing: 0.8rem;
   }
   .masthead h2 {
-    max-width: 30rem;
-    font-size: 1.25rem;
+    font-size: 4rem;
   }
 }
 
@@ -289,7 +287,7 @@
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
-  min-height: 40vh;
+  min-height: 30vh;
   margin: 2ex 0;
   background-color: #f0f0f0;
 }
@@ -11390,8 +11388,8 @@ footer {
 /*
 */
 .masthead {
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(75%, rgba(255, 255, 255, 0.2)), to(#fff)), url("../img_mirigi/bg-masthead.jpg") !important;
-  background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.2) 75%, #fff 100%), url("../img_mirigi/bg-masthead.jpg") !important;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(75%, rgba(255, 255, 255, 0.2)), to(#fff)), url("/img/others/bg-masthead.webp") !important;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.2) 75%, #fff 100%), url("/img/others/bg-masthead.webp") !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-attachment: scroll !important;
@@ -11404,11 +11402,7 @@ footer {
   -webkit-background-clip: text;
 }
 
-.masthead h2 {
-  color: #999 !important;
-}
-
-.masthead h1, .masthead h2 {
+.masthead h1, .masthead h2, .masthead h3 {
   text-shadow: 0 0 1px rgba(22, 22, 22, 0.3);
 }
 

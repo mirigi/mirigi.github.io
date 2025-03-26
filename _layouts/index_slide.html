@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/white.css" id="theme">
+  
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/monokai.css">
+
+  <!-- Bootstrap -->
+  <link href="{{ '/vendor/bootstrap/css/bootstrap.min.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/vendor/fontawesome-free/css/all.min.css' | relative_url }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="{{ '/css/grayscale.min.css' | relative_url }}" rel="stylesheet">
+  
+  <!-- Site's own CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body class="slides">
+  <div class="reveal">
+    <div class="slides">
+      <!-- Title Section -->
+      <section>
+        <h1>{{ page.title | default: site.title }}</h1>
+        <p>{{ page.description | default: site.description }}</p>
+      </section>
+      
+      <!-- Main Content Section - index.md content -->
+      <section>
+        {{ content }}
+      </section>
+      
+      <!-- Features Section -->
+        <section>
+          <h2>Features</h2>
+        </section>
+        {% assign features = site.features | where: 'lang',page.lang %}
+        {% for feature in features %}
+      {% assign is_even = forloop.index | modulo: 2 %}
+      <section>
+      {% include feature_div.html feature=feature is_even=is_even is_slide=true %}
+</section>
+
+        {% endfor %}
+      
+      <!-- Customers Section -->
+<section style="background-color: #f0f0f0; padding: 20px;">
+  <h2>Some of Our Customers</h2>
+
+          <div>
+        {% assign customers = site.customers | where: 'lang',page.lang %}
+        {% for customer in customers %}
+        <div style="display: inline-block; margin: 1ex; text-align: center; width: 24vw;">
+
+          {% assign image = customer.image %} 
+          <h4>{{ customer.name }}</h4>
+<div class="image" style="background-image: url('{{ image }}'); height: 18vh; width: 18vw; display: inline-block; background-size: contain; background-position: center; background-repeat: no-repeat; background-color: rgba(0,0,0,0.1); margin: 0;">
+
+
+          </div>
+          {% if customer.testimonial %}
+          <blockquote>
+            {{ customer.testimonial }}
+          </blockquote>
+          {% endif %}
+        </div>
+        {% endfor %}
+        </div>
+        </section>
+    </div>
+  </div>
+  
+  <!-- Reveal.js Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/highlight.js"></script>
+  <script>
+    // Initialize Reveal.js
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      transition: 'slide',
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>

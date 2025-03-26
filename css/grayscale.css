@@ -1,6 +1,6 @@
 /*!
  * Start Bootstrap - Grayscale v5.0.8 (https://startbootstrap.com/template-overviews/grayscale)
- * Copyright 2013-2024 Start Bootstrap
+ * Copyright 2013-2025 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/master/LICENSE)
  */
 
@@ -272,6 +272,24 @@
 
 .contact-section .social a:active {
   color: #fff;
+}
+
+.slides .showcase a, .slides .showcase.bigimage a {
+  color: grey !important;
+}
+
+.slides .showcase > .image, .slides .showcase.bigimage > .image {
+  -webkit-box-flex: 1 !important;
+  -ms-flex: 1 1 40% !important;
+  flex: 1 1 40% !important;
+}
+
+.slides .showcase > .content, .slides .showcase.bigimage > .content {
+  font-size: 2rem !important;
+  -webkit-box-flex: 1 !important;
+  -ms-flex: 1 1 60% !important;
+  flex: 1 1 60% !important;
+  min-height: 40vw !important;
 }
 
 .showcase {

@@ -15,6 +15,23 @@ $smallimage-flex-content: 1 1 80%;
 $media-max-width: 992px;
 $media-bigimage-width: 1200px;
 
+
+
+
+.slides .showcase, .slides .showcase.bigimage {
+    a {
+      color: grey !important;
+    }
+    > .image {
+      flex: 1 1 40% !important;
+    }
+    > .content {
+      font-size: 2rem !important;
+      flex: 1 1 60% !important;
+      min-height: 40vw !important;
+    }
+  }
+
 .showcase {
   display: flex;
   flex-direction: row;

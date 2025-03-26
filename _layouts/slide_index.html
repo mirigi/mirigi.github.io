@@ -1,0 +1,175 @@
+---
+layout: default
+---
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reset.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/theme/black.min.css">
+
+<style>
+  .reveal .slides {
+    text-align: left;
+  }
+  .reveal h1, .reveal h2 {
+    margin-bottom: 0.5em;
+  }
+  .photo_credits {
+    font-size: 0.5em;
+    margin-top: -10px;
+  }
+  .feature-slide, .customer-slide {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .feature-image, .customer-image {
+    flex: 1;
+    max-width: 40%;
+  }
+  .feature-content, .customer-content {
+    flex: 1;
+    max-width: 55%;
+    padding: 0 20px;
+  }
+  .feature-image img, .customer-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  .reveal section img {
+    border: none;
+    box-shadow: none;
+  }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .social-links a {
+    margin: 0 10px;
+    text-decoration: none;
+  }
+</style>
+
+<div class="reveal">
+  <div class="slides">
+    <!-- Title Slide -->
+    <section>
+      <h1>{{page.header}}</h1>
+      <h2>{{page.subheader}}</h2>
+    </section>
+
+    <!-- About Section -->
+    <section>
+      <h2>{{page.aboutTitle}}</h2>
+      <div class="feature-slide">
+        <div class="feature-image">
+          <img src="/img_mirigi/table.jpg" alt="">
+          <p class="photo_credits">
+            @<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>
+          </p>
+        </div>
+        <div class="feature-content">
+          {{ content | markdownify }}
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section>
+      <section>
+        <h2>{{site.data[page.lang].features}}</h2>
+      </section>
+      
+      {% assign features = site.features | where: 'lang',page.lang %}
+      {% for feature in features %}
+      <section>
+        <h3>{{ feature.title }}</h3>
+        <div class="feature-slide">
+          <div class="feature-image">
+            <img src="{{ feature.image }}" alt="{{ feature.title }}">
+            {% if feature.image_credits %}
+            <p class="photo_credits">{{ feature.image_credits }}</p>
+            {% endif %}
+          </div>
+          <div class="feature-content">
+            {{ feature.content | markdownify }}
+          </div>
+        </div>
+      </section>
+      {% endfor %}
+    </section>
+
+    <!-- Customers Section -->
+    <section>
+      <section>
+        <h2>{{site.data[page.lang].customers}}</h2>
+        <p>{{ page.customersText }}</p>
+      </section>
+      
+      {% assign customers = site.customers | where: 'lang',page.lang %}
+      {% for customer in customers %}
+      <section>
+        <h3>{{ customer.name }}</h3>
+        <div class="customer-slide">
+          <div class="          <div class="customer-image">
+            <img src="{{ customer.image }}" alt="{{ customer.name }}">
+            {% if customer.image_credits %}
+            <p class="photo_credits">{{ customer.image_credits }}</p>
+            {% endif %}
+          </div>
+          <div class="customer-content">
+            {% if customer.icon %}
+            <img src="{{ customer.icon }}" alt="{{ customer.name }} logo" style="max-width: 100px; margin-bottom: 20px;">
+            {% endif %}
+            {{ customer.content | markdownify }}
+            {% if customer.link %}
+            <p><a href="{{ customer.link }}" target="_blank">Visit Website</a></p>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+      {% endfor %}
+    </section>
+
+    <!-- Contact Section -->
+    <section>
+      <h2>Contact Us</h2>
+      <p>{{ page.contactText }}</p>
+      
+      <div style="display: flex; justify-content: space-around; margin-top: 30px;">
+        <div>
+          <h3>{{page.emailLabel}}</h3>
+          <p><a href="mailto:info@mirigi.com?subject=Mirigi">info@mirigi.com</a></p>
+        </div>
+        <div>
+          <h3>{{page.phoneLabel}}</h3>
+          <p><span style="user-select: none;">&#x1F1FA;&#x1F1F8;</span> <a href="tel:+13056920362">+1 (305) 692 0362</a></p>
+          <p><span style="user-select: none;">&#x1f1fa;&#x1f1fe;</span> <a href="tel:+59826008887">+598 2 600 8887</a></p>
+        </div>
+      </div>
+      
+      <div class="social-links">
+        <a href="https://play.google.com/store/apps/details?id=com.ikatu.mirigi&hl=es_419">
+          <i class="fab fa-android"></i><br />
+          <small>Android</small>
+        </a>
+        <a href="https://apps.apple.com/gm/app/mirigi/id1076011022">
+          <i class="fab fa-app-store-ios"></i><br />
+          <small>iOS</small>
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    transition: 'slide',
+    controls: true,
+    progress: true
+  });
+</script>

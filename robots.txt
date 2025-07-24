@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# XML Sitemap
+Sitemap: https://mirigi.com/sitemap.xml
+
+# Block development and temporary files
+Disallow: /_site/
+Disallow: /_site_viejo/
+Disallow: /node_modules/
+Disallow: /scss/
+Disallow: /*.sh$
+Disallow: /*.fml$
+Disallow: /error.log
+Disallow: /tulp
+Disallow: /output/

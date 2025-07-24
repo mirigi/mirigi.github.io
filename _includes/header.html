@@ -13,23 +13,36 @@
   </script>
 
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- SEO Tag plugin for structured data and additional meta tags -->
+  {% seo title=false %}
+  
+  <!-- Custom title and meta tags for better control -->
   <title>{{ page.title | default: page.name | default: site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
-  <meta name="keywords" content="{{ page.keywords | default: 'Digital concierge, service, MDU, MultiDwell unit, condominums, mirigi, condominums management as a service, cloud base, luxury building, inwall touchpanel, software for condominums' }}">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="{{ page.url | default: site.url }}">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="mirigi.com">
+  <meta name="keywords" content="{{ page.keywords | default: 'smart concierge software, luxury condominium management, digital building automation, resident experience platform, valet parking app, delivery tracking, amenities reservation, intelligent home, building staff productivity, mirigi, Digital concierge, service, MDU, MultiDwell unit, condominums, condominums management as a service, cloud base, luxury building, inwall touchpanel, software for condominums' }}">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta name="author" content="{{ site.author | default: 'mirigi.com' }}">
 
-  <!-- Social Media Meta Tags -->
+  <!-- Performance Hints -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+
+  <!-- Enhanced Social Media Meta Tags -->
   <meta property="og:title" content="{{ page.title | default: site.title }}">
   <meta property="og:description" content="{{ page.description | default: site.description }}">
-  <meta property="og:image" content="{{ page.image | default: site.image }}">
-  <meta property="og:url" content="{{ page.url | default: site.url }}">
+  <meta property="og:image" content="{{ page.image | default: '/img/mirigi-social-card.jpg' | absolute_url }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="{{ page.type | default: 'website' }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:locale" content="{{ page.lang | default: 'en_US' }}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ page.title | default: site.title }}">
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
-  <meta name="twitter:image" content="{{ page.image | default: site.image }}">
+  <meta name="twitter:image" content="{{ page.image | default: '/img/mirigi-social-card.jpg' | absolute_url }}">
+  <meta name="twitter:image:alt" content="{{ page.image_alt | default: 'Mirigi Smart Concierge - Luxury Condominium Management Platform' }}">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -44,9 +57,14 @@
 
   <link href="{{ '/vendor/bootstrap/css/bootstrap.min.css' | relative_url }}" rel="stylesheet">
   <link href="{{ '/vendor/fontawesome-free/css/all.min.css' | relative_url }}" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="{{ '/css/grayscale.min.css' | relative_url }}" rel="stylesheet">
+  <!-- Structured Data for SEO -->
+  {% include structured-data.html %}
 </head>
 
 <body id="page-top">

@@ -1,0 +1,68 @@
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ site.title | default: 'Mirigi Smart Concierge' }}",
+  "description": "{{ site.description }}",
+  "url": "{{ site.url }}",
+  "applicationCategory": "PropertyManagementSoftware",
+  "operatingSystem": "Web Browser, iOS, Android",
+  "provider": {
+    "@type": "Organization",
+    "name": "{{ site.social.name | default: 'Mirigi' }}",
+    "url": "{{ site.url }}",
+    "logo": "{{ site.logo | absolute_url }}",
+    "sameAs": {{ site.social.links | jsonify }}
+  },
+  "featureList": [
+    "Smart Concierge Services",
+    "Amenities Reservations", 
+    "Valet Parking Management",
+    "Delivery Tracking",
+    "Building Automation Integration",
+    "Visitor Authorization",
+    "Digital Polls",
+    "Service Requests",
+    "Paperless Communication",
+    "Intelligent Home Controls"
+  ]
+}
+</script>
+
+{% if page.layout == 'customer' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ page.title }}",
+  "description": "{{ page.description }}",
+  {% if page.image %}
+  "image": "{{ page.image | absolute_url }}",
+  {% endif %}
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "{{ page.city }}",
+    "addressRegion": "{{ page.state }}",
+    "addressCountry": "{{ page.country }}"
+  }
+}
+</script>
+{% endif %}
+
+{% if page.layout == 'feature' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ page.title }}",
+  "description": "{{ page.description }}",
+  "applicationSubCategory": "{{ page.title }}",
+  "featureList": ["{{ page.title }}"],
+  "isPartOf": {
+    "@type": "SoftwareApplication",
+    "name": "Mirigi Smart Concierge"
+  }
+}
+</script>
+{% endif %}

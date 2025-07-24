@@ -2,8 +2,22 @@ title: Mirigi
 description: Mirigi revolutionizes condominium living by offering a digital concierge service that enhances resident-building interactions. It provides luxury interfaces for various services like reservations, valet parking, and deliveries, accessible via mobile devices or in-wall touch panels. Mirigi empowers building staff to deliver exceptional service efficiently, streamlining operations and boosting productivity. With integration into building automation, residents enjoy unprecedented control over their living spaces, including security features. Discover the prestigious buildings that have adopted Mirigi for an elevated lifestyle experience.
 ##
 baseurl: ""
-url: ""
-exclude: ["README.md"]
+url: "https://mirigi.com"
+author: "Mirigi"
+  #twitter_username: mirigi
+logo: "/img/mirigi-logo.png"
+
+# SEO & Social Media
+#social:
+#  name: Mirigi Smart Concierge
+#  links:
+#    - https://twitter.com/mirigi
+#    - https://www.linkedin.com/company/mirigi
+
+# Locale settings
+locale: en_US
+timezone: America/New_York
+exclude: ["README.md", "README.dev.md", "Gemfile", "Gemfile.lock", "node_modules", "package.json", "package-lock.json", "gulpfile.js", "Makefile", "Dockerfile", "*.sh", "*.fml", "error.log", "tulp", "_site_viejo"]
 sass:
   sass_dir: scss/
 # Fallback definitions:
@@ -88,5 +102,7 @@ defaults:
 
 #jekyll plugins for TOC and sitemap
 plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
   #- jekyll-toc
   - jekyll-sitemap

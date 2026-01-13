@@ -35,6 +35,20 @@
       </div>
     </div>
 
+    <!-- Features Index Page -->
+    <div class="brochure-page brochure-features-index">
+      <h2>{{ site.data[page.lang].features | default: "Features" }}</h2>
+      <div class="brochure-features-list">
+        {% assign features = site.features | where: 'lang', page.lang %}
+        {% for feature in features %}
+        <a href="#feature-{{ forloop.index }}" class="brochure-features-list-item">
+          <span class="brochure-features-list-number">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</span>
+          <span class="brochure-features-list-title">{{ feature.title }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
     <!-- Features Pages (2 per page) -->
     {% assign features = site.features | where: 'lang', page.lang %}
     {% for feature in features %}
@@ -45,7 +59,7 @@
       <div class="brochure-page brochure-features-page">
       {% endif %}
 
-        {% include brochure_feature.html feature=feature position=page_position %}
+        {% include brochure_feature.html feature=feature position=page_position index=forloop.index %}
 
       {% if page_position == 1 or forloop.last %}
       </div>

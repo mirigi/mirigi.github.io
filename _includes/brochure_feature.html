@@ -1,7 +1,8 @@
 {% comment %}
 Brochure Feature Component
-Usage: {% include brochure_feature.html feature=feature position=position %}
+Usage: {% include brochure_feature.html feature=feature position=position index=index %}
 position: 0 = normal (image left), 1 = reversed (image right)
+index: feature number for anchor linking
 {% endcomment %}
 
 {% if include.feature.image contains "http://" or include.feature.image contains "https://" or include.feature.image | slice: 0, 1 == "/" %}
@@ -11,7 +12,7 @@ position: 0 = normal (image left), 1 = reversed (image right)
 {% endif %}
 
 {% if include.position == 0 %}
-<div class="brochure-feature">
+<div id="feature-{{ include.index }}" class="brochure-feature">
   <div class="brochure-feature-image" style="background-image: url('{{ image }}')"></div>
   <div class="brochure-feature-content">
     <h3>{{ include.feature.title }}</h3>
@@ -19,7 +20,7 @@ position: 0 = normal (image left), 1 = reversed (image right)
   </div>
 </div>
 {% else %}
-<div class="brochure-feature reverse">
+<div id="feature-{{ include.index }}" class="brochure-feature reverse">
   <div class="brochure-feature-image" style="background-image: url('{{ image }}')"></div>
   <div class="brochure-feature-content">
     <h3>{{ include.feature.title }}</h3>

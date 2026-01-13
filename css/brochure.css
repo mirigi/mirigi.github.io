@@ -201,6 +201,79 @@ html, body {
 }
 
 /* ===========================================
+   Features Index Page - Table of Contents
+   =========================================== */
+.brochure-features-index {
+  display: flex;
+  flex-direction: column;
+  background: var(--luxury-cream);
+  padding: 1in 1.25in;
+}
+
+.brochure-features-index h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--luxury-charcoal);
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+}
+
+.brochure-features-index h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--luxury-gold);
+  margin: 1rem auto 0;
+}
+
+.brochure-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+  justify-content: center;
+}
+
+a.brochure-features-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  background: white;
+  border-left: 3px solid var(--luxury-gold);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.brochure-features-list-item:hover {
+  background: var(--luxury-pearl);
+  border-left-width: 5px;
+  text-decoration: none;
+}
+
+.brochure-features-list-number {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--luxury-gold);
+  min-width: 1.5rem;
+}
+
+.brochure-features-list-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--luxury-charcoal);
+  letter-spacing: 0.02em;
+}
+
+/* ===========================================
    Features Pages - Premium Cards
    =========================================== */
 .brochure-features-page {
@@ -599,6 +672,28 @@ html, body {
 
   .brochure-about h2::after {
     background: #C9A86A !important;
+  }
+
+  /* Features Index */
+  .brochure-features-index {
+    padding: 0.75in 1in !important;
+    min-height: 100vh;
+    background: #FEFBF6 !important;
+  }
+
+  .brochure-features-index h2::after {
+    background: #C9A86A !important;
+  }
+
+  a.brochure-features-list-item {
+    border-left-color: #C9A86A !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04) !important;
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+
+  .brochure-features-list-number {
+    color: #C9A86A !important;
   }
 
   /* Features */

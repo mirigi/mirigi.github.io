@@ -7,4 +7,9 @@ customers: "Edificios"
 more_info: "Más información"
 location: "Ubicación"
 customers_title: "Edificios Que Confían en Nosotros"
+# Brochure
+brochure_subtitle: "Conserjería Digital para Edificios de Lujo"
+print_brochure: "Imprimir Folleto"
+print_tip: "Consejo"
+print_enable_backgrounds: "Activar 'Gráficos de fondo'"
 

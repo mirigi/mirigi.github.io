@@ -1,0 +1,668 @@
+/* Brochure Print Styles - Luxury Edition
+   Magazine-style layout optimized for PDF printing */
+
+/* ===========================================
+   Luxury Color Palette
+   =========================================== */
+:root {
+  --luxury-charcoal: #2C2C2C;
+  --luxury-slate: #4A5568;
+  --luxury-pearl: #F8F9FA;
+  --luxury-cream: #FEFBF6;
+  --luxury-gold: #C9A86A;
+  --luxury-bronze: #8B7355;
+  --luxury-navy: #1A365D;
+}
+
+/* ===========================================
+   Screen Preview Styles
+   =========================================== */
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.brochure {
+  max-width: 8.5in;
+  margin: 0 auto;
+  background: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.brochure-page {
+  width: 8.5in;
+  min-height: 11in;
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px dashed #ccc;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===========================================
+   Cover Page - Premium Design
+   =========================================== */
+.brochure-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--luxury-charcoal) 0%, var(--luxury-navy) 100%);
+  color: white;
+  padding: 2in 1in;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle texture overlay */
+.brochure-cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* Top gold accent line */
+.brochure-cover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--luxury-gold), transparent);
+}
+
+.brochure-cover .brochure-logo {
+  max-width: 320px;
+  max-height: 140px;
+  margin-bottom: 1.5rem;
+  filter: brightness(0) invert(1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Gold divider under logo */
+.brochure-cover .brochure-cover-divider {
+  width: 80px;
+  height: 2px;
+  background: var(--luxury-gold);
+  margin: 0 auto 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.brochure-cover .brochure-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.9;
+  max-width: 70%;
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.brochure-cover .brochure-tagline {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  opacity: 0.5;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ===========================================
+   About Page - Elegant Layout
+   =========================================== */
+.brochure-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--luxury-pearl);
+  padding: 1.5in 1.25in;
+  position: relative;
+}
+
+/* Decorative corner elements */
+.brochure-about::before,
+.brochure-about::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--luxury-gold);
+  opacity: 0.4;
+}
+
+.brochure-about::before {
+  top: 1in;
+  left: 1in;
+  border-right: none;
+  border-bottom: none;
+}
+
+.brochure-about::after {
+  bottom: 1in;
+  right: 1in;
+  border-left: none;
+  border-top: none;
+}
+
+.brochure-about h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--luxury-charcoal);
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+}
+
+/* Gold accent under heading */
+.brochure-about h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--luxury-gold);
+  margin: 1rem auto 0;
+}
+
+.brochure-about .brochure-about-content {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--luxury-slate);
+  text-align: center;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.brochure-about .brochure-about-content strong {
+  font-weight: 600;
+  color: var(--luxury-charcoal);
+}
+
+/* ===========================================
+   Features Pages - Premium Cards
+   =========================================== */
+.brochure-features-page {
+  padding: 0.5in 0.6in;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5in;
+  background: var(--luxury-cream);
+}
+
+.brochure-feature {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  min-height: 4.6in;
+  background: white;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(201, 168, 106, 0.15);
+}
+
+.brochure-feature .brochure-feature-image {
+  flex: 0 0 45%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100%;
+  position: relative;
+}
+
+/* Subtle overlay on images */
+.brochure-feature .brochure-feature-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 70%, rgba(0,0,0,0.1) 100%);
+}
+
+.brochure-feature .brochure-feature-content {
+  flex: 0 0 55%;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Gold accent bar */
+.brochure-feature .brochure-feature-content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 50%;
+  background: linear-gradient(180deg, transparent, var(--luxury-gold), transparent);
+}
+
+.brochure-feature .brochure-feature-content h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--luxury-charcoal);
+  margin-bottom: 1rem;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+.brochure-feature .brochure-feature-content p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--luxury-slate);
+  margin: 0;
+}
+
+/* Alternating layout */
+.brochure-feature.reverse {
+  flex-direction: row-reverse;
+}
+
+.brochure-feature.reverse .brochure-feature-image::after {
+  background: linear-gradient(-90deg, transparent 70%, rgba(0,0,0,0.1) 100%);
+}
+
+.brochure-feature.reverse .brochure-feature-content {
+  text-align: right;
+}
+
+.brochure-feature.reverse .brochure-feature-content::before {
+  left: auto;
+  right: 0;
+}
+
+.brochure-feature.reverse .brochure-feature-content h3 {
+  border-bottom: none;
+}
+
+/* ===========================================
+   Customers Page - Elegant Grid
+   =========================================== */
+.brochure-customers {
+  background: var(--luxury-pearl);
+  display: flex;
+  flex-direction: column;
+  padding: 0.75in 0.75in;
+}
+
+.brochure-customers h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--luxury-charcoal);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+.brochure-customers h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--luxury-gold);
+  margin: 1rem auto 0;
+}
+
+.brochure-customers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  flex: 1;
+}
+
+.brochure-customer {
+  background: white;
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(201, 168, 106, 0.1);
+}
+
+.brochure-customer .brochure-customer-image {
+  width: 100%;
+  height: 2.5in;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--luxury-cream);
+  margin-bottom: 0.75rem;
+}
+
+.brochure-customer h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--luxury-charcoal);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.brochure-customer .brochure-customer-location {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8rem;
+  color: var(--luxury-slate);
+}
+
+/* ===========================================
+   Contact Page - Premium Closing
+   =========================================== */
+.brochure-contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--luxury-charcoal) 0%, var(--luxury-navy) 100%);
+  color: white;
+  padding: 2in 1in;
+  position: relative;
+}
+
+/* Top gold accent */
+.brochure-contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--luxury-gold), transparent);
+}
+
+.brochure-contact h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.15em;
+}
+
+.brochure-contact .brochure-contact-info {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 2.5;
+}
+
+.brochure-contact .brochure-contact-info i {
+  color: var(--luxury-gold);
+  margin-right: 0.75rem;
+}
+
+.brochure-contact .brochure-contact-info a {
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.brochure-contact .brochure-contact-logo-wrapper {
+  margin-top: 3rem;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.brochure-contact .brochure-contact-logo {
+  max-width: 150px;
+  max-height: 60px;
+  filter: brightness(0) invert(1);
+  display: block;
+}
+
+.brochure-contact .brochure-contact-tagline {
+  margin-top: 2rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  opacity: 0.7;
+  max-width: 65%;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* ===========================================
+   Print Button & Instructions
+   =========================================== */
+.brochure-print-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--luxury-charcoal);
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+.brochure-print-btn:hover {
+  background: var(--luxury-navy);
+}
+
+.brochure-print-btn i {
+  margin-right: 0.5rem;
+  color: var(--luxury-gold);
+}
+
+.brochure-print-instructions {
+  position: fixed;
+  bottom: 5rem;
+  right: 2rem;
+  background: white;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.85rem;
+  max-width: 250px;
+  z-index: 1000;
+  border-left: 3px solid var(--luxury-gold);
+}
+
+.brochure-print-instructions p {
+  margin: 0.25rem 0;
+  color: var(--luxury-slate);
+}
+
+.brochure-print-instructions strong {
+  color: var(--luxury-charcoal);
+}
+
+/* ===========================================
+   Print Styles
+   =========================================== */
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 0;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .brochure {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .brochure-page {
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-after: page;
+    border: none !important;
+    width: 100% !important;
+    min-height: 100vh;
+    margin: 0 !important;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .brochure-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  /* Cover Page */
+  .brochure-cover {
+    padding: 2in 1in !important;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2C2C2C 0%, #1A365D 100%) !important;
+  }
+
+  .brochure-cover::before {
+    display: none !important;
+  }
+
+  .brochure-cover::after {
+    background: linear-gradient(90deg, transparent, #C9A86A, transparent) !important;
+  }
+
+  .brochure-cover .brochure-logo {
+    -webkit-filter: brightness(0) invert(1) !important;
+    filter: brightness(0) invert(1) !important;
+    max-width: 280px !important;
+  }
+
+  .brochure-cover .brochure-cover-divider {
+    background: #C9A86A !important;
+  }
+
+  /* About Page */
+  .brochure-about {
+    padding: 1.25in 1in !important;
+    min-height: 100vh;
+    background: #F8F9FA !important;
+  }
+
+  .brochure-about::before,
+  .brochure-about::after {
+    border-color: #C9A86A !important;
+  }
+
+  .brochure-about h2::after {
+    background: #C9A86A !important;
+  }
+
+  /* Features */
+  .brochure-features-page {
+    padding: 0.4in 0.5in !important;
+    gap: 0.4in;
+    min-height: 100vh;
+    background: #FEFBF6 !important;
+  }
+
+  .brochure-feature {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08) !important;
+    min-height: 4.8in;
+  }
+
+  .brochure-feature .brochure-feature-content::before {
+    background: linear-gradient(180deg, transparent, #C9A86A, transparent) !important;
+  }
+
+  /* Customers */
+  .brochure-customers {
+    padding: 0.75in 0.6in !important;
+    min-height: 100vh;
+    background: #F8F9FA !important;
+  }
+
+  .brochure-customers h2::after {
+    background: #C9A86A !important;
+  }
+
+  .brochure-customer {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06) !important;
+  }
+
+  /* Contact Page */
+  .brochure-contact {
+    padding: 2in 1in !important;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2C2C2C 0%, #1A365D 100%) !important;
+  }
+
+  .brochure-contact::before {
+    background: linear-gradient(90deg, transparent, #C9A86A, transparent) !important;
+  }
+
+  .brochure-contact .brochure-contact-info i {
+    color: #C9A86A !important;
+  }
+
+  .brochure-contact .brochure-contact-logo-wrapper {
+    margin-top: 2rem !important;
+    padding: 0.75rem 1.5rem !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    background: transparent !important;
+  }
+
+  .brochure-contact .brochure-contact-logo {
+    -webkit-filter: brightness(0) invert(1) !important;
+    filter: brightness(0) invert(1) !important;
+    max-width: 120px !important;
+    max-height: 50px !important;
+  }
+}

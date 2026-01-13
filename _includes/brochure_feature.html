@@ -1,0 +1,29 @@
+{% comment %}
+Brochure Feature Component
+Usage: {% include brochure_feature.html feature=feature position=position %}
+position: 0 = normal (image left), 1 = reversed (image right)
+{% endcomment %}
+
+{% if include.feature.image contains "http://" or include.feature.image contains "https://" or include.feature.image | slice: 0, 1 == "/" %}
+{% assign image = include.feature.image %}
+{% else %}
+{% assign image = "/" | append: include.feature.image %}
+{% endif %}
+
+{% if include.position == 0 %}
+<div class="brochure-feature">
+  <div class="brochure-feature-image" style="background-image: url('{{ image }}')"></div>
+  <div class="brochure-feature-content">
+    <h3>{{ include.feature.title }}</h3>
+    <p>{{ include.feature.description }}</p>
+  </div>
+</div>
+{% else %}
+<div class="brochure-feature reverse">
+  <div class="brochure-feature-image" style="background-image: url('{{ image }}')"></div>
+  <div class="brochure-feature-content">
+    <h3>{{ include.feature.title }}</h3>
+    <p>{{ include.feature.description }}</p>
+  </div>
+</div>
+{% endif %}

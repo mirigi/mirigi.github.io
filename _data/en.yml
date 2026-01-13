@@ -7,3 +7,8 @@ customers: "Buildings"
 more_info: "More info"
 location: "Location"
 customers_title: "Buildings That Trust Us"
+# Brochure
+brochure_subtitle: "Digital Concierge for Luxury Buildings"
+print_brochure: "Print Brochure"
+print_tip: "Tip"
+print_enable_backgrounds: "Enable 'Background graphics'"

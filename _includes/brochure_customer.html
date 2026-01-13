@@ -1,0 +1,18 @@
+{% comment %}
+Brochure Customer Component
+Usage: {% include brochure_customer.html customer=customer %}
+{% endcomment %}
+
+{% if include.customer.image contains "http://" or include.customer.image contains "https://" or include.customer.image | slice: 0, 1 == "/" %}
+{% assign image = include.customer.image %}
+{% else %}
+{% assign image = "/" | append: include.customer.image %}
+{% endif %}
+
+<div class="brochure-customer">
+  <div class="brochure-customer-image" style="background-image: url('{{ image }}')"></div>
+  <h4>{{ include.customer.name }}</h4>
+  {% if include.customer.description %}
+  <p class="brochure-customer-location">{{ include.customer.description }}</p>
+  {% endif %}
+</div>

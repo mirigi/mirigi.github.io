@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{{ page.title | default: site.title }} - Brochure</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Fonts - Luxury Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link href="{{ '/vendor/bootstrap/css/bootstrap.min.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/vendor/fontawesome-free/css/all.min.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/css/grayscale.min.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/css/brochure.css' | relative_url }}" rel="stylesheet">
+</head>
+<body>
+  <div class="brochure">
+
+    <!-- Cover Page -->
+    <div class="brochure-page brochure-cover">
+      <img src="{{ '/img/mirigi-logo-transparent.png' | relative_url }}" alt="{{ site.title }}" class="brochure-logo">
+      <div class="brochure-cover-divider"></div>
+      <p class="brochure-subtitle">{{ page.brochure_subtitle | default: site.data[page.lang].brochure_subtitle | default: "Digital Concierge for Luxury Buildings" }}</p>
+      <p class="brochure-tagline">www.mirigi.com</p>
+    </div>
+
+    <!-- About Page -->
+    <div class="brochure-page brochure-about">
+      <h2>{{ page.aboutTitle | default: site.data[page.lang].about | default: "About" }}</h2>
+      <div class="brochure-about-content">
+        {{ content }}
+      </div>
+    </div>
+
+    <!-- Features Pages (2 per page) -->
+    {% assign features = site.features | where: 'lang', page.lang %}
+    {% for feature in features %}
+      {% assign index = forloop.index | minus: 1 %}
+      {% assign page_position = index | modulo: 2 %}
+
+      {% if page_position == 0 %}
+      <div class="brochure-page brochure-features-page">
+      {% endif %}
+
+        {% include brochure_feature.html feature=feature position=page_position %}
+
+      {% if page_position == 1 or forloop.last %}
+      </div>
+      {% endif %}
+    {% endfor %}
+
+    <!-- Customers Page -->
+    <div class="brochure-page brochure-customers">
+      <h2>{{ page.customersTitle | default: site.data[page.lang].customers_title | default: "Our Customers" }}</h2>
+      <div class="brochure-customers-grid">
+        {% assign customers = site.customers | where: 'lang', page.lang %}
+        {% for customer in customers %}
+          {% include brochure_customer.html customer=customer %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div class="brochure-page brochure-contact">
+      <h2>{{ site.data[page.lang].contacts | default: "Contact Us" }}</h2>
+      <div class="brochure-contact-info">
+        <p><i class="fas fa-envelope"></i> info@mirigi.com</p>
+        <p><i class="fas fa-globe"></i> www.mirigi.com</p>
+      </div>
+      <div class="brochure-contact-logo-wrapper">
+        <img src="{{ '/img/mirigi-logo-transparent.png' | relative_url }}" alt="Mirigi" class="brochure-contact-logo">
+      </div>
+      <p class="brochure-contact-tagline">{{ page.contactText | default: "Experience the transformation and innovation that only Mirigi can offer." }}</p>
+    </div>
+
+  </div>
+
+  <!-- Print Button (hidden when printing) -->
+  <button class="brochure-print-btn no-print" onclick="window.print()">
+    <i class="fas fa-print"></i> {{ site.data[page.lang].print_brochure | default: "Print Brochure" }}
+  </button>
+
+  <div class="brochure-print-instructions no-print">
+    <p><strong>{{ site.data[page.lang].print_tip | default: "Tip" }}:</strong></p>
+    <p>File &rarr; Print &rarr; Save as PDF</p>
+    <p>{{ site.data[page.lang].print_enable_backgrounds | default: "Enable 'Background graphics'" }}</p>
+  </div>
+
+</body>
+</html>

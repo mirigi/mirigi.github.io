@@ -1,0 +1,915 @@
+{% assign t = site.data[page.lang] %}
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{{ t.proposal_builder_title }} - Mirigi</title>
+  <meta name="description" content="{{ t.proposal_builder_subtitle }}">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link href="{{ '/vendor/bootstrap/css/bootstrap.min.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/vendor/fontawesome-free/css/all.min.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/css/grayscale.min.css' | relative_url }}" rel="stylesheet">
+
+  <style>
+    :root {
+      --luxury-charcoal: #2C2C2C;
+      --luxury-slate: #4A5568;
+      --luxury-gold: #C9A86A;
+      --luxury-navy: #1A365D;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f5f5f5;
+    }
+
+    .builder-container {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    }
+
+    .builder-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid var(--luxury-gold);
+    }
+
+    .builder-header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--luxury-charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .builder-header p {
+      color: var(--luxury-slate);
+      font-size: 1rem;
+    }
+
+    .form-section {
+      margin-bottom: 2rem;
+    }
+
+    .form-section h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--luxury-charcoal);
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--luxury-gold);
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: var(--luxury-charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 0.75rem;
+      font-size: 1rem;
+    }
+
+    .form-control:focus {
+      border-color: var(--luxury-gold);
+      box-shadow: 0 0 0 0.2rem rgba(201, 168, 106, 0.25);
+    }
+
+    .feature-checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .feature-checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 0.75rem;
+      background: #f8f9fa;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .feature-checkbox-item:hover {
+      background: #fff;
+      border-color: var(--luxury-gold);
+    }
+
+    .feature-checkbox-item input[type="checkbox"] {
+      margin-right: 0.75rem;
+      margin-top: 0.25rem;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--luxury-gold);
+    }
+
+    .feature-checkbox-label {
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: var(--luxury-charcoal);
+      flex: 1;
+    }
+
+    .feature-more-link {
+      color: var(--luxury-slate);
+      font-size: 0.85rem;
+      text-decoration: none;
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      transition: all 0.2s ease;
+      margin-left: 0.5rem;
+    }
+
+    .feature-more-link:hover {
+      color: var(--luxury-gold);
+      background: rgba(201, 168, 106, 0.1);
+    }
+
+    .btn-generate {
+      width: 100%;
+      padding: 1rem 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--luxury-charcoal) 0%, var(--luxury-navy) 100%);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 2rem;
+    }
+
+    .btn-generate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    .btn-generate i {
+      margin-right: 0.5rem;
+      color: var(--luxury-gold);
+    }
+
+    .helper-text {
+      font-size: 0.85rem;
+      color: var(--luxury-slate);
+      margin-top: 0.25rem;
+    }
+
+    .pricing-summary {
+      background: linear-gradient(135deg, var(--luxury-charcoal) 0%, var(--luxury-navy) 100%);
+      color: white;
+      padding: 1.25rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+
+    .pricing-summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .pricing-summary-row.small {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      margin-top: 0.5rem;
+      padding-top: 0.75rem;
+    }
+
+    .pricing-summary-row span:last-child {
+      font-weight: 600;
+      color: var(--luxury-gold);
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -0.5rem;
+    }
+
+    .col-md-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+      padding: 0 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .builder-container {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      .feature-checkbox-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+
+    /* Saved Proposals Panel */
+    .saved-proposals-section {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: #f8f9fa;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+
+    .saved-proposals-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .saved-proposals-header h3 {
+      margin: 0;
+      border: none;
+      padding: 0;
+    }
+
+    .saved-proposals-list {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .saved-proposal-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .saved-proposal-item:hover {
+      border-color: var(--luxury-gold);
+    }
+
+    .saved-proposal-item.active {
+      border-color: var(--luxury-gold);
+      background: #fff9e6;
+    }
+
+    .saved-proposal-info {
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .saved-proposal-name {
+      font-weight: 600;
+      color: var(--luxury-charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .saved-proposal-date {
+      font-size: 0.8rem;
+      color: var(--luxury-slate);
+    }
+
+    .saved-proposal-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-sm {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-load {
+      background: var(--luxury-gold);
+      color: white;
+    }
+
+    .btn-load:hover {
+      background: #b8974e;
+    }
+
+    .btn-delete {
+      background: #dc3545;
+      color: white;
+    }
+
+    .btn-delete:hover {
+      background: #c82333;
+    }
+
+    .btn-new {
+      background: var(--luxury-charcoal);
+      color: white;
+    }
+
+    .btn-new:hover {
+      background: #1a1a1a;
+    }
+
+    .no-proposals {
+      text-align: center;
+      padding: 2rem;
+      color: var(--luxury-slate);
+      font-style: italic;
+    }
+
+    /* Action buttons row */
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .btn-secondary {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 2px solid var(--luxury-gold);
+      background: white;
+      color: var(--luxury-charcoal);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--luxury-gold);
+      color: white;
+    }
+
+    .btn-secondary i {
+      margin-right: 0.5rem;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      padding: 1rem 1.5rem;
+      background: var(--luxury-charcoal);
+      color: white;
+      border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast.success {
+      background: #28a745;
+    }
+
+    /* Editing indicator */
+    .editing-indicator {
+      display: none;
+      padding: 0.5rem 1rem;
+      background: #fff9e6;
+      border: 1px solid var(--luxury-gold);
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .editing-indicator.show {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .editing-indicator i {
+      color: var(--luxury-gold);
+      margin-right: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .action-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="builder-container">
+    <div class="builder-header">
+      <img src="{{ '/img/mirigi-logo.png' | relative_url }}" alt="Mirigi" style="max-width: 180px; margin-bottom: 1rem;">
+      <h1>{{ t.proposal_builder_title }}</h1>
+      <p>{{ t.proposal_builder_subtitle }}</p>
+    </div>
+
+    <!-- Saved Proposals Section -->
+    <div class="saved-proposals-section">
+      <div class="saved-proposals-header">
+        <h3 class="form-section h3" style="margin-bottom: 0;">{{ t.saved_proposals }}</h3>
+        <button type="button" class="btn-sm btn-new" id="newProposalBtn">
+          <i class="fas fa-plus"></i> {{ t.new_proposal }}
+        </button>
+      </div>
+      <div class="saved-proposals-list" id="savedProposalsList">
+        <div class="no-proposals" id="noProposalsMsg">{{ t.no_saved_proposals }}</div>
+      </div>
+    </div>
+
+    <!-- Editing indicator -->
+    <div class="editing-indicator" id="editingIndicator">
+      <span><i class="fas fa-edit"></i> <span id="editingName"></span></span>
+    </div>
+
+    <form id="proposalForm">
+      <!-- Building Information -->
+      <div class="form-section">
+        <h3>{{ t.building_info }}</h3>
+        <div class="form-group">
+          <label for="buildingName">{{ t.building_name }} *</label>
+          <input type="text" class="form-control" id="buildingName" name="buildingName" placeholder="{{ t.building_name_placeholder }}" required>
+          <small class="helper-text">{{ t.building_name_help }}</small>
+        </div>
+        <div class="form-group">
+          <label for="tagline">{{ t.tagline }}</label>
+          <input type="text" class="form-control" id="tagline" name="tagline" placeholder="{{ t.tagline_placeholder }}">
+          <small class="helper-text">{{ t.tagline_help }}</small>
+        </div>
+      </div>
+
+      <!-- Pricing Information -->
+      <div class="form-section">
+        <h3>{{ t.investment_pricing }}</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="pricePerUnit">{{ t.price_per_unit }}</label>
+              <input type="number" step="0.01" min="0" class="form-control" id="pricePerUnit" name="pricePerUnit">
+              <small class="helper-text">{{ t.price_per_unit_help }}</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="units">{{ t.number_of_units }}</label>
+              <input type="number" min="1" class="form-control" id="units" name="units" placeholder="120">
+              <small class="helper-text">{{ t.number_of_units_help }}</small>
+            </div>
+          </div>
+        </div>
+        <div id="pricingSummary" class="pricing-summary" style="display: none;">
+          <div class="pricing-summary-row">
+            <span>{{ t.monthly }}:</span>
+            <span id="monthlyTotal">$0.00</span>
+          </div>
+          <div class="pricing-summary-row">
+            <span>{{ t.annual }}:</span>
+            <span id="annualTotal">$0.00</span>
+          </div>
+          <div class="pricing-summary-row small">
+            <span>{{ t.per_unit_year }}:</span>
+            <span id="perUnitYear">$0.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salesperson Information -->
+      <div class="form-section">
+        <h3>{{ t.salesperson_details }}</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="salesperson">{{ t.your_name }}</label>
+              <input type="text" class="form-control" id="salesperson" name="salesperson" placeholder="Sarah Johnson">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="email">{{ t.your_email }}</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="sarah@mirigi.com">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="contractTerm">{{ t.contract_term }}</label>
+              <select class="form-control" id="contractTerm" name="contractTerm">
+                <option value="">{{ t.select_term }}</option>
+                <option value="12-month">12-month</option>
+                <option value="24-month">24-month</option>
+                <option value="36-month">36-month</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="validUntil">{{ t.proposal_valid_until }}</label>
+              <input type="date" class="form-control" id="validUntil" name="validUntil">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Selection -->
+      <div class="form-section">
+        <h3>{{ t.highlighted_features }}</h3>
+        <p class="helper-text">{{ t.highlighted_features_help }}</p>
+        <div class="feature-checkbox-grid" id="featuresGrid">
+          <!-- Features will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Additional Notes -->
+      <div class="form-section">
+        <h3>{{ t.terms_notes }}</h3>
+        <div class="form-group">
+          <label for="terms">{{ t.terms_notes_label }}</label>
+          <textarea class="form-control" id="terms" name="terms" rows="6" placeholder="{{ t.terms_notes_placeholder }}"></textarea>
+          <small class="helper-text">{{ t.terms_notes_help }}</small>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button type="button" class="btn-secondary" id="saveProposalBtn">
+          <i class="fas fa-save"></i>
+          {{ t.save_proposal }}
+        </button>
+        <button type="button" class="btn-secondary" id="shareProposalBtn">
+          <i class="fas fa-share-alt"></i>
+          {{ t.share_proposal }}
+        </button>
+      </div>
+
+      <!-- Generate Button -->
+      <button type="submit" class="btn-generate">
+        <i class="fas fa-file-alt"></i>
+        {{ t.generate_proposal }}
+      </button>
+    </form>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Proposal Crypto & Storage -->
+  <script src="{{ '/js/proposal-crypto.js' | relative_url }}"></script>
+  <script src="{{ '/js/proposal-storage.js' | relative_url }}"></script>
+
+  <!-- Features Data from Jekyll -->
+  <script>
+    window.mirigiFeatures = [
+      {% assign features = site.features | where: 'lang', page.lang | sort: 'title' %}
+      {% for feature in features %}
+      {
+        title: {{ feature.title | jsonify }},
+        slug: {{ feature.title | slugify | jsonify }},
+        description: {{ feature.content | strip_html | strip_newlines | jsonify }},
+        image: {{ feature.image | jsonify }},
+        keywords: {{ feature.keywords | jsonify }},
+        url: {{ feature.url | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+
+    // Store language for proposal page redirect
+    window.proposalLang = {{ page.lang | jsonify }};
+
+    // Crypto translations
+    window.cryptoTranslations = {
+      login_title: {{ t.login_title | default: "Access Required" | jsonify }},
+      login_subtitle: {{ t.login_subtitle | default: "Enter your access key to continue" | jsonify }},
+      login_placeholder: {{ t.login_placeholder | default: "Access key" | jsonify }},
+      login_button: {{ t.login_button | default: "Login" | jsonify }},
+      login_error: {{ t.login_error | default: "Invalid access key" | jsonify }},
+      logout: {{ t.logout | default: "Logout" | jsonify }}
+    };
+
+    // Logo URL for login modal
+    window.logoUrl = {{ '/img/mirigi-logo.png' | relative_url | jsonify }};
+  </script>
+
+  <!-- Form Logic -->
+  <script>
+    // Populate features grid
+    const featuresGrid = document.getElementById('featuresGrid');
+    window.mirigiFeatures.forEach((feature, index) => {
+      const div = document.createElement('div');
+      div.className = 'feature-checkbox-item';
+      div.innerHTML = `
+        <input type="checkbox" id="feature-${index}" name="features" value="${feature.slug}" data-feature-index="${index}">
+        <label for="feature-${index}" class="feature-checkbox-label">${feature.title}</label>
+        <a href="${feature.url}" target="_blank" class="feature-more-link" title="More info"><i class="fas fa-ellipsis-h"></i></a>
+      `;
+      featuresGrid.appendChild(div);
+    });
+
+    // Set default valid until date (30 days from now)
+    const validUntilInput = document.getElementById('validUntil');
+    const defaultDate = new Date();
+    defaultDate.setDate(defaultDate.getDate() + 30);
+    validUntilInput.value = defaultDate.toISOString().split('T')[0];
+
+    // Real-time pricing calculation
+    const priceInput = document.getElementById('pricePerUnit');
+    const unitsInput = document.getElementById('units');
+    const pricingSummary = document.getElementById('pricingSummary');
+    const monthlyTotal = document.getElementById('monthlyTotal');
+    const annualTotal = document.getElementById('annualTotal');
+    const perUnitYear = document.getElementById('perUnitYear');
+
+    function updatePricing() {
+      const price = parseFloat(priceInput.value) || 0;
+      const units = parseInt(unitsInput.value) || 0;
+
+      if (price > 0 && units > 0) {
+        const monthly = price * units;
+        const annual = monthly * 12;
+        const perUnit = annual / units;
+
+        monthlyTotal.textContent = '$' + monthly.toFixed(2);
+        annualTotal.textContent = '$' + annual.toFixed(2);
+        perUnitYear.textContent = '$' + perUnit.toFixed(2);
+        pricingSummary.style.display = 'block';
+      } else {
+        pricingSummary.style.display = 'none';
+      }
+    }
+
+    priceInput.addEventListener('input', updatePricing);
+    unitsInput.addEventListener('input', updatePricing);
+
+    // Form submission handler - with encryption
+    document.getElementById('proposalForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Gather form data
+      const buildingName = document.getElementById('buildingName').value;
+      const tagline = document.getElementById('tagline').value;
+      const pricePerUnit = document.getElementById('pricePerUnit').value;
+      const units = document.getElementById('units').value;
+      const salesperson = document.getElementById('salesperson').value;
+      const email = document.getElementById('email').value;
+      const contractTerm = document.getElementById('contractTerm').value;
+      const validUntil = document.getElementById('validUntil').value;
+      const terms = document.getElementById('terms').value;
+
+      // Get selected features
+      const selectedFeatures = Array.from(document.querySelectorAll('input[name="features"]:checked'))
+        .map(checkbox => checkbox.value);
+
+      // Build proposal data object
+      const proposalData = {
+        buildingName: buildingName,
+        tagline: tagline || undefined,
+        pricing: pricePerUnit || undefined,
+        units: units || undefined,
+        salesperson: salesperson || undefined,
+        email: email || undefined,
+        terms: contractTerm || undefined,
+        validUntil: validUntil || undefined,
+        notes: terms || undefined,
+        highlighted: selectedFeatures.length > 0 ? selectedFeatures : undefined
+      };
+
+      // Remove undefined values
+      Object.keys(proposalData).forEach(key => proposalData[key] === undefined && delete proposalData[key]);
+
+      // Encrypt the proposal data
+      try {
+        const encryptedData = await ProposalCrypto.encryptProposalData(proposalData);
+
+        // Redirect to proposal page (language-specific)
+        const lang = window.proposalLang;
+        const proposalPath = lang === 'en' ? '/proposal.html' : `/${lang}/proposal.html`;
+        window.location.href = `{{ site.baseurl }}${proposalPath}?d=${encodeURIComponent(encryptedData)}`;
+      } catch (err) {
+        console.error('Error encrypting proposal:', err);
+        showToast('Error generating proposal', false);
+      }
+    });
+
+    // ============================================
+    // Proposal Storage Integration
+    // ============================================
+
+    // Translations
+    const translations = {
+      saved_proposals: {{ t.saved_proposals | jsonify }},
+      save_proposal: {{ t.save_proposal | jsonify }},
+      share_proposal: {{ t.share_proposal | jsonify }},
+      load_proposal: {{ t.load_proposal | jsonify }},
+      delete_proposal: {{ t.delete_proposal | jsonify }},
+      no_saved_proposals: {{ t.no_saved_proposals | jsonify }},
+      proposal_saved: {{ t.proposal_saved | jsonify }},
+      link_copied: {{ t.link_copied | jsonify }},
+      confirm_delete: {{ t.confirm_delete | jsonify }},
+      new_proposal: {{ t.new_proposal | jsonify }},
+      editing_proposal: {{ t.editing_proposal | jsonify }},
+      loaded_from_link: {{ t.loaded_from_link | default: "Loaded from shared link" | jsonify }}
+    };
+
+    // Current editing proposal ID
+    let currentProposalId = null;
+
+    // Toast notification
+    function showToast(message, success = false) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = 'toast' + (success ? ' success' : '');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    // Render saved proposals list
+    async function renderSavedProposals() {
+      const list = document.getElementById('savedProposalsList');
+      const noMsg = document.getElementById('noProposalsMsg');
+
+      try {
+        const proposals = await ProposalStorage.getAll();
+
+        if (proposals.length === 0) {
+          list.innerHTML = `<div class="no-proposals">${translations.no_saved_proposals}</div>`;
+          return;
+        }
+
+        list.innerHTML = proposals.map(p => `
+          <div class="saved-proposal-item ${p.id === currentProposalId ? 'active' : ''}" data-id="${p.id}">
+            <div class="saved-proposal-info" onclick="loadProposal(${p.id})">
+              <div class="saved-proposal-name">${escapeHtml(p.buildingName || 'Untitled')}</div>
+              <div class="saved-proposal-date">${ProposalStorage.formatDate(p.updatedAt)}</div>
+            </div>
+            <div class="saved-proposal-actions">
+              <button type="button" class="btn-sm btn-load" onclick="loadProposal(${p.id})">${translations.load_proposal}</button>
+              <button type="button" class="btn-sm btn-delete" onclick="deleteProposal(${p.id})">${translations.delete_proposal}</button>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error('Error loading proposals:', err);
+      }
+    }
+
+    // HTML escape helper
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Load a proposal into the form
+    async function loadProposal(id) {
+      try {
+        const proposal = await ProposalStorage.get(id);
+        if (proposal) {
+          ProposalStorage.loadFormData(proposal);
+          currentProposalId = id;
+          updateEditingIndicator(proposal.buildingName);
+          renderSavedProposals();
+        }
+      } catch (err) {
+        console.error('Error loading proposal:', err);
+      }
+    }
+
+    // Delete a proposal
+    async function deleteProposal(id) {
+      if (confirm(translations.confirm_delete)) {
+        try {
+          await ProposalStorage.delete(id);
+          if (currentProposalId === id) {
+            currentProposalId = null;
+            updateEditingIndicator(null);
+          }
+          renderSavedProposals();
+        } catch (err) {
+          console.error('Error deleting proposal:', err);
+        }
+      }
+    }
+
+    // Update editing indicator
+    function updateEditingIndicator(name) {
+      const indicator = document.getElementById('editingIndicator');
+      const nameSpan = document.getElementById('editingName');
+      if (name) {
+        nameSpan.textContent = `${translations.editing_proposal}: ${name}`;
+        indicator.classList.add('show');
+      } else {
+        indicator.classList.remove('show');
+      }
+    }
+
+    // Save proposal button
+    document.getElementById('saveProposalBtn').addEventListener('click', async () => {
+      const formData = ProposalStorage.getFormData();
+
+      if (!formData.buildingName) {
+        document.getElementById('buildingName').focus();
+        return;
+      }
+
+      const proposal = {
+        ...formData,
+        id: currentProposalId || undefined
+      };
+
+      try {
+        const id = await ProposalStorage.save(proposal);
+        currentProposalId = id;
+        updateEditingIndicator(formData.buildingName);
+        // Remember salesperson details for next time
+        ProposalStorage.saveSalespersonDetails(formData.salesperson, formData.email);
+        showToast(translations.proposal_saved, true);
+        renderSavedProposals();
+      } catch (err) {
+        console.error('Error saving proposal:', err);
+      }
+    });
+
+    // Share proposal button - with encryption
+    document.getElementById('shareProposalBtn').addEventListener('click', async () => {
+      try {
+        const url = await ProposalStorage.generateShareUrlEncrypted();
+        await ProposalStorage.copyToClipboard(url);
+        showToast(translations.link_copied, true);
+      } catch (err) {
+        console.error('Error copying to clipboard:', err);
+        // Fallback to non-encrypted
+        const url = ProposalStorage.generateShareUrl();
+        await ProposalStorage.copyToClipboard(url);
+        showToast(translations.link_copied, true);
+      }
+    });
+
+    // New proposal button
+    document.getElementById('newProposalBtn').addEventListener('click', () => {
+      document.getElementById('proposalForm').reset();
+      currentProposalId = null;
+      updateEditingIndicator(null);
+      renderSavedProposals();
+
+      // Reset valid until to default (30 days from now)
+      const defaultDate = new Date();
+      defaultDate.setDate(defaultDate.getDate() + 30);
+      document.getElementById('validUntil').value = defaultDate.toISOString().split('T')[0];
+
+      // Hide pricing summary
+      document.getElementById('pricingSummary').style.display = 'none';
+    });
+
+    // Initialize on page load with authentication
+    (async function init() {
+      // Set crypto translations
+      ProposalCrypto.setTranslations(window.cryptoTranslations);
+
+      // Initialize authentication
+      await ProposalCrypto.initAuth(window.logoUrl, async () => {
+        // On successful login, initialize the rest
+        ProposalStorage.loadSalespersonDetails();
+
+        // Try to load from URL (shared link)
+        if (await ProposalStorage.loadFromUrlEncrypted()) {
+          showToast(translations.loaded_from_link, true);
+        }
+
+        // Load saved proposals list
+        await renderSavedProposals();
+      });
+    })();
+  </script>
+</body>
+</html>

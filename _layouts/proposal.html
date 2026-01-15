@@ -347,7 +347,9 @@
       tablet_config: {{ t.tablet_config | jsonify }},
       tablet_config_desc: {{ t.tablet_config_desc | jsonify }},
       modules_included: {{ t.modules_included | jsonify }},
-      extra_modules_note: {{ t.extra_modules_note | jsonify }}
+      extra_modules_note: {{ t.extra_modules_note | jsonify }},
+      additional_services: {{ t.additional_services | jsonify }},
+      one_time: {{ t.one_time | jsonify }}
     };
 
     // Site base URL for absolute links
@@ -393,6 +395,7 @@
     let highlighted = [];
     let highlightedFeatures = [];
     let compactFeatures = [];
+    let services = {};
 
     // Initialize proposal data from decrypted URL parameter
     async function initProposalData() {
@@ -417,6 +420,7 @@
         email = proposalData.email || 'info@mirigi.com';
         validUntil = proposalData.validUntil || '';
         highlighted = proposalData.highlighted || [];
+        services = proposalData.services || {};
 
         // Find highlighted features
         highlightedFeatures = highlighted
@@ -525,6 +529,12 @@
         const monthlyTotal = priceNum * unitsNum;
         const annual = monthlyTotal * 12;
 
+        // Calculate one-time services total
+        let oneTimeTotal = 0;
+        if (services.buildingSetup?.enabled) oneTimeTotal += services.buildingSetup.price || 0;
+        if (services.customApp?.enabled) oneTimeTotal += services.customApp.price || 0;
+        if (services.tabletConfig?.enabled) oneTimeTotal += services.tabletConfig.price || 0;
+
         html += `
           <div class="brochure-page proposal-pricing">
             <h2>${escapeHtml(T.investment_pricing)}</h2>
@@ -533,27 +543,6 @@
               <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
                 <span>${escapeHtml(T.digital_portal_system)}</span>
                 <span style="font-weight: 600;">$${priceNum.toFixed(2)}/unit/${T.lang === 'en' ? 'month' : T.lang === 'es' ? 'mes' : 'mois'}</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
-                <div>
-                  <span>${escapeHtml(T.building_setup)}</span>
-                  <div style="font-size: 0.8rem; color: var(--luxury-slate); margin-top: 0.25rem;">${escapeHtml(T.building_setup_desc)}</div>
-                </div>
-                <span style="font-weight: 600;">${escapeHtml(T.included)}</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; opacity: 0.7;">
-                <div>
-                  <span>${escapeHtml(T.custom_app)} <em style="font-size: 0.85rem;">(${escapeHtml(T.optional)})</em></span>
-                  <div style="font-size: 0.8rem; color: var(--luxury-slate); margin-top: 0.25rem;">${escapeHtml(T.custom_app_desc)}</div>
-                </div>
-                <span style="font-weight: 600;">—</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; opacity: 0.7;">
-                <div>
-                  <span>${escapeHtml(T.tablet_config)} <em style="font-size: 0.85rem;">(${escapeHtml(T.optional)})</em></span>
-                  <div style="font-size: 0.8rem; color: var(--luxury-slate); margin-top: 0.25rem;">${escapeHtml(T.tablet_config_desc)}</div>
-                </div>
-                <span style="font-weight: 600;">—</span>
               </div>
               ${unitsNum > 0 ? `
                 <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; margin-top: 0.5rem; border-top: 1px solid #eee;">
@@ -567,6 +556,46 @@
                 <p style="text-align: center; font-size: 0.9rem; color: var(--luxury-slate); margin-top: 0.5rem; font-style: italic;">$${(annual / unitsNum).toFixed(2)}/${escapeHtml(T.per_unit_year)}</p>
               ` : ''}
             </div>
+
+            ${(services.buildingSetup?.enabled || services.customApp?.enabled || services.tabletConfig?.enabled) ? `
+            <div class="proposal-pricing-content" style="text-align: left; font-size: 1rem; padding: 1.5rem; margin-top: 1rem;">
+              <h4 style="font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--luxury-charcoal); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--luxury-gold);">${escapeHtml(T.additional_services)} <span style="font-size: 0.8rem; font-weight: 400; color: var(--luxury-slate);">(${escapeHtml(T.one_time)})</span></h4>
+              ${services.buildingSetup?.enabled ? `
+              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                <div>
+                  <span>${escapeHtml(T.building_setup)}</span>
+                  <div style="font-size: 0.8rem; color: var(--luxury-slate); margin-top: 0.25rem;">${escapeHtml(T.building_setup_desc)}</div>
+                </div>
+                <span style="font-weight: 600;">${services.buildingSetup.price > 0 ? '$' + services.buildingSetup.price.toFixed(2) : escapeHtml(T.included)}</span>
+              </div>
+              ` : ''}
+              ${services.customApp?.enabled ? `
+              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                <div>
+                  <span>${escapeHtml(T.custom_app)}</span>
+                  <div style="font-size: 0.8rem; color: var(--luxury-slate); margin-top: 0.25rem;">${escapeHtml(T.custom_app_desc)}</div>
+                </div>
+                <span style="font-weight: 600;">${services.customApp.price > 0 ? '$' + services.customApp.price.toFixed(2) : escapeHtml(T.included)}</span>
+              </div>
+              ` : ''}
+              ${services.tabletConfig?.enabled ? `
+              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                <div>
+                  <span>${escapeHtml(T.tablet_config)}</span>
+                  <div style="font-size: 0.8rem; color: var(--luxury-slate); margin-top: 0.25rem;">${escapeHtml(T.tablet_config_desc)}</div>
+                </div>
+                <span style="font-weight: 600;">${services.tabletConfig.price > 0 ? '$' + services.tabletConfig.price.toFixed(2) : escapeHtml(T.included)}</span>
+              </div>
+              ` : ''}
+              ${oneTimeTotal > 0 ? `
+              <div style="display: flex; justify-content: space-between; padding: 1rem 0; margin-top: 0.5rem; border-top: 2px solid var(--luxury-gold); font-size: 1.1rem; font-weight: 600;">
+                <span>Total (${escapeHtml(T.one_time)})</span>
+                <span style="color: var(--luxury-charcoal);">$${oneTimeTotal.toFixed(2)}</span>
+              </div>
+              ` : ''}
+            </div>
+            ` : ''}
+
             <div style="text-align: center; margin-top: 1.5rem; padding: 1rem; background: rgba(201, 168, 106, 0.1); border-radius: 4px;">
               <p style="font-size: 0.9rem; color: var(--luxury-charcoal); margin: 0.25rem 0; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--luxury-gold); margin-right: 0.5rem;"></i> ${escapeHtml(T.modules_included)}</p>
               <p style="font-size: 0.85rem; color: var(--luxury-slate); margin: 0.25rem 0; font-style: italic;">${escapeHtml(T.extra_modules_note)}</p>

@@ -125,6 +125,31 @@ const ProposalStorage = {
    * Get form data as an object
    */
   getFormData() {
+    // Get services data
+    const services = {};
+    const buildingSetupEl = document.getElementById('serviceBuildingSetup');
+    const customAppEl = document.getElementById('serviceCustomApp');
+    const tabletConfigEl = document.getElementById('serviceTabletConfig');
+
+    if (buildingSetupEl?.checked) {
+      services.buildingSetup = {
+        enabled: true,
+        price: parseFloat(document.getElementById('priceBuildingSetup')?.value) || 0
+      };
+    }
+    if (customAppEl?.checked) {
+      services.customApp = {
+        enabled: true,
+        price: parseFloat(document.getElementById('priceCustomApp')?.value) || 0
+      };
+    }
+    if (tabletConfigEl?.checked) {
+      services.tabletConfig = {
+        enabled: true,
+        price: parseFloat(document.getElementById('priceTabletConfig')?.value) || 0
+      };
+    }
+
     return {
       buildingName: document.getElementById('buildingName')?.value || '',
       tagline: document.getElementById('tagline')?.value || '',
@@ -136,7 +161,8 @@ const ProposalStorage = {
       validUntil: document.getElementById('validUntil')?.value || '',
       terms: document.getElementById('terms')?.value || '',
       highlightedFeatures: Array.from(document.querySelectorAll('input[name="features"]:checked'))
-        .map(cb => cb.value)
+        .map(cb => cb.value),
+      services: Object.keys(services).length > 0 ? services : null
     };
   },
 
@@ -165,6 +191,35 @@ const ProposalStorage = {
         cb.checked = data.highlightedFeatures.includes(cb.value);
       });
     }
+
+    // Load services
+    if (data.services) {
+      const buildingSetupEl = document.getElementById('serviceBuildingSetup');
+      const customAppEl = document.getElementById('serviceCustomApp');
+      const tabletConfigEl = document.getElementById('serviceTabletConfig');
+
+      if (buildingSetupEl) {
+        buildingSetupEl.checked = data.services.buildingSetup?.enabled || false;
+        const priceEl = document.getElementById('priceBuildingSetup');
+        if (priceEl && data.services.buildingSetup?.price !== undefined) {
+          priceEl.value = data.services.buildingSetup.price;
+        }
+      }
+      if (customAppEl) {
+        customAppEl.checked = data.services.customApp?.enabled || false;
+        const priceEl = document.getElementById('priceCustomApp');
+        if (priceEl && data.services.customApp?.price !== undefined) {
+          priceEl.value = data.services.customApp.price;
+        }
+      }
+      if (tabletConfigEl) {
+        tabletConfigEl.checked = data.services.tabletConfig?.enabled || false;
+        const priceEl = document.getElementById('priceTabletConfig');
+        if (priceEl && data.services.tabletConfig?.price !== undefined) {
+          priceEl.value = data.services.tabletConfig.price;
+        }
+      }
+    }
   },
 
   /**
@@ -187,6 +242,7 @@ const ProposalStorage = {
     if (formData.highlightedFeatures?.length > 0) {
       proposalData.highlighted = formData.highlightedFeatures;
     }
+    if (formData.services) proposalData.services = formData.services;
 
     // Encode as base64 JSON
     const encodedData = btoa(JSON.stringify(proposalData));
@@ -222,7 +278,8 @@ const ProposalStorage = {
         contractTerm: proposalData.contractTerm || proposalData.terms || '',
         validUntil: proposalData.validUntil || '',
         terms: proposalData.notes || '',
-        highlightedFeatures: proposalData.highlighted || []
+        highlightedFeatures: proposalData.highlighted || [],
+        services: proposalData.services || null
       };
 
       this.loadFormData(data);
@@ -253,6 +310,7 @@ const ProposalStorage = {
     if (formData.highlightedFeatures?.length > 0) {
       proposalData.highlighted = formData.highlightedFeatures;
     }
+    if (formData.services) proposalData.services = formData.services;
 
     // Encrypt the data
     const encryptedData = await ProposalCrypto.encryptProposalData(proposalData);
@@ -287,7 +345,8 @@ const ProposalStorage = {
         contractTerm: proposalData.contractTerm || proposalData.terms || '',
         validUntil: proposalData.validUntil || '',
         terms: proposalData.notes || '',
-        highlightedFeatures: proposalData.highlighted || []
+        highlightedFeatures: proposalData.highlighted || [],
+        services: proposalData.services || null
       };
 
       this.loadFormData(data);

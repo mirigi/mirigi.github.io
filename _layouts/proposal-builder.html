@@ -504,6 +504,60 @@
         </div>
       </div>
 
+      <!-- Additional Services -->
+      <div class="form-section">
+        <h3>{{ t.additional_services }}</h3>
+        <p class="helper-text">{{ t.additional_services_help }}</p>
+
+        <!-- Building Setup -->
+        <div class="service-item" style="display: flex; align-items: flex-start; padding: 1rem; background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 4px; margin-bottom: 0.75rem;">
+          <input type="checkbox" id="serviceBuildingSetup" name="serviceBuildingSetup" checked style="margin-right: 0.75rem; margin-top: 0.25rem; width: 18px; height: 18px; accent-color: var(--luxury-gold);">
+          <div style="flex: 1;">
+            <label for="serviceBuildingSetup" style="font-weight: 600; color: var(--luxury-charcoal); cursor: pointer;">{{ t.building_setup }}</label>
+            <div style="font-size: 0.85rem; color: var(--luxury-slate); margin-top: 0.25rem;">{{ t.building_setup_desc }}</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 0.85rem; color: var(--luxury-slate);">{{ t.price }}:</span>
+            <div style="position: relative;">
+              <span style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--luxury-slate);">$</span>
+              <input type="number" step="0.01" min="0" class="form-control" id="priceBuildingSetup" name="priceBuildingSetup" value="0" style="width: 120px; padding-left: 1.5rem;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Custom App -->
+        <div class="service-item" style="display: flex; align-items: flex-start; padding: 1rem; background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 4px; margin-bottom: 0.75rem;">
+          <input type="checkbox" id="serviceCustomApp" name="serviceCustomApp" style="margin-right: 0.75rem; margin-top: 0.25rem; width: 18px; height: 18px; accent-color: var(--luxury-gold);">
+          <div style="flex: 1;">
+            <label for="serviceCustomApp" style="font-weight: 600; color: var(--luxury-charcoal); cursor: pointer;">{{ t.custom_app }} <span style="font-size: 0.8rem; font-weight: 400; color: var(--luxury-slate);">({{ t.optional }})</span></label>
+            <div style="font-size: 0.85rem; color: var(--luxury-slate); margin-top: 0.25rem;">{{ t.custom_app_desc }}</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 0.85rem; color: var(--luxury-slate);">{{ t.price }}:</span>
+            <div style="position: relative;">
+              <span style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--luxury-slate);">$</span>
+              <input type="number" step="0.01" min="0" class="form-control" id="priceCustomApp" name="priceCustomApp" style="width: 120px; padding-left: 1.5rem;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Tablet Config -->
+        <div class="service-item" style="display: flex; align-items: flex-start; padding: 1rem; background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 4px; margin-bottom: 0.75rem;">
+          <input type="checkbox" id="serviceTabletConfig" name="serviceTabletConfig" style="margin-right: 0.75rem; margin-top: 0.25rem; width: 18px; height: 18px; accent-color: var(--luxury-gold);">
+          <div style="flex: 1;">
+            <label for="serviceTabletConfig" style="font-weight: 600; color: var(--luxury-charcoal); cursor: pointer;">{{ t.tablet_config }} <span style="font-size: 0.8rem; font-weight: 400; color: var(--luxury-slate);">({{ t.optional }})</span></label>
+            <div style="font-size: 0.85rem; color: var(--luxury-slate); margin-top: 0.25rem;">{{ t.tablet_config_desc }}</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 0.85rem; color: var(--luxury-slate);">{{ t.price }}:</span>
+            <div style="position: relative;">
+              <span style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--luxury-slate);">$</span>
+              <input type="number" step="0.01" min="0" class="form-control" id="priceTabletConfig" name="priceTabletConfig" style="width: 120px; padding-left: 1.5rem;">
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Salesperson Information -->
       <div class="form-section">
         <h3>{{ t.salesperson_details }}</h3>
@@ -690,6 +744,27 @@
       const selectedFeatures = Array.from(document.querySelectorAll('input[name="features"]:checked'))
         .map(checkbox => checkbox.value);
 
+      // Get additional services
+      const services = {};
+      if (document.getElementById('serviceBuildingSetup').checked) {
+        services.buildingSetup = {
+          enabled: true,
+          price: parseFloat(document.getElementById('priceBuildingSetup').value) || 0
+        };
+      }
+      if (document.getElementById('serviceCustomApp').checked) {
+        services.customApp = {
+          enabled: true,
+          price: parseFloat(document.getElementById('priceCustomApp').value) || 0
+        };
+      }
+      if (document.getElementById('serviceTabletConfig').checked) {
+        services.tabletConfig = {
+          enabled: true,
+          price: parseFloat(document.getElementById('priceTabletConfig').value) || 0
+        };
+      }
+
       // Build proposal data object
       const proposalData = {
         buildingName: buildingName,
@@ -701,7 +776,8 @@
         terms: contractTerm || undefined,
         validUntil: validUntil || undefined,
         notes: terms || undefined,
-        highlighted: selectedFeatures.length > 0 ? selectedFeatures : undefined
+        highlighted: selectedFeatures.length > 0 ? selectedFeatures : undefined,
+        services: Object.keys(services).length > 0 ? services : undefined
       };
 
       // Remove undefined values

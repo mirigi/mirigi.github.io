@@ -96,6 +96,15 @@ defaults:
       path: "fr/"
     values:
       lang: "fr"
+  # Exclude proposal pages from sitemap (internal sales tools)
+  - scope:
+      path: "proposal*.html"
+    values:
+      sitemap: false
+  - scope:
+      path: "*/proposal*.html"
+    values:
+      sitemap: false
 
 
 

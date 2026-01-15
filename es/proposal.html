@@ -1,9 +1,9 @@
 ---
 layout: null
-lang: en
-title: Custom Proposal - Mirigi
-description: Customized sales proposal for your building
-permalink: /proposal.html
+lang: es
+title: Propuesta Personalizada - Mirigi
+description: Propuesta de venta personalizada para su edificio
+permalink: /es/proposal.html
 ---
 {% assign t = site.data[page.lang] %}
 <!DOCTYPE html>
@@ -223,7 +223,7 @@ permalink: /proposal.html
 
   <div class="brochure-print-instructions no-print" style="display: none;" id="printInstructions">
     <p><strong>{{ t.print_tip }}:</strong></p>
-    <p>File &rarr; Print &rarr; Save as PDF</p>
+    <p>Archivo &rarr; Imprimir &rarr; Guardar como PDF</p>
     <p>{{ t.print_enable_backgrounds }}</p>
   </div>
 
@@ -312,7 +312,7 @@ permalink: /proposal.html
 
     // Parse URL parameters
     const urlParams = new URLSearchParams(window.location.search);
-    const buildingName = urlParams.get('buildingName') || 'Your Building';
+    const buildingName = urlParams.get('buildingName') || 'Su Edificio';
     const tagline = urlParams.get('tagline') || '';
     const pricing = urlParams.get('pricing') || '';
     const units = urlParams.get('units') || '';
@@ -430,12 +430,12 @@ permalink: /proposal.html
               <h4 style="font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--luxury-charcoal); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--luxury-gold);">${escapeHtml(T.base_platform)}</h4>
               <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
                 <span>${escapeHtml(T.digital_portal_system)}</span>
-                <span style="font-weight: 600;">$${priceNum.toFixed(2)}/unit/${T.lang === 'en' ? 'month' : T.lang === 'es' ? 'mes' : 'mois'}</span>
+                <span style="font-weight: 600;">$${priceNum.toFixed(2)}/unidad/mes</span>
               </div>
               ${unitsNum > 0 ? `
                 <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
-                  <span>${unitsNum} units × $${priceNum.toFixed(2)}</span>
-                  <span style="font-weight: 600;">$${monthly.toFixed(2)}/${T.lang === 'en' ? 'month' : T.lang === 'es' ? 'mes' : 'mois'}</span>
+                  <span>${unitsNum} unidades × $${priceNum.toFixed(2)}</span>
+                  <span style="font-weight: 600;">$${monthly.toFixed(2)}/mes</span>
                 </div>
                 <div style="display: flex; justify-content: space-between; padding: 1rem 0; margin-top: 1rem; border-top: 2px solid var(--luxury-gold); font-size: 1.2rem; font-weight: 600;">
                   <span>${escapeHtml(T.annual_investment)}</span>

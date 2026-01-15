@@ -338,7 +338,16 @@
       step_4: {{ t.step_4 | jsonify }},
       monthly: {{ t.monthly | jsonify }},
       annual: {{ t.annual | jsonify }},
-      per_unit_year: {{ t.per_unit_year | jsonify }}
+      per_unit_year: {{ t.per_unit_year | jsonify }},
+      building_setup: {{ t.building_setup | jsonify }},
+      building_setup_desc: {{ t.building_setup_desc | jsonify }},
+      custom_app: {{ t.custom_app | jsonify }},
+      custom_app_desc: {{ t.custom_app_desc | jsonify }},
+      optional: {{ t.optional | jsonify }},
+      tablet_config: {{ t.tablet_config | jsonify }},
+      tablet_config_desc: {{ t.tablet_config_desc | jsonify }},
+      modules_included: {{ t.modules_included | jsonify }},
+      extra_modules_note: {{ t.extra_modules_note | jsonify }}
     };
 
     // Site base URL for absolute links
@@ -513,8 +522,8 @@
       if (pricing) {
         const priceNum = parseFloat(pricing) || 0;
         const unitsNum = parseInt(units) || 0;
-        const monthly = priceNum * unitsNum;
-        const annual = monthly * 12;
+        const monthlyTotal = priceNum * unitsNum;
+        const annual = monthlyTotal * 12;
 
         html += `
           <div class="brochure-page proposal-pricing">
@@ -525,19 +534,44 @@
                 <span>${escapeHtml(T.digital_portal_system)}</span>
                 <span style="font-weight: 600;">$${priceNum.toFixed(2)}/unit/${T.lang === 'en' ? 'month' : T.lang === 'es' ? 'mes' : 'mois'}</span>
               </div>
-              ${unitsNum > 0 ? `
-                <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
-                  <span>${unitsNum} units × $${priceNum.toFixed(2)}</span>
-                  <span style="font-weight: 600;">$${monthly.toFixed(2)}/${T.lang === 'en' ? 'month' : T.lang === 'es' ? 'mes' : 'mois'}</span>
+              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                <div>
+                  <span>${escapeHtml(T.building_setup)}</span>
+                  <div style="font-size: 0.8rem; color: var(--luxury-slate); margin-top: 0.25rem;">${escapeHtml(T.building_setup_desc)}</div>
                 </div>
-                <div style="display: flex; justify-content: space-between; padding: 1rem 0; margin-top: 1rem; border-top: 2px solid var(--luxury-gold); font-size: 1.2rem; font-weight: 600;">
+                <span style="font-weight: 600;">${escapeHtml(T.included)}</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; opacity: 0.7;">
+                <div>
+                  <span>${escapeHtml(T.custom_app)} <em style="font-size: 0.85rem;">(${escapeHtml(T.optional)})</em></span>
+                  <div style="font-size: 0.8rem; color: var(--luxury-slate); margin-top: 0.25rem;">${escapeHtml(T.custom_app_desc)}</div>
+                </div>
+                <span style="font-weight: 600;">—</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; opacity: 0.7;">
+                <div>
+                  <span>${escapeHtml(T.tablet_config)} <em style="font-size: 0.85rem;">(${escapeHtml(T.optional)})</em></span>
+                  <div style="font-size: 0.8rem; color: var(--luxury-slate); margin-top: 0.25rem;">${escapeHtml(T.tablet_config_desc)}</div>
+                </div>
+                <span style="font-weight: 600;">—</span>
+              </div>
+              ${unitsNum > 0 ? `
+                <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; margin-top: 0.5rem; border-top: 1px solid #eee;">
+                  <span>${unitsNum} units × $${priceNum.toFixed(2)}</span>
+                  <span style="font-weight: 600;">$${monthlyTotal.toFixed(2)}/${T.lang === 'en' ? 'month' : T.lang === 'es' ? 'mes' : 'mois'}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 1rem 0; margin-top: 0.5rem; border-top: 2px solid var(--luxury-gold); font-size: 1.2rem; font-weight: 600;">
                   <span>${escapeHtml(T.annual_investment)}</span>
                   <span style="color: var(--luxury-charcoal);">$${annual.toFixed(2)}</span>
                 </div>
-                <p style="text-align: center; font-size: 0.9rem; color: var(--luxury-slate); margin-top: 1rem; font-style: italic;">$${(annual / unitsNum).toFixed(2)}/${escapeHtml(T.per_unit_year)}</p>
+                <p style="text-align: center; font-size: 0.9rem; color: var(--luxury-slate); margin-top: 0.5rem; font-style: italic;">$${(annual / unitsNum).toFixed(2)}/${escapeHtml(T.per_unit_year)}</p>
               ` : ''}
             </div>
-            <div style="text-align: center; margin-top: 2rem;">
+            <div style="text-align: center; margin-top: 1.5rem; padding: 1rem; background: rgba(201, 168, 106, 0.1); border-radius: 4px;">
+              <p style="font-size: 0.9rem; color: var(--luxury-charcoal); margin: 0.25rem 0; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--luxury-gold); margin-right: 0.5rem;"></i> ${escapeHtml(T.modules_included)}</p>
+              <p style="font-size: 0.85rem; color: var(--luxury-slate); margin: 0.25rem 0; font-style: italic;">${escapeHtml(T.extra_modules_note)}</p>
+            </div>
+            <div style="text-align: center; margin-top: 1.5rem;">
               <p style="font-size: 0.95rem; color: var(--luxury-slate); margin: 0.5rem 0;"><i class="fas fa-bolt" style="color: var(--luxury-gold); margin-right: 0.5rem;"></i> ${escapeHtml(T.roi_message)}</p>
               <p style="font-size: 0.95rem; color: var(--luxury-slate); margin: 0.5rem 0;"><i class="fas fa-chart-line" style="color: var(--luxury-gold); margin-right: 0.5rem;"></i> ${escapeHtml(T.staff_workload)}</p>
               <p style="font-size: 0.95rem; color: var(--luxury-slate); margin: 0.5rem 0;"><i class="fas fa-heart" style="color: var(--luxury-gold); margin-right: 0.5rem;"></i> ${escapeHtml(T.resident_satisfaction)}</p>

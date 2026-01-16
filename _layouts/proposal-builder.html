@@ -425,6 +425,40 @@
         flex-direction: column;
       }
     }
+
+    /* Select All button */
+    .btn-select-all {
+      background: var(--luxury-gold);
+      color: white;
+      white-space: nowrap;
+    }
+
+    .btn-select-all:hover {
+      background: #b8974e;
+    }
+
+    .btn-select-all i {
+      margin-right: 0.25rem;
+    }
+
+    /* Features error message */
+    .features-error {
+      padding: 0.75rem 1rem;
+      background: #fff3f3;
+      border: 1px solid #dc3545;
+      border-radius: 4px;
+      color: #dc3545;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .features-error i {
+      margin-right: 0.5rem;
+    }
+
+    .feature-checkbox-grid.has-error .feature-checkbox-item {
+      border-color: #dc3545;
+    }
   </style>
 </head>
 <body>
@@ -599,7 +633,15 @@
       <!-- Features Selection -->
       <div class="form-section">
         <h3>{{ t.highlighted_features }}</h3>
-        <p class="helper-text">{{ t.highlighted_features_help }}</p>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <p class="helper-text" style="margin: 0;">{{ t.highlighted_features_help }}</p>
+          <button type="button" class="btn-sm btn-select-all" id="selectAllFeaturesBtn">
+            <i class="fas fa-check-double"></i> {{ t.select_all }}
+          </button>
+        </div>
+        <div id="featuresError" class="features-error" style="display: none;">
+          <i class="fas fa-exclamation-circle"></i> {{ t.min_features_required }}
+        </div>
         <div class="feature-checkbox-grid" id="featuresGrid">
           <!-- Features will be populated by JavaScript -->
         </div>
@@ -690,6 +732,27 @@
       featuresGrid.appendChild(div);
     });
 
+    // Select All features button
+    document.getElementById('selectAllFeaturesBtn').addEventListener('click', function() {
+      const checkboxes = document.querySelectorAll('input[name="features"]');
+      const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+      checkboxes.forEach(cb => cb.checked = !allChecked);
+      // Clear error state if we now have enough features
+      clearFeaturesError();
+    });
+
+    // Clear features error state
+    function clearFeaturesError() {
+      const selectedCount = document.querySelectorAll('input[name="features"]:checked').length;
+      if (selectedCount >= 3) {
+        document.getElementById('featuresError').style.display = 'none';
+        document.getElementById('featuresGrid').classList.remove('has-error');
+      }
+    }
+
+    // Add event listener to feature checkboxes to clear error on selection
+    document.getElementById('featuresGrid').addEventListener('change', clearFeaturesError);
+
     // Set default valid until date (30 days from now)
     const validUntilInput = document.getElementById('validUntil');
     const defaultDate = new Date();
@@ -729,6 +792,15 @@
     document.getElementById('proposalForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
+      // Validate at least 3 features selected
+      const selectedFeatures = document.querySelectorAll('input[name="features"]:checked');
+      if (selectedFeatures.length < 3) {
+        document.getElementById('featuresError').style.display = 'block';
+        document.getElementById('featuresGrid').classList.add('has-error');
+        document.getElementById('featuresGrid').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
       // Gather form data
       const buildingName = document.getElementById('buildingName').value;
       const tagline = document.getElementById('tagline').value;
@@ -740,9 +812,8 @@
       const validUntil = document.getElementById('validUntil').value;
       const terms = document.getElementById('terms').value;
 
-      // Get selected features
-      const selectedFeatures = Array.from(document.querySelectorAll('input[name="features"]:checked'))
-        .map(checkbox => checkbox.value);
+      // Get selected feature slugs (using already-validated selectedFeatures NodeList)
+      const selectedFeatureSlugs = Array.from(selectedFeatures).map(checkbox => checkbox.value);
 
       // Get additional services
       const services = {};
@@ -776,7 +847,7 @@
         terms: contractTerm || undefined,
         validUntil: validUntil || undefined,
         notes: terms || undefined,
-        highlighted: selectedFeatures.length > 0 ? selectedFeatures : undefined,
+        highlighted: selectedFeatureSlugs.length > 0 ? selectedFeatureSlugs : undefined,
         services: Object.keys(services).length > 0 ? services : undefined
       };
 

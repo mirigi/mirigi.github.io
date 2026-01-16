@@ -8,8 +8,13 @@ more_info: "Más información"
 location: "Ubicación"
 customers_title: "Edificios Que Confían en Nosotros"
 # Brochure
+brochure: "Folleto"
 brochure_subtitle: "Conserjería Digital para Edificios de Lujo"
 print_brochure: "Imprimir Folleto"
+print_modal_title: "Opciones de Impresión"
+print_modal_text: "¿Le gustaría imprimir nuestro folleto profesional?"
+print_modal_yes: "Sí, abrir folleto"
+print_modal_no: "No, imprimir esta página"
 print_tip: "Consejo"
 print_enable_backgrounds: "Activar 'Gráficos de fondo'"
 # Proposal

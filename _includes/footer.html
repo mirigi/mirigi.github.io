@@ -2,7 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="mx-auto">
-        <a href="/{{page.lang}}/policy.html">Privacy policy</a> <span>&copy; {{ "now" | date: "%Y" }}</span>
+        <a href="/{{page.lang}}/policy.html">Privacy policy</a>
+        <span>&copy; {{ "now" | date: "%Y" }}</span>
       </div>
     </div>
     <div class="row">
@@ -14,6 +15,180 @@
     </div>
   </div>
 </footer>
+
+{% unless page.layout == 'brochure' %}
+<!-- Print Intercept Modal -->
+<div id="printModal" class="print-modal-overlay" style="display: none;">
+  <div class="print-modal">
+    <div class="print-modal-icon">
+      <i class="fas fa-file-pdf"></i>
+    </div>
+    <h3 class="print-modal-title">{{ site.data[page.lang].print_modal_title }}</h3>
+    <p class="print-modal-text">{{ site.data[page.lang].print_modal_text }}</p>
+    <div class="print-modal-buttons">
+      <a href="{% if page.lang == 'en' %}/brochure.html{% else %}/{{ page.lang }}/brochure.html{% endif %}" class="print-modal-btn print-modal-btn-primary">
+        <i class="fas fa-check"></i> {{ site.data[page.lang].print_modal_yes }}
+      </a>
+      <button type="button" class="print-modal-btn print-modal-btn-secondary" id="printThisPage">
+        <i class="fas fa-print"></i> {{ site.data[page.lang].print_modal_no }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .print-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .print-modal {
+    background: white;
+    border-radius: 8px;
+    padding: 2.5rem;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .print-modal-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #c9a227 0%, #d4af37 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+  .print-modal-icon i {
+    font-size: 1.5rem;
+    color: white;
+  }
+  .print-modal-title {
+    color: #333;
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  .print-modal-text {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 1.75rem;
+    line-height: 1.5;
+  }
+  .print-modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .print-modal-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+  }
+  .print-modal-btn-primary {
+    background: linear-gradient(135deg, #c9a227 0%, #d4af37 100%);
+    color: white;
+  }
+  .print-modal-btn-primary:hover {
+    background: linear-gradient(135deg, #b8911f 0%, #c9a227 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(201, 162, 39, 0.4);
+    color: white;
+    text-decoration: none;
+  }
+  .print-modal-btn-secondary {
+    background: #f5f5f5;
+    color: #555;
+  }
+  .print-modal-btn-secondary:hover {
+    background: #eee;
+  }
+  @media print {
+    .print-modal-overlay { display: none !important; }
+  }
+</style>
+
+<script>
+(function() {
+  var modal = document.getElementById('printModal');
+  var printThisBtn = document.getElementById('printThisPage');
+  var allowPrint = false;
+
+  function showModal(e) {
+    if (allowPrint) return;
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    modal.style.display = 'flex';
+  }
+
+  function hideModal() {
+    modal.style.display = 'none';
+  }
+
+  // Intercept Ctrl+P / Cmd+P
+  document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+      showModal(e);
+    }
+  });
+
+  // Close modal on overlay click
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      hideModal();
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      hideModal();
+    }
+  });
+
+  // Print this page button
+  printThisBtn.addEventListener('click', function() {
+    hideModal();
+    allowPrint = true;
+    setTimeout(function() {
+      window.print();
+      allowPrint = false;
+    }, 100);
+  });
+})();
+</script>
+{% endunless %}
 
   <script src="{{ '/vendor/jquery/jquery.min.js' | relative_url }}"></script>
   <script src="{{ '/vendor/bootstrap/js/bootstrap.bundle.min.js' | relative_url }}"></script>

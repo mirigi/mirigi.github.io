@@ -8,8 +8,13 @@ more_info: "Plus d'informations"
 location: "Emplacement"
 customers_title: "Bâtiments Qui Nous Font Confiance"
 # Brochure
+brochure: "Brochure"
 brochure_subtitle: "Conciergerie Numérique pour Immeubles de Luxe"
 print_brochure: "Imprimer la Brochure"
+print_modal_title: "Options d'Impression"
+print_modal_text: "Souhaitez-vous imprimer notre brochure professionnelle?"
+print_modal_yes: "Oui, ouvrir la brochure"
+print_modal_no: "Non, imprimer cette page"
 print_tip: "Conseil"
 print_enable_backgrounds: "Activer 'Graphiques d'arrière-plan'"
 # Proposal

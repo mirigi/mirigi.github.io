@@ -202,6 +202,8 @@ body {
   let isDragging  = false;
 
   // ── Utilities ───────────────────────────────────────────────
+  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
   function sleep(ms) {
     return new Promise(r => setTimeout(r, ms));
   }
@@ -242,8 +244,8 @@ body {
 
     card.innerHTML = `
       <div class="card-header">
-        <span class="card-icon">${item.icon}</span>
-        <span class="card-scenario">${item.scenario}</span>
+        <span class="card-icon">${esc(item.icon)}</span>
+        <span class="card-scenario">${esc(item.scenario)}</span>
       </div>
       <div class="card-body">
         <div class="msg-row msg-row--user">
@@ -358,7 +360,8 @@ body {
       const pt = e.touches ? e.touches[0] : e;
       const dx = pt.clientX - prevX;
       const dy = pt.clientY - prevY;
-      vx = dx; vy = dy;
+      vx = vx * 0.6 + dx * 0.4;
+      vy = vy * 0.6 + dy * 0.4;
       ox += dx; oy += dy;
       prevX = pt.clientX;
       prevY = pt.clientY;
@@ -377,8 +380,9 @@ body {
       const cardW = card.offsetWidth;
       const cardH = card.offsetHeight;
 
-      const minX = -(cw - cardW) / 2;
-      const maxX =  (cw - cardW) / 2;
+      const DRAG_MARGIN_X = 80;
+      const minX = -DRAG_MARGIN_X;
+      const maxX =  DRAG_MARGIN_X;
       const minY = -(cardH * 0.5);
       const maxY = ch - cardH * 0.5;
 

@@ -5,7 +5,7 @@ image: /img/customers/torre-one.jpg
 image_credits: ''
 icon:
 maplink: https://maps.app.goo.gl/search/?q=Av.+Roosevelt+Av.+San+Remo+Punta+del+Este
-link: https://www.propiedades.com.uy/proyecto/178/Torre-One-I-Roosevelt-Punta-del-Este-Maldonado/
+link:
 title: Torre One Punta del Este
 keywords: Torre One, Punta del Este, Uruguay, tour de luxe, copropriété, vie en bord de mer
 description: "Torre One, tour de luxe emblématique à Punta del Este, Uruguay — où les vues sur l'Atlantique rencontrent une vie en copropriété de classe mondiale."

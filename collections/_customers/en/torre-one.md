@@ -5,7 +5,7 @@ image: /img/customers/torre-one.jpg
 image_credits: ''
 icon:
 maplink: https://maps.app.goo.gl/search/?q=Av.+Roosevelt+Av.+San+Remo+Punta+del+Este
-link: https://www.propiedades.com.uy/proyecto/178/Torre-One-I-Roosevelt-Punta-del-Este-Maldonado/
+link:
 title: Torre One Punta del Este
 keywords: Torre One, Punta del Este, Uruguay, luxury tower, condominium, beachside living
 description: "Torre One, an iconic luxury tower in Punta del Este, Uruguay — where Atlantic views meet world-class condominium living."

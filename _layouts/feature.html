@@ -10,8 +10,16 @@
 
   <section class="about-section bg-light">
     <div class="container showcase smallimage ">
-      <div class="image" style="background-image: url('{{resolved_image}}')">
-      </div>
+      {% if page.miniapp %}
+        <iframe
+          src="/miniapps/{{ page.miniapp }}/?lang={{ page.lang }}&size=large"
+          class="miniapp-frame miniapp-frame--large"
+          frameborder="0" scrolling="no" allowtransparency="true">
+        </iframe>
+      {% else %}
+        <div class="image" style="background-image: url('{{resolved_image}}')">
+        </div>
+      {% endif %}
       <div class="content" id="content">
         <div>
           <div class="featured-text-right text-left text-lg-left">

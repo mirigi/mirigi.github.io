@@ -21,6 +21,9 @@
             {{site.data[page.lang].more_info}} <i class="fas fa-external-link-alt fa-xs"></i>
           </a>
           {% endif %}
+          {% if customer.link and customer.maplink %}
+          <span style="color:#ccc; margin: 0 0.4em;">|</span>
+          {% endif %}
           {% if customer.maplink %}
           <a href="{{customer.maplink}}" target="_blank" rel="noopener noreferrer">
             {{site.data[page.lang].location}} <i class="fas fa-external-link-alt fa-xs"></i>

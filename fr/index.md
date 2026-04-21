@@ -1,18 +1,20 @@
 ---
 layout: index
 lang: fr
-header:  Votre Service
-subheader: Conciergerie numérique intelligente
-aboutTitle: CONCIERGERIE INTELLIGENTE
+header: À Votre Service
+subheader: Conciergerie IA
+aboutTitle: CONCIERGERIE IA
 emailLabel: Email
 phoneLabel: Téléphone
 customersTitle: Nos clients de luxe incluent
 customersText: Contemplez les merveilles architecturales qui font confiance à Mirigi pour leur excellence opérationnelle. Ces bâtiments emblématiques font partie de notre clientèle estimée, montrant l'intégration transparente et l'efficacité supérieure que Mirigi apporte.
 contactText: Rejoignez les rangs de ces structures distinguées et levez le potentiel de votre immeuble avec Mirigi. Contactez-nous via l'un de nos canaux pour planifier une démonstration et découvrir comment les services de conciergerie numérique de Mirigi peuvent dynamiser votre développement. Vivez la transformation et l'innovation que seul Mirigi peut offrir !
-title: Service de Conciergerie Numérique Mirigi
-keywords: conciergerie intelligente, gestion immobilière, expérience résident, vie de luxe, automatisation, immeuble intelligent
-description: "Mirigi améliore les interactions résident-bâtiment grâce à un service de conciergerie intelligent, interfaces de luxe pour réservations, etc."
+title: Mirigi Conciergerie IA
+keywords: conciergerie ia, miri, gestion immobilière, expérience résident, vie de luxe, automatisation, immeuble intelligent
+description: "Découvrez Miri — la conciergerie IA de Mirigi qui agit immédiatement sur toute demande résident : commandes repas, voiturier, réservations et plus, en une seule conversation."
 ---
+Découvrez Miri — la conciergerie IA qui agit, tout simplement. Les résidents s'expriment naturellement pour passer des commandes repas, demander leur voiture, réserver des installations et plus encore. Pas de menus d'application à parcourir, pas de formulaires à remplir. Il suffit de demander.
+
 Découvrez l'avenir de la vie en copropriété avec Mirigi, le service de conciergerie révolutionnaire qui transforme les interactions entre résidents et immeubles en expériences numériques fluides. Élevez votre style de vie avec des interfaces de luxe pour les réservations, le service de voiturier, les flux de travail, les livraisons et <a href='#features' class='js-scroll-trigger'>plus encore</a>.
 
 Donnez à votre personnel d'immeuble les moyens de fournir un service inégalé avec efficacité et précision grâce à Mirigi. Rationalisez les opérations et augmentez la productivité tandis que les résidents profitent d'un accès luxueux aux services de la copropriété via leurs appareils mobiles ou leurs écrans tactiles muraux.

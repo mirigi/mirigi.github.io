@@ -9,7 +9,7 @@ location: "Emplacement"
 customers_title: "Bâtiments Qui Nous Font Confiance"
 # Brochure
 brochure: "Brochure"
-brochure_subtitle: "Conciergerie Numérique pour Immeubles de Luxe"
+brochure_subtitle: "Conciergerie IA pour Immeubles de Luxe"
 print_brochure: "Imprimer la Brochure"
 print_modal_title: "Options d'Impression"
 print_modal_text: "Souhaitez-vous imprimer notre brochure professionnelle?"

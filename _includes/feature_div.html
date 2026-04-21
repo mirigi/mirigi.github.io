@@ -1,7 +1,8 @@
-{% if feature.image contains "http://" or feature.image contains "https://" or feature.image | slice: 0, 1 == "/" %} 
-{% assign image = feature.image %} 
+{% include lang-image.html image=feature.image lang=page.lang %}
+{% if resolved_image contains "http://" or resolved_image contains "https://" or resolved_image | slice: 0, 1 == "/" %}
+{% assign image = resolved_image %}
 {% else %}
-{% assign image = "/" | append:page.url | append: "/" | append: feature.image %}
+{% assign image = "/" | append:page.url | append: "/" | append: resolved_image %}
 {% endif %}
 {% if is_even == 0 %}
 <div class="showcase bigimage dark">

@@ -1,0 +1,13 @@
+{% if include.image %}
+  {% assign _ri_ext = include.image | split: '.' | last %}
+  {% assign _ri_base = include.image | split: '.' | first %}
+  {% assign _ri_lang_path = _ri_base | append: '_' | append: include.lang | append: '.' | append: _ri_ext %}
+  {% assign _ri_matches = site.static_files | where: "path", _ri_lang_path %}
+  {% if _ri_matches.size > 0 %}
+    {% assign resolved_image = _ri_lang_path %}
+  {% else %}
+    {% assign resolved_image = include.image %}
+  {% endif %}
+{% else %}
+  {% assign resolved_image = "" %}
+{% endif %}

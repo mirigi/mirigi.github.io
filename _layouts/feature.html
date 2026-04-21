@@ -1,9 +1,5 @@
 {% include header.html %}
-{% assign _img_ext = page.image | split: '.' | last %}
-{% assign _img_base = page.image | split: '.' | first %}
-{% assign _lang_img = _img_base | append: '_' | append: page.lang | append: '.' | append: _img_ext %}
-{% assign _feature_image = page.image %}
-{% for _f in site.static_files %}{% if _f.path == _lang_img %}{% assign _feature_image = _lang_img %}{% endif %}{% endfor %}
+{% include lang-image.html image=page.image lang=page.lang %}
 <main>
   <style>
 .bg-light > .showcase > .content {
@@ -14,7 +10,7 @@
 
   <section class="about-section bg-light">
     <div class="container showcase smallimage ">
-      <div class="image" style="background-image: url('{{_feature_image}}')">
+      <div class="image" style="background-image: url('{{resolved_image}}')">
       </div>
       <div class="content" id="content">
         <div>

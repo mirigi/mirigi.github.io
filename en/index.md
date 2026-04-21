@@ -2,17 +2,19 @@
 layout: index
 lang: en
 header: At Your Service
-subheader: Smart concierge
-aboutTitle: SMART CONCIERGE
+subheader: AI Concierge
+aboutTitle: AI CONCIERGE
 emailLabel: Email
 phoneLabel: Phone
 customersTitle: Our luxury customers include
 customersText: Behold the architectural marvels that trust Mirigi for their operational excellence. These iconic buildings are part of our esteemed clientele, showcasing the seamless integration and superior efficiency that Mirigi brings. 
 contactText: Join the ranks of these distinguished structures and elevate your building's potential with Mirigi. Contact us through any of our channels to schedule a demonstration and discover how Mirigi's digital counseling can boost your development! Experience the transformation and innovation that only Mirigi can offer.
-title: Mirigi Smart Concierge 
-keywords: smart concierge, building management, resident experience, luxury living, automation, smart building
-description: "Mirigi's smart concierge enhances resident-building interactions, offering luxury interfaces for reservations, valet parking, and more."
+title: Mirigi AI Concierge
+keywords: ai concierge, miri, building management, resident experience, luxury living, automation, smart building
+description: "Meet Miri — Mirigi's AI concierge that acts on any resident request: food orders, valet, reservations, and more, all in one conversation."
 ---
+Meet Miri — the AI concierge that just acts. Residents chat naturally to place food orders, request their car, book amenities, and more. No app menus to navigate, no forms to fill. Just ask.
+
 Experience the future of condominium living with Mirigi, the groundbreaking concierge service that transforms resident-building interactions into seamless digital experiences. Elevate your lifestyle with luxury interfaces for reservations, valet parking, workflows, deliveries, and <a href='#features' class='js-scroll-trigger'>more</a>.
 
 Empower your building staff with Mirigi, enabling them to deliver unparalleled service with efficiency and precision. Streamline operations and boost productivity while residents indulge in luxurious access to condominium services via their mobile devices or in-wall touch panels.

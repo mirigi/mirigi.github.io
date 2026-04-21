@@ -11,9 +11,9 @@ customersText: Contemple las maravillas arquitectónicas que confían en Mirigi 
 contactText: Únase a las filas de estas distinguidas estructuras y eleve el potencial de su edificio con Mirigi. Contáctenos a través de cualquiera de nuestros canales para programar una demostración y descubrir cómo los servicios de conserjería digital de Mirigi pueden impulsar su desarrollo. Experimente la transformación e innovación que solo Mirigi puede ofrecer!
 title: Mirigi Conserje IA
 keywords: conserje ia, miri, gestión de edificios, experiencia del residente, vida de lujo, automatización, edificio inteligente
-description: "Conoce a Miri — la conserje IA de Mirigi que actúa ante cualquier solicitud del residente: pedidos de comida, valet, reservas y más, todo en una conversación."
+description: "Conoce a Miri — la primera conserje IA que actúa. No solo responde: hace el pedido, llama al valet, reserva amenidades, todo en una conversación."
 ---
-Conoce a Miri — la conserje IA que simplemente actúa. Los residentes conversan de forma natural para realizar pedidos de comida, solicitar su auto, reservar amenidades y más. Sin menús de aplicación que navegar, sin formularios que completar. Solo pregunta.
+Conoce a Miri — la primera conserje IA que actúa. Otros sistemas responden preguntas. Miri hace el pedido, llama al valet, reserva la amenidad — de principio a fin, en un solo chat. Sin aplicaciones que abrir, sin formularios que completar. Solo pregunta.
 
 Experimente el futuro de la vida en condominio con Mirigi, el innovador servicio de conserjería que transforma las interacciones entre residentes y edificios en experiencias digitales sin fisuras. Eleve su estilo de vida con interfaces de lujo para reservas, valet parking, flujos de trabajo, entregas y <a href='#features' class='js-scroll-trigger'>más</a>.
 

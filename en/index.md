@@ -13,7 +13,7 @@ title: Mirigi AI Concierge
 keywords: ai concierge, miri, building management, resident experience, luxury living, automation, smart building
 description: "Meet Miri — the first AI concierge that acts. Not just answers: places food orders, calls the valet, books amenities, all in one conversation."
 ---
-Meet Miri — the first AI concierge that acts. Other systems answer questions. Miri places the order, requests your car, books the amenity — end to end, in a single chat. No apps to open, no forms to fill. Just ask.
+Mirigi is the digital concierge platform for luxury condominiums — managing reservations, valet parking, deliveries, access control, and every service your building offers. At its core is Miri, the first AI concierge that acts. Other systems answer questions. Miri places the order, requests your car, books the amenity — end to end, in a single chat. No apps to open, no forms to fill. Just ask.
 
 Experience the future of condominium living with Mirigi, the groundbreaking concierge service that transforms resident-building interactions into seamless digital experiences. Elevate your lifestyle with luxury interfaces for reservations, valet parking, workflows, deliveries, and <a href='#features' class='js-scroll-trigger'>more</a>.
 

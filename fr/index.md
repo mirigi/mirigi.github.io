@@ -13,7 +13,7 @@ title: Mirigi Conciergerie IA
 keywords: conciergerie ia, miri, gestion immobilière, expérience résident, vie de luxe, automatisation, immeuble intelligent
 description: "Découvrez Miri — la première conciergerie IA qui agit. Pas seulement des réponses : elle passe la commande, appelle le voiturier, réserve les installations, en une seule conversation."
 ---
-Découvrez Miri — la première conciergerie IA qui agit. Les autres systèmes répondent aux questions. Miri passe la commande, appelle le voiturier, réserve l'installation — de bout en bout, en un seul chat. Pas d'application à ouvrir, pas de formulaire à remplir. Il suffit de demander.
+Mirigi est la plateforme de conciergerie numérique pour les immeubles de luxe — gérant les réservations, le service de voiturier, les livraisons, le contrôle d'accès et tous les services de votre immeuble. Au cœur de Mirigi se trouve Miri, la première conciergerie IA qui agit. Les autres systèmes répondent aux questions. Miri passe la commande, appelle le voiturier, réserve l'installation — de bout en bout, en un seul chat. Pas d'application à ouvrir, pas de formulaire à remplir. Il suffit de demander.
 
 Découvrez l'avenir de la vie en copropriété avec Mirigi, le service de conciergerie révolutionnaire qui transforme les interactions entre résidents et immeubles en expériences numériques fluides. Élevez votre style de vie avec des interfaces de luxe pour les réservations, le service de voiturier, les flux de travail, les livraisons et <a href='#features' class='js-scroll-trigger'>plus encore</a>.
 

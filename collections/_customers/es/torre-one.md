@@ -4,7 +4,7 @@ address: "Av. Roosevelt & Av. San Remo, Punta del Este, Uruguay"
 image: /img/customers/torre-one.jpg
 image_credits: ''
 icon:
-maplink: https://maps.app.goo.gl/search/?q=Av.+Roosevelt+Av.+San+Remo+Punta+del+Este
+maplink: https://www.google.com/maps/search/?api=1&query=Torre+One+Av+Roosevelt+Av+San+Remo+Punta+del+Este+Uruguay
 link:
 title: Torre One Punta del Este
 keywords: Torre One, Punta del Este, Uruguay, torre de lujo, condominio, vida frente al mar

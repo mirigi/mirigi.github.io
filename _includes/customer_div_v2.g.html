@@ -14,8 +14,9 @@
         <h3 class="text-black" style="text-transform: uppercase;">{{ customer.name }}</h3>
         <p class="text-black-50" >{{ customer.content | markdownify }}</p>
         <hr>
-        {% if customer.link %}
+        {% if customer.link or customer.maplink %}
         <div>
+          {% if customer.link %}
           <a href="{{customer.link}}">
             {{site.data[page.lang].more_info}}
           </a>
@@ -26,6 +27,7 @@
           </a>
           {% endif %}
         </div>
+        {% endif %}
       </div>
     </div>
   </div>

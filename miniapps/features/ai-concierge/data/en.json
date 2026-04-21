@@ -1,0 +1,32 @@
+[
+  {
+    "scenario": "Order food",
+    "icon": "🍝",
+    "user": "I'd like spaghetti carbonara and fresh orange juice.",
+    "miri": "Got it, I've placed your food order."
+  },
+  {
+    "scenario": "Request the car",
+    "icon": "🚗",
+    "user": "Please send the car to the entrance in ten minutes.",
+    "miri": "Understood, I've requested the car for you."
+  },
+  {
+    "scenario": "Reserve the barbecue",
+    "icon": "🍖",
+    "user": "Please reserve the barbecue for Saturday evening.",
+    "miri": "Sure, I've requested the barbecue reservation for Saturday evening."
+  },
+  {
+    "scenario": "Report a broken light",
+    "icon": "🔧",
+    "user": "There is a broken light on the ceiling of the hallway in my apartment.",
+    "miri": "Thanks, I've reported the broken hallway ceiling light to maintenance."
+  },
+  {
+    "scenario": "Book the gym",
+    "icon": "🏋️",
+    "user": "Can you book the gym for tomorrow at 7 am?",
+    "miri": "Done! The gym is booked for tomorrow at 7:00 AM."
+  }
+]

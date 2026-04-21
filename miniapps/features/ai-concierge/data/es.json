@@ -1,0 +1,32 @@
+[
+  {
+    "scenario": "Pedir comida",
+    "icon": "🍝",
+    "user": "Quiero espaguetis a la carbonara y jugo de naranja recién exprimido.",
+    "miri": "Listo, he realizado tu pedido de comida."
+  },
+  {
+    "scenario": "Pedir el coche",
+    "icon": "🚗",
+    "user": "Por favor, envía el coche a la entrada en diez minutos.",
+    "miri": "Entendido, he solicitado el coche para ti."
+  },
+  {
+    "scenario": "Reservar la parrilla",
+    "icon": "🍖",
+    "user": "Por favor, reserva la parrilla para el sábado por la noche.",
+    "miri": "Claro, he solicitado la reserva de la parrilla para el sábado."
+  },
+  {
+    "scenario": "Reportar una luz rota",
+    "icon": "🔧",
+    "user": "Hay una luz rota en el techo del pasillo de mi apartamento.",
+    "miri": "Gracias, he reportado la luz del pasillo a mantenimiento."
+  },
+  {
+    "scenario": "Reservar el gimnasio",
+    "icon": "🏋️",
+    "user": "¿Podés reservar el gimnasio mañana a las 7 am?",
+    "miri": "¡Listo! El gimnasio está reservado para mañana a las 7:00 AM."
+  }
+]

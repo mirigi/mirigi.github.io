@@ -1,9 +1,9 @@
 ---
-title: "Miri — The First AI Concierge That Acts"
+title: "Miri — The First AI Concierge Agent That Acts"
 image: "/img_mirigi/ai-concierge.jpg"
 layout: feature
 keywords: ai concierge, miri, chat, artificial intelligence, resident experience, automation
-description: "Miri is the first AI concierge that acts — not just answers. She places orders, calls the valet, and books amenities end-to-end."
+description: "Miri is the first AI concierge agent that acts — not just answers. She places orders, calls the valet, and books amenities end-to-end."
 ---
 
 Meet Miri, the first AI concierge built to act — not just to answer. Residents chat naturally — "I'd like Spaghetti Carbonara delivered to my unit" or "bring my car up in 10 minutes" — and Miri handles it end-to-end. No app menus to navigate, no forms to fill. Just ask.

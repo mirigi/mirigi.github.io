@@ -17,13 +17,13 @@
         {% if customer.link or customer.maplink %}
         <div>
           {% if customer.link %}
-          <a href="{{customer.link}}">
-            {{site.data[page.lang].more_info}}
+          <a href="{{customer.link}}" target="_blank" rel="noopener noreferrer">
+            {{site.data[page.lang].more_info}} <i class="fas fa-external-link-alt fa-xs"></i>
           </a>
           {% endif %}
           {% if customer.maplink %}
-          <a href="{{customer.maplink}}">
-            {{site.data[page.lang].location}}
+          <a href="{{customer.maplink}}" target="_blank" rel="noopener noreferrer">
+            {{site.data[page.lang].location}} <i class="fas fa-external-link-alt fa-xs"></i>
           </a>
           {% endif %}
         </div>

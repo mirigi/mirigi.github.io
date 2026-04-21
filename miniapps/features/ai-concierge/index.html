@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miri – AI Concierge</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+#container {
+  width: 100%;
+  max-width: 360px;
+  height: calc(100% - 32px);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform .15s ease;
+}
+
+#stack {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Card ── */
+.card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.12), 0 1px 4px rgba(0,0,0,.08);
+  cursor: grab;
+  user-select: none;
+  transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .3s ease;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.card:active { cursor: grabbing; }
+
+.card--new {
+  transform: translateY(70px);
+  opacity: 0;
+}
+
+.card--complete .card-body {
+  display: none;
+}
+
+/* ── Card Header ── */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.card-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.card-scenario {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1c1c1e;
+  letter-spacing: -.01em;
+}
+
+/* ── Card Body ── */
+.card-body {
+  padding: 12px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Message rows ── */
+.msg-row {
+  display: flex;
+}
+
+.msg-row--user {
+  justify-content: flex-end;
+}
+
+.bubble {
+  padding: 9px 13px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  max-width: 80%;
+  word-break: break-word;
+}
+
+.bubble--user {
+  background: #007AFF;
+  color: #fff;
+  border-bottom-right-radius: 5px;
+}
+
+.bubble--miri {
+  background: #f2f2f7;
+  color: #1c1c1e;
+  border-bottom-left-radius: 5px;
+  min-height: 36px;
+}
+
+/* ── Thinking dots ── */
+.thinking {
+  display: none;
+  align-items: center;
+  gap: 5px;
+  background: #f2f2f7;
+  border-radius: 18px;
+  border-bottom-left-radius: 5px;
+  padding: 10px 14px;
+  width: fit-content;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #8e8e93;
+  border-radius: 50%;
+  animation: blink 1.2s infinite ease-in-out;
+}
+
+.dot:nth-child(1) { animation-delay: 0s; }
+.dot:nth-child(2) { animation-delay: .2s; }
+.dot:nth-child(3) { animation-delay: .4s; }
+
+@keyframes blink {
+  0%, 60%, 100% { opacity: .2; transform: scale(.8); }
+  30%           { opacity: 1;  transform: scale(1.1); }
+}
+
+/* ── Miri row ── */
+.miri-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.miri-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: #8e8e93;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  padding-left: 4px;
+}
+</style>
+</head>
+<body>
+
+<div id="container">
+  <div id="stack"></div>
+</div>
+
+<script>
+(function () {
+  // ── URL params ──────────────────────────────────────────────
+  const params  = new URLSearchParams(location.search);
+  const lang    = params.get('lang')  || 'en';
+  const isSmall = (params.get('size') || 'large') === 'small';
+
+  // ── Speed constants ─────────────────────────────────────────
+  const CHAR_MS  = isSmall ? 0    : 35;
+  const SPEED    = isSmall ? 0.5  : 1.0;
+  const THINK_MS = Math.round(1500 * SPEED);
+  const DWELL_MS = Math.round(2200 * SPEED);
+  const PAUSE_MS = isSmall ? 0    : 700;
+
+  // ── Layout constants ────────────────────────────────────────
+  const ACTIVE_H = 200;
+  const COL_H    = 52;
+
+  // ── DOM refs ────────────────────────────────────────────────
+  const container = document.getElementById('container');
+  const stack     = document.getElementById('stack');
+
+  // ── State ───────────────────────────────────────────────────
+  let maxVisible  = 3;
+  let isDragging  = false;
+
+  // ── Utilities ───────────────────────────────────────────────
+  function sleep(ms) {
+    return new Promise(r => setTimeout(r, ms));
+  }
+
+  function raf() {
+    return new Promise(r => requestAnimationFrame(r));
+  }
+
+  async function typeText(el, text) {
+    if (CHAR_MS === 0) { el.textContent = text; return; }
+    for (const ch of text) {
+      el.textContent += ch;
+      await sleep(CHAR_MS);
+    }
+  }
+
+  // ── Compute maxVisible ──────────────────────────────────────
+  function computeMax() {
+    const available = container.offsetHeight - ACTIVE_H - 8;
+    maxVisible = Math.max(1, Math.floor(available / (COL_H + 8)));
+  }
+
+  // ── Trim oldest completed cards ─────────────────────────────
+  function trimStack() {
+    const completed = [...stack.children].filter(c => c.classList.contains('card--complete'));
+    while (completed.length > maxVisible) {
+      const oldest = completed.shift();
+      oldest.style.transition = 'opacity .3s ease';
+      oldest.style.opacity    = '0';
+      setTimeout(() => oldest.remove(), 300);
+    }
+  }
+
+  // ── Build card element ──────────────────────────────────────
+  function buildCard(item) {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="card-icon">${item.icon}</span>
+        <span class="card-scenario">${item.scenario}</span>
+      </div>
+      <div class="card-body">
+        <div class="msg-row msg-row--user">
+          <div class="bubble bubble--user"></div>
+        </div>
+        <div class="thinking" style="display:none">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+        <div class="miri-row">
+          <div class="miri-name" style="display:none">Miri</div>
+          <div class="bubble bubble--miri"></div>
+        </div>
+      </div>`;
+
+    return card;
+  }
+
+  // ── Show one card (with optional instant mode) ───────────────
+  async function showCard(item, instant) {
+    const el         = buildCard(item);
+    const userBubble = el.querySelector('.bubble--user');
+    const thinking   = el.querySelector('.thinking');
+    const miriName   = el.querySelector('.miri-name');
+    const miriBubble = el.querySelector('.bubble--miri');
+
+    if (instant) {
+      userBubble.textContent = item.user;
+      miriName.style.display = 'block';
+      miriBubble.textContent = item.miri;
+      stack.appendChild(el);
+      el.classList.add('card--complete');
+      computeMax();
+      trimStack();
+      return;
+    }
+
+    // 1. Append with card--new (starts hidden/translated)
+    el.classList.add('card--new');
+    stack.appendChild(el);
+
+    // 2. Next RAF → remove card--new so CSS transition fires
+    await raf();
+    el.classList.remove('card--new');
+
+    // 3. Wait for spring to settle
+    await sleep(450);
+
+    // 4. Type user message
+    await typeText(userBubble, item.user);
+
+    // 5. Pause before thinking
+    await sleep(PAUSE_MS);
+
+    // 6. Show thinking dots
+    thinking.style.display = 'inline-flex';
+
+    // 7. Thinking duration
+    await sleep(THINK_MS);
+
+    // 8. Hide thinking, show miri name, type miri reply
+    thinking.style.display = 'none';
+    miriName.style.display = 'block';
+    await typeText(miriBubble, item.miri);
+
+    // 9. Dwell time
+    await sleep(DWELL_MS);
+
+    // 10. Collapse card
+    el.classList.add('card--complete');
+    computeMax();
+    trimStack();
+  }
+
+  // ── Drag + physics (large only) ─────────────────────────────
+  if (!isSmall) {
+    let ox = 0, oy = 0;
+    let vx = 0, vy = 0;
+    let prevX = 0, prevY = 0;
+    let physicsId = null;
+    let dragTarget = null;
+
+    function getActiveCard() {
+      const last = stack.lastChild;
+      if (last && !last.classList.contains('card--complete')) return last;
+      return null;
+    }
+
+    function pointerDown(e) {
+      const active = getActiveCard();
+      if (!active) return;
+
+      const pt = e.touches ? e.touches[0] : e;
+      if (!active.contains(e.target)) return;
+
+      isDragging  = true;
+      dragTarget  = active;
+      prevX       = pt.clientX;
+      prevY       = pt.clientY;
+      vx = vy = 0;
+      ox = oy = 0;
+
+      if (physicsId) { cancelAnimationFrame(physicsId); physicsId = null; }
+
+      dragTarget.style.transition = 'none';
+      dragTarget.style.zIndex     = '10';
+
+      e.preventDefault();
+    }
+
+    function pointerMove(e) {
+      if (!isDragging || !dragTarget) return;
+      const pt = e.touches ? e.touches[0] : e;
+      const dx = pt.clientX - prevX;
+      const dy = pt.clientY - prevY;
+      vx = dx; vy = dy;
+      ox += dx; oy += dy;
+      prevX = pt.clientX;
+      prevY = pt.clientY;
+      dragTarget.style.transform = `translate(${ox}px, ${oy}px) rotate(${ox * 0.04}deg)`;
+      e.preventDefault();
+    }
+
+    function pointerUp(e) {
+      if (!isDragging || !dragTarget) return;
+      isDragging = false;
+      const card = dragTarget;
+      dragTarget = null;
+
+      const cw = container.offsetWidth;
+      const ch = container.offsetHeight;
+      const cardW = card.offsetWidth;
+      const cardH = card.offsetHeight;
+
+      const minX = -(cw - cardW) / 2;
+      const maxX =  (cw - cardW) / 2;
+      const minY = -(cardH * 0.5);
+      const maxY = ch - cardH * 0.5;
+
+      function physics() {
+        vx *= 0.92;
+        vy *= 0.92;
+        ox += vx;
+        oy += vy;
+
+        // Bounce X
+        if (ox < minX) { ox = minX; vx *= -0.6; }
+        if (ox > maxX) { ox = maxX; vx *= -0.6; }
+        // Bounce Y
+        if (oy < minY) { oy = minY; vy *= -0.6; }
+        if (oy > maxY) { oy = maxY; vy *= -0.6; }
+
+        card.style.transform = `translate(${ox}px, ${oy}px) rotate(${ox * 0.04}deg)`;
+
+        if (Math.abs(vx) < 0.5 && Math.abs(vy) < 0.5) {
+          // Snap back
+          card.style.transition = 'transform .5s cubic-bezier(.34,1.56,.64,1)';
+          card.style.transform  = '';
+          card.style.zIndex     = '';
+          physicsId = null;
+          return;
+        }
+
+        physicsId = requestAnimationFrame(physics);
+      }
+
+      physicsId = requestAnimationFrame(physics);
+      e.preventDefault();
+    }
+
+    document.addEventListener('mousedown',  pointerDown,  { passive: false });
+    document.addEventListener('mousemove',  pointerMove,  { passive: false });
+    document.addEventListener('mouseup',    pointerUp,    { passive: false });
+    document.addEventListener('touchstart', pointerDown,  { passive: false });
+    document.addEventListener('touchmove',  pointerMove,  { passive: false });
+    document.addEventListener('touchend',   pointerUp,    { passive: false });
+  }
+
+  // ── Magnetic tilt ───────────────────────────────────────────
+  document.addEventListener('mousemove', function(e) {
+    if (isDragging) return;
+    const rect = container.getBoundingClientRect();
+    const cx   = rect.left + rect.width  / 2;
+    const cy   = rect.top  + rect.height / 2;
+    const dx   = (e.clientX - cx) / (rect.width  / 2);
+    const dy   = (e.clientY - cy) / (rect.height / 2);
+    container.style.transition = 'transform .1s ease';
+    container.style.transform  = `perspective(900px) rotateY(${dx * 10}deg) rotateX(${-dy * 10}deg)`;
+  });
+
+  document.addEventListener('mouseleave', function() {
+    container.style.transition = 'transform .4s ease';
+    container.style.transform  = '';
+  });
+
+  // ── Main loop ───────────────────────────────────────────────
+  async function run(cards) {
+    computeMax();
+
+    // Starting state: show first card instant + collapsed
+    await showCard(cards[0], true);
+
+    // Loop from index 1
+    for (let i = 1; i < cards.length; i++) {
+      await showCard(cards[i], false);
+    }
+
+    // Loop forever
+    while (true) {
+      for (let i = 0; i < cards.length; i++) {
+        await showCard(cards[i], false);
+      }
+    }
+  }
+
+  // ── Bootstrap ───────────────────────────────────────────────
+  fetch(`data/${lang}.json`)
+    .then(r => r.json())
+    .then(cards => run(cards))
+    .catch(err => {
+      stack.innerHTML = `<div style="padding:20px;color:#c00;font-size:13px;">Failed to load data/${lang}.json<br>${err.message}</div>`;
+    });
+
+})();
+</script>
+</body>
+</html>

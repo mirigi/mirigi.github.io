@@ -50,8 +50,8 @@
     '.b-panel{position:absolute;bottom:1rem;left:1.5rem;background:rgba(255,255,255,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:0.5rem;padding:0.5rem 0.8rem 0.6rem;z-index:30;display:none;pointer-events:all;min-width:8rem;box-shadow:0 2px 12px rgba(0,0,0,0.1)}' +
     '.b-panel-head{display:flex;align-items:center;justify-content:space-between;gap:0.5rem}' +
     '.b-panel-title{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:#999;font-family:"Varela Round",sans-serif;white-space:nowrap}' +
-    '.b-panel-info{background:none;border:none;cursor:pointer;font-size:0.75rem;color:#bbb;padding:0;line-height:1;pointer-events:all}' +
-    '.b-panel-info:hover{color:#888}' +
+    '.b-panel-info{background:rgba(100,100,100,0.12);border:1px solid rgba(100,100,100,0.2);border-radius:50%;cursor:pointer;font-size:0.8rem;color:#777;width:1.4rem;height:1.4rem;display:flex;align-items:center;justify-content:center;padding:0;line-height:1;pointer-events:all;flex-shrink:0}' +
+    '.b-panel-info:hover{background:rgba(100,100,100,0.22);color:#444}' +
     '.b-panel-row{display:flex;align-items:baseline;gap:0.35rem;margin-top:0.1rem}' +
     '.b-panel-label{font-size:0.7rem;color:#aaa;font-family:"Varela Round",sans-serif;white-space:nowrap}' +
     '.b-panel-num{font-size:4rem;font-weight:700;color:#555;font-family:"Varela Round",sans-serif;line-height:1;transform-origin:bottom left;display:inline-block}' +

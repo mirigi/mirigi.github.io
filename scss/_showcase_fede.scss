@@ -40,8 +40,17 @@ $media-bigimage-width: 1200px;
   min-height: 30vh;
   margin: 2ex 0;
   background-color: $showcase-bg-color;
+  overflow: hidden; // clips children during slide-in animation
   > .image {
     min-height: 30vh;
+  }
+  // Slide-in transitions — always present so they fire when js-reveal is removed
+  > .image,
+  > .content {
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
+  }
+  > .content {
+    transition-delay: 0.1s; // content follows image
   }
   > .image,
   > .content {
@@ -69,7 +78,7 @@ $media-bigimage-width: 1200px;
   }
   > .image {
     position: relative;
-    background-image: url('path/to/your/image.jpg');
+    background-image: none;
     background-size: cover;
     background-position: center;
   }
@@ -131,6 +140,15 @@ $media-bigimage-width: 1200px;
   }
 }
 
+
+// Scroll-reveal: initial off-screen positions. JS removes js-reveal when card enters viewport.
+// Transitions defined above fire on class removal, animating from these to natural positions.
+.showcase.js-reveal {
+  &:not(.reverse) > .image   { transform: translateX(-110%); opacity: 0; }
+  &:not(.reverse) > .content { transform: translateX( 110%); opacity: 0; }
+  &.reverse        > .image   { transform: translateX( 110%); opacity: 0; }
+  &.reverse        > .content { transform: translateX(-110%); opacity: 0; }
+}
 
 @media (max-width: $media-bigimage-width) {
   .showcase {

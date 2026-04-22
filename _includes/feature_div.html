@@ -4,8 +4,8 @@
 {% else %}
 {% assign image = "/" | append:page.url | append: "/" | append: resolved_image %}
 {% endif %}
-{% assign showcase_class = "showcase bigimage dark" %}
-{% if is_even != 0 %}{% assign showcase_class = "showcase bigimage reverse dark" %}{% endif %}
+{% assign showcase_class = "showcase bigimage dark js-reveal" %}
+{% if is_even != 0 %}{% assign showcase_class = "showcase bigimage reverse dark js-reveal" %}{% endif %}
 <div class="{{ showcase_class }}">
   {% if feature.miniapp %}
     <div class="image miniapp-image">

@@ -258,9 +258,17 @@
   min-height: 30vh;
   margin: 2ex 0;
   background-color: #f0f0f0;
+  overflow: hidden;
 }
 .showcase > .image {
   min-height: 30vh;
+}
+.showcase > .image,
+.showcase > .content {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
+}
+.showcase > .content {
+  transition-delay: 0.1s;
 }
 .showcase > .image,
 .showcase > .content {
@@ -294,7 +302,7 @@
 }
 .showcase > .image {
   position: relative;
-  background-image: url("path/to/your/image.jpg");
+  background-image: none;
   background-size: cover;
   background-position: center;
 }
@@ -347,6 +355,23 @@
 }
 .showcase.dark > .content {
   color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.showcase.js-reveal:not(.reverse) > .image {
+  transform: translateX(-110%);
+  opacity: 0;
+}
+.showcase.js-reveal:not(.reverse) > .content {
+  transform: translateX(110%);
+  opacity: 0;
+}
+.showcase.js-reveal.reverse > .image {
+  transform: translateX(110%);
+  opacity: 0;
+}
+.showcase.js-reveal.reverse > .content {
+  transform: translateX(-110%);
+  opacity: 0;
 }
 
 @media (max-width: 992px) {
@@ -11074,5 +11099,3 @@ footer {
   border: none;
   display: block;
 }
-
-/*# sourceMappingURL=grayscale.css.map */

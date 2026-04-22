@@ -10,3 +10,21 @@
 *~
 \#*\#
 
+# Agent-generated reports and one-shot docs (not project documentation)
+A4_*.md
+PROPOSAL_*.md
+SECURITY_*.md
+task.md
+markdownFilesystem.md
+tulp
+error.log
+output/
+_site/
+_site_viejo/
+node_modules/
+Gemfile.lock
+package-lock.json
+
+# Agent working dirs
+docs/superpowers/
+

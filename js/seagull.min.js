@@ -272,12 +272,12 @@
     clrT(); cancelFly();
     state = 'flying';
     scareCnt++;
-    if (scareCnt === 2) {
+    if (scareCnt === 5) {
       /* unlock: show toast then reveal panel */
       showToast();
       panel.style.display = 'block';
       bumpCounter();
-    } else if (scareCnt > 2) {
+    } else if (scareCnt > 5) {
       bumpCounter();
     }
     /* panic: fast wing beat + rapid escape dart */

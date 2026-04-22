@@ -29,6 +29,23 @@
       }
     }
   }
+  /* Mobile collapsed menu — large touch targets */
+  @media (max-width: 991px) {
+    .navbar-collapse {
+      padding: 0.5rem 0 1rem;
+    }
+    .navbar-nav .nav-item {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .navbar-nav .nav-link,
+    .navbar-nav .nav-item > div.nav-link {
+      padding: 1rem 1.5rem;
+      font-size: 1.05rem;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+    }
+  }
   @media (min-width: 992px) {
     padding-top: 0;
     padding-bottom: 0;

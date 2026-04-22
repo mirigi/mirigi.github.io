@@ -168,8 +168,17 @@ footer {
   }
 }
 
-
-
-
+// Miniapp iframes — sizing container for self-contained interactive miniapps
+.miniapp-frame {
+  border: none;
+  width: 100%;
+  display: block;
+}
+.miniapp-frame--large {
+  height: 500px;
+}
+.miniapp-frame--small {
+  height: 280px;
+}
 
 

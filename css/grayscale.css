@@ -11019,6 +11019,19 @@ footer {
   color: #666;
   font-family: "Varela Round";
   text-shadow: none;
+  letter-spacing: 0.35rem;
+}
+.masthead .masthead-text {
+  max-width: 55%;
+  padding-right: 4vw;
+}
+@media (max-width: 768px) {
+  .masthead .masthead-text {
+    max-width: 100%;
+    padding-right: 1rem;
+    text-align: center !important;
+    margin-left: auto !important;
+  }
 }
 
 .navbar-light .navbar-nav a.nav-link, .navbar-light .navbar-brand {

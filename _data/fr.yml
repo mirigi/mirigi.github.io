@@ -124,3 +124,10 @@ one_time: "unique"
 modules_included: "Cette proposition inclut tous les modules listés pour votre bâtiment"
 extra_modules_note: "Des modules supplémentaires demandés peuvent entraîner des coûts additionnels"
 
+# Easter egg mode jeu
+game_mode_title: "Mode Jeu"
+game_mode_unlocked: "Mode Jeu Débloqué !"
+follow_seagull: "Suivez la mouette"
+counter_label: "Compteur :"
+easter_egg_text: "Suivre la mouette n'est qu'un easter egg amusant — mais la Conciergerie IA de Mirigi est bien plus pertinente. Accumulez des points, puis découvrez la vraie valeur de Mirigi pour votre prochain projet de copropriété !"
+see_mirigi: "Découvrir la Conciergerie IA Mirigi &rarr;"

@@ -42,21 +42,80 @@
     '@keyframes bPanic{0%,100%{transform:rotate(-10deg) scaleY(0.8)}50%{transform:rotate(10deg) scaleY(1.05)}}' +
     '@keyframes bWing{0%,100%{transform:scaleY(1)}50%{transform:scaleY(0.88)}}' +
     '@keyframes bCntPop{0%{transform:scale(6);opacity:0}20%{transform:scale(6);opacity:1}65%{transform:scale(1.15);opacity:0.85}82%{transform:scale(0.92)}100%{transform:scale(1);opacity:0.65}}' +
+    '@keyframes bToast{0%{transform:translateY(16px);opacity:0}18%{transform:translateY(0);opacity:1}75%{transform:translateY(0);opacity:1}100%{transform:translateY(-8px);opacity:0}}' +
     '.b-flip{transform-box:fill-box;transform-origin:50% 50%}' +
     '.b-wing{transform-box:fill-box;transform-origin:50% 40%;animation:bWing 3s ease-in-out infinite}' +
     '.bflying{animation:bBank 5s ease-in-out infinite}' +
     '.bpanic{animation:bPanic 0.35s ease-in-out infinite!important}' +
-    '.b-cnt{position:absolute;bottom:1rem;left:1.5rem;font-size:4rem;font-weight:700;color:#555;opacity:0;pointer-events:none;z-index:30;font-family:"Varela Round",sans-serif;transform-origin:bottom left}' +
-    '.b-cnt-pop{animation:bCntPop 0.75s ease-out forwards}' +
-    '@media(max-width:768px){.b-gull{width:60px!important;height:26px!important}}' +
+    '.b-panel{position:absolute;bottom:1rem;left:1.5rem;background:rgba(255,255,255,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:0.5rem;padding:0.5rem 0.8rem 0.6rem;z-index:30;display:none;pointer-events:all;min-width:8rem;box-shadow:0 2px 12px rgba(0,0,0,0.1)}' +
+    '.b-panel-head{display:flex;align-items:center;justify-content:space-between;gap:0.5rem}' +
+    '.b-panel-title{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:#999;font-family:"Varela Round",sans-serif;white-space:nowrap}' +
+    '.b-panel-info{background:none;border:none;cursor:pointer;font-size:0.75rem;color:#bbb;padding:0;line-height:1;pointer-events:all}' +
+    '.b-panel-info:hover{color:#888}' +
+    '.b-panel-row{display:flex;align-items:baseline;gap:0.35rem;margin-top:0.1rem}' +
+    '.b-panel-label{font-size:0.7rem;color:#aaa;font-family:"Varela Round",sans-serif;white-space:nowrap}' +
+    '.b-panel-num{font-size:4rem;font-weight:700;color:#555;font-family:"Varela Round",sans-serif;line-height:1;transform-origin:bottom left;display:inline-block}' +
+    '.b-panel-num.b-cnt-pop{animation:bCntPop 0.75s ease-out forwards}' +
+    '.b-toast{position:absolute;bottom:7rem;left:1.5rem;background:rgba(60,60,60,0.92);color:#fff;padding:0.6rem 0.9rem;border-radius:0.5rem;z-index:31;pointer-events:none;font-family:"Varela Round",sans-serif;font-size:0.85rem;line-height:1.4;animation:bToast 3.2s ease-in-out forwards;white-space:nowrap}' +
+    '.b-toast strong{display:block;font-size:0.95rem;margin-bottom:0.15rem}' +
+    '.b-popup{position:absolute;bottom:calc(1rem + 6rem);left:1.5rem;max-width:260px;background:#fff;border-radius:0.5rem;padding:0.8rem 1rem;z-index:32;box-shadow:0 4px 20px rgba(0,0,0,0.18);font-family:"Open Sans",sans-serif;font-size:0.8rem;line-height:1.5;color:#555;display:none}' +
+    '.b-popup p{margin:0 0 0.6rem}' +
+    '.b-popup a{color:#007bff;font-weight:600;text-decoration:none}' +
+    '.b-popup-close{position:absolute;top:0.4rem;right:0.6rem;background:none;border:none;cursor:pointer;font-size:1rem;color:#bbb;line-height:1}' +
+    '@media(max-width:768px){.b-gull{width:60px!important;height:26px!important}.b-panel-num{font-size:2.8rem}.b-popup{max-width:200px}}' +
     '@media(max-width:480px){.b-gull{width:44px!important;height:19px!important}}';
   document.head.appendChild(sty);
 
-  /* ── scare counter ── */
+  /* ── game mode panel ── */
+  var i18n = window._gullI18n || { title:'Game Mode', unlocked:'Game Mode Unlocked!', follow:'Follow the seagull', counter:'Counter:', text:'', cta:'Discover Mirigi AI Concierge &rarr;' };
   var scareCnt = 0;
-  var countEl = document.createElement('div');
-  countEl.className = 'b-cnt';
-  masthead.appendChild(countEl);
+
+  var panel = document.createElement('div');
+  panel.className = 'b-panel';
+  panel.innerHTML =
+    '<div class="b-panel-head">' +
+      '<span class="b-panel-title">' + i18n.title + '</span>' +
+      '<button class="b-panel-info" aria-label="info">&#9432;</button>' +
+    '</div>' +
+    '<div class="b-panel-row">' +
+      '<span class="b-panel-label">' + i18n.counter + '</span>' +
+      '<span class="b-panel-num">0</span>' +
+    '</div>';
+  masthead.appendChild(panel);
+  var numEl = panel.querySelector('.b-panel-num');
+  var infoBtn = panel.querySelector('.b-panel-info');
+
+  var popup = document.createElement('div');
+  popup.className = 'b-popup';
+  popup.innerHTML =
+    '<button class="b-popup-close" aria-label="close">&times;</button>' +
+    '<p>' + i18n.text + '</p>' +
+    '<a href="#about">' + i18n.cta + '</a>';
+  masthead.appendChild(popup);
+
+  infoBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+  });
+  popup.querySelector('.b-popup-close').addEventListener('click', function () {
+    popup.style.display = 'none';
+  });
+  document.addEventListener('click', function () { popup.style.display = 'none'; });
+
+  function showToast() {
+    var t = document.createElement('div');
+    t.className = 'b-toast';
+    t.innerHTML = '<strong>' + i18n.unlocked + '</strong>' + i18n.follow;
+    masthead.appendChild(t);
+    setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 3400);
+  }
+
+  function bumpCounter() {
+    numEl.textContent = scareCnt;
+    numEl.classList.remove('b-cnt-pop');
+    void numEl.offsetWidth;
+    numEl.classList.add('b-cnt-pop');
+  }
 
   /* ── position helpers ── */
   var cx = -200, cy = -200;
@@ -212,12 +271,15 @@
     if (state === 'idle') return;
     clrT(); cancelFly();
     state = 'flying';
-    /* increment scare counter with pop animation */
     scareCnt++;
-    countEl.textContent = scareCnt;
-    countEl.classList.remove('b-cnt-pop');
-    void countEl.offsetWidth;
-    countEl.classList.add('b-cnt-pop');
+    if (scareCnt === 2) {
+      /* unlock: show toast then reveal panel */
+      showToast();
+      panel.style.display = 'block';
+      bumpCounter();
+    } else if (scareCnt > 2) {
+      bumpCounter();
+    }
     /* panic: fast wing beat + rapid escape dart */
     svg.classList.add('bpanic');
     var p = randPos();

@@ -42,7 +42,7 @@
     '@keyframes bPanic{0%,100%{transform:rotate(-10deg) scaleY(0.8)}50%{transform:rotate(10deg) scaleY(1.05)}}' +
     '@keyframes bWing{0%,100%{transform:scaleY(1)}50%{transform:scaleY(0.88)}}' +
     '@keyframes bCntPop{0%{transform:scale(6);opacity:0}20%{transform:scale(6);opacity:1}65%{transform:scale(1.15);opacity:0.85}82%{transform:scale(0.92)}100%{transform:scale(1);opacity:0.65}}' +
-    '@keyframes bToast{0%{transform:translateY(16px);opacity:0}18%{transform:translateY(0);opacity:1}75%{transform:translateY(0);opacity:1}100%{transform:translateY(-8px);opacity:0}}' +
+    '@keyframes bToast{0%{transform:translate(-50%,-50%) scale(0.25);opacity:0}22%{transform:translate(-50%,-50%) scale(1.07);opacity:1}32%{transform:translate(-50%,-50%) scale(0.96)}40%{transform:translate(-50%,-50%) scale(1)}72%{transform:translate(-50%,-50%) scale(1);opacity:1}100%{transform:translate(-50%,-50%) scale(0.88);opacity:0}}' +
     '.b-flip{transform-box:fill-box;transform-origin:50% 50%}' +
     '.b-wing{transform-box:fill-box;transform-origin:50% 40%;animation:bWing 3s ease-in-out infinite}' +
     '.bflying{animation:bBank 5s ease-in-out infinite}' +
@@ -56,8 +56,8 @@
     '.b-panel-label{font-size:0.7rem;color:#aaa;font-family:"Varela Round",sans-serif;white-space:nowrap}' +
     '.b-panel-num{font-size:4rem;font-weight:700;color:#555;font-family:"Varela Round",sans-serif;line-height:1;transform-origin:bottom left;display:inline-block}' +
     '.b-panel-num.b-cnt-pop{animation:bCntPop 0.75s ease-out forwards}' +
-    '.b-toast{position:absolute;bottom:7rem;left:1.5rem;background:rgba(60,60,60,0.92);color:#fff;padding:0.6rem 0.9rem;border-radius:0.5rem;z-index:31;pointer-events:none;font-family:"Varela Round",sans-serif;font-size:0.85rem;line-height:1.4;animation:bToast 3.2s ease-in-out forwards;white-space:nowrap}' +
-    '.b-toast strong{display:block;font-size:0.95rem;margin-bottom:0.15rem}' +
+    '.b-toast{position:absolute;top:40%;left:50%;background:rgba(40,40,40,0.95);color:#fff;padding:1.4rem 2.2rem;border-radius:1rem;z-index:31;pointer-events:none;font-family:"Varela Round",sans-serif;font-size:1rem;line-height:1.5;text-align:center;animation:bToast 4.2s ease-in-out forwards;box-shadow:0 8px 40px rgba(0,0,0,0.35);white-space:nowrap}' +
+    '.b-toast strong{display:block;font-size:1.7rem;font-weight:700;margin-bottom:0.3rem;letter-spacing:0.02em}' +
     '.b-popup{position:absolute;bottom:calc(1rem + 6rem);left:1.5rem;max-width:260px;background:#fff;border-radius:0.5rem;padding:0.8rem 1rem;z-index:32;box-shadow:0 4px 20px rgba(0,0,0,0.18);font-family:"Open Sans",sans-serif;font-size:0.8rem;line-height:1.5;color:#555;display:none}' +
     '.b-popup p{margin:0 0 0.6rem}' +
     '.b-popup a{color:#007bff;font-weight:600;text-decoration:none}' +
@@ -107,7 +107,7 @@
     t.className = 'b-toast';
     t.innerHTML = '<strong>' + i18n.unlocked + '</strong>' + i18n.follow;
     masthead.appendChild(t);
-    setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 3400);
+    setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 4400);
   }
 
   function bumpCounter() {

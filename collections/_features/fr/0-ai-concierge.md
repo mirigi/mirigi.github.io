@@ -1,7 +1,6 @@
 ---
 title: "Miri — Le Premier Agent de Conciergerie IA Qui Agit"
 image: "/img_mirigi/ai-concierge.jpg"
-miniapp: "features/ai-concierge"
 layout: feature
 keywords: conciergerie ia, miri, chat, intelligence artificielle, expérience résident, automatisation
 description: "Miri est le premier agent de conciergerie IA qui agit — pas seulement des réponses. Elle passe les commandes, appelle le voiturier et réserve les installations de bout en bout."

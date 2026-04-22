@@ -82,8 +82,10 @@
   var sty = document.createElement('style');
   sty.textContent =
     '@keyframes bBank{0%,100%{transform:rotate(-3deg) scaleY(0.94)}50%{transform:rotate(3deg) scaleY(1)}}' +
+    '@keyframes bPanic{0%,100%{transform:rotate(-10deg) scaleY(0.8)}50%{transform:rotate(10deg) scaleY(1.05)}}' +
     '.b-flip{transform-box:fill-box;transform-origin:50% 50%}' +
     '.bflying{animation:bBank 5s ease-in-out infinite}' +
+    '.bpanic{animation:bPanic 0.35s ease-in-out infinite!important}' +
     '@media(max-width:768px){.b-gull{width:60px!important;height:26px!important}}' +
     '@media(max-width:480px){.b-gull{width:44px!important;height:19px!important}}';
   document.head.appendChild(sty);
@@ -241,8 +243,16 @@
   function startle() {
     if (state === 'idle') return;
     clrT(); cancelFly();
-    /* interrupt and go random, then back to AI */
-    goRandom();
+    state = 'flying';
+    /* panic: fast wing beat + rapid escape dart */
+    svg.classList.add('bpanic');
+    var p = randPos();
+    flyTo(cx, cy, p.x, p.y, 600 + Math.random() * 300, function () {
+      svg.classList.remove('bpanic');
+      /* settle, then return to normal AI→random cycle */
+      state = 'hovering';
+      tout = setTimeout(goToAI, 8000 + Math.random() * 6000);
+    });
   }
 
   svg.addEventListener('mouseenter', startle);

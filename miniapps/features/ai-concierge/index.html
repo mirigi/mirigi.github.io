@@ -10,101 +10,119 @@
 html, body {
   width: 100%; height: 100%;
   overflow: hidden;
-  background: transparent;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/*
-  Fixed perspective matching the reference image:
-  Camera is slightly above and to the left of centre.
-  Cards deeper in Z appear smaller and shift toward the upper-right,
-  creating the diagonal cascade seen in the reference.
-*/
-#scene {
-  width: 80%;
-  height: 90%;
-  perspective: 900px;
-  perspective-origin: 30% 10%;
+body {
+  background:
+    radial-gradient(ellipse 130% 100% at 42% 22%,
+      #f9f9f9 0%, #ededed 38%, #d8d8d4 100%),
+    linear-gradient(170deg, #f2f1ef 0%, #e4e3e0 60%, #c8c7c4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
+/* Subtle floor line — gives depth like the room in the reference */
+body::after {
+  content: '';
+  position: absolute;
+  bottom: 18%;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(180,175,170,.35) 20%, rgba(180,175,170,.35) 80%, transparent);
+  pointer-events: none;
+}
+
+/*
+  perspective: 480px  — strong depth effect
+  perspective-origin: 68% 2%  — camera sits upper-right of scene,
+    so cards recede toward the top-right as they go back in Z.
+    This recreates the diagonal cascade from the reference image.
+*/
+#scene {
+  position: relative;
+  width: 100%; height: 100%;
+  perspective: 480px;
+  perspective-origin: 68% 2%;
+  overflow: hidden;
+}
+
+/*
+  Stack is anchored at 55% from the top so the active card (200px tall)
+  occupies the bottom third of the scene and is fully visible.
+  Back cards cascade upward — their translateY pulls them up in 3D,
+  and the perspective + Z depth makes them appear smaller and higher
+  on screen, with clear readable gaps between each card.
+*/
 #stack {
   transform-style: preserve-3d;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  /*
-    Tilt the whole surface so it reads like the reference:
-    rotateX tilts the surface back (top away, bottom toward viewer)
-    rotateY turns it slightly so right side recedes
-  */
-  transform: rotateX(18deg) rotateY(-10deg);
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  margin-left: -160px; /* centre the 320px stack */
+  width: 320px;
 }
 
 .card {
   position: absolute;
-  left: 0; right: 0; top: 0;
-  background: #fff;
+  top: 0; left: 0;
+  width: 320px;
+  background: rgba(255,255,255,0.97);
   border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.10);
+  box-shadow: 0 10px 36px rgba(0,0,0,.15), 0 2px 8px rgba(0,0,0,.09);
   cursor: pointer;
   user-select: none;
   transform-origin: top center;
   will-change: transform, opacity;
+  transition: transform .5s cubic-bezier(.34,1.56,.64,1), opacity .4s ease;
 }
 
-/* Click bounce animation */
-@keyframes bounce {
-  0%   { transform: var(--base-transform) translateZ(0)     scale(1);    }
-  35%  { transform: var(--base-transform) translateZ(30px)  scale(1.04); }
-  65%  { transform: var(--base-transform) translateZ(-10px) scale(0.98); }
-  100% { transform: var(--base-transform) translateZ(0)     scale(1);    }
-}
-.card--bounce {
-  animation: bounce .5s ease forwards;
+.card--bounce { animation: pop .42s ease forwards; }
+@keyframes pop {
+  0%   { transform: var(--t)                                   scale(1); }
+  40%  { transform: var(--t) translateZ(24px) translateY(-5px) scale(1.04); }
+  75%  { transform: var(--t) translateZ(-5px)                  scale(0.98); }
+  100% { transform: var(--t)                                   scale(1); }
 }
 
 .card-header {
   display: flex; align-items: center; gap: 8px;
-  padding: 11px 15px;
+  padding: 11px 14px;
   border-bottom: 1px solid rgba(0,0,0,.06);
 }
-.card-icon     { font-size: 19px; line-height: 1; }
+.card-icon     { font-size: 18px; line-height: 1; flex-shrink: 0; }
 .card-scenario { font-size: 13px; font-weight: 700; color: #1c1c1e; }
 
 .card-body {
-  padding: 11px 15px 15px;
+  padding: 10px 14px 14px;
   display: flex; flex-direction: column; gap: 8px;
 }
-.msg-row        { display: flex; }
-.msg-row--user  { justify-content: flex-end; }
+.msg-row       { display: flex; }
+.msg-row--user { justify-content: flex-end; }
 
 .bubble {
   padding: 8px 12px;
   border-radius: 16px;
   font-size: 13px; line-height: 1.4;
-  max-width: 82%; word-break: break-word;
+  max-width: 78%; word-break: break-word;
 }
 .bubble--user {
   background: #007AFF; color: #fff;
   border-bottom-right-radius: 4px;
 }
 .bubble--miri {
-  background: #f2f2f7; color: #1c1c1e;
+  background: #f0f0f5; color: #1c1c1e;
   border-bottom-left-radius: 4px;
-  min-height: 32px;
+  min-height: 30px;
 }
 
 .thinking {
   display: none; align-items: center; gap: 4px;
-  background: #f2f2f7;
+  background: #f0f0f5;
   border-radius: 16px; border-bottom-left-radius: 4px;
-  padding: 9px 13px; width: fit-content;
+  padding: 8px 12px; width: fit-content;
 }
 .dot {
   width: 7px; height: 7px;
@@ -114,22 +132,19 @@ body {
 .dot:nth-child(2) { animation-delay: .2s; }
 .dot:nth-child(3) { animation-delay: .4s; }
 @keyframes blink {
-  0%,60%,100% { opacity:.2; transform:scale(.8); }
-  30%         { opacity:1;  transform:scale(1.1); }
+  0%,60%,100% { opacity:.25; transform:scale(.8); }
+  30%         { opacity:1;   transform:scale(1.1); }
 }
-
 .miri-row { display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
 .miri-name {
   font-size: 10px; font-weight: 700;
   color: #8e8e93; letter-spacing: .06em;
-  text-transform: uppercase; padding-left: 3px;
+  text-transform: uppercase; padding-left: 2px;
 }
 </style>
 </head>
 <body>
-<div id="scene">
-  <div id="stack"></div>
-</div>
+<div id="scene"><div id="stack"></div></div>
 
 <script>
 (function () {
@@ -144,19 +159,24 @@ body {
   const PAUSE_MS = isSmall ? 0   : 650;
 
   /*
-    3D positions for each stack slot.
-    Slot 0 = active/front card (bottom-left in reference image, largest).
-    Each step back: card moves right (+X), up (-Y), and into the screen (-Z).
-    The perspective on #scene makes negative-Z cards appear smaller and higher.
+    3D offsets per stack level (tuned for 480px perspective, stack anchored at top:55%):
+
+    level 0 (active): translate3d(0,0,0)          → full size, bottom area
+    level 1:          translate3d(18,-160,-160)    → 73% size, clearly above
+    level 2:          translate3d(36,-320,-320)    → 60% size, partially visible at top
+
+    The Y step (-160px) creates a 30-40px readable gap between cards on screen.
+    The Z step (-160px) reduces each card to ~73% of the previous.
+    Result: album-style stack where every card is readable.
   */
-  const STEP_X =  isSmall ?  14 :  22;  // right per level
-  const STEP_Y =  isSmall ? -32 : -52;  // up per level (negative = higher in 3D)
-  const STEP_Z =  isSmall ? -60 : -95;  // into screen per level
+  const STEP_X = isSmall ?  12 :  18;
+  const STEP_Y = isSmall ? -95 : -160;
+  const STEP_Z = isSmall ? -95 : -160;
 
+  const scene = document.getElementById('scene');
   const stack = document.getElementById('stack');
-
-  let items = [];  // [newest … oldest]
-  let maxV  = 4;
+  let items   = [];
+  let maxV    = isSmall ? 2 : 3;
 
   const esc   = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -167,32 +187,25 @@ body {
     for (const ch of text) { el.textContent += ch; await sleep(CHAR_MS); }
   }
 
-  function computeMax() {
-    const h = document.getElementById('scene').offsetHeight;
-    maxV = Math.max(2, Math.min(5, Math.round(h / 140)));
+  function slotT(i) {
+    return `translate3d(${i * STEP_X}px,${i * STEP_Y}px,${i * STEP_Z}px)`;
   }
 
-  // Assign each card its 3D slot transform
   function reposition() {
     items.forEach((el, i) => {
-      const tx = i * STEP_X;
-      const ty = i * STEP_Y;
-      const tz = i * STEP_Z;
-      const t  = `translate3d(${tx}px,${ty}px,${tz}px)`;
-      el.style.setProperty('--base-transform', t);
-      el.style.transition = 'transform .55s cubic-bezier(.34,1.56,.64,1), opacity .4s ease';
-      el.style.transform  = t;
-      el.style.opacity    = String(Math.max(0.38, 1 - i * 0.22));
-      el.style.zIndex     = String(30 - i);
+      const t = slotT(i);
+      el.style.setProperty('--t', t);
+      el.style.transform = t;
+      el.style.opacity   = String(Math.max(0.52, 1 - i * 0.20));
+      el.style.zIndex    = String(30 - i);
     });
   }
 
-  // Remove oldest cards that no longer fit
   function trim() {
     while (items.length > maxV) {
       const old = items.pop();
       old.style.transition = 'opacity .3s';
-      old.style.opacity = '0';
+      old.style.opacity    = '0';
       setTimeout(() => old.remove(), 300);
     }
   }
@@ -216,26 +229,24 @@ body {
         </div>
       </div>`;
 
-    // Click = bounce the card
-    el.addEventListener('click', function () {
+    el.addEventListener('click', () => {
       el.classList.remove('card--bounce');
-      void el.offsetWidth; // reflow to restart animation
+      void el.offsetWidth;
       el.classList.add('card--bounce');
       el.addEventListener('animationend', () => el.classList.remove('card--bounce'), { once: true });
     });
-
     return el;
   }
 
   async function showCard(item, instant) {
-    const el  = buildCard(item);
-    const ub  = el.querySelector('.bubble--user');
-    const th  = el.querySelector('.thinking');
-    const mn  = el.querySelector('.miri-name');
-    const mb  = el.querySelector('.bubble--miri');
+    const el = buildCard(item);
+    const ub = el.querySelector('.bubble--user');
+    const th = el.querySelector('.thinking');
+    const mn = el.querySelector('.miri-name');
+    const mb = el.querySelector('.bubble--miri');
 
-    // Start: forward and below, invisible (will pop up into slot 0)
-    el.style.transform  = `translate3d(0px, 80px, 160px)`;
+    // Entry: start below & forward (large, off-screen below)
+    el.style.transform  = `translate3d(0px, 80px, 200px)`;
     el.style.opacity    = '0';
     el.style.zIndex     = '99';
     el.style.transition = 'none';
@@ -247,14 +258,14 @@ body {
     await raf();
 
     if (instant) {
-      ub.textContent = item.user;
+      ub.textContent   = item.user;
       mn.style.display = 'block';
-      mb.textContent = item.miri;
+      mb.textContent   = item.miri;
       reposition();
       return;
     }
 
-    reposition();          // slide into slot 0, cascade others back
+    reposition();
     await sleep(560);
 
     await typeText(ub, item.user);
@@ -271,16 +282,9 @@ body {
   }
 
   async function run(cards) {
-    computeMax();
-    window.addEventListener('resize', computeMax);
-
     await showCard(cards[0], true);
-
     let i = 1;
-    while (true) {
-      await showCard(cards[i % cards.length], false);
-      i++;
-    }
+    while (true) { await showCard(cards[i++ % cards.length], false); }
   }
 
   fetch(`data/${lang}.json`)

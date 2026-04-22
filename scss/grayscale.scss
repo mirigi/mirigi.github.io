@@ -55,12 +55,21 @@ footer {
     background-attachment: scroll !important;
     background-size: cover !important;
   h1 {
-    background: -webkit-linear-gradient(fade-out(black, 0.5), fade-out(black, .4));
+    background: -webkit-linear-gradient(fade-out(black, 0.15), fade-out(black, 0.05));
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
+    /* white halo lifts text off the light building background */
+    text-shadow:
+      0 0 18px rgba(255,255,255,0.95),
+      0 0 6px  rgba(255,255,255,0.9);
   }
-  h1, h2, h3 {
-    text-shadow: 0 0 1px fade-out($black, .7);
+  h2 {
+    color: rgba(40, 40, 40, 0.88);
+    text-shadow:
+      0 0 16px rgba(255,255,255,1),
+      0 0 8px  rgba(255,255,255,0.95),
+      0 1px 3px rgba(255,255,255,0.8);
+    font-weight: 500;
   }
 }
 .navbar-light .navbar-nav a.nav-link, .navbar-light .navbar-brand { 

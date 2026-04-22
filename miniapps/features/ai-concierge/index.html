@@ -23,12 +23,14 @@ html, body { width: 100%; height: 100%; }
 */
 body {
   /*
-    Camera: view from ~30° above, slightly off to the right.
-    perspective=700px with rotateX(30deg) on the stage gives a strong
-    top-down-at-an-angle viewpoint matching ai-concierge.jpg.
+    Shared perspective on body creates the 3D viewing context.
+    Each CARD is individually rotated (rotateX + rotateY in its slot
+    transform) to look like it's being viewed from the top-right corner
+    — the technique from https://dev.to/shubhamtiwari909/3d-card-effect
+    The #stage itself is NOT rotated; only the cards are.
   */
-  perspective: 700px;
-  perspective-origin: 65% 20%;
+  perspective: 1600px;
+  perspective-origin: 50% 50%;
   background:
     radial-gradient(ellipse 120% 90% at 30% 25%, #fafafa 0%, #ececea 45%, #d4d4d0 100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -36,22 +38,16 @@ body {
 }
 
 /*
-  #stage is a direct child of body so the perspective propagates correctly
-  (any intermediate element with the default transform-style: flat would
-  flatten the 3D chain and kill rotateX).
-
-  rotateX(30deg) tilts the top of the stage AWAY from the viewer while
-  the bottom (transform-origin: 50% 100%) stays anchored at the viewer.
-  Cards placed along Y=0 at the bottom are closest; cards at Y=−N appear
-  further back (up the tilted plane) and the perspective automatically
-  foreshortens them smaller and shifts them toward the vanishing point.
+  #stage is a direct child of body so perspective propagates correctly.
+  The stage itself is NOT rotated — it just provides the 3D coordinate
+  system. Each card is individually rotated (via its per-card transform)
+  to give it a 3D-in-space look, while the overall stack arrangement
+  stays straight on the screen (as in ai-concierge.jpg).
 */
 #stage {
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
-  transform: rotateX(30deg);
-  transform-origin: 50% 100%;
 }
 
 .card {
@@ -180,13 +176,18 @@ body {
     STEP_X: slight rightward drift (the reference cards also drift right
     as they recede because the perspective-origin is off-centre right).
   */
-  const STEP_X = isSmall ?  24 :  38;
-  const STEP_Y = isSmall ? -145 : -240;
-  const STEP_Z = isSmall ? -30 : -40;
+  /*
+    Stack cascade — cards stacked straight up with slight rightward drift.
+    No Z depth needed per level: the per-card rotateY creates the 3D
+    foreshortening. STEP_Z just adds a subtle extra shrink for depth cue.
+  */
+  const STEP_X = isSmall ?  18 :  28;
+  const STEP_Y = isSmall ? -105 : -180;
+  const STEP_Z = isSmall ? -60 : -90;
 
   /* Front-card offset from the viewport's bottom-left corner. */
-  const BASE_X = isSmall ? 10 : 18;
-  const BASE_Y = isSmall ? -10 : -20;
+  const BASE_X = isSmall ? 10 : 20;
+  const BASE_Y = isSmall ? -15 : -25;
 
   const stage = document.getElementById('stage');
   let items = [];
@@ -201,11 +202,21 @@ body {
     for (const ch of text) { el.textContent += ch; await sleep(CHAR_MS); }
   }
 
+  /*
+    Per-card rotation — every card looks like it's being viewed from the
+    top-right corner. Same rotation for all cards so the stack arrangement
+    stays straight on-screen (as requested).
+    rotateX(-12deg): tilts the top slightly toward viewer (so top face is visible)
+    rotateY(-22deg): tilts the right edge away (so left face is visible)
+    This is the technique from the 3D card effect tutorial.
+  */
+  const TILT = `rotateX(-12deg) rotateY(-22deg)`;
+
   function slotT(i) {
     const x = BASE_X + i * STEP_X;
     const y = BASE_Y + i * STEP_Y;
     const z = i * STEP_Z;
-    return `translate3d(${x}px, ${y}px, ${z}px)`;
+    return `translate3d(${x}px, ${y}px, ${z}px) ${TILT}`;
   }
 
   function reposition() {

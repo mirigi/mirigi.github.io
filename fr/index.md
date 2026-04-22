@@ -1,8 +1,8 @@
 ---
 layout: index
 lang: fr
-header: À Votre Service
-subheader: Conciergerie IA
+header: Conciergerie IA
+subheader: À Votre Service
 aboutTitle: CONCIERGERIE IA
 emailLabel: Email
 phoneLabel: Téléphone

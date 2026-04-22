@@ -1,8 +1,8 @@
 ---
 layout: index
 lang: en
-header: At Your Service
-subheader: AI Concierge
+header: AI Concierge
+subheader: At Your Service
 aboutTitle: AI CONCIERGE
 emailLabel: Email
 phoneLabel: Phone

@@ -1,8 +1,8 @@
 ---
 layout: index
 lang: es
-header: A Su Servicio
-subheader: Conserje IA
+header: Conserje IA
+subheader: A Su Servicio
 aboutTitle: CONSERJE IA
 emailLabel: Correo Electrónico
 phoneLabel: Teléfono

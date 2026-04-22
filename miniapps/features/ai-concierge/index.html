@@ -11,15 +11,15 @@ html, body { width: 100%; height: 100%; }
 
 /*
   CSS 3D pipeline:
-    body (perspective, NO overflow:hidden)
-      └─ #viewport (overflow:hidden for clipping — OUTSIDE the 3D chain)
-           └─ #stage (transform-style: preserve-3d) — children stack in 3D
-                └─ .card (translate3d + scale per slot)
+    body (perspective)
+      └─ #stage (transform-style: preserve-3d, rotateX(30deg))
+           └─ .card (translate3d per slot)
 
-  The perspective must live on an ancestor of the preserve-3d element with
-  NO overflow:hidden between them. So perspective goes on body, and the
-  clipping viewport is a *separate* ancestor that also does not break 3D
-  because preserve-3d is on #stage (its children), not on #viewport.
+  CRITICAL: #stage must be a DIRECT child of the perspective element.
+  Any intermediate element inherits transform-style: flat by default,
+  which flattens the 3D chain and kills the rotateX on #stage.
+  The iframe itself clips content, so no intermediate overflow:hidden
+  wrapper is needed.
 */
 body {
   /*
@@ -35,19 +35,16 @@ body {
   overflow: hidden;
 }
 
-#viewport {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 /*
-  The stage is tilted 30° around the X axis: the top of the stage rotates
-  AWAY from the viewer (into the screen), the bottom stays anchored near
-  the viewer. Cards placed along Y=0 at the bottom are closest; cards at
-  Y=−N appear further back (up the tilted plane) and the perspective
-  automatically foreshortens them smaller and shifts them toward the
-  vanishing point at perspective-origin.
+  #stage is a direct child of body so the perspective propagates correctly
+  (any intermediate element with the default transform-style: flat would
+  flatten the 3D chain and kill rotateX).
+
+  rotateX(30deg) tilts the top of the stage AWAY from the viewer while
+  the bottom (transform-origin: 50% 100%) stays anchored at the viewer.
+  Cards placed along Y=0 at the bottom are closest; cards at Y=−N appear
+  further back (up the tilted plane) and the perspective automatically
+  foreshortens them smaller and shifts them toward the vanishing point.
 */
 #stage {
   position: absolute;
@@ -157,9 +154,7 @@ body {
 </style>
 </head>
 <body>
-<div id="viewport">
-  <div id="stage"></div>
-</div>
+<div id="stage"></div>
 
 <script>
 (function () {

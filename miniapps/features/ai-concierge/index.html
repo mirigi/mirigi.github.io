@@ -252,7 +252,7 @@ body {
       <div class="card-body">
         <div class="msg-label msg-label--right">User</div>
         <div class="msg-row msg-row--user"><div class="bubble bubble--user"></div></div>
-        <div class="msg-label">Miri</div>
+        <div class="msg-label msg-label--miri" style="display:none">Miri</div>
         <div class="thinking">
           <div class="dot"></div><div class="dot"></div><div class="dot"></div>
         </div>
@@ -273,6 +273,7 @@ body {
     const ub = el.querySelector('.bubble--user');
     const th = el.querySelector('.thinking');
     const mb = el.querySelector('.bubble--miri');
+    const ml = el.querySelector('.msg-label--miri');
 
     /* Start below the front slot (slides up into place). */
     const startT = `translate3d(${BASE_X}px, ${BASE_Y + 120}px, 0px)`;
@@ -294,6 +295,7 @@ body {
 
     if (instant) {
       ub.textContent = item.user;
+      ml.style.display = '';         // show Miri label now that a reply exists
       mb.textContent = item.miri;
       reposition();
       return;
@@ -305,6 +307,7 @@ body {
     await typeText(ub, item.user);
     await sleep(PAUSE_MS);
 
+    ml.style.display = '';           // reveal Miri label alongside the thinking dots
     th.style.display = 'inline-flex';
     await sleep(THINK_MS);
     th.style.display = 'none';

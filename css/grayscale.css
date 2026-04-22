@@ -10966,6 +10966,10 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   letter-spacing: 0.0625em;
@@ -11002,6 +11006,7 @@ footer {
 /*
 */
 .masthead {
+  overflow: hidden;
   background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.2) 75%, #fff 100%), url("/img/others/bg-masthead.webp") !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
@@ -11026,6 +11031,14 @@ footer {
   padding-right: 4vw;
 }
 @media (max-width: 768px) {
+  .masthead h1 {
+    letter-spacing: 0.15rem;
+    font-size: 2rem;
+  }
+  .masthead h2 {
+    font-size: 1.4rem;
+    letter-spacing: 0.08rem;
+  }
   .masthead .masthead-text {
     max-width: 100%;
     padding-right: 1rem;
@@ -11154,3 +11167,5 @@ footer {
   border: none;
   display: block;
 }
+
+/*# sourceMappingURL=grayscale.css.map */

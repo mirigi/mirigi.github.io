@@ -12,6 +12,10 @@
 @import 'brochure.scss';
 @import '../vendor/bootstrap/css/bootstrap';
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
 //  font-family: 'Nunito';
   font-family: 'Open Sans', sans-serif;
@@ -49,6 +53,7 @@ footer {
 /*
 */
 .masthead {
+  overflow: hidden;
   background: linear-gradient(to bottom, transparent 0%,#{fade-out($white, .8)} 75%,$white 100%), url('/img/others/bg-masthead.webp') !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -72,6 +77,14 @@ footer {
     padding-right: 4vw;
   }
   @media (max-width: 768px) {
+    h1 {
+      letter-spacing: 0.15rem;
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      letter-spacing: 0.08rem;
+    }
     .masthead-text {
       max-width: 100%;
       padding-right: 1rem;

@@ -17,7 +17,7 @@ logo: "/img/mirigi-logo.png"
 # Locale settings
 locale: en_US
 timezone: America/New_York
-exclude: ["README.md", "README.dev.md", "Gemfile", "Gemfile.lock", "node_modules", "package.json", "package-lock.json", "gulpfile.js", "Makefile", "Dockerfile", "*.sh", "*.fml", "error.log", "tulp", "_site_viejo"]
+exclude: ["README.md", "README.dev.md", "Gemfile", "Gemfile.lock", "node_modules", "package.json", "package-lock.json", "gulpfile.js", "Makefile", "Dockerfile", "*.sh", "*.fml", "error.log", "tulp", "_site_viejo", "docs", "A4_PRINT_FIX_GUIDE.md", "PROPOSAL_IMPLEMENTATION_SUMMARY.md", "PROPOSAL_QUICKSTART.md", "PROPOSAL_QUICK_REFERENCE.md", "PROPOSAL_SYSTEM.md", "SECURITY_AUDIT_REPORT.md", "SECURITY_BYPASS_DEMOS.md", "SECURITY_CHECKLIST.md", "SECURITY_EXECUTIVE_SUMMARY.md", "markdownFilesystem.md", "task.md"]
 sass:
   sass_dir: scss/
 # Fallback definitions:

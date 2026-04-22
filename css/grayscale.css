@@ -11037,7 +11037,7 @@ footer {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to left, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.3) 50%);
+    background: linear-gradient(to left, rgb(255, 255, 0) 0%, rgba(255, 255, 0, 0.3) 50%);
     pointer-events: none;
     z-index: 1;
   }

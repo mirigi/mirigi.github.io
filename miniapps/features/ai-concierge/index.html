@@ -16,91 +16,101 @@ html, body {
 body {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 20px 16px;
+  align-items: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-#container {
-  width: 100%;
-  max-width: 360px;
-  height: calc(100% - 40px);
-  will-change: transform;
-  transition: transform .15s ease;
+/*
+  Fixed perspective matching the reference image:
+  Camera is slightly above and to the left of centre.
+  Cards deeper in Z appear smaller and shift toward the upper-right,
+  creating the diagonal cascade seen in the reference.
+*/
+#scene {
+  width: 80%;
+  height: 90%;
+  perspective: 900px;
+  perspective-origin: 30% 10%;
 }
 
-/* All cards are absolutely stacked at the same origin; reposition() sets their offsets */
 #stack {
+  transform-style: preserve-3d;
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  /*
+    Tilt the whole surface so it reads like the reference:
+    rotateX tilts the surface back (top away, bottom toward viewer)
+    rotateY turns it slightly so right side recedes
+  */
+  transform: rotateX(18deg) rotateY(-10deg);
 }
 
 .card {
   position: absolute;
   left: 0; right: 0; top: 0;
   background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 4px 24px rgba(0,0,0,.13), 0 1px 6px rgba(0,0,0,.08);
-  cursor: grab;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.10);
+  cursor: pointer;
   user-select: none;
-  /* transition is managed per-card by reposition() */
+  transform-origin: top center;
+  will-change: transform, opacity;
 }
 
-.card:active { cursor: grabbing; }
+/* Click bounce animation */
+@keyframes bounce {
+  0%   { transform: var(--base-transform) translateZ(0)     scale(1);    }
+  35%  { transform: var(--base-transform) translateZ(30px)  scale(1.04); }
+  65%  { transform: var(--base-transform) translateZ(-10px) scale(0.98); }
+  100% { transform: var(--base-transform) translateZ(0)     scale(1);    }
+}
+.card--bounce {
+  animation: bounce .5s ease forwards;
+}
 
-/* ── Card header ── */
 .card-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 15px;
   border-bottom: 1px solid rgba(0,0,0,.06);
 }
-.card-icon  { font-size: 20px; line-height: 1; }
-.card-scenario {
-  font-size: 13px; font-weight: 600;
-  color: #1c1c1e; letter-spacing: -.01em;
-}
+.card-icon     { font-size: 19px; line-height: 1; }
+.card-scenario { font-size: 13px; font-weight: 700; color: #1c1c1e; }
 
-/* ── Card body ── */
 .card-body {
-  padding: 12px 16px 16px;
-  display: flex; flex-direction: column; gap: 10px;
+  padding: 11px 15px 15px;
+  display: flex; flex-direction: column; gap: 8px;
 }
 .msg-row        { display: flex; }
 .msg-row--user  { justify-content: flex-end; }
 
 .bubble {
-  padding: 9px 13px;
-  border-radius: 18px;
-  font-size: 14px; line-height: 1.4;
-  max-width: 80%; word-break: break-word;
+  padding: 8px 12px;
+  border-radius: 16px;
+  font-size: 13px; line-height: 1.4;
+  max-width: 82%; word-break: break-word;
 }
 .bubble--user {
   background: #007AFF; color: #fff;
-  border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 4px;
 }
 .bubble--miri {
   background: #f2f2f7; color: #1c1c1e;
-  border-bottom-left-radius: 5px;
-  min-height: 36px;
+  border-bottom-left-radius: 4px;
+  min-height: 32px;
 }
 
-/* ── Thinking dots ── */
 .thinking {
-  display: none; align-items: center; gap: 5px;
+  display: none; align-items: center; gap: 4px;
   background: #f2f2f7;
-  border-radius: 18px; border-bottom-left-radius: 5px;
-  padding: 10px 14px; width: fit-content;
+  border-radius: 16px; border-bottom-left-radius: 4px;
+  padding: 9px 13px; width: fit-content;
 }
 .dot {
-  width: 8px; height: 8px;
+  width: 7px; height: 7px;
   background: #8e8e93; border-radius: 50%;
   animation: blink 1.2s infinite ease-in-out;
 }
-.dot:nth-child(1) { animation-delay:  0s; }
 .dot:nth-child(2) { animation-delay: .2s; }
 .dot:nth-child(3) { animation-delay: .4s; }
 @keyframes blink {
@@ -108,56 +118,46 @@ body {
   30%         { opacity:1;  transform:scale(1.1); }
 }
 
-/* ── Miri label ── */
-.miri-row {
-  display: flex; flex-direction: column;
-  align-items: flex-start; gap: 3px;
-}
+.miri-row { display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
 .miri-name {
-  font-size: 11px; font-weight: 600;
-  color: #8e8e93; letter-spacing: .02em;
-  text-transform: uppercase; padding-left: 4px;
+  font-size: 10px; font-weight: 700;
+  color: #8e8e93; letter-spacing: .06em;
+  text-transform: uppercase; padding-left: 3px;
 }
 </style>
 </head>
 <body>
-
-<div id="container">
+<div id="scene">
   <div id="stack"></div>
 </div>
 
 <script>
 (function () {
-  // ── Params ──────────────────────────────────────────────────
   const params  = new URLSearchParams(location.search);
   const lang    = params.get('lang')  || 'en';
   const isSmall = (params.get('size') || 'large') === 'small';
 
-  // ── Speed ───────────────────────────────────────────────────
-  const CHAR_MS  = isSmall ? 0    : 35;
-  const SPEED    = isSmall ? 0.5  : 1.0;
-  const THINK_MS = Math.round(1500 * SPEED);
-  const DWELL_MS = Math.round(2200 * SPEED);
-  const PAUSE_MS = isSmall ? 0    : 700;
+  const CHAR_MS  = isSmall ? 0   : 34;
+  const SPEED    = isSmall ? 0.5 : 1.0;
+  const THINK_MS = Math.round(1400 * SPEED);
+  const DWELL_MS = Math.round(2000 * SPEED);
+  const PAUSE_MS = isSmall ? 0   : 650;
 
-  // ── Stack visual constants ──────────────────────────────────
-  // Each card behind the active one shifts PEEK_Y px down and PEEK_X px left
-  const PEEK_Y    = isSmall ? 50 : 72;
-  const PEEK_X    = -8;
-  const SCALE_DEC = 0.045;   // scale reduction per stack level
-  const OPC_MIN   = 0.45;
-  const OPC_DEC   = 0.18;
+  /*
+    3D positions for each stack slot.
+    Slot 0 = active/front card (bottom-left in reference image, largest).
+    Each step back: card moves right (+X), up (-Y), and into the screen (-Z).
+    The perspective on #scene makes negative-Z cards appear smaller and higher.
+  */
+  const STEP_X =  isSmall ?  14 :  22;  // right per level
+  const STEP_Y =  isSmall ? -32 : -52;  // up per level (negative = higher in 3D)
+  const STEP_Z =  isSmall ? -60 : -95;  // into screen per level
 
-  // ── DOM ─────────────────────────────────────────────────────
-  const container = document.getElementById('container');
-  const stack     = document.getElementById('stack');
+  const stack = document.getElementById('stack');
 
-  // ── State ───────────────────────────────────────────────────
-  let stackItems = [];  // [newest, ..., oldest]
-  let maxVisible = 3;
-  let isDragging = false;
+  let items = [];  // [newest … oldest]
+  let maxV  = 4;
 
-  // ── Utils ───────────────────────────────────────────────────
   const esc   = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   const raf   = ()  => new Promise(r => requestAnimationFrame(r));
@@ -167,45 +167,36 @@ body {
     for (const ch of text) { el.textContent += ch; await sleep(CHAR_MS); }
   }
 
-  // ── Compute how many cards fit in the viewport ───────────────
   function computeMax() {
-    // Active card ~220px tall; each card behind peeks PEEK_Y px below
-    const available = container.offsetHeight - 220;
-    maxVisible = Math.max(2, Math.min(5, Math.floor(available / PEEK_Y) + 1));
+    const h = document.getElementById('scene').offsetHeight;
+    maxV = Math.max(2, Math.min(5, Math.round(h / 140)));
   }
 
-  // ── Reposition every card in the diagonal stack ──────────────
-  // skipActiveTransition: true when entering a new card (handled separately)
-  function reposition(skipActiveTransition) {
-    stackItems.forEach((el, i) => {
-      const tx      = i * PEEK_X;
-      const ty      = i * PEEK_Y;
-      const scale   = 1 - i * SCALE_DEC;
-      const opacity = Math.max(OPC_MIN, 1 - i * OPC_DEC);
-      const zIndex  = stackItems.length - i + 10;
-
-      if (i === 0 && skipActiveTransition) {
-        el.style.transition = 'none';
-      } else {
-        el.style.transition = 'transform .5s cubic-bezier(.34,1.56,.64,1), opacity .4s ease';
-      }
-      el.style.transform = `translateX(${tx}px) translateY(${ty}px) scale(${scale})`;
-      el.style.opacity   = String(opacity);
-      el.style.zIndex    = String(zIndex);
+  // Assign each card its 3D slot transform
+  function reposition() {
+    items.forEach((el, i) => {
+      const tx = i * STEP_X;
+      const ty = i * STEP_Y;
+      const tz = i * STEP_Z;
+      const t  = `translate3d(${tx}px,${ty}px,${tz}px)`;
+      el.style.setProperty('--base-transform', t);
+      el.style.transition = 'transform .55s cubic-bezier(.34,1.56,.64,1), opacity .4s ease';
+      el.style.transform  = t;
+      el.style.opacity    = String(Math.max(0.38, 1 - i * 0.22));
+      el.style.zIndex     = String(30 - i);
     });
   }
 
-  // ── Remove oldest cards when stack overflows ─────────────────
-  function trimStack() {
-    while (stackItems.length > maxVisible) {
-      const oldest = stackItems.pop();
-      oldest.style.transition = 'opacity .3s ease';
-      oldest.style.opacity    = '0';
-      setTimeout(() => oldest.remove(), 300);
+  // Remove oldest cards that no longer fit
+  function trim() {
+    while (items.length > maxV) {
+      const old = items.pop();
+      old.style.transition = 'opacity .3s';
+      old.style.opacity = '0';
+      setTimeout(() => old.remove(), 300);
     }
   }
 
-  // ── Build a card DOM element ─────────────────────────────────
   function buildCard(item) {
     const el = document.createElement('div');
     el.className = 'card';
@@ -215,9 +206,7 @@ body {
         <span class="card-scenario">${esc(item.scenario)}</span>
       </div>
       <div class="card-body">
-        <div class="msg-row msg-row--user">
-          <div class="bubble bubble--user"></div>
-        </div>
+        <div class="msg-row msg-row--user"><div class="bubble bubble--user"></div></div>
         <div class="thinking" style="display:none">
           <div class="dot"></div><div class="dot"></div><div class="dot"></div>
         </div>
@@ -226,154 +215,67 @@ body {
           <div class="bubble bubble--miri"></div>
         </div>
       </div>`;
+
+    // Click = bounce the card
+    el.addEventListener('click', function () {
+      el.classList.remove('card--bounce');
+      void el.offsetWidth; // reflow to restart animation
+      el.classList.add('card--bounce');
+      el.addEventListener('animationend', () => el.classList.remove('card--bounce'), { once: true });
+    });
+
     return el;
   }
 
-  // ── Animate one card through its full lifecycle ──────────────
   async function showCard(item, instant) {
-    const el         = buildCard(item);
-    const userBubble = el.querySelector('.bubble--user');
-    const thinking   = el.querySelector('.thinking');
-    const miriName   = el.querySelector('.miri-name');
-    const miriBubble = el.querySelector('.bubble--miri');
+    const el  = buildCard(item);
+    const ub  = el.querySelector('.bubble--user');
+    const th  = el.querySelector('.thinking');
+    const mn  = el.querySelector('.miri-name');
+    const mb  = el.querySelector('.bubble--miri');
 
-    // Start below the visible area
-    el.style.transform  = 'translateY(90px) scale(0.92)';
+    // Start: forward and below, invisible (will pop up into slot 0)
+    el.style.transform  = `translate3d(0px, 80px, 160px)`;
     el.style.opacity    = '0';
     el.style.zIndex     = '99';
     el.style.transition = 'none';
 
     stack.appendChild(el);
-    stackItems.unshift(el);  // newest at front
-    trimStack();
+    items.unshift(el);
+    trim();
 
-    // One frame so the browser registers the starting position before animating
     await raf();
 
     if (instant) {
-      // Seed card: show full content, slide into place with no typing
-      userBubble.textContent = item.user;
-      miriName.style.display = 'block';
-      miriBubble.textContent = item.miri;
-      reposition(false);  // animate from off-screen to position[0]
+      ub.textContent = item.user;
+      mn.style.display = 'block';
+      mb.textContent = item.miri;
+      reposition();
       return;
     }
 
-    // Slide active card into position[0], push existing cards back
-    reposition(false);
-    await sleep(450);  // spring settles
+    reposition();          // slide into slot 0, cascade others back
+    await sleep(560);
 
-    // Type user message
-    await typeText(userBubble, item.user);
+    await typeText(ub, item.user);
     await sleep(PAUSE_MS);
 
-    // Thinking dots
-    thinking.style.display = 'inline-flex';
+    th.style.display = 'inline-flex';
     await sleep(THINK_MS);
-    thinking.style.display = 'none';
+    th.style.display = 'none';
 
-    // Type Miri reply
-    miriName.style.display = 'block';
-    await typeText(miriBubble, item.miri);
+    mn.style.display = 'block';
+    await typeText(mb, item.miri);
 
-    // Dwell — card stays at position[0]; next showCard() will push it back
     await sleep(DWELL_MS);
   }
 
-  // ── Drag + physics (large only) ──────────────────────────────
-  if (!isSmall) {
-    let ox = 0, oy = 0, vx = 0, vy = 0, prevX = 0, prevY = 0;
-    let physicsId = null, dragTarget = null;
-
-    function pointerDown(e) {
-      const active = stackItems[0];
-      if (!active || !active.contains(e.target)) return;
-      const pt = e.touches ? e.touches[0] : e;
-      isDragging  = true;
-      dragTarget  = active;
-      prevX = pt.clientX; prevY = pt.clientY;
-      vx = vy = ox = oy = 0;
-      if (physicsId) { cancelAnimationFrame(physicsId); physicsId = null; }
-      dragTarget.style.transition = 'none';
-      dragTarget.style.zIndex     = '50';
-      e.preventDefault();
-    }
-
-    function pointerMove(e) {
-      if (!isDragging || !dragTarget) return;
-      const pt = e.touches ? e.touches[0] : e;
-      const dx = pt.clientX - prevX;
-      const dy = pt.clientY - prevY;
-      vx = vx * 0.6 + dx * 0.4;
-      vy = vy * 0.6 + dy * 0.4;
-      ox += dx; oy += dy;
-      prevX = pt.clientX; prevY = pt.clientY;
-      dragTarget.style.transform = `translate(${ox}px,${oy}px) rotate(${ox * .04}deg)`;
-      e.preventDefault();
-    }
-
-    function pointerUp(e) {
-      if (!isDragging || !dragTarget) return;
-      isDragging = false;
-      const card  = dragTarget;
-      dragTarget  = null;
-      const ch    = container.offsetHeight;
-      const cardH = card.offsetHeight;
-      const minX  = -80, maxX = 80;
-      const minY  = -(cardH * .5), maxY = ch - cardH * .5;
-
-      function physics() {
-        vx *= 0.92; vy *= 0.92;
-        ox += vx;   oy += vy;
-        if (ox < minX) { ox = minX; vx *= -0.6; }
-        if (ox > maxX) { ox = maxX; vx *= -0.6; }
-        if (oy < minY) { oy = minY; vy *= -0.6; }
-        if (oy > maxY) { oy = maxY; vy *= -0.6; }
-        card.style.transform = `translate(${ox}px,${oy}px) rotate(${ox * .04}deg)`;
-        if (Math.abs(vx) < 0.5 && Math.abs(vy) < 0.5) {
-          // Snap back to stack position via reposition
-          reposition(false);
-          physicsId = null;
-          return;
-        }
-        physicsId = requestAnimationFrame(physics);
-      }
-      physicsId = requestAnimationFrame(physics);
-      e.preventDefault();
-    }
-
-    document.addEventListener('mousedown',  pointerDown, { passive: false });
-    document.addEventListener('mousemove',  pointerMove, { passive: false });
-    document.addEventListener('mouseup',    pointerUp,   { passive: false });
-    document.addEventListener('touchstart', pointerDown, { passive: false });
-    document.addEventListener('touchmove',  pointerMove, { passive: false });
-    document.addEventListener('touchend',   pointerUp,   { passive: false });
-  }
-
-  // ── Magnetic tilt ────────────────────────────────────────────
-  document.addEventListener('mousemove', function (e) {
-    if (isDragging) return;
-    const r  = container.getBoundingClientRect();
-    const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
-    const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
-    container.style.transition = 'transform .1s ease';
-    container.style.transform  = `perspective(900px) rotateY(${dx * 10}deg) rotateX(${-dy * 10}deg)`;
-  });
-
-  document.addEventListener('mouseleave', function () {
-    container.style.transition = 'transform .4s ease';
-    container.style.transform  = '';
-  });
-
-  // ── Main loop ─────────────────────────────────────────────────
   async function run(cards) {
     computeMax();
     window.addEventListener('resize', computeMax);
 
-    // Seed: first card already complete so screen isn't empty
     await showCard(cards[0], true);
 
-    // Animate remaining cards, then loop forever
     let i = 1;
     while (true) {
       await showCard(cards[i % cards.length], false);
@@ -381,10 +283,9 @@ body {
     }
   }
 
-  // ── Boot ──────────────────────────────────────────────────────
   fetch(`data/${lang}.json`)
     .then(r => r.json())
-    .then(cards => run(cards))
+    .then(run)
     .catch(err => {
       stack.innerHTML = `<div style="padding:20px;color:#c00;font-size:13px;">
         Failed to load data/${lang}.json<br>${err.message}</div>`;

@@ -197,10 +197,10 @@
 
   function start() {
     if (state !== 'idle') return;
-    var mh = masthead.offsetHeight;
-    /* spawn off-screen right — bypass placeAt clamp */
-    cx = masthead.offsetWidth + 20;
-    cy = mh * (0.2 + Math.random() * 0.5);
+    var mw = masthead.offsetWidth, mh = masthead.offsetHeight;
+    /* spawn near top-right corner — the open sky area */
+    cx = mw + 20;
+    cy = mh * (0.05 + Math.random() * 0.08);
     svg.style.left = cx + 'px'; svg.style.top = cy + 'px';
     svg.classList.add('bflying');
     clrT();

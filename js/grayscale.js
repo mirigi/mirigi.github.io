@@ -184,19 +184,38 @@
     };
   }
 
-  /* Position just above the "AI" text (top of text block, right-aligned) */
+  /* Measure the pixel width of the "AI" word in the rendered h1 */
+  function measureAIWord() {
+    var h1 = masthead.querySelector('h1');
+    if (!h1) return 100;
+    var tn = h1.firstChild;
+    while (tn && tn.nodeType !== 3) tn = tn.firstChild;
+    if (!tn) return 100;
+    try {
+      var r = document.createRange();
+      r.setStart(tn, tn.textContent.search(/\S/));
+      r.setEnd(tn, tn.textContent.search(/\S/) + 2); // "AI"
+      var w = r.getBoundingClientRect().width;
+      r.detach();
+      return w || 100;
+    } catch (e) { return 100; }
+  }
+
+  /* Position to the LEFT of "AI": "seagull   AI" */
   function aiPos() {
     updateTextBounds();
     var tb = textBounds;
     var bs = birdSize();
     var mw = masthead.offsetWidth, mh = masthead.offsetHeight;
     if (tb) {
+      var aiW = measureAIWord();
+      var gap = 18;
       return {
-        x: Math.min(tb.r - bs.w + (Math.random() - 0.5) * 30, mw - bs.w),
-        y: Math.max(0, tb.t - bs.h - 8 + (Math.random() - 0.5) * 16)
+        x: Math.max(0, tb.r - aiW - bs.w - gap + (Math.random() - 0.5) * 16),
+        y: Math.max(0, tb.t + (Math.random() - 0.5) * 14)
       };
     }
-    return { x: mw * 0.78, y: mh * 0.25 };
+    return { x: mw * 0.65, y: mh * 0.28 };
   }
 
   /* AI → random → AI → random … */

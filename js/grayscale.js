@@ -184,14 +184,41 @@
     };
   }
 
-  function roam() {
+  /* Position just above the "AI" text (top of text block, right-aligned) */
+  function aiPos() {
+    updateTextBounds();
+    var tb = textBounds;
+    var bs = birdSize();
+    var mw = masthead.offsetWidth, mh = masthead.offsetHeight;
+    if (tb) {
+      return {
+        x: Math.min(tb.r - bs.w + (Math.random() - 0.5) * 30, mw - bs.w),
+        y: Math.max(0, tb.t - bs.h - 8 + (Math.random() - 0.5) * 16)
+      };
+    }
+    return { x: mw * 0.78, y: mh * 0.25 };
+  }
+
+  /* AI → random → AI → random … */
+  function goToAI() {
+    if (!visible) { state = 'idle'; return; }
+    state = 'flying';
+    var p = aiPos();
+    flyTo(cx, cy, p.x, p.y, 5000 + Math.random() * 3000, function () {
+      state = 'hovering';
+      clrT();
+      tout = setTimeout(goRandom, 10000 + Math.random() * 8000);
+    });
+  }
+
+  function goRandom() {
     if (!visible) { state = 'idle'; return; }
     state = 'flying';
     var p = randPos();
     flyTo(cx, cy, p.x, p.y, 5000 + Math.random() * 4000, function () {
       state = 'hovering';
       clrT();
-      tout = setTimeout(roam, 10000 + Math.random() * 8000);
+      tout = setTimeout(goToAI, 10000 + Math.random() * 8000);
     });
   }
 
@@ -199,25 +226,22 @@
     if (state !== 'idle') return;
     var mw = masthead.offsetWidth, mh = masthead.offsetHeight;
     var bs = birdSize();
-    /* spawn near the "AI" text — top of the text block */
-    updateTextBounds();
-    var tb = textBounds;
-    if (tb) {
-      cx = Math.min(tb.r - bs.w * 0.5 + (Math.random() - 0.5) * 40, mw - bs.w);
-      cy = Math.max(0, tb.t - bs.h + (Math.random() - 0.5) * 20);
-    } else {
-      cx = mw * 0.78; cy = mh * 0.28;
-    }
+    var pad = Math.max(40, mw * 0.1);
+    /* random start inside screen, not near edges, in right 40% */
+    cx = mw * 0.60 + Math.random() * (mw * 0.30 - bs.w);
+    cy = pad + Math.random() * (mh * 0.55 - pad);
     svg.style.left = cx + 'px'; svg.style.top = cy + 'px';
     svg.classList.add('bflying');
     clrT();
-    tout = setTimeout(roam, 300 + Math.random() * 500);
+    /* first move: fly above "AI" */
+    tout = setTimeout(goToAI, 400 + Math.random() * 600);
   }
 
   function startle() {
     if (state === 'idle') return;
     clrT(); cancelFly();
-    roam();
+    /* interrupt and go random, then back to AI */
+    goRandom();
   }
 
   svg.addEventListener('mouseenter', startle);

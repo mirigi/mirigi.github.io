@@ -186,15 +186,15 @@
     var tb = textBounds;
     var bs = birdSize();
     var mw = masthead.offsetWidth, mh = masthead.offsetHeight;
+    var navH = 70, safeGap = 20;
     if (tb) {
       var aiW = measureAIWord();
-      var gap = 18;
       return {
-        x: Math.max(0, tb.r - aiW - bs.w - gap + (Math.random() - 0.5) * 16),
-        y: Math.max(0, tb.t + (Math.random() - 0.5) * 14)
+        x: Math.max(mw * 0.5, tb.r - aiW - bs.w - safeGap + (Math.random() - 0.5) * 16),
+        y: Math.max(navH, tb.t - bs.h - safeGap + (Math.random() - 0.5) * 12)
       };
     }
-    return { x: mw * 0.65, y: mh * 0.28 };
+    return { x: mw * 0.65, y: mh * 0.2 };
   }
 
   /* AI → random → AI → random … */

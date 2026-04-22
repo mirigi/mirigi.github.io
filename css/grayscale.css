@@ -11019,10 +11019,10 @@ footer {
   color: #666;
   font-family: "Varela Round";
   text-shadow: none;
-  letter-spacing: 0.35rem;
+  letter-spacing: 0.15rem;
 }
 .masthead .masthead-text {
-  max-width: 55%;
+  max-width: 65%;
   padding-right: 4vw;
 }
 @media (max-width: 768px) {

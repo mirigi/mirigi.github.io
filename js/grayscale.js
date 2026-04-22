@@ -83,7 +83,7 @@
   sty.textContent =
     '@keyframes bBank{0%,100%{transform:rotate(-3deg) scaleY(0.94)}50%{transform:rotate(3deg) scaleY(1)}}' +
     '.b-flip{transform-box:fill-box;transform-origin:50% 50%}' +
-    '.bflying{animation:bBank 3.5s ease-in-out infinite}' +
+    '.bflying{animation:bBank 5s ease-in-out infinite}' +
     '@media(max-width:768px){.b-gull{width:60px!important;height:26px!important}}' +
     '@media(max-width:480px){.b-gull{width:44px!important;height:19px!important}}';
   document.head.appendChild(sty);
@@ -204,10 +204,10 @@
     if (!visible) { state = 'idle'; return; }
     state = 'flying';
     var p = aiPos();
-    flyTo(cx, cy, p.x, p.y, 5000 + Math.random() * 3000, function () {
+    flyTo(cx, cy, p.x, p.y, 9000 + Math.random() * 6000, function () {
       state = 'hovering';
       clrT();
-      tout = setTimeout(goRandom, 10000 + Math.random() * 8000);
+      tout = setTimeout(goRandom, 14000 + Math.random() * 10000);
     });
   }
 
@@ -215,10 +215,10 @@
     if (!visible) { state = 'idle'; return; }
     state = 'flying';
     var p = randPos();
-    flyTo(cx, cy, p.x, p.y, 5000 + Math.random() * 4000, function () {
+    flyTo(cx, cy, p.x, p.y, 9000 + Math.random() * 7000, function () {
       state = 'hovering';
       clrT();
-      tout = setTimeout(goToAI, 10000 + Math.random() * 8000);
+      tout = setTimeout(goToAI, 14000 + Math.random() * 10000);
     });
   }
 

@@ -198,9 +198,16 @@
   function start() {
     if (state !== 'idle') return;
     var mw = masthead.offsetWidth, mh = masthead.offsetHeight;
-    /* spawn near top-right corner — the open sky area */
-    cx = mw + 20;
-    cy = mh * (0.05 + Math.random() * 0.08);
+    var bs = birdSize();
+    /* spawn near the "AI" text — top of the text block */
+    updateTextBounds();
+    var tb = textBounds;
+    if (tb) {
+      cx = Math.min(tb.r - bs.w * 0.5 + (Math.random() - 0.5) * 40, mw - bs.w);
+      cy = Math.max(0, tb.t - bs.h + (Math.random() - 0.5) * 20);
+    } else {
+      cx = mw * 0.78; cy = mh * 0.28;
+    }
     svg.style.left = cx + 'px'; svg.style.top = cy + 'px';
     svg.classList.add('bflying');
     clrT();

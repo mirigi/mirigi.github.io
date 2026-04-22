@@ -1,6 +1,7 @@
 ---
 title: "Miri — La Primera Agente Conserje IA Que Actúa"
 image: "/img_mirigi/ai-concierge.jpg"
+miniapp: features/ai-concierge
 layout: feature
 keywords: conserje ia, miri, chat, inteligencia artificial, experiencia del residente, automatización
 description: "Miri es la primera agente conserje IA que actúa — no solo responde. Hace pedidos, llama al valet y reserva amenidades de principio a fin."

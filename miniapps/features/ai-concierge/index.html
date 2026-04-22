@@ -31,7 +31,8 @@ body {
   */
   perspective: 1600px;
   perspective-origin: 50% 50%;
-  background: #e8e8e6 url('bg.jpg') center/cover no-repeat;
+  background: #e8e8e6 url('bg.jpg') top center / cover no-repeat;
+  background-attachment: local;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   overflow: hidden;
 }
@@ -50,21 +51,25 @@ body {
 }
 
 .card {
+  --card-w: clamp(200px, 85vw, 320px);
   position: absolute;
-  /*
-    Anchor the active card at horizontal centre of the viewport (bottom-centre).
-    Cards translate UP and RIGHT from here; --base-left centres the 320px card.
-  */
   left: 50%;
-  margin-left: -160px; /* half of width — centres the card */
+  margin-left: calc(var(--card-w) * -0.5);
   bottom: 0;
-  width: 320px;
-  background: #ffffff;
-  border-radius: 18px;
+  width: var(--card-w);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,.82) 0%, rgba(247,250,255,.68) 100%);
+  border: 1px solid rgba(255,255,255,.85);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
   box-shadow:
-    0 18px 40px rgba(0,0,0,.18),
-    0 4px 12px rgba(0,0,0,.10),
-    0 1px 2px rgba(0,0,0,.06);
+    0 45px 55px -10px rgba(40,55,85,.45),
+    0 25px 40px -12px rgba(40,55,85,.30),
+    0 12px 22px rgba(102,118,145,.18),
+    0 3px 8px rgba(34,51,84,.10),
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.35);
+  overflow: hidden;
   cursor: pointer;
   user-select: none;
   transform-origin: 50% 50%;
@@ -72,6 +77,36 @@ body {
   transition: transform .55s cubic-bezier(.34,1.56,.64,1), opacity .45s ease;
   backface-visibility: hidden;
 }
+
+/* Diagonal gloss sweep */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.65) 0%,
+    rgba(255,255,255,.08) 30%,
+    rgba(255,255,255,0)   45%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Top-left soft highlight */
+.card::after {
+  content: "";
+  position: absolute;
+  top: 8px; left: 12px;
+  width: 45%; height: 22%;
+  background: radial-gradient(ellipse at top left,
+    rgba(255,255,255,.65), rgba(255,255,255,0) 70%);
+  filter: blur(6px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card-header, .card-subtitle, .card-body { position: relative; z-index: 3; }
 
 /*
   Bounce: pop forward in Z then settle back. Uses the slot transform via
@@ -90,21 +125,22 @@ body {
   padding: 12px 16px 10px;
   border-bottom: 1px solid rgba(0,0,0,.05);
 }
-.card-icon     { font-size: 18px; line-height: 1; flex-shrink: 0; }
-.card-scenario { font-size: 14px; font-weight: 700; color: #1c1c1e; letter-spacing: -0.01em; }
+.card-icon     { font-size: 22px; line-height: 1; flex-shrink: 0; }
+.card-scenario { font-size: 17px; font-weight: 700; color: #1c1c1e; letter-spacing: -0.01em; }
 
 .card-subtitle {
-  font-size: 11px; color: #8e8e93; font-weight: 500;
+  font-size: 13px; color: #8e8e93; font-weight: 500;
   padding: 0 16px 8px; margin-top: -6px;
 }
 
 .card-body {
   padding: 10px 14px 14px;
   display: flex; flex-direction: column; gap: 6px;
+  min-height: 170px;
 }
 
 .msg-label {
-  font-size: 9px; font-weight: 700; color: #8e8e93;
+  font-size: 11px; font-weight: 700; color: #8e8e93;
   letter-spacing: .08em; text-transform: uppercase;
   padding: 0 4px;
 }
@@ -114,18 +150,26 @@ body {
 .msg-row--user { justify-content: flex-end; }
 
 .bubble {
-  padding: 8px 12px;
+  padding: 10px 13px;
   border-radius: 16px;
-  font-size: 13px; line-height: 1.4;
-  max-width: 80%; word-break: break-word;
+  font-size: 16px; line-height: 1.35;
+  max-width: 86%; word-break: break-word;
+  box-shadow:
+    0 8px 18px rgba(34,51,84,.08),
+    0 2px 6px rgba(34,51,84,.06);
 }
 .bubble--user {
-  background: #007AFF; color: #fff;
-  border-bottom-right-radius: 4px;
+  background: linear-gradient(180deg, #1f7cff 0%, #1970ea 100%);
+  color: #fff;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 16px;
 }
 .bubble--miri {
-  background: #f0f0f3; color: #1c1c1e;
-  border-bottom-left-radius: 4px;
+  background: rgba(255,255,255,.92);
+  color: #242932;
+  border: 1px solid rgba(255,255,255,.9);
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 16px;
 }
 /* Hide empty bubbles (and their parent rows) so no blank grey pill shows
    during the thinking phase before Miri has typed anything */
@@ -134,9 +178,11 @@ body {
 
 .thinking {
   display: none; align-items: center; gap: 4px;
-  background: #f0f0f3;
-  border-radius: 16px; border-bottom-left-radius: 4px;
-  padding: 8px 12px; width: fit-content;
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 16px; border-top-left-radius: 6px;
+  padding: 10px 13px; width: fit-content;
+  box-shadow: 0 8px 18px rgba(34,51,84,.08), 0 2px 6px rgba(34,51,84,.06);
 }
 .dot {
   width: 7px; height: 7px;
@@ -230,7 +276,7 @@ body {
       const t = slotT(i);
       el.style.setProperty('--t', t);
       el.style.transform = t;
-      el.style.opacity   = String(Math.max(0.55, 1 - i * 0.18));
+      el.style.opacity   = String(Math.max(0.85, 1 - i * 0.05));
       el.style.zIndex    = String(30 - i);
     });
   }
@@ -242,6 +288,93 @@ body {
       old.style.opacity    = '0';
       setTimeout(() => old.remove(), 300);
     }
+  }
+
+  /* Drag-to-throw: grab, fling, then snap back to slot.
+     Pure click (no movement beyond a small threshold) just triggers the
+     bounce animation, preserving the old tap feedback. */
+  function attachDrag(el) {
+    const TRANS_RETURN = 'transform .6s cubic-bezier(.34,1.56,.64,1), opacity .45s ease';
+    const DRAG_THRESHOLD = 4;                // px before we consider it a drag
+    let active = false, dragging = false;
+    let sx = 0, sy = 0, dx = 0, dy = 0;
+    let lx = 0, ly = 0, lt = 0, vx = 0, vy = 0;
+    let moveHandler, upHandler;
+
+    const getSlotT = () => el.style.getPropertyValue('--t') || '';
+
+    const down = (e) => {
+      const pt = e.touches ? e.touches[0] : e;
+      active = true; dragging = false;
+      sx = lx = pt.clientX;
+      sy = ly = pt.clientY;
+      dx = dy = vx = vy = 0;
+      lt = performance.now();
+      document.addEventListener('mousemove', moveHandler);
+      document.addEventListener('mouseup',   upHandler);
+      document.addEventListener('touchmove', moveHandler, { passive: false });
+      document.addEventListener('touchend',  upHandler);
+      document.addEventListener('touchcancel', upHandler);
+    };
+
+    moveHandler = (e) => {
+      if (!active) return;
+      const pt = e.touches ? e.touches[0] : e;
+      const nx = pt.clientX - sx;
+      const ny = pt.clientY - sy;
+      if (!dragging && Math.hypot(nx, ny) < DRAG_THRESHOLD) return;
+      if (!dragging) {
+        dragging = true;
+        el.style.transition = 'none';
+        el.style.zIndex = '99';
+      }
+      if (e.cancelable) e.preventDefault();
+      const now = performance.now();
+      const dt = Math.max(1, now - lt);
+      vx = (pt.clientX - lx) / dt * 16;  // px per ~frame
+      vy = (pt.clientY - ly) / dt * 16;
+      dx = nx; dy = ny;
+      lx = pt.clientX; ly = pt.clientY; lt = now;
+      el.style.transform = `${getSlotT()} translate(${dx}px, ${dy}px)`;
+    };
+
+    upHandler = () => {
+      if (!active) return;
+      active = false;
+      document.removeEventListener('mousemove', moveHandler);
+      document.removeEventListener('mouseup',   upHandler);
+      document.removeEventListener('touchmove', moveHandler);
+      document.removeEventListener('touchend',  upHandler);
+      document.removeEventListener('touchcancel', upHandler);
+
+      if (!dragging) {
+        // Treat as tap: replay the bounce animation.
+        el.classList.remove('card--bounce');
+        void el.offsetWidth;
+        el.classList.add('card--bounce');
+        el.addEventListener('animationend',
+          () => el.classList.remove('card--bounce'), { once: true });
+        return;
+      }
+
+      // Throw: extend along the release velocity, then snap home.
+      const throwX = dx + vx * 10;
+      const throwY = dy + vy * 10;
+      el.style.transition = 'transform .24s cubic-bezier(.2,.8,.3,1)';
+      el.style.transform  = `${getSlotT()} translate(${throwX}px, ${throwY}px)`;
+
+      const onEnd = () => {
+        el.removeEventListener('transitionend', onEnd);
+        el.style.transition = TRANS_RETURN;
+        el.style.transform  = getSlotT();
+      };
+      el.addEventListener('transitionend', onEnd, { once: true });
+    };
+
+    el.addEventListener('mousedown',  down);
+    el.addEventListener('touchstart', down, { passive: true });
+    /* Block the default drag image on images/text inside. */
+    el.addEventListener('dragstart', (e) => e.preventDefault());
   }
 
   function buildCard(item) {
@@ -261,13 +394,7 @@ body {
         </div>
         <div class="msg-row"><div class="bubble bubble--miri"></div></div>
       </div>`;
-    el.addEventListener('click', () => {
-      el.classList.remove('card--bounce');
-      void el.offsetWidth;
-      el.classList.add('card--bounce');
-      el.addEventListener('animationend',
-        () => el.classList.remove('card--bounce'), { once: true });
-    });
+    attachDrag(el);
     return el;
   }
 

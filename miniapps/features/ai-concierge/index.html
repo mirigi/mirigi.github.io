@@ -7,79 +7,102 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { width: 100%; height: 100%; }
+html, body { width: 100%; height: 100%; }
 
 /*
-  perspective MUST be on the direct parent of preserve-3d children.
-  NEVER put overflow:hidden on a perspective container — it flattens 3D.
-  perspective-origin at 65% -30% places the vanishing point upper-right,
-  above the viewport — this is what creates the diagonal cascade where
-  cards further back appear both higher AND to the right, matching the
-  reference image.
+  CSS 3D pipeline:
+    body (perspective, NO overflow:hidden)
+      └─ #viewport (overflow:hidden for clipping — OUTSIDE the 3D chain)
+           └─ #stage (transform-style: preserve-3d) — children stack in 3D
+                └─ .card (translate3d + scale per slot)
+
+  The perspective must live on an ancestor of the preserve-3d element with
+  NO overflow:hidden between them. So perspective goes on body, and the
+  clipping viewport is a *separate* ancestor that also does not break 3D
+  because preserve-3d is on #stage (its children), not on #viewport.
 */
 body {
-  width: 100%; height: 100%;
-  perspective: 600px;
-  perspective-origin: 65% -30%;
-  overflow: hidden;  /* only on body — outside preserve-3d chain */
+  perspective: 1400px;
+  perspective-origin: 70% 30%;
   background:
-    radial-gradient(ellipse 140% 110% at 40% 20%,
-      #f9f9f9 0%, #ededeb 35%, #d9d9d5 100%);
+    radial-gradient(ellipse 120% 90% at 30% 25%, #fafafa 0%, #ececea 45%, #d4d4d0 100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  position: relative;
+  overflow: hidden;
 }
 
-/*
-  The tilted surface — rotateX(22deg) lifts the far end away from the viewer.
-  transform-origin: bottom center keeps the near edge anchored at the bottom.
-  Cards placed along the surface's Y axis appear at different depths,
-  so perspective makes them progressively smaller and higher on screen.
-*/
+#viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 #stage {
-  transform-style: preserve-3d;
-  transform: rotateX(22deg);
-  transform-origin: bottom center;
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  margin-left: -160px;
-  width: 320px;
+  inset: 0;
+  transform-style: preserve-3d;
 }
 
 .card {
   position: absolute;
-  bottom: 0; left: 0;
+  /*
+    Anchor: bottom-left area. Front card sits near bottom-left; successive
+    cards translate UP and RIGHT (and back in Z) to form the cascade.
+    The card's own transform-origin is its center so scale is symmetric.
+  */
+  left: 0;
+  bottom: 0;
   width: 320px;
-  background: rgba(255,255,255,0.97);
+  background: #ffffff;
   border-radius: 18px;
-  box-shadow: 0 10px 38px rgba(0,0,0,.16), 0 2px 8px rgba(0,0,0,.09);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.18),
+    0 4px 12px rgba(0,0,0,.10),
+    0 1px 2px rgba(0,0,0,.06);
   cursor: pointer;
   user-select: none;
-  transform-origin: bottom center;
+  transform-origin: 50% 50%;
   will-change: transform, opacity;
   transition: transform .55s cubic-bezier(.34,1.56,.64,1), opacity .45s ease;
+  backface-visibility: hidden;
 }
 
-.card--bounce { animation: pop .42s ease forwards; }
+/*
+  Bounce: pop forward in Z then settle back. Uses the slot transform via
+  the --t custom property so the bounce respects the card's slot position.
+*/
+.card--bounce { animation: pop .45s ease forwards; }
 @keyframes pop {
-  0%   { transform: var(--t)                                    scale(1); }
-  38%  { transform: var(--t) translateZ(22px) translateY(-4px)  scale(1.04); }
-  72%  { transform: var(--t) translateZ(-5px)                   scale(0.98); }
-  100% { transform: var(--t)                                    scale(1); }
+  0%   { transform: var(--t); }
+  40%  { transform: var(--t) translateZ(60px); }
+  72%  { transform: var(--t) translateZ(-10px); }
+  100% { transform: var(--t); }
 }
 
 .card-header {
   display: flex; align-items: center; gap: 8px;
-  padding: 11px 14px;
-  border-bottom: 1px solid rgba(0,0,0,.06);
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid rgba(0,0,0,.05);
 }
 .card-icon     { font-size: 18px; line-height: 1; flex-shrink: 0; }
-.card-scenario { font-size: 13px; font-weight: 700; color: #1c1c1e; }
+.card-scenario { font-size: 14px; font-weight: 700; color: #1c1c1e; letter-spacing: -0.01em; }
+
+.card-subtitle {
+  font-size: 11px; color: #8e8e93; font-weight: 500;
+  padding: 0 16px 8px; margin-top: -6px;
+}
 
 .card-body {
   padding: 10px 14px 14px;
-  display: flex; flex-direction: column; gap: 8px;
+  display: flex; flex-direction: column; gap: 6px;
 }
+
+.msg-label {
+  font-size: 9px; font-weight: 700; color: #8e8e93;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 0 4px;
+}
+.msg-label--right { text-align: right; }
+
 .msg-row       { display: flex; }
 .msg-row--user { justify-content: flex-end; }
 
@@ -87,21 +110,21 @@ body {
   padding: 8px 12px;
   border-radius: 16px;
   font-size: 13px; line-height: 1.4;
-  max-width: 78%; word-break: break-word;
+  max-width: 80%; word-break: break-word;
 }
 .bubble--user {
   background: #007AFF; color: #fff;
   border-bottom-right-radius: 4px;
 }
 .bubble--miri {
-  background: #f0f0f5; color: #1c1c1e;
+  background: #f0f0f3; color: #1c1c1e;
   border-bottom-left-radius: 4px;
   min-height: 30px;
 }
 
 .thinking {
   display: none; align-items: center; gap: 4px;
-  background: #f0f0f5;
+  background: #f0f0f3;
   border-radius: 16px; border-bottom-left-radius: 4px;
   padding: 8px 12px; width: fit-content;
 }
@@ -116,16 +139,12 @@ body {
   0%,60%,100% { opacity:.25; transform:scale(.8); }
   30%         { opacity:1;   transform:scale(1.1); }
 }
-.miri-row { display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
-.miri-name {
-  font-size: 10px; font-weight: 700;
-  color: #8e8e93; letter-spacing: .06em;
-  text-transform: uppercase; padding-left: 2px;
-}
 </style>
 </head>
 <body>
-<div id="stage"></div>
+<div id="viewport">
+  <div id="stage"></div>
+</div>
 
 <script>
 (function () {
@@ -140,14 +159,20 @@ body {
   const PAUSE_MS = isSmall ? 0   : 650;
 
   /*
-    Each card sits STEP_Y pixels further up the tilted surface.
-    rotateX(22°) maps Y→Z: each STEP_Y of -220px creates
-    Z_depth = 220*sin(22°) ≈ 82px → scale = 600/(600+82) ≈ 0.88 per level.
-    That matches the ~83% size reduction visible in ai-concierge.jpg.
-    STEP_X adds the slight rightward drift of back cards.
+    Cascade geometry. Each slot index i (0 = front) contributes:
+      X: i * STEP_X   (rightward drift of back cards)
+      Y: i * STEP_Y   (upward on screen — back cards higher)
+      Z: i * STEP_Z   (push into screen — perspective shrinks them)
+    With perspective:1400px, Z = -260 ⇒ scale ≈ 1400/(1400+260) ≈ 0.843
+    i.e. ~84% per step, matching the reference image's size ratio.
   */
-  const STEP_Y = isSmall ? -145 : -220;
-  const STEP_X = isSmall ?   8  :   14;
+  const STEP_X = isSmall ?  46 :  70;
+  const STEP_Y = isSmall ? -70 : -115;
+  const STEP_Z = isSmall ? -200 : -260;
+
+  /* Front-card offset from the viewport's bottom-left corner. */
+  const BASE_X = isSmall ? 6  : 14;
+  const BASE_Y = isSmall ? -6 : -14;
 
   const stage = document.getElementById('stage');
   let items = [];
@@ -163,7 +188,10 @@ body {
   }
 
   function slotT(i) {
-    return `translate3d(${i * STEP_X}px, ${i * STEP_Y}px, 0px)`;
+    const x = BASE_X + i * STEP_X;
+    const y = BASE_Y + i * STEP_Y;
+    const z = i * STEP_Z;
+    return `translate3d(${x}px, ${y}px, ${z}px)`;
   }
 
   function reposition() {
@@ -171,7 +199,7 @@ body {
       const t = slotT(i);
       el.style.setProperty('--t', t);
       el.style.transform = t;
-      el.style.opacity   = String(Math.max(0.5, 1 - i * 0.20));
+      el.style.opacity   = String(Math.max(0.55, 1 - i * 0.18));
       el.style.zIndex    = String(30 - i);
     });
   }
@@ -179,7 +207,7 @@ body {
   function trim() {
     while (items.length > maxV) {
       const old = items.pop();
-      old.style.transition = 'opacity .3s';
+      old.style.transition = 'opacity .3s, transform .3s';
       old.style.opacity    = '0';
       setTimeout(() => old.remove(), 300);
     }
@@ -190,24 +218,24 @@ body {
     el.className = 'card';
     el.innerHTML = `
       <div class="card-header">
-        <span class="card-icon">${esc(item.icon)}</span>
         <span class="card-scenario">${esc(item.scenario)}</span>
+        <span class="card-icon" style="margin-left:auto">${esc(item.icon)}</span>
       </div>
       <div class="card-body">
+        <div class="msg-label msg-label--right">User</div>
         <div class="msg-row msg-row--user"><div class="bubble bubble--user"></div></div>
-        <div class="thinking" style="display:none">
+        <div class="msg-label">Miri</div>
+        <div class="thinking">
           <div class="dot"></div><div class="dot"></div><div class="dot"></div>
         </div>
-        <div class="miri-row">
-          <div class="miri-name" style="display:none">Miri</div>
-          <div class="bubble bubble--miri"></div>
-        </div>
+        <div class="msg-row"><div class="bubble bubble--miri"></div></div>
       </div>`;
     el.addEventListener('click', () => {
       el.classList.remove('card--bounce');
       void el.offsetWidth;
       el.classList.add('card--bounce');
-      el.addEventListener('animationend', () => el.classList.remove('card--bounce'), { once: true });
+      el.addEventListener('animationend',
+        () => el.classList.remove('card--bounce'), { once: true });
     });
     return el;
   }
@@ -216,11 +244,12 @@ body {
     const el = buildCard(item);
     const ub = el.querySelector('.bubble--user');
     const th = el.querySelector('.thinking');
-    const mn = el.querySelector('.miri-name');
     const mb = el.querySelector('.bubble--miri');
 
-    // Start below — slides up the tilted surface into slot 0
-    el.style.transform  = `translate3d(0px, 80px, 0px)`;
+    /* Start below the front slot (slides up into place). */
+    const startT = `translate3d(${BASE_X}px, ${BASE_Y + 120}px, 0px)`;
+    el.style.setProperty('--t', startT);
+    el.style.transform  = startT;
     el.style.opacity    = '0';
     el.style.zIndex     = '99';
     el.style.transition = 'none';
@@ -229,12 +258,15 @@ body {
     items.unshift(el);
     trim();
 
+    /* Force a reflow so the "start" transform is committed before we
+       re-enable transitions and move it to slot 0. */
+    void el.offsetWidth;
+    el.style.transition = '';
     await raf();
 
     if (instant) {
-      ub.textContent   = item.user;
-      mn.style.display = 'block';
-      mb.textContent   = item.miri;
+      ub.textContent = item.user;
+      mb.textContent = item.miri;
       reposition();
       return;
     }
@@ -249,7 +281,6 @@ body {
     await sleep(THINK_MS);
     th.style.display = 'none';
 
-    mn.style.display = 'block';
     await typeText(mb, item.miri);
 
     await sleep(DWELL_MS);

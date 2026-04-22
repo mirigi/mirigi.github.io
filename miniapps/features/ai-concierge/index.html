@@ -7,47 +7,38 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body {
-  width: 100%; height: 100%;
-  overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
+html { width: 100%; height: 100%; }
 
-/* Interior background matching the reference image room */
+/*
+  perspective MUST be on the direct parent of preserve-3d children.
+  NEVER put overflow:hidden on a perspective container — it flattens 3D.
+  perspective-origin at 65% -30% places the vanishing point upper-right,
+  above the viewport — this is what creates the diagonal cascade where
+  cards further back appear both higher AND to the right, matching the
+  reference image.
+*/
 body {
+  width: 100%; height: 100%;
+  perspective: 600px;
+  perspective-origin: 65% -30%;
+  overflow: hidden;  /* only on body — outside preserve-3d chain */
   background:
     radial-gradient(ellipse 140% 110% at 40% 20%,
-      #f9f9f9 0%, #eeeeec 35%, #d9d9d5 100%);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-/*
-  The perspective that matches ai-concierge.jpg:
-  - perspective: 500px   → cards shrink ~20% per step in Z
-  - perspective-origin: 65% -60%  → vanishing point is ABOVE the scene
-    and to the right. This is why cards going further back appear
-    higher AND to the right on screen — exactly the reference diagonal.
-*/
-#scene {
+      #f9f9f9 0%, #ededeb 35%, #d9d9d5 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   position: relative;
-  width: 100%; height: 100%;
-  perspective: 500px;
-  perspective-origin: 65% -60%;
-  overflow: hidden;
 }
 
 /*
-  The surface is tilted toward the viewer at the bottom (rotateX positive).
-  Cards at Y=0 are at the near end (front, closest, largest).
-  Cards at Y<0 are further back on the tilted surface (smaller, higher on screen).
-
-  Bottom-anchored so the front card appears at the bottom of the iframe.
+  The tilted surface — rotateX(22deg) lifts the far end away from the viewer.
+  transform-origin: bottom center keeps the near edge anchored at the bottom.
+  Cards placed along the surface's Y axis appear at different depths,
+  so perspective makes them progressively smaller and higher on screen.
 */
-#surface {
+#stage {
   transform-style: preserve-3d;
   transform: rotateX(22deg);
+  transform-origin: bottom center;
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -59,7 +50,7 @@ body {
   position: absolute;
   bottom: 0; left: 0;
   width: 320px;
-  background: rgba(255,255,255,0.96);
+  background: rgba(255,255,255,0.97);
   border-radius: 18px;
   box-shadow: 0 10px 38px rgba(0,0,0,.16), 0 2px 8px rgba(0,0,0,.09);
   cursor: pointer;
@@ -69,7 +60,6 @@ body {
   transition: transform .55s cubic-bezier(.34,1.56,.64,1), opacity .45s ease;
 }
 
-/* Click bounce */
 .card--bounce { animation: pop .42s ease forwards; }
 @keyframes pop {
   0%   { transform: var(--t)                                    scale(1); }
@@ -135,9 +125,7 @@ body {
 </style>
 </head>
 <body>
-<div id="scene">
-  <div id="surface"></div>
-</div>
+<div id="stage"></div>
 
 <script>
 (function () {
@@ -152,18 +140,16 @@ body {
   const PAUSE_MS = isSmall ? 0   : 650;
 
   /*
-    Cards are physically stacked along the Y axis of the rotated surface.
-    STEP_Y: how far each card is from the previous one on the surface.
-    With rotateX(22deg), each STEP_Y unit maps to:
-      Z_depth = STEP_Y * sin(22deg) ≈ STEP_Y * 0.374
-      Scale ratio = 500 / (500 + Z_depth) per step.
-    At STEP_Y = 240: Z_depth = 90px, scale_ratio = 500/590 = 0.847 ✓
-    (matches reference image ~0.83 scale ratio per level)
+    Each card sits STEP_Y pixels further up the tilted surface.
+    rotateX(22°) maps Y→Z: each STEP_Y of -220px creates
+    Z_depth = 220*sin(22°) ≈ 82px → scale = 600/(600+82) ≈ 0.88 per level.
+    That matches the ~83% size reduction visible in ai-concierge.jpg.
+    STEP_X adds the slight rightward drift of back cards.
   */
-  const STEP_Y = isSmall ? -170 : -240;   // up the tilted surface per level
-  const STEP_X = isSmall ?   8  :   12;   // slight rightward shift per level
+  const STEP_Y = isSmall ? -145 : -220;
+  const STEP_X = isSmall ?   8  :   14;
 
-  const surface = document.getElementById('surface');
+  const stage = document.getElementById('stage');
   let items = [];
   let maxV  = isSmall ? 2 : 3;
 
@@ -233,23 +219,22 @@ body {
     const mn = el.querySelector('.miri-name');
     const mb = el.querySelector('.bubble--miri');
 
-    /* start below the surface (positive Y = nearer/below in tilted space),
-       invisible, then animate into slot 0 */
+    // Start below — slides up the tilted surface into slot 0
     el.style.transform  = `translate3d(0px, 80px, 0px)`;
     el.style.opacity    = '0';
     el.style.zIndex     = '99';
     el.style.transition = 'none';
 
-    surface.appendChild(el);
+    stage.appendChild(el);
     items.unshift(el);
     trim();
 
     await raf();
 
     if (instant) {
-      ub.textContent = item.user;
+      ub.textContent   = item.user;
       mn.style.display = 'block';
-      mb.textContent = item.miri;
+      mb.textContent   = item.miri;
       reposition();
       return;
     }
@@ -280,7 +265,7 @@ body {
     .then(r => r.json())
     .then(run)
     .catch(err => {
-      surface.innerHTML = `<div style="padding:20px;color:#c00;font-size:13px;">
+      stage.innerHTML = `<div style="padding:20px;color:#c00;font-size:13px;">
         Failed to load data/${lang}.json<br>${err.message}</div>`;
     });
 })();

@@ -76,6 +76,18 @@ footer {
       max-width: 100%;
       padding-right: 1rem;
     }
+    /* white gradient mask on the right so text and seagull read clearly */
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to left, rgba(255,255,255,0.72) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    /* keep text and seagull above the overlay */
+    .container { position: relative; z-index: 2; }
+    .b-gull { z-index: 22 !important; }
   }
 }
 .navbar-light .navbar-nav a.nav-link, .navbar-light .navbar-brand { 

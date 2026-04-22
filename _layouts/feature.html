@@ -2,14 +2,13 @@
 {% include lang-image.html image=page.image lang=page.lang %}
 <main>
   <style>
-.bg-light > .showcase > .content {
-  background: white;
-}
-
+.feature-page.about-section { padding-top: 5rem; }
+.feature-page .showcase > .image { flex: 1 1 50%; min-height: 55vh; }
+.feature-page .showcase > .content { flex: 1 1 50%; background: white; }
   </style>
 
-  <section class="about-section bg-light">
-    <div class="container showcase smallimage ">
+  <section class="about-section feature-page bg-light">
+    <div class="container showcase bigimage ">
       {% if page.miniapp %}
         <div class="image miniapp-image">
           <iframe

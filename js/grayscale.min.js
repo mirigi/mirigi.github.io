@@ -145,42 +145,21 @@
   function randPos() {
     var mw = masthead.offsetWidth, mh = masthead.offsetHeight;
     var bs = birdSize(), bw = bs.w, bh = bs.h;
-    var pad = 16;
+    var navH = 70;  /* navbar height + buffer */
+    var pad  = 30;  /* margin from all edges */
 
     if (!textBounds) updateTextBounds();
     var tb = textBounds;
 
-    /* Bird stays in the rightmost 40% — lighter background, facing into the wind */
-    var rx = Math.max(pad, mw * 0.60);
+    /* Zone: right half, above the title, below the navbar, with padding */
+    var x0 = mw * 0.5 + pad;
+    var x1 = Math.max(x0 + 1, mw - bw - pad);
+    var y0 = navH;
+    var y1 = tb ? Math.max(y0 + 1, tb.t - bh - pad) : mh * 0.4;
 
-    if (!tb) return { x: rx + Math.random() * Math.max(0, mw - bw - pad - rx), y: mh * (0.08 + Math.random() * 0.55) };
-
-    /* Four zones adjacent to the text block, clamped to right half */
-    var zones = [];
-    /* above */
-    if (tb.t - bh - pad > pad)
-      zones.push({ x0: rx, y0: pad, x1: mw - bw - pad, y1: tb.t - bh - pad });
-    /* below */
-    if (tb.b + bh + pad < mh - pad)
-      zones.push({ x0: rx, y0: tb.b + pad, x1: mw - bw - pad, y1: mh - bh - pad });
-    /* left of text — only if that area is still in the right half */
-    if (tb.l - bw - pad > rx)
-      zones.push({ x0: rx, y0: tb.t, x1: tb.l - bw - pad, y1: tb.b - bh });
-    /* right of text */
-    if (tb.r + bw + pad < mw - pad)
-      zones.push({ x0: tb.r + pad, y0: tb.t, x1: mw - bw - pad, y1: tb.b - bh });
-
-    if (!zones.length) return { x: Math.max(rx, mw * 0.65), y: Math.max(pad, mh * 0.2) };
-
-    var z = zones[Math.floor(Math.random() * zones.length)];
-    /* clamp zone to strict masthead bounds before sampling */
-    var x0 = Math.max(0,      Math.min(z.x0, mw - bw));
-    var x1 = Math.max(x0 + 1, Math.min(z.x1, mw - bw));
-    var y0 = Math.max(0,      Math.min(z.y0, mh - bh));
-    var y1 = Math.max(y0 + 1, Math.min(z.y1, mh - bh));
     return {
       x: x0 + Math.random() * (x1 - x0),
-      y: y0 + Math.random() * (y1 - y0)
+      y: y0 + Math.random() * Math.max(1, y1 - y0)
     };
   }
 
@@ -245,10 +224,13 @@
     if (state !== 'idle') return;
     var mw = masthead.offsetWidth, mh = masthead.offsetHeight;
     var bs = birdSize();
-    var pad = Math.max(40, mw * 0.1);
-    /* random start inside screen, not near edges, in right 40% */
-    cx = mw * 0.60 + Math.random() * (mw * 0.30 - bs.w);
-    cy = pad + Math.random() * (mh * 0.55 - pad);
+    var navH = 70, pad = 30;
+    /* random start: right half, above title, below navbar */
+    if (!textBounds) updateTextBounds();
+    var tb = textBounds;
+    var y1 = tb ? Math.max(navH + 1, tb.t - bs.h - pad) : mh * 0.4;
+    cx = mw * 0.5 + pad + Math.random() * (mw * 0.5 - bs.w - pad * 2);
+    cy = navH + Math.random() * Math.max(1, y1 - navH);
     svg.style.left = cx + 'px'; svg.style.top = cy + 'px';
     svg.classList.add('bflying');
     clrT();

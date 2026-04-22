@@ -53,11 +53,11 @@ body {
 .card {
   position: absolute;
   /*
-    Anchor: bottom-left area. Front card sits near bottom-left; successive
-    cards translate UP and RIGHT (and back in Z) to form the cascade.
-    The card's own transform-origin is its center so scale is symmetric.
+    Anchor the active card at horizontal centre of the viewport (bottom-centre).
+    Cards translate UP and RIGHT from here; --base-left centres the 320px card.
   */
-  left: 0;
+  left: 50%;
+  margin-left: -160px; /* half of width — centres the card */
   bottom: 0;
   width: 320px;
   background: #ffffff;
@@ -127,8 +127,11 @@ body {
 .bubble--miri {
   background: #f0f0f3; color: #1c1c1e;
   border-bottom-left-radius: 4px;
-  min-height: 30px;
 }
+/* Hide empty bubbles (and their parent rows) so no blank grey pill shows
+   during the thinking phase before Miri has typed anything */
+.bubble:empty { display: none; }
+.msg-row:has(> .bubble:empty) { display: none; }
 
 .thinking {
   display: none; align-items: center; gap: 4px;

@@ -194,7 +194,11 @@ body {
 
   const stage = document.getElementById('stage');
   let items = [];
-  let maxV  = isSmall ? 2 : 3;
+  /* Stack size is clamped to [MIN_V, MAX_V] at all times:
+     MIN_V enforced by pre-populating instant cards at startup;
+     MAX_V enforced by trim() removing the oldest card when exceeded. */
+  const MIN_V = 3;
+  const MAX_V = 5;
 
   const esc   = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -233,7 +237,7 @@ body {
   }
 
   function trim() {
-    while (items.length > maxV) {
+    while (items.length > MAX_V) {
       const old = items.pop();
       old.style.transition = 'opacity .3s, transform .3s';
       old.style.opacity    = '0';
@@ -318,8 +322,13 @@ body {
   }
 
   async function run(cards) {
-    await showCard(cards[0], true);
-    let i = 1;
+    /* Pre-populate MIN_V-1 cards instantly so that the moment the first
+       animated typing card appears, the on-screen total is already MIN_V.
+       That guarantees "at least 3 cards at every moment". */
+    for (let k = 0; k < MIN_V - 1; k++) {
+      await showCard(cards[k % cards.length], true);
+    }
+    let i = MIN_V - 1;
     while (true) { await showCard(cards[i++ % cards.length], false); }
   }
 

@@ -10,25 +10,12 @@
 html, body { width: 100%; height: 100%; }
 
 /*
-  CSS 3D pipeline:
-    body (perspective)
-      └─ #stage (transform-style: preserve-3d, rotateX(30deg))
-           └─ .card (translate3d per slot)
-
-  CRITICAL: #stage must be a DIRECT child of the perspective element.
-  Any intermediate element inherits transform-style: flat by default,
-  which flattens the 3D chain and kills the rotateX on #stage.
-  The iframe itself clips content, so no intermediate overflow:hidden
-  wrapper is needed.
+  CSS 3D pipeline: body (perspective) → #stage (preserve-3d) → .card (translate3d).
+  #stage must be a DIRECT child of body — any intermediate element flattens the chain.
+  Each card is individually rotated (rotateX + rotateY) for the top-right viewpoint;
+  the stage itself is never rotated so the stack arrangement stays screen-straight.
 */
 body {
-  /*
-    Shared perspective on body creates the 3D viewing context.
-    Each CARD is individually rotated (rotateX + rotateY in its slot
-    transform) to look like it's being viewed from the top-right corner
-    — the technique from https://dev.to/shubhamtiwari909/3d-card-effect
-    The #stage itself is NOT rotated; only the cards are.
-  */
   perspective: 1600px;
   perspective-origin: 50% 50%;
   background: #e8e8e6 url('bg.jpg') top center / cover no-repeat;
@@ -37,13 +24,6 @@ body {
   overflow: hidden;
 }
 
-/*
-  #stage is a direct child of body so perspective propagates correctly.
-  The stage itself is NOT rotated — it just provides the 3D coordinate
-  system. Each card is individually rotated (via its per-card transform)
-  to give it a 3D-in-space look, while the overall stack arrangement
-  stays straight on the screen (as in ai-concierge.jpg).
-*/
 #stage {
   position: absolute;
   inset: 0;
@@ -206,44 +186,34 @@ body {
   const lang    = params.get('lang')  || 'en';
   const isSmall = (params.get('size') || 'large') === 'small';
 
-  const CHAR_MS  = isSmall ? 0   : 34;
+  const CHAR_MS  = isSmall ? 22  : 34;
   const SPEED    = isSmall ? 0.5 : 1.0;
   const THINK_MS = Math.round(1400 * SPEED);
   const DWELL_MS = Math.round(2000 * SPEED);
   const PAUSE_MS = isSmall ? 0   : 650;
 
-  /*
-    Cascade geometry. The stage is tilted with rotateX(30deg) so Y
-    translation ALONE creates Z depth:
-      Z_from_rotation = STEP_Y * sin(30°) ≈ STEP_Y * 0.5
-    With STEP_Y = -240, each step contributes ~120px of Z depth,
-    plus explicit STEP_Z adds more. With perspective=700px, the combined
-    depth of ~150px per step yields scale ≈ 700/(700+150) ≈ 0.82 per step,
-    matching the reference's ~83% size ratio.
-
-    STEP_X: slight rightward drift (the reference cards also drift right
-    as they recede because the perspective-origin is off-centre right).
-  */
-  /*
-    Stack cascade — cards stacked straight up with slight rightward drift.
-    No Z depth needed per level: the per-card rotateY creates the 3D
-    foreshortening. STEP_Z just adds a subtle extra shrink for depth cue.
-  */
   const STEP_X = isSmall ?  18 :  28;
   const STEP_Y = isSmall ? -105 : -180;
   const STEP_Z = isSmall ? -60 : -90;
 
-  /* Front-card offset from the viewport's bottom-left corner. */
   const BASE_X = isSmall ? 10 : 20;
   const BASE_Y = isSmall ? -15 : -25;
 
+  const FADE_OUT_MS = 300; // must match the opacity/transform transition duration in trim()
+
   const stage = document.getElementById('stage');
   let items = [];
-  /* Stack size is clamped to [MIN_V, MAX_V] at all times:
-     MIN_V enforced by pre-populating instant cards at startup;
-     MAX_V enforced by trim() removing the oldest card when exceeded. */
   const MIN_V = 3;
   const MAX_V = 5;
+
+  // Pause animation when tab is hidden or iframe scrolls out of view.
+  let paused = false;
+  const waitIfPaused = async () => { while (paused) await sleep(200); };
+  document.addEventListener('visibilitychange', () => { paused = document.hidden; });
+  if (window.frameElement) {
+    new IntersectionObserver(([entry]) => { paused = !entry.isIntersecting; }, { threshold: 0.01 })
+      .observe(window.frameElement);
+  }
 
   const esc   = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -284,9 +254,10 @@ body {
   function trim() {
     while (items.length > MAX_V) {
       const old = items.pop();
-      old.style.transition = 'opacity .3s, transform .3s';
+      old._cancelDrag?.();
+      old.style.transition = `opacity ${FADE_OUT_MS}ms, transform ${FADE_OUT_MS}ms`;
       old.style.opacity    = '0';
-      setTimeout(() => old.remove(), 300);
+      setTimeout(() => old.remove(), FADE_OUT_MS);
     }
   }
 
@@ -338,14 +309,18 @@ body {
       el.style.transform = `${getSlotT()} translate(${dx}px, ${dy}px)`;
     };
 
-    upHandler = () => {
-      if (!active) return;
-      active = false;
+    const removeDragListeners = () => {
       document.removeEventListener('mousemove', moveHandler);
       document.removeEventListener('mouseup',   upHandler);
       document.removeEventListener('touchmove', moveHandler);
       document.removeEventListener('touchend',  upHandler);
       document.removeEventListener('touchcancel', upHandler);
+    };
+
+    upHandler = () => {
+      if (!active) return;
+      active = false;
+      removeDragListeners();
 
       if (!dragging) {
         // Treat as tap: replay the bounce animation.
@@ -371,9 +346,10 @@ body {
       el.addEventListener('transitionend', onEnd, { once: true });
     };
 
+    el._cancelDrag = () => { if (active) { active = false; removeDragListeners(); } };
+
     el.addEventListener('mousedown',  down);
     el.addEventListener('touchstart', down, { passive: true });
-    /* Block the default drag image on images/text inside. */
     el.addEventListener('dragstart', (e) => e.preventDefault());
   }
 
@@ -455,7 +431,7 @@ body {
       await showCard(cards[k % cards.length], true);
     }
     let i = MIN_V - 1;
-    while (true) { await showCard(cards[i++ % cards.length], false); }
+    while (true) { await waitIfPaused(); await showCard(cards[i++ % cards.length], false); }
   }
 
   fetch(`data/${lang}.json`)

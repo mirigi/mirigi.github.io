@@ -4,8 +4,9 @@
 {% else %}
 {% assign image = "/" | append:page.url | append: "/" | append: resolved_image %}
 {% endif %}
-{% if is_even == 0 %}
-<div class="showcase bigimage dark">
+{% assign showcase_class = "showcase bigimage dark" %}
+{% if is_even != 0 %}{% assign showcase_class = "showcase bigimage reverse dark" %}{% endif %}
+<div class="{{ showcase_class }}">
   {% if feature.miniapp %}
     <div class="image miniapp-image">
       <iframe
@@ -36,37 +37,3 @@
     </div>
   </div>
 </div>
-{% else %}
-<div class="showcase bigimage reverse dark">
-  {% if feature.miniapp %}
-    <div class="image miniapp-image">
-      <iframe
-        src="/miniapps/{{ feature.miniapp }}/?lang={{ page.lang }}&size=small"
-        class="miniapp-frame"
-        frameborder="0" scrolling="no">
-      </iframe>
-    </div>
-  {% else %}
-    <div class="image"  style="background-image: url('{{ image }}')">
-      <p class="photo_credits">
-        {{feature.image_credits}}
-      </p>
-    </div>
-  {% endif %}
-  <div class="content">
-    <div>
-      <h3>{{ feature.title }}</h3>
-      <p>{{ feature.description | markdownify }}</p>
-      <hr/>
-      {% if feature.content.size > 1 %}
-      <div>
-        <a href="{{feature.url}}">
-          {{site.data[page.lang].more_info}}
-        </a>
-      </div>
-      {% endif %}
-    </div>
-  </div>
-</div>
-
-{% endif %}

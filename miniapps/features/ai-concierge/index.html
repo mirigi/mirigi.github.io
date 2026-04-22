@@ -22,8 +22,13 @@ html, body { width: 100%; height: 100%; }
   because preserve-3d is on #stage (its children), not on #viewport.
 */
 body {
-  perspective: 1400px;
-  perspective-origin: 70% 30%;
+  /*
+    Camera: view from ~30° above, slightly off to the right.
+    perspective=700px with rotateX(30deg) on the stage gives a strong
+    top-down-at-an-angle viewpoint matching ai-concierge.jpg.
+  */
+  perspective: 700px;
+  perspective-origin: 65% 20%;
   background:
     radial-gradient(ellipse 120% 90% at 30% 25%, #fafafa 0%, #ececea 45%, #d4d4d0 100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -36,10 +41,20 @@ body {
   height: 100%;
 }
 
+/*
+  The stage is tilted 30° around the X axis: the top of the stage rotates
+  AWAY from the viewer (into the screen), the bottom stays anchored near
+  the viewer. Cards placed along Y=0 at the bottom are closest; cards at
+  Y=−N appear further back (up the tilted plane) and the perspective
+  automatically foreshortens them smaller and shifts them toward the
+  vanishing point at perspective-origin.
+*/
 #stage {
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
+  transform: rotateX(30deg);
+  transform-origin: 50% 100%;
 }
 
 .card {
@@ -159,20 +174,24 @@ body {
   const PAUSE_MS = isSmall ? 0   : 650;
 
   /*
-    Cascade geometry. Each slot index i (0 = front) contributes:
-      X: i * STEP_X   (rightward drift of back cards)
-      Y: i * STEP_Y   (upward on screen — back cards higher)
-      Z: i * STEP_Z   (push into screen — perspective shrinks them)
-    With perspective:1400px, Z = -260 ⇒ scale ≈ 1400/(1400+260) ≈ 0.843
-    i.e. ~84% per step, matching the reference image's size ratio.
+    Cascade geometry. The stage is tilted with rotateX(30deg) so Y
+    translation ALONE creates Z depth:
+      Z_from_rotation = STEP_Y * sin(30°) ≈ STEP_Y * 0.5
+    With STEP_Y = -240, each step contributes ~120px of Z depth,
+    plus explicit STEP_Z adds more. With perspective=700px, the combined
+    depth of ~150px per step yields scale ≈ 700/(700+150) ≈ 0.82 per step,
+    matching the reference's ~83% size ratio.
+
+    STEP_X: slight rightward drift (the reference cards also drift right
+    as they recede because the perspective-origin is off-centre right).
   */
-  const STEP_X = isSmall ?  46 :  70;
-  const STEP_Y = isSmall ? -70 : -115;
-  const STEP_Z = isSmall ? -200 : -260;
+  const STEP_X = isSmall ?  24 :  38;
+  const STEP_Y = isSmall ? -145 : -240;
+  const STEP_Z = isSmall ? -30 : -40;
 
   /* Front-card offset from the viewport's bottom-left corner. */
-  const BASE_X = isSmall ? 6  : 14;
-  const BASE_Y = isSmall ? -6 : -14;
+  const BASE_X = isSmall ? 10 : 18;
+  const BASE_Y = isSmall ? -10 : -20;
 
   const stage = document.getElementById('stage');
   let items = [];

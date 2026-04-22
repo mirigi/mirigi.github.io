@@ -58,17 +58,17 @@ footer {
     background: -webkit-linear-gradient(fade-out(black, 0.15), fade-out(black, 0.05));
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
-    /* white halo lifts text off the light building background */
     text-shadow:
-      0 0 18px rgba(255,255,255,0.95),
-      0 0 6px  rgba(255,255,255,0.9);
+      0 0 40px rgba(255,255,255,1),
+      0 0 20px rgba(255,255,255,0.95),
+      0 0 8px  rgba(255,255,255,0.85);
   }
   h2 {
-    color: rgba(40, 40, 40, 0.88);
+    color: rgba(80, 80, 80, 0.82);
     text-shadow:
-      0 0 16px rgba(255,255,255,1),
-      0 0 8px  rgba(255,255,255,0.95),
-      0 1px 3px rgba(255,255,255,0.8);
+      0 0 45px rgba(255,255,255,1),
+      0 0 25px rgba(255,255,255,0.95),
+      0 0 10px rgba(255,255,255,0.8);
     font-weight: 500;
   }
 }

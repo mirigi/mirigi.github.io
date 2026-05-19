@@ -1,4 +1,5 @@
 ---
+order: 9
 title: Intelligent Home
 image: "/img_mirigi/kitchen.jpg"
 layout: "feature"

@@ -1,4 +1,5 @@
 ---
+order: 1
 title: "Miri — El primer agente de conserjería con IA que actúa"
 image: "/img_mirigi/ai-concierge.jpg"
 miniapp: features/ai-concierge

@@ -1,4 +1,5 @@
 ---
+order: 17
 title: Solutions Sur Mesure
 image: "/img/features/bespoke.jpg"
 layout: feature

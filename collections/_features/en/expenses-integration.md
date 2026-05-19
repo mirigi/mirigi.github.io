@@ -1,4 +1,5 @@
 ---
+order: 12
 title: Expenses Integration
 image: "/img/features/expenses.jpg"
 layout: feature

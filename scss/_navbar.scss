@@ -33,6 +33,23 @@
       }
     }
   }
+
+  /* Language switcher — match nav text color, not the gold link default */
+  .nav-langs a.nav-lang {
+    color: rgba(0,0,0,0.55);     // Bootstrap navbar-light nav-link tone
+    text-decoration: none;
+    transition: color .15s ease;
+    font-weight: 500;
+  }
+  .nav-langs a.nav-lang:hover,
+  .nav-langs a.nav-lang:focus {
+    color: rgba(0,0,0,0.85);
+    text-decoration: none;
+  }
+  .nav-langs a.nav-lang.is-current {
+    color: rgba(0,0,0,0.85);
+    font-weight: 600;
+  }
   /* Mobile collapsed menu — large touch targets */
   @media (max-width: 991px) {
     .navbar-collapse {

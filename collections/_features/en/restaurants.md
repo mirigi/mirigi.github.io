@@ -1,4 +1,5 @@
 ---
+order: 4
 title: Last Mile Shopping Revolution for Restaurants
 image: "/img_mirigi/restaurants2.png"
 layout: feature

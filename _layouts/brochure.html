@@ -39,7 +39,7 @@
     <div class="brochure-page brochure-features-index">
       <h2>{{ site.data[page.lang].features | default: "Features" }}</h2>
       <div class="brochure-features-list">
-        {% assign features = site.features | where: 'lang', page.lang %}
+        {% assign features = site.features | where: 'lang', page.lang | sort: 'order' %}
         {% for feature in features %}
         <a href="#feature-{{ forloop.index }}" class="brochure-features-list-item">
           <span class="brochure-features-list-number">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</span>
@@ -50,7 +50,7 @@
     </div>
 
     <!-- Features Pages (2 per page) -->
-    {% assign features = site.features | where: 'lang', page.lang %}
+    {% assign features = site.features | where: 'lang', page.lang | sort: 'order' %}
     {% for feature in features %}
       {% assign index = forloop.index | minus: 1 %}
       {% assign page_position = index | modulo: 2 %}

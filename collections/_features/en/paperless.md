@@ -1,4 +1,5 @@
 ---
+order: 14
 title: Paperless Communication
 image: "/img_mirigi/table.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'

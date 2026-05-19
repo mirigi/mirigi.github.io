@@ -1,4 +1,5 @@
 ---
+order: 12
 title: Intégration des Charges
 image: "/img/features/expenses.jpg"
 layout: feature

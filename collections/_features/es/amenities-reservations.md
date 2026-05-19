@@ -1,4 +1,5 @@
 ---
+order: 2
 title: Reservas de Amenidades
 image: "/img_mirigi/amenities2.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'

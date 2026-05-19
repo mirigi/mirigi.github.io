@@ -1,4 +1,5 @@
 ---
+order: 3
 title: Suivi des Livraisons
 image: "/img_mirigi/delivery2.jpg"
 layout: feature

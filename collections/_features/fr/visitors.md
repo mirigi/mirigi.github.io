@@ -1,4 +1,5 @@
 ---
+order: 6
 title: Autorisation des Visiteurs
 image: "/img/features/visitors.jpg"
 image_credits: ''

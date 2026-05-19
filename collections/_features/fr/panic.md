@@ -1,4 +1,5 @@
 ---
+order: 10
 title: Bouton d'Urgence
 image: "/img/features/panic_button.webp"
 image_credits: ''

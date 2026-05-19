@@ -1,0 +1,15 @@
+{% assign quotes = site.data[page.lang].pullquote_quotes %}
+{% if quotes and quotes.size > 0 %}
+<aside class="customer-pullquote" aria-label="Resident voices">
+  <div class="customer-pullquote__rotator">
+    {% for q in quotes %}
+      <p class="customer-pullquote__quote{% if forloop.first %} is-current{% endif %}">&ldquo;{{ q }}&rdquo;</p>
+    {% endfor %}
+  </div>
+  <div class="customer-pullquote__dots" role="tablist" aria-label="Quote selector">
+    {% for q in quotes %}
+      <button class="customer-pullquote__dot{% if forloop.first %} is-current{% endif %}" aria-label="Quote {{ forloop.index }}" data-idx="{{ forloop.index0 }}"></button>
+    {% endfor %}
+  </div>
+</aside>
+{% endif %}

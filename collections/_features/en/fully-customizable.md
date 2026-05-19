@@ -1,4 +1,5 @@
 ---
+order: 11
 title: Fully Customizable
 image: "/img/features/fully-customizable.jpg"
 layout: feature

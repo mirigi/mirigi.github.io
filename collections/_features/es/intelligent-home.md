@@ -1,4 +1,5 @@
 ---
+order: 9
 title: Hogar Inteligente
 image: "/img_mirigi/kitchen.jpg"
 layout: "feature"

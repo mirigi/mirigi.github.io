@@ -1,5 +1,6 @@
 ---
-title: Demandes de Service
+order: 5
+title: Maintenance &amp; Demandes de Service
 image: "/img_mirigi/blueliving.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature

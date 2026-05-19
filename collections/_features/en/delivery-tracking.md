@@ -1,4 +1,5 @@
 ---
+order: 3
 title: Delivery Tracking
 image: "/img_mirigi/delivery2.jpg"
 layout: feature

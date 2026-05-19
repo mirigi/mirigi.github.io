@@ -1,5 +1,6 @@
 ---
-title: Solicitudes de Servicio
+order: 5
+title: Mantenimiento y Solicitudes
 image: "/img_mirigi/blueliving.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature

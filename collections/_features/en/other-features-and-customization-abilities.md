@@ -1,4 +1,5 @@
 ---
+order: 17
 title: Bespoke Solutions
 image: "/img/features/bespoke.jpg"
 layout: feature

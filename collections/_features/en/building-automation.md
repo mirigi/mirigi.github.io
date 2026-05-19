@@ -1,4 +1,5 @@
 ---
+order: 8
 title: Building Automation
 image: "/img_mirigi/touchpanelJadesignature.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'

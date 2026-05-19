@@ -1,4 +1,5 @@
 ---
+order: 1
 title: "Miri — The First AI Concierge Agent That Acts"
 image: "/img_mirigi/ai-concierge.jpg"
 miniapp: features/ai-concierge

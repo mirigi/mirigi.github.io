@@ -1,4 +1,5 @@
 ---
+order: 9
 title: Maison Intelligente
 image: "/img_mirigi/kitchen.jpg"
 layout: "feature"

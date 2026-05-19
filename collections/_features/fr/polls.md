@@ -3,12 +3,22 @@ title: Sondages Numériques
 image: "/img/features/polls.webp"
 image_credits: ''
 layout: feature
-keywords: sondages, vote, enquêtes, commentaires des résidents, prise de décision, engagement communautaire
-description: "Réalisez facilement des sondages numériques et recueillez les commentaires des résidents avec Mirigi."
+keywords: sondages, vote, enquêtes, retour des résidents, prise de décision, engagement communautaire
+description: Réalisez des sondages et recueillez l'avis des résidents facilement avec Mirigi.
+miri_ai_example:
+  - from: miri
+    text: "Un sondage est ouvert pour votre immeuble : \"Remplacer le revêtement du hall — Option A : parquet en chêne, Option B : carrelage en porcelaine, Option C : conserver l'actuel.\" Le vote se clôture vendredi. Souhaitez-vous exprimer le vote de votre logement ?"
+  - from: user
+    text: "Oui, nous choisissons le carrelage en porcelaine."
+  - from: miri
+    text: "Compris — j'enregistre un vote pour l'Option B (carrelage en porcelaine) au nom de votre logement. Il s'agit d'un vote unique et verrouillé par logement, il ne pourra donc pas être modifié par la suite. Confirmez-vous l'envoi ?"
+  - from: user
+    text: "Je confirme."
+  - from: miri
+    text: "C'est fait. La réponse de votre logement a été enregistrée. Comme ce sondage a des résultats publics, vous pouvez consulter le décompte en direct à tout moment depuis la page Sondages."
 ---
-La fonctionnalité **"SYSTÈME DE SONDAGE NUMÉRIQUE"** de la solution de conciergerie numérique Mirigi permet aux membres du personnel de réaliser efficacement des sondages auprès de tous les résidents des unités. En facilitant le vote par unité et le décompte par quote-part ou par unité, ce système garantit un processus décisionnel juste et représentatif au sein de la communauté. Les résidents peuvent facilement participer aux sondages en utilisant l'une des plateformes prises en charge, notamment les panneaux muraux, les tablettes, les appareils mobiles et les interfaces Web.
+La gouvernance avance plus vite lorsque chaque logement dispose d'un moyen clair et sans friction de s'exprimer. Le **Système de Sondages Numériques** de Mirigi transforme les décisions à l'échelle de l'immeuble — des rénovations du hall aux approbations de charges — en **votes structurés et traçables** auxquels les résidents peuvent répondre en quelques secondes. Les votes sont exprimés **par logement**, avec des **décomptes pondérés par logement** optionnels afin que les parts plus importantes comptent proportionnellement aux côtés du décompte standard d'un vote par logement. Les résidents participent depuis *des panneaux muraux, tablettes, appareils mobiles, l'interface web*, ou simplement en parlant à **Miri**, le concierge IA. Le résultat : **une plus forte participation**, des décisions défendables et une trace durable de la réponse de chaque logement.
 
-Accessible sur toutes les plateformes prises en charge, le système de sondage numérique offre une expérience de vote transparente, permettant aux résidents d'exprimer leurs opinions et leurs préférences sur diverses questions communautaires. Qu'il s'agisse de décider de nouvelles commodités ou de planifier des activités de maintenance, le système de sondage améliore l'engagement communautaire en fournissant un moyen simple et inclusif pour que les résidents fassent entendre leur voix.
+Pour le personnel, le système est conçu pour **le contrôle et la confiance**. Les sondages prennent en charge deux formats : **choix multiple** (à réponse unique ou multiple, avec plafonds et unicité appliqués côté serveur) et **notations à échelle linéaire** avec minimum et maximum configurables. L'audience peut être dirigée vers *tous les logements, un étage spécifique, une ligne d'ascenseur ou une liste de logements sélectionnés à la main*, et chaque sondage se déroule sur une fenêtre planifiée qui traverse les états **brouillon, en cours et terminé**. Le vote de chaque logement est **verrouillé dès sa soumission** : le backend maintient un verrou par sondage et revérifie les réponses précédentes dans une transaction, **éliminant les conditions de course et le double comptage**. Les sondages peuvent être marqués **obligatoires**, les résultats rendus **publics ou privés**, et le tableau de bord en direct affiche totaux et pourcentages avec **des graphiques en colonnes clairs** — avec un décompte pondéré parallèle lorsque le vote pondéré par logement est activé. Une **liste détaillée des réponses par logement** boucle la boucle pour la revue et le suivi.
 
-De plus, l'intégration de cette fonctionnalité dans la solution de conciergerie numérique Mirigi souligne l'engagement à tirer parti de la technologie pour améliorer la vie résidentielle. En permettant aux résidents de participer activement aux décisions de la communauté, le système de sondage numérique favorise non seulement l'inclusion, mais améliore également la qualité de vie au sein de la communauté.
-
+Pour les résidents, la participation est **simple et inclusive**. Les bulletins sont **multilingues** — *titre, description et chaque choix* sont stockés par langue, de sorte que chaque résident lit le sondage dans sa propre langue tandis que les **indices de réponse restent cohérents** entre les traductions. Chacun peut demander à **Miri** de lire à voix haute les sondages ouverts et d'exprimer le vote de son logement en **langage naturel** ; les mêmes règles d'éligibilité, de verrouillage et **d'un vote par logement** s'appliquent. Le résultat est une communauté où **chaque logement est entendu**, et où chaque décision résiste à l'examen.

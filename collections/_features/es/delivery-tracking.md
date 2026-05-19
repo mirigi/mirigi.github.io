@@ -3,9 +3,22 @@ title: Seguimiento de Entregas
 image: "/img_mirigi/delivery2.jpg"
 layout: feature
 keywords: seguimiento de entregas, gestión de paquetes, notificaciones, actualizaciones en tiempo real, seguridad, comodidad
-description: "Rastrea tus entregas en tiempo real y recibe notificaciones instantáneas con la función de seguimiento de entregas de Mirigi."
+description: Sigue las entregas en tiempo real y recibe notificaciones con Mirigi.
+miri_ai_example:
+  - from: user
+    text: "Hola Miri, ¿ya llegó mi paquete de Amazon?"
+  - from: miri
+    text: "Sí — esta mañana la recepción recibió un paquete de Amazon y lo guardó en el Depósito A. Aún está pendiente de retiro. ¿Quieres que pida al conserje que te lo suba o pasarás por el lobby?"
+  - from: user
+    text: "Por favor, que me lo suban, gracias."
+  - from: miri
+    text: "Listo. El conserje se lo llevará a su unidad en breve y le pedirá una firma rápida en la tableta para confirmar la entrega."
 ---
 
-**La función de seguimiento de entregas de Mirigi** ofrece una experiencia impecable tanto para los residentes como para el personal al mejorar la gestión de paquetes. Los residentes son informados en **tiempo real** cuando se recibe un paquete, lo que garantiza la transparencia y la eficiencia. Esta función elimina la necesidad de que los residentes revisen constantemente los rastreadores de paquetes, brindándoles tranquilidad y comodidad.
+Cada paquete que cruza el lobby merece un **registro impecable** y una **entrega tranquila**. El seguimiento de entregas de Mirigi ofrece a los residentes y al personal una **visión completa y auditable** de cada paquete que ingresa al edificio, desde el momento en que el mensajero lo deposita hasta la **firma final en la puerta del residente**. Se acabó actualizar las apps de los couriers, se acabaron los paquetes perdidos en un cuarto trasero y las suposiciones en la recepción. Es una *única fuente de verdad compartida* para todo el edificio.
 
-Desde la perspectiva del personal, esta función permite el **seguimiento interno de paquetes**, manteniendo el control sobre la sala de almacenamiento y gestionando las entregas de forma segura. Cuando se entrega un paquete, Mirigi puede solicitar una **firma para una confirmación segura**. Si la entrega se realiza en una ubicación especificada por el usuario, puede **almacenar una imagen del evento de entrega**, proporcionando a los residentes una confirmación visual de cómo y dónde se entregaron sus paquetes. Esto no solo mejora la eficiencia operativa, sino que también mejora la calidad del servicio brindado a los residentes, ya que el personal puede concentrarse en mantener el área de almacenamiento y abordar las necesidades de los residentes en lugar de administrar las entregas manualmente.
+Para los residentes, Mirigi envía una **notificación en tiempo real** en el momento en que un paquete se registra en recepción, con los datos clave a mano: **mensajero, números de seguimiento, remitente y el depósito** donde se guarda. Los residentes pueden consultar su **historial de entregas** con estados claros — *Guardado, Entregado, Devuelto* — y abrir cualquier ítem para ver su **línea temporal de eventos** completa junto con **fotos o prueba de firma** adjuntas. Miri responde proactivamente la pregunta que todo residente hace: ¿llegó mi paquete y dónde está ahora?
+
+Para el personal, el sistema cubre el **ciclo de vida completo**: recibir una entrega registrando mensajero, números de seguimiento, remitente, destinatario y depósito; **moverla entre depósitos**; almacenarla; **entregarla al residente**; o **devolverla al remitente** con una nota documentada. Las **operaciones en lote** permiten al conserje procesar muchos paquetes a la vez, entregando o moviendo un *carro entero en una sola acción confirmada*.
+
+En la entrega, Mirigi captura una **firma en la tableta de firmas** y adjunta una **foto del paquete o del lugar de entrega**, produciendo una **prueba de entrega a prueba de manipulación**. Cada evento queda **registrado con fecha y hora y vinculado al registro de entrega**, dando al edificio una clara *cadena de custodia* y a los residentes una confirmación visual de cómo y dónde fueron entregados sus paquetes.

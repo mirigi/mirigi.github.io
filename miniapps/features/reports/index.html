@@ -166,6 +166,16 @@ body {
   .toolbar .rows { font-size: .65rem; }
   .pill { font-size: .65rem; padding: .25rem .45rem; }
 }
+
+/* Visually hidden but readable by scrapers and screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
 </style>
 </head>
 <body>
@@ -175,18 +185,18 @@ body {
   <!-- Card 1 — notifications per month -->
   <article class="card is-current" data-card="0">
     <div class="header">
-      <div class="title">notifications per month</div>
-      <div class="group">Group: <i>notifications</i></div>
+      <div class="title" data-i18n="card1.title">notifications per month</div>
+      <div class="group" data-i18n-html="card1.groupLine">Group: <i>notifications</i></div>
     </div>
     <div class="toolbar">
-      <div class="rows">Results · <b>7 rows</b></div>
+      <div class="rows" data-i18n-html="card1.rows">Results · <b>7 rows</b></div>
       <span class="pill is-active">
         <svg class="ic" viewBox="0 0 16 16" fill="currentColor"><rect x="2" y="9" width="2" height="5"/><rect x="6" y="6" width="2" height="8"/><rect x="10" y="3" width="2" height="11"/><rect x="14" y="11" width="2" height="3" style="display:none"/></svg>
-        Graph
+        <span data-i18n="graph">Graph</span>
       </span>
       <span class="pill">
         <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3" width="12" height="10" rx="1"/><line x1="2" y1="7" x2="14" y2="7"/><line x1="6" y1="3" x2="6" y2="13"/><line x1="10" y1="3" x2="10" y2="13"/></svg>
-        Table
+        <span data-i18n="table">Table</span>
       </span>
     </div>
     <div class="chart-wrap">
@@ -227,18 +237,18 @@ body {
   <!-- Card 2 — reservations per month -->
   <article class="card" data-card="1">
     <div class="header">
-      <div class="title">reservations per month</div>
-      <div class="group">Group: <i>reservations</i></div>
+      <div class="title" data-i18n="card2.title">reservations per month</div>
+      <div class="group" data-i18n-html="card2.groupLine">Group: <i>reservations</i></div>
     </div>
     <div class="toolbar">
-      <div class="rows">Results · <b>25 rows</b></div>
+      <div class="rows" data-i18n-html="card2.rows">Results · <b>25 rows</b></div>
       <span class="pill is-active">
         <svg class="ic" viewBox="0 0 16 16" fill="currentColor"><rect x="2" y="9" width="2" height="5"/><rect x="6" y="6" width="2" height="8"/><rect x="10" y="3" width="2" height="11"/></svg>
-        Graph
+        <span data-i18n="graph">Graph</span>
       </span>
       <span class="pill">
         <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3" width="12" height="10" rx="1"/><line x1="2" y1="7" x2="14" y2="7"/><line x1="6" y1="3" x2="6" y2="13"/></svg>
-        Table
+        <span data-i18n="table">Table</span>
       </span>
     </div>
     <div class="chart-wrap">
@@ -266,18 +276,18 @@ body {
   <!-- Card 3 — packages per day -->
   <article class="card" data-card="2">
     <div class="header">
-      <div class="title">packages per day</div>
-      <div class="group">Group: <i>deliveries</i></div>
+      <div class="title" data-i18n="card3.title">packages per day</div>
+      <div class="group" data-i18n-html="card3.groupLine">Group: <i>deliveries</i></div>
     </div>
     <div class="toolbar">
-      <div class="rows">Results · <b>32 rows</b></div>
+      <div class="rows" data-i18n-html="card3.rows">Results · <b>32 rows</b></div>
       <span class="pill is-active">
         <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><polyline points="2,12 5,8 8,10 11,4 14,6"/></svg>
-        Graph
+        <span data-i18n="graph">Graph</span>
       </span>
       <span class="pill">
         <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3" width="12" height="10" rx="1"/><line x1="2" y1="7" x2="14" y2="7"/><line x1="6" y1="3" x2="6" y2="13"/></svg>
-        Table
+        <span data-i18n="table">Table</span>
       </span>
     </div>
     <div class="chart-wrap">
@@ -320,7 +330,7 @@ body {
         <g class="tooltip">
           <rect x="146" y="48" width="116" height="38" rx="4" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
           <text x="156" y="63" font-size="10" fill="#3c3c3c" font-family="-apple-system,sans-serif" data-day-offset-iso="-50">2026-03-30</text>
-          <text x="156" y="78" font-size="10" fill="#4286f5" font-weight="600" font-family="-apple-system,sans-serif">package_count : 25</text>
+          <text x="156" y="78" font-size="10" fill="#4286f5" font-weight="600" font-family="-apple-system,sans-serif" data-i18n="card3.tooltipKey">package_count : 25</text>
         </g>
         <g class="axistext" text-anchor="middle">
           <text x="46"  y="195" data-day-offset="-55">Mar 25</text>
@@ -336,18 +346,18 @@ body {
   <!-- Card 4 — visitors per floor -->
   <article class="card" data-card="3">
     <div class="header">
-      <div class="title">visitors per floor</div>
-      <div class="group">Group: <i>access</i></div>
+      <div class="title" data-i18n="card4.title">visitors per floor</div>
+      <div class="group" data-i18n-html="card4.groupLine">Group: <i>access</i></div>
     </div>
     <div class="toolbar">
-      <div class="rows">Results · <b>12 rows</b></div>
+      <div class="rows" data-i18n-html="card4.rows">Results · <b>12 rows</b></div>
       <span class="pill is-active">
         <svg class="ic" viewBox="0 0 16 16" fill="currentColor"><rect x="2" y="9" width="2" height="5"/><rect x="6" y="6" width="2" height="8"/><rect x="10" y="3" width="2" height="11"/></svg>
-        Graph
+        <span data-i18n="graph">Graph</span>
       </span>
       <span class="pill">
         <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3" width="12" height="10" rx="1"/><line x1="2" y1="7" x2="14" y2="7"/><line x1="6" y1="3" x2="6" y2="13"/></svg>
-        Table
+        <span data-i18n="table">Table</span>
       </span>
     </div>
     <div class="chart-wrap">
@@ -389,9 +399,63 @@ body {
 
 <script>
 (function () {
+  /* === i18n === */
+  var lang = (new URLSearchParams(location.search).get('lang') || 'en').toLowerCase();
+  if (!['en','es','fr'].includes(lang)) lang = 'en';
+
+  var T = {
+    en: {
+      graph: 'Graph',
+      table: 'Table',
+      card1: { title: 'notifications per month', groupLine: 'Group: <i>notifications</i>', rows: 'Results · <b>7 rows</b>' },
+      card2: { title: 'reservations per month', groupLine: 'Group: <i>reservations</i>', rows: 'Results · <b>25 rows</b>' },
+      card3: { title: 'packages per day',       groupLine: 'Group: <i>deliveries</i>',   rows: 'Results · <b>32 rows</b>', tooltipKey: 'package_count : 25' },
+      card4: { title: 'visitors per floor',     groupLine: 'Group: <i>access</i>',       rows: 'Results · <b>12 rows</b>' },
+      months: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    },
+    es: {
+      graph: 'Gráfico',
+      table: 'Tabla',
+      card1: { title: 'notificaciones por mes',  groupLine: 'Grupo: <i>notificaciones</i>', rows: 'Resultados · <b>7 filas</b>' },
+      card2: { title: 'reservas por mes',        groupLine: 'Grupo: <i>reservas</i>',       rows: 'Resultados · <b>25 filas</b>' },
+      card3: { title: 'paquetes por día',        groupLine: 'Grupo: <i>entregas</i>',       rows: 'Resultados · <b>32 filas</b>', tooltipKey: 'paquetes : 25' },
+      card4: { title: 'visitantes por piso',     groupLine: 'Grupo: <i>acceso</i>',         rows: 'Resultados · <b>12 filas</b>' },
+      months: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']
+    },
+    fr: {
+      graph: 'Graphique',
+      table: 'Tableau',
+      card1: { title: 'notifications par mois',  groupLine: 'Groupe : <i>notifications</i>', rows: 'Résultats · <b>7 lignes</b>' },
+      card2: { title: 'réservations par mois',   groupLine: 'Groupe : <i>réservations</i>',  rows: 'Résultats · <b>25 lignes</b>' },
+      card3: { title: 'colis par jour',          groupLine: 'Groupe : <i>livraisons</i>',    rows: 'Résultats · <b>32 lignes</b>', tooltipKey: 'colis : 25' },
+      card4: { title: 'visiteurs par étage',     groupLine: 'Groupe : <i>accès</i>',         rows: 'Résultats · <b>12 lignes</b>' },
+      months: ['Janv.','Févr.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.']
+    }
+  };
+
+  function tr(path) {
+    var parts = path.split('.');
+    var v = T[lang];
+    for (var i = 0; i < parts.length; i++) { v = v && v[parts[i]]; }
+    if (v == null) {
+      v = T.en;
+      for (var j = 0; j < parts.length; j++) { v = v && v[parts[j]]; }
+    }
+    return v;
+  }
+
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    var v = tr(el.getAttribute('data-i18n'));
+    if (typeof v === 'string') el.textContent = v;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+    var v = tr(el.getAttribute('data-i18n-html'));
+    if (typeof v === 'string') el.innerHTML = v;
+  });
+
   /* === Live dates: rewrite axis labels relative to today === */
   var today = new Date();
-  var MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var MONTHS_SHORT = tr('months') || ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
   function fmtYearMonth(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1); }
   function fmtMonDay(d)    { return MONTHS_SHORT[d.getMonth()] + ' ' + pad(d.getDate()); }

@@ -1,13 +1,24 @@
 ---
-title: Révolution du Shopping de Dernier Kilomètre pour les Restaurants
+title: Révolution des Achats du Dernier Kilomètre pour les Restaurants
 image: "/img_mirigi/restaurants2.png"
 layout: feature
-keywords: delivery, shop, restaurants, ubereat, pedidosya, rapi, dining, food service, livraison, boutique, restaurants
-description: "Utilisez Mirigi pour vous intégrer de manière transparente aux restaurants, permettant aux clients de commander directement depuis l'application, d'accéder aux menus complets et de recevoir des mises à jour en temps réel sur leurs commandes, de la préparation à la livraison."
+keywords: livraison, achat, restaurants, restauration, service de restauration, menu, restauration dans l'immeuble
+description: "Utilisez Mirigi pour connecter les résidents aux restaurants de l'immeuble et partenaires, en parcourant les menus complets et en recevant des mises à jour en temps réel sur leurs commandes, de la préparation à la livraison ou au retrait."
+miri_ai_example:
+  - from: user
+    text: "Je voudrais un sandwich au thon, s'il vous plaît."
+  - from: miri
+    text: "C'est noté — un sandwich au thon. Souhaitez-vous quelque chose à boire avec ?"
+  - from: user
+    text: "Un jus d'orange."
+  - from: miri
+    text: "Parfait. Dois-je le livrer à votre logement, ou viendrez-vous le récupérer ?"
 ---
 
-**La fonctionnalité de shopping de dernier kilomètre de Mirigi pour les restaurants** offre une expérience culinaire améliorée et transparente aux résidents et au personnel du restaurant. Les clients peuvent accéder au menu complet d'un restaurant directement depuis l'application, ce qui leur permet de faire leurs sélections et de recevoir des mises à jour en temps réel sur l'état de leur commande, de la préparation à la livraison. Cela garantit une expérience culinaire fluide et efficace, qu'ils commandent depuis chez eux ou qu'ils se rendent au restaurant.
+Mirigi transforme l'immeuble lui-même en une **destination de restauration**. Avec la **fonctionnalité d'Achats du Dernier Kilomètre pour les restaurants**, les résidents parcourent les cartes complètes, passent commande et **suivent chaque étape de la cuisine à la porte** sans quitter l'application. L'expérience est unifiée, qu'ils *dînent sur place* au restaurant de l'immeuble ou qu'ils *commandent depuis chez eux* à l'étage. Cela apporte la commodité de la commande moderne de nourriture dans l'**environnement privé et de confiance** de la résidence.
 
-Du point de vue du personnel du restaurant, cette fonctionnalité rationalise le processus de traitement des commandes, ce qui facilite la gestion des demandes tout en tenant les clients informés. Cela permet au personnel de se concentrer davantage sur la préparation des aliments et la qualité du service, améliorant ainsi l'expérience culinaire globale. L'intégration de Mirigi aux services de livraison populaires tels que UberEats, PedidosYa et Rappi garantit en outre que les commandes sont livrées rapidement et efficacement, répondant aux attentes élevées des convives d'aujourd'hui.
+Pour les résidents, l'application présente la **carte complète** avec descriptions, prix, variantes de plats et disponibilité, puis fournit des **mises à jour de statut en temps réel** de la préparation à la livraison. Les commandes peuvent être envoyées à **un logement, une zone commune, ou récupérées sur le chemin du retour**, supprimant les frictions des appels téléphoniques et des délais estimés flous. La même interface gère les **demandes de restauration dans l'immeuble**, donc une *seule pression* couvre les deux scénarios.
 
-En se concentrant sur les solutions de restauration, Mirigi améliore non seulement l'efficacité opérationnelle, mais augmente également la satisfaction de la clientèle, ce qui en fait un outil indispensable pour les établissements de restauration modernes.
+Pour le personnel du restaurant, les commandes entrantes arrivent via une **vue de gestion rationalisée** qui tient les clients **automatiquement informés** à chaque étape. Cela réduit les interruptions, diminue les **erreurs de commande** et permet à l'équipe de se concentrer sur la **préparation des aliments et la qualité du service** plutôt que sur la logistique. La plateforme est **prête à s'intégrer** avec les services de livraison établis, de sorte que les flux d'exécution existants peuvent continuer à fonctionner tandis que l'expérience destinée aux résidents reste cohérente.
+
+Le résultat est une **opération plus efficace** pour le restaurant et une **expérience quotidienne plus raffinée** pour les résidents — un service de restauration qui semble *natif de l'immeuble* plutôt qu'ajouté.

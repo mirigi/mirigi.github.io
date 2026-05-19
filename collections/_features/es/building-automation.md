@@ -1,12 +1,19 @@
 ---
-title: Automatización de Edificios
+title: Automatización del Edificio
 image: "/img_mirigi/touchpanelJadesignature.jpg"
+image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
-keywords: automatización de edificios, edificio inteligente, integración, control de acceso, seguridad, eficiencia
-description: "Integra a la perfección sistemas de automatización de edificios con Mirigi para mejorar la seguridad, la comodidad y la eficiencia."
+keywords: automatización del edificio, edificio inteligente, integración, sensores, controles, puerta de enlace
+description: Conecte los sensores y controles del edificio a Mirigi, para que residentes y personal actúen desde una sola app.
+miri_ai_example:
+  - from: user
+    text: "¿Cuál es la temperatura de la piscina ahora mismo?"
+  - from: miri
+    text: "La piscina está a 27 °C."
 ---
 
-Descubra el futuro de la vida con las **capacidades de integración de vanguardia** de Mirigi! Conéctese sin problemas con el sistema de hogar inteligente del residente u otros sistemas de automatización de edificios para brindar una **experiencia inigualable** tanto para los residentes como para el personal. Imagine un mundo donde su estación de puerta principal, ascensores y sistemas de control de acceso funcionan en **perfecta armonía**, todo a través de la **plataforma unificada** de Mirigi. Dígale adiós a la molestia de hacer malabarismos con múltiples tarjetas de acceso o llaves: disfrute de **mayor comodidad y seguridad** al acceder a servicios como la barbacoa o las canchas de tenis sin esfuerzo. Con Mirigi, cada interacción es **fluida e ininterrumpida**, ya sea que esté entrando al edificio o disfrutando de las instalaciones. Además, Mirigi le permite integrar varios sistemas automatizados, lo que permite **operaciones autónomas** como configurar etiquetas en la puerta automatizada directamente desde la aplicación Mirigi, **siempre que la puerta ofrezca una API**.
+Una **puerta de enlace de automatización del edificio** integra los sensores y controles existentes de la propiedad en Mirigi, para que la misma app que los residentes ya utilizan se convierta en el lugar para **ver qué está pasando** y **hacer que las cosas pasen**. *La temperatura de la piscina, las luces del lobby, el portón de entrada, la bomba de una fuente* — todo lo que el edificio tenga cableado aparece como una **lectura para consultar de un vistazo** o un **botón para presionar**, justo al lado de los mensajes, las entregas y las reservas.
 
-Para el personal, Mirigi **revoluciona las tareas de gestión** y aumenta la **eficiencia operativa**. Con un **sistema centralizado** que monitorea y opera diversas funciones del edificio, el personal puede abordar rápidamente cualquier problema, asegurando que el edificio funcione como una **máquina bien engrasada**. Esta integración minimiza las intervenciones manuales, lo que permite al personal concentrarse en brindar un **servicio excepcional** a los residentes. La capacidad de monitorear los sistemas de forma remota significa que los problemas potenciales se identifican y resuelven antes de que afecten a los residentes, **elevando la experiencia de vida general** en el condominio. Mirigi también mejora la capacidad de integrar diferentes sistemas automatizados, lo que facilita **operaciones autónomas** como configurar etiquetas en la puerta automatizada directamente desde la aplicación Mirigi, cuando la puerta proporciona la API para eso.
+Para los **residentes**, eso significa un superpoder discreto: abrir una puerta, encender el calentador de la piscina, ver la temperatura *real* en el exterior, todo sin un control remoto aparte ni una segunda app. Pregúntele a **Miri**, y la respuesta o la acción llega en lenguaje natural. Para el **personal y la administración**, la misma puerta de enlace se convierte en una **vista de operaciones compartida** — el equipo ve el estado del edificio en un solo lugar e interviene desde la consola, incluso *antes de que los residentes noten* un problema.
 
+El resultado es una propiedad donde **toda la inteligencia existente por fin habla el mismo idioma**, presentada a través de la interfaz tranquila y premium en la que los residentes ya confían.

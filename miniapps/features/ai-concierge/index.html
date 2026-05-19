@@ -170,15 +170,35 @@ body {
   0%,60%,100% { opacity:.25; transform:scale(.8); }
   30%         { opacity:1;   transform:scale(1.1); }
 }
+
+/* Visually hidden but readable by scrapers and screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
 </style>
 </head>
 <body>
 <div id="stage"></div>
 
+<!-- Scraper / no-JS fallback: full conversation transcripts, screen-reader friendly. -->
+<ul class="sr-only" aria-label="Example conversations with Miri, the Mirigi AI concierge">
+  <li><strong>Order food.</strong> User: I'd like spaghetti carbonara and fresh orange juice. Miri: Got it, I've placed your food order.</li>
+  <li><strong>Request the car.</strong> User: Please send the car to the entrance in ten minutes. Miri: Understood, I've requested the car for you.</li>
+  <li><strong>Reserve the barbecue.</strong> User: Please reserve the barbecue for Saturday evening. Miri: Sure, I've requested the barbecue reservation for Saturday evening.</li>
+  <li><strong>Report a broken light.</strong> User: There is a broken light on the ceiling of the hallway in my apartment. Miri: Thanks, I've reported the broken hallway ceiling light to maintenance.</li>
+  <li><strong>Reserve the gym.</strong> User: Can you reserve the gym for tomorrow at 7 am? Miri: Done — the gym is reserved for 7:00 AM tomorrow.</li>
+</ul>
+
 <script>
 (function () {
   const params  = new URLSearchParams(location.search);
-  const lang    = params.get('lang')  || 'en';
+  let lang      = (params.get('lang') || 'en').toLowerCase();
+  if (!['en','es','fr'].includes(lang)) lang = 'en';
   const isSmall = (params.get('size') || 'large') === 'small';
 
   const CHAR_MS  = isSmall ? 22  : 34;
@@ -435,13 +455,69 @@ body {
     while (true) { await waitIfPaused(); await showCard(cards[i++ % cards.length], false); }
   }
 
-  fetch(`data/${lang}.json`)
-    .then(r => r.json())
-    .then(run)
-    .catch(err => {
-      stage.innerHTML = `<div style="padding:20px;color:#c00;font-size:13px;">
-        Failed to load data/${lang}.json<br>${err.message}</div>`;
-    });
+  /* === Conversations: inline data, picked by ?lang= (en/es/fr).
+     English text is also rendered statically in <ul class="sr-only"> above
+     so scrapers and screen readers see the full transcripts on initial load. */
+  const SCENARIOS = [
+    {
+      icon: '🍝',
+      scenario: { en: 'Order food', es: 'Pedir comida', fr: 'Commander de la nourriture' },
+      user:     { en: "I'd like spaghetti carbonara and fresh orange juice.",
+                  es: "Quiero espaguetis a la carbonara y jugo de naranja recién exprimido.",
+                  fr: "Je voudrais des spaghettis carbonara et un jus d'orange frais." },
+      miri:     { en: "Got it, I've placed your food order.",
+                  es: "Listo, he realizado tu pedido de comida.",
+                  fr: "C'est noté, j'ai passé votre commande." }
+    },
+    {
+      icon: '🚗',
+      scenario: { en: 'Request the car', es: 'Pedir el coche', fr: 'Demander la voiture' },
+      user:     { en: "Please send the car to the entrance in ten minutes.",
+                  es: "Por favor, envía el coche a la entrada en diez minutos.",
+                  fr: "Veuillez envoyer la voiture à l'entrée dans dix minutes." },
+      miri:     { en: "Understood, I've requested the car for you.",
+                  es: "Entendido, he solicitado el coche para ti.",
+                  fr: "Compris, j'ai demandé la voiture pour vous." }
+    },
+    {
+      icon: '🍖',
+      scenario: { en: 'Reserve the barbecue', es: 'Reservar la parrilla', fr: 'Réserver le barbecue' },
+      user:     { en: "Please reserve the barbecue for Saturday evening.",
+                  es: "Por favor, reserva la parrilla para el sábado por la noche.",
+                  fr: "Veuillez réserver le barbecue pour samedi soir." },
+      miri:     { en: "Sure, I've requested the barbecue reservation for Saturday evening.",
+                  es: "Claro, he solicitado la reserva de la parrilla para el sábado.",
+                  fr: "Bien sûr, j'ai réservé le barbecue pour samedi soir." }
+    },
+    {
+      icon: '🔧',
+      scenario: { en: 'Report a broken light', es: 'Reportar una luz rota', fr: 'Signaler une ampoule cassée' },
+      user:     { en: "There is a broken light on the ceiling of the hallway in my apartment.",
+                  es: "Hay una luz rota en el techo del pasillo de mi apartamento.",
+                  fr: "Il y a une ampoule cassée au plafond du couloir de mon appartement." },
+      miri:     { en: "Thanks, I've reported the broken hallway ceiling light to maintenance.",
+                  es: "Gracias, he reportado la luz del pasillo a mantenimiento.",
+                  fr: "Merci, j'ai signalé l'ampoule cassée à la maintenance." }
+    },
+    {
+      icon: '🏋️',
+      scenario: { en: 'Reserve the gym', es: 'Reservar el gimnasio', fr: 'Réserver la salle de sport' },
+      user:     { en: "Can you reserve the gym for tomorrow at 7 am?",
+                  es: "¿Podés reservar el gimnasio mañana a las 7 am?",
+                  fr: "Pouvez-vous réserver la salle de sport demain à 7h ?" },
+      miri:     { en: "Done — the gym is reserved for 7:00 AM tomorrow.",
+                  es: "¡Listo! El gimnasio está reservado para mañana a las 7:00 AM.",
+                  fr: "C'est fait ! La salle de sport est réservée demain à 7h00." }
+    }
+  ];
+
+  const localized = SCENARIOS.map(s => ({
+    icon: s.icon,
+    scenario: (s.scenario[lang] || s.scenario.en),
+    user:     (s.user[lang]     || s.user.en),
+    miri:     (s.miri[lang]     || s.miri.en)
+  }));
+  run(localized);
 })();
 </script>
 </body>

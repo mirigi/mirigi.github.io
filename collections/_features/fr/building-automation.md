@@ -1,12 +1,19 @@
 ---
-title: Automatisation des Bâtiments
+title: Automatisation de l'Immeuble
 image: "/img_mirigi/touchpanelJadesignature.jpg"
+image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
-keywords: automatisation des bâtiments, immeuble intelligent, intégration, contrôle d'accès, sécurité, efficacité
-description: "Intégrez parfaitement les systèmes d'automatisation des bâtiments avec Mirigi pour une sécurité, un confort et une efficacité accrus."
+keywords: automatisation de l'immeuble, immeuble intelligent, intégration, capteurs, commandes, passerelle
+description: Connectez les capteurs et commandes de l'immeuble à Mirigi, pour que résidents et personnel agissent depuis une seule app.
+miri_ai_example:
+  - from: user
+    text: "Quelle est la température de la piscine en ce moment ?"
+  - from: miri
+    text: "La piscine est à 27 °C."
 ---
 
-Découvrez l'avenir de l'habitat avec les **capacités d'intégration de pointe** de Mirigi! Connectez-vous en toute transparence au système domotique du résident ou à d'autres systèmes d'automatisation des bâtiments pour offrir une **expérience inégalée** aux résidents et au personnel. Imaginez un monde où votre portier, vos ascenseurs et vos systèmes de contrôle d'accès fonctionnent en **parfaite harmonie**, le tout grâce à la **plateforme unifiée** de Mirigi. Dites adieu aux tracas liés à la gestion de plusieurs cartes d'accès ou clés: profitez d'une **commodité et d'une sécurité accrues** en accédant sans effort à des installations telles que le barbecue ou les courts de tennis. Avec Mirigi, chaque interaction est **fluide et ininterrompue**, que vous entriez dans l'immeuble ou que vous profitiez des installations. De plus, Mirigi vous donne la possibilité d'intégrer divers systèmes automatisés, permettant des **opérations autonomes** telles que la configuration de badges dans le portail automatisé directement depuis l'application Mirigi, **à condition que le portail dispose d'une API**.
+Une **passerelle d'automatisation de l'immeuble** intègre les capteurs et commandes existants de la propriété dans Mirigi, afin que la même app que les résidents utilisent déjà devienne l'endroit pour **voir ce qui se passe** et **faire en sorte que les choses se produisent**. *La température de la piscine, les lumières du hall, le portail d'entrée, la pompe d'une fontaine* — tout ce que l'immeuble a câblé apparaît comme une **donnée à consulter d'un coup d'œil** ou un **bouton à actionner**, juste à côté des messages, des livraisons et des réservations.
 
-Pour le personnel, Mirigi **révolutionne les tâches de gestion** et améliore l'**efficacité opérationnelle**. Grâce à un **système centralisé** qui surveille et exploite diverses fonctions du bâtiment, le personnel peut résoudre rapidement tout problème, garantissant ainsi le bon fonctionnement du bâtiment. Cette intégration minimise les interventions manuelles, permettant au personnel de se concentrer sur la fourniture d'un **service exceptionnel** aux résidents. La possibilité de surveiller les systèmes à distance signifie que les problèmes potentiels sont identifiés et résolus avant qu'ils n'affectent les résidents, **améliorant ainsi l'expérience de vie globale** dans la copropriété. Mirigi améliore également la capacité d'intégrer différents systèmes automatisés, facilitant les **opérations autonomes** telles que la configuration de badges dans le portail automatisé directement depuis l'application Mirigi, lorsque le portail fournit l'API pour cela.
+Pour les **résidents**, cela signifie un superpouvoir discret : ouvrir une porte, allumer le chauffage de la piscine, voir la température *réelle* à l'extérieur, le tout sans télécommande séparée ni seconde app. Demandez à **Miri**, et la réponse ou l'action arrive en langage clair. Pour le **personnel et la direction**, la même passerelle devient une **vue d'opérations partagée** — l'équipe voit l'état de l'immeuble en un seul endroit et intervient depuis la console, même *avant que les résidents ne remarquent* un problème.
 
+Le résultat est une propriété où **toute l'intelligence existante parle enfin la même langue**, présentée à travers l'interface calme et premium à laquelle les résidents font déjà confiance.

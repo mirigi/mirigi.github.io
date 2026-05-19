@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mirigi — Skins Showcase</title>
+<link rel="stylesheet" href="../../lib/screenshots.css">
+</head>
+<!--
+  Per-building skins miniapp — a config-only instance of the shared
+  screenshot carousel at /miniapps/_lib/screenshots.{css,js}.
+  Backdrop and card aspect set via CSS variables on <body>.
+-->
+<body style="
+  --backdrop-url: url('/img/features/fully-customizable.jpg');
+  --card-aspect: 1465 / 2845;
+">
+
+<div id="stage" role="region" aria-label="Mirigi skins showcase"></div>
+
+<!-- Scraper / no-JS fallback: full caption list, screen-reader friendly. -->
+<ul class="sr-only" aria-label="Mirigi skin showcase captions">
+  <li>Resident dashboard</li>
+  <li>Per-building skin</li>
+  <li>Branded layout</li>
+  <li>Custom palette</li>
+  <li>In-app experience</li>
+  <li>Tailored to the property</li>
+</ul>
+
+<script>
+  window.MIRIAPP_SHOTS = {
+    intervalMs: 4800,
+    shots: [
+      { src: 'img/skin-1.png', labels: { en: 'Resident dashboard',         es: 'Panel del residente',         fr: 'Tableau du résident' } },
+      { src: 'img/skin-2.png', labels: { en: 'Per-building skin',          es: 'Tema visual por edificio',    fr: 'Thème par immeuble' } },
+      { src: 'img/skin-3.png', labels: { en: 'Branded layout',             es: 'Diseño con marca',            fr: 'Mise en page de marque' } },
+      { src: 'img/skin-4.png', labels: { en: 'Custom palette',             es: 'Paleta personalizada',        fr: 'Palette personnalisée' } },
+      { src: 'img/skin-5.png', labels: { en: 'In-app experience',          es: 'Experiencia en la app',       fr: "Expérience dans l'app" } },
+      { src: 'img/skin-6.png', labels: { en: 'Tailored to the property',   es: 'Adaptada a la propiedad',     fr: 'Adaptée à la propriété' } }
+    ]
+  };
+</script>
+<script src="../../lib/screenshots.js"></script>
+</body>
+</html>

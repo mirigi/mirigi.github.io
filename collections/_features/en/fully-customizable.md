@@ -2,6 +2,7 @@
 title: Fully Customizable
 image: "/img/features/fully-customizable.jpg"
 layout: feature
+miniapp: features/fully-customizable
 keywords: customization, branding, mobile app, app store, user experience, flexibility
 description: Customize Mirigi with your building's branding and features.
 ---

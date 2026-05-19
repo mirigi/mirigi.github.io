@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mirigi Reports</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; }
+body {
+  background: linear-gradient(160deg, #f5f1ea 0%, #efe9df 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.4rem;
+}
+
+#stage {
+  position: relative;
+  width: 100%; max-width: 540px;
+  aspect-ratio: 4/3;
+  max-height: 100%;
+}
+
+.card {
+  position: absolute; inset: 0;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow:
+    0 24px 48px -12px rgba(40,55,85,0.16),
+    0 10px 22px -10px rgba(40,55,85,0.10),
+    0 1px 3px rgba(40,55,85,0.04);
+  padding: 1.3rem 1.5rem 2rem;
+  display: flex; flex-direction: column;
+  opacity: 0;
+  transform: translateX(40px) scale(.97);
+  transition: opacity .55s ease, transform .55s cubic-bezier(.34,1.2,.64,1);
+  pointer-events: none;
+}
+.card.is-current { opacity: 1; transform: translateX(0) scale(1); z-index: 2; pointer-events: auto; }
+.card.is-leaving { opacity: 0; transform: translateX(-40px) scale(.97); z-index: 1; }
+
+.header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin: 0 0 .9rem;
+}
+.title {
+  font-size: 1.05rem; font-weight: 700;
+  color: #1a1a1a; letter-spacing: -0.005em;
+}
+.group {
+  font-size: .72rem; color: #8b8b8b;
+}
+.group i { font-style: normal; color: #1a1a1a; font-weight: 500; }
+
+.toolbar {
+  display: flex; gap: .35rem; align-items: center;
+  margin: 0 0 .8rem;
+}
+.toolbar .rows {
+  font-size: .72rem; color: #8b8b8b;
+  margin-right: auto; padding-left: .2rem;
+}
+.toolbar .rows b { color: #1a1a1a; font-weight: 600; }
+.pill {
+  font-size: .7rem; padding: .3rem .55rem;
+  border-radius: 8px; border: 1px solid #e5e1d8;
+  color: #5f6368; background: #ffffff;
+  display: inline-flex; align-items: center; gap: .3rem;
+}
+.pill.is-active {
+  background: #0d8a7a; color: #ffffff; border-color: #0d8a7a;
+  box-shadow: 0 1px 2px rgba(13,138,122,.25);
+}
+.pill .ic { width: 11px; height: 11px; display: inline-block; }
+
+.chart-wrap {
+  flex: 1; min-height: 0;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: .5rem .2rem 0;
+  display: flex; flex-direction: column;
+}
+.chart {
+  width: 100%; flex: 1; display: block; min-height: 0;
+}
+
+/* === Bar chart (vertical column) === */
+.gridline { stroke: rgba(0,0,0,0.06); stroke-width: 1; }
+.gridtext { font-size: 9px; fill: #b5b5b5; font-family: -apple-system, sans-serif; }
+.axistext { font-size: 9px; fill: #9aa0a6; font-family: -apple-system, sans-serif; }
+
+.bar {
+  fill: #4286f5;
+  transform-box: fill-box; transform-origin: 50% 100%;
+  transform: scaleY(0);
+}
+.is-current .bar {
+  animation: barGrow .85s cubic-bezier(.34,1.1,.64,1) forwards;
+}
+@keyframes barGrow {
+  0%   { transform: scaleY(0); }
+  72%  { transform: scaleY(1.04); }
+  100% { transform: scaleY(1); }
+}
+/* staggered delays */
+.is-current .bar { animation-delay: calc(var(--i, 0) * 25ms + 100ms); }
+
+/* === Area + line chart === */
+.area-fill { fill: rgba(66,134,245,0.18); opacity: 0; }
+.is-current .area-fill { animation: areaFade 1s ease .7s forwards; }
+@keyframes areaFade { to { opacity: 1; } }
+
+.line-path {
+  fill: none; stroke: #4286f5; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 1500; stroke-dashoffset: 1500;
+}
+.is-current .line-path {
+  animation: lineDraw 1.5s cubic-bezier(.65,0,.35,1) .15s forwards;
+}
+@keyframes lineDraw { to { stroke-dashoffset: 0; } }
+
+.peak-dot {
+  fill: #4286f5; stroke: #ffffff; stroke-width: 1.5;
+  opacity: 0; transform-box: fill-box; transform-origin: center;
+}
+.is-current .peak-dot {
+  animation: dotPop .4s cubic-bezier(.34,1.6,.64,1) 1.5s forwards;
+}
+@keyframes dotPop {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.tooltip {
+  opacity: 0; transform: translateY(4px);
+}
+.is-current .tooltip {
+  animation: tipShow .35s ease 1.8s forwards;
+}
+@keyframes tipShow {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Carousel dots === */
+.dots {
+  position: absolute; bottom: .85rem; left: 0; right: 0;
+  display: flex; justify-content: center; gap: 6px;
+  z-index: 3;
+}
+.cdot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(0,0,0,0.13);
+  transition: background .35s, width .35s;
+  cursor: pointer; padding: 0; border: 0;
+}
+.cdot.is-current {
+  background: #0d8a7a;
+  width: 22px; border-radius: 4px;
+}
+
+@media (max-width: 480px) {
+  body { padding: .7rem; }
+  .card { padding: 1rem 1.1rem 1.8rem; }
+  .title { font-size: .92rem; }
+  .toolbar .rows { font-size: .65rem; }
+  .pill { font-size: .65rem; padding: .25rem .45rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="stage" role="region" aria-label="Mirigi Reports demo">
+
+  <!-- Card 1 — notifications per month -->
+  <article class="card is-current" data-card="0">
+    <div class="header">
+      <div class="title">notifications per month</div>
+      <div class="group">Group: <i>notifications</i></div>
+    </div>
+    <div class="toolbar">
+      <div class="rows">Results · <b>7 rows</b></div>
+      <span class="pill is-active">
+        <svg class="ic" viewBox="0 0 16 16" fill="currentColor"><rect x="2" y="9" width="2" height="5"/><rect x="6" y="6" width="2" height="8"/><rect x="10" y="3" width="2" height="11"/><rect x="14" y="11" width="2" height="3" style="display:none"/></svg>
+        Graph
+      </span>
+      <span class="pill">
+        <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3" width="12" height="10" rx="1"/><line x1="2" y1="7" x2="14" y2="7"/><line x1="6" y1="3" x2="6" y2="13"/><line x1="10" y1="3" x2="10" y2="13"/></svg>
+        Table
+      </span>
+    </div>
+    <div class="chart-wrap">
+      <svg class="chart" viewBox="0 0 480 200" preserveAspectRatio="none">
+        <!-- gridlines + y labels -->
+        <line class="gridline" x1="30" x2="470" y1="180" y2="180"/>
+        <line class="gridline" x1="30" x2="470" y1="135" y2="135" stroke-dasharray="3 4"/>
+        <line class="gridline" x1="30" x2="470" y1="90"  y2="90"  stroke-dasharray="3 4"/>
+        <line class="gridline" x1="30" x2="470" y1="45"  y2="45"  stroke-dasharray="3 4"/>
+        <text class="gridtext" x="22" y="184" text-anchor="end">0</text>
+        <text class="gridtext" x="22" y="139" text-anchor="end">8</text>
+        <text class="gridtext" x="22" y="94"  text-anchor="end">16</text>
+        <text class="gridtext" x="22" y="49"  text-anchor="end">24</text>
+        <!-- 7 monthly bars (5..25) -->
+        <g>
+          <rect class="bar" style="--i:0" x="45"  y="115" width="42" height="65"  rx="3"/>
+          <rect class="bar" style="--i:1" x="105" y="95"  width="42" height="85"  rx="3"/>
+          <rect class="bar" style="--i:2" x="165" y="70"  width="42" height="110" rx="3"/>
+          <rect class="bar" style="--i:3" x="225" y="55"  width="42" height="125" rx="3"/>
+          <rect class="bar" style="--i:4" x="285" y="40"  width="42" height="140" rx="3"/>
+          <rect class="bar" style="--i:5" x="345" y="60"  width="42" height="120" rx="3"/>
+          <rect class="bar" style="--i:6" x="405" y="85"  width="42" height="95"  rx="3"/>
+        </g>
+        <!-- x labels — static fallback for scrapers; JS rewrites relative to today -->
+        <g class="axistext" text-anchor="middle">
+          <text x="66"  y="195" data-month-offset="-6">2025-11</text>
+          <text x="126" y="195" data-month-offset="-5">2025-12</text>
+          <text x="186" y="195" data-month-offset="-4">2026-01</text>
+          <text x="246" y="195" data-month-offset="-3">2026-02</text>
+          <text x="306" y="195" data-month-offset="-2">2026-03</text>
+          <text x="366" y="195" data-month-offset="-1">2026-04</text>
+          <text x="426" y="195" data-month-offset="0">2026-05</text>
+        </g>
+      </svg>
+    </div>
+  </article>
+
+  <!-- Card 2 — reservations per month -->
+  <article class="card" data-card="1">
+    <div class="header">
+      <div class="title">reservations per month</div>
+      <div class="group">Group: <i>reservations</i></div>
+    </div>
+    <div class="toolbar">
+      <div class="rows">Results · <b>25 rows</b></div>
+      <span class="pill is-active">
+        <svg class="ic" viewBox="0 0 16 16" fill="currentColor"><rect x="2" y="9" width="2" height="5"/><rect x="6" y="6" width="2" height="8"/><rect x="10" y="3" width="2" height="11"/></svg>
+        Graph
+      </span>
+      <span class="pill">
+        <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3" width="12" height="10" rx="1"/><line x1="2" y1="7" x2="14" y2="7"/><line x1="6" y1="3" x2="6" y2="13"/></svg>
+        Table
+      </span>
+    </div>
+    <div class="chart-wrap">
+      <svg class="chart" viewBox="0 0 480 200" preserveAspectRatio="none">
+        <line class="gridline" x1="30" x2="470" y1="180" y2="180"/>
+        <line class="gridline" x1="30" x2="470" y1="135" y2="135" stroke-dasharray="3 4"/>
+        <line class="gridline" x1="30" x2="470" y1="90"  y2="90"  stroke-dasharray="3 4"/>
+        <line class="gridline" x1="30" x2="470" y1="45"  y2="45"  stroke-dasharray="3 4"/>
+        <text class="gridtext" x="22" y="184" text-anchor="end">0</text>
+        <text class="gridtext" x="22" y="139" text-anchor="end">80</text>
+        <text class="gridtext" x="22" y="94"  text-anchor="end">160</text>
+        <text class="gridtext" x="22" y="49"  text-anchor="end">240</text>
+        <!-- 25 monthly bars (very dense) — heights approximated from screenshot -->
+        <g id="resBars"></g>
+        <g class="axistext" text-anchor="middle">
+          <text x="46"  y="195" data-year-offset="-2">2024</text>
+          <text x="170" y="195" data-quarter-offset="-15">2024-Q4</text>
+          <text x="295" y="195" data-quarter-offset="-7">2025-Q3</text>
+          <text x="430" y="195" data-year-offset="0">2026</text>
+        </g>
+      </svg>
+    </div>
+  </article>
+
+  <!-- Card 3 — packages per day -->
+  <article class="card" data-card="2">
+    <div class="header">
+      <div class="title">packages per day</div>
+      <div class="group">Group: <i>deliveries</i></div>
+    </div>
+    <div class="toolbar">
+      <div class="rows">Results · <b>32 rows</b></div>
+      <span class="pill is-active">
+        <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><polyline points="2,12 5,8 8,10 11,4 14,6"/></svg>
+        Graph
+      </span>
+      <span class="pill">
+        <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3" width="12" height="10" rx="1"/><line x1="2" y1="7" x2="14" y2="7"/><line x1="6" y1="3" x2="6" y2="13"/></svg>
+        Table
+      </span>
+    </div>
+    <div class="chart-wrap">
+      <svg class="chart" viewBox="0 0 480 200" preserveAspectRatio="none">
+        <line class="gridline" x1="30" x2="470" y1="180" y2="180"/>
+        <line class="gridline" x1="30" x2="470" y1="130" y2="130" stroke-dasharray="3 4"/>
+        <line class="gridline" x1="30" x2="470" y1="80"  y2="80"  stroke-dasharray="3 4"/>
+        <line class="gridline" x1="30" x2="470" y1="30"  y2="30"  stroke-dasharray="3 4"/>
+        <text class="gridtext" x="22" y="184" text-anchor="end">0</text>
+        <text class="gridtext" x="22" y="134" text-anchor="end">7</text>
+        <text class="gridtext" x="22" y="84"  text-anchor="end">14</text>
+        <text class="gridtext" x="22" y="34"  text-anchor="end">21</text>
+        <!-- Area + line approximating the screenshot — peak around day 5 -->
+        <path class="area-fill" d="
+          M 30,175
+          C 50,172 65,170 80,168
+          C 100,165 110,40 130,40
+          C 145,40 155,160 175,160
+          C 195,158 205,135 230,135
+          C 250,135 260,90 285,90
+          C 305,90 315,105 335,108
+          C 360,112 380,168 410,168
+          C 430,168 450,170 470,80
+          L 470,180 L 30,180 Z
+        "/>
+        <path class="line-path" d="
+          M 30,175
+          C 50,172 65,170 80,168
+          C 100,165 110,40 130,40
+          C 145,40 155,160 175,160
+          C 195,158 205,135 230,135
+          C 250,135 260,90 285,90
+          C 305,90 315,105 335,108
+          C 360,112 380,168 410,168
+          C 430,168 450,170 470,80
+        "/>
+        <!-- peak dot at (130, 40) -->
+        <circle class="peak-dot" cx="130" cy="40" r="4"/>
+        <!-- tooltip near the peak -->
+        <g class="tooltip">
+          <rect x="146" y="48" width="116" height="38" rx="4" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+          <text x="156" y="63" font-size="10" fill="#3c3c3c" font-family="-apple-system,sans-serif" data-day-offset-iso="-50">2026-03-30</text>
+          <text x="156" y="78" font-size="10" fill="#4286f5" font-weight="600" font-family="-apple-system,sans-serif">package_count : 25</text>
+        </g>
+        <g class="axistext" text-anchor="middle">
+          <text x="46"  y="195" data-day-offset="-55">Mar 25</text>
+          <text x="160" y="195" data-day-offset="-40">Apr 09</text>
+          <text x="280" y="195" data-day-offset="-25">Apr 24</text>
+          <text x="400" y="195" data-day-offset="-10">May 09</text>
+          <text x="460" y="195" data-day-offset="-1">May 18</text>
+        </g>
+      </svg>
+    </div>
+  </article>
+
+  <!-- Card 4 — visitors per floor -->
+  <article class="card" data-card="3">
+    <div class="header">
+      <div class="title">visitors per floor</div>
+      <div class="group">Group: <i>access</i></div>
+    </div>
+    <div class="toolbar">
+      <div class="rows">Results · <b>12 rows</b></div>
+      <span class="pill is-active">
+        <svg class="ic" viewBox="0 0 16 16" fill="currentColor"><rect x="2" y="9" width="2" height="5"/><rect x="6" y="6" width="2" height="8"/><rect x="10" y="3" width="2" height="11"/></svg>
+        Graph
+      </span>
+      <span class="pill">
+        <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3" width="12" height="10" rx="1"/><line x1="2" y1="7" x2="14" y2="7"/><line x1="6" y1="3" x2="6" y2="13"/></svg>
+        Table
+      </span>
+    </div>
+    <div class="chart-wrap">
+      <svg class="chart" viewBox="0 0 480 200" preserveAspectRatio="none">
+        <line class="gridline" x1="30" x2="470" y1="180" y2="180"/>
+        <line class="gridline" x1="30" x2="470" y1="130" y2="130" stroke-dasharray="3 4"/>
+        <line class="gridline" x1="30" x2="470" y1="80"  y2="80"  stroke-dasharray="3 4"/>
+        <line class="gridline" x1="30" x2="470" y1="30"  y2="30"  stroke-dasharray="3 4"/>
+        <text class="gridtext" x="22" y="184" text-anchor="end">0</text>
+        <text class="gridtext" x="22" y="134" text-anchor="end">20</text>
+        <text class="gridtext" x="22" y="84"  text-anchor="end">40</text>
+        <text class="gridtext" x="22" y="34"  text-anchor="end">60</text>
+        <g id="floorBars"></g>
+        <g class="axistext" text-anchor="middle">
+          <text x="48"  y="195">F1</text>
+          <text x="84"  y="195">F2</text>
+          <text x="120" y="195">F3</text>
+          <text x="156" y="195">F4</text>
+          <text x="192" y="195">F5</text>
+          <text x="228" y="195">F6</text>
+          <text x="264" y="195">F7</text>
+          <text x="300" y="195">F8</text>
+          <text x="336" y="195">F9</text>
+          <text x="372" y="195">F10</text>
+          <text x="408" y="195">F11</text>
+          <text x="444" y="195">F12</text>
+        </g>
+      </svg>
+    </div>
+  </article>
+
+  <nav class="dots" role="tablist" aria-label="Report panels">
+    <button class="cdot is-current" aria-label="Panel 1" data-idx="0"></button>
+    <button class="cdot" aria-label="Panel 2" data-idx="1"></button>
+    <button class="cdot" aria-label="Panel 3" data-idx="2"></button>
+    <button class="cdot" aria-label="Panel 4" data-idx="3"></button>
+  </nav>
+</div>
+
+<script>
+(function () {
+  /* === Live dates: rewrite axis labels relative to today === */
+  var today = new Date();
+  var MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function fmtYearMonth(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1); }
+  function fmtMonDay(d)    { return MONTHS_SHORT[d.getMonth()] + ' ' + pad(d.getDate()); }
+  function fmtISODate(d)   { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function shiftMonths(base, n) {
+    var d = new Date(base.getFullYear(), base.getMonth() + n, 1);
+    return d;
+  }
+  function shiftDays(base, n) {
+    var d = new Date(base.getFullYear(), base.getMonth(), base.getDate() + n);
+    return d;
+  }
+
+  document.querySelectorAll('[data-month-offset]').forEach(function (el) {
+    var d = shiftMonths(today, parseInt(el.dataset.monthOffset, 10));
+    el.textContent = fmtYearMonth(d);
+  });
+  document.querySelectorAll('[data-year-offset]').forEach(function (el) {
+    var d = shiftMonths(today, 12 * parseInt(el.dataset.yearOffset, 10));
+    el.textContent = '' + d.getFullYear();
+  });
+  document.querySelectorAll('[data-quarter-offset]').forEach(function (el) {
+    var d = shiftMonths(today, parseInt(el.dataset.quarterOffset, 10));
+    var q = Math.floor(d.getMonth() / 3) + 1;
+    el.textContent = d.getFullYear() + '-Q' + q;
+  });
+  document.querySelectorAll('[data-day-offset]').forEach(function (el) {
+    var d = shiftDays(today, parseInt(el.dataset.dayOffset, 10));
+    el.textContent = fmtMonDay(d);
+  });
+  document.querySelectorAll('[data-day-offset-iso]').forEach(function (el) {
+    var d = shiftDays(today, parseInt(el.dataset.dayOffsetIso, 10));
+    el.textContent = fmtISODate(d);
+  });
+
+  /* Build reservations bars (25 monthly bars, varying heights inspired by screenshot) */
+  var resHeights = [
+    55, 70, 95, 125, 115, 130, 120, 108, 95, 120, 132, 116,
+    155, 150, 142, 148, 122, 130, 135, 110, 95, 118, 112, 100, 88
+  ];
+  var resBars = document.getElementById('resBars');
+  if (resBars) {
+    var svgns = 'http://www.w3.org/2000/svg';
+    resHeights.forEach(function (h, i) {
+      var x = 36 + i * 17;
+      var y = 180 - h;
+      var rect = document.createElementNS(svgns, 'rect');
+      rect.setAttribute('class', 'bar');
+      rect.setAttribute('x', x);
+      rect.setAttribute('y', y);
+      rect.setAttribute('width', 13);
+      rect.setAttribute('height', h);
+      rect.setAttribute('rx', 2);
+      rect.style.setProperty('--i', i);
+      resBars.appendChild(rect);
+    });
+  }
+
+  /* Build floor visitors bars (12 floors) */
+  var floorHeights = [42, 58, 50, 36, 62, 70, 88, 75, 60, 95, 48, 55];
+  var floorBars = document.getElementById('floorBars');
+  if (floorBars) {
+    var svgns2 = 'http://www.w3.org/2000/svg';
+    floorHeights.forEach(function (h, i) {
+      var x = 36 + i * 36;
+      var y = 180 - h;
+      var rect = document.createElementNS(svgns2, 'rect');
+      rect.setAttribute('class', 'bar');
+      rect.setAttribute('x', x);
+      rect.setAttribute('y', y);
+      rect.setAttribute('width', 24);
+      rect.setAttribute('height', h);
+      rect.setAttribute('rx', 3);
+      rect.style.setProperty('--i', i);
+      floorBars.appendChild(rect);
+    });
+  }
+
+  /* Carousel logic */
+  var stage = document.getElementById('stage');
+  var cards = stage.querySelectorAll('.card');
+  var dots  = stage.querySelectorAll('.cdot');
+  var current = 0;
+  var timer;
+  var INTERVAL = 5400;
+
+  function show(idx) {
+    cards.forEach(function (c, i) {
+      c.classList.remove('is-current', 'is-leaving');
+      if (i === current && i !== idx) c.classList.add('is-leaving');
+    });
+    current = idx;
+    cards[idx].classList.add('is-current');
+    dots.forEach(function (d, i) { d.classList.toggle('is-current', i === idx); });
+  }
+
+  function next() { show((current + 1) % cards.length); }
+
+  function start() { stop(); timer = setInterval(next, INTERVAL); }
+  function stop()  { if (timer) { clearInterval(timer); timer = null; } }
+
+  dots.forEach(function (d) {
+    d.addEventListener('click', function () {
+      show(parseInt(d.dataset.idx, 10));
+      start();
+    });
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else start();
+  });
+  if (window.frameElement && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function ([entry]) {
+      if (entry.isIntersecting) start(); else stop();
+    }, { threshold: 0.05 }).observe(window.frameElement);
+  } else {
+    start();
+  }
+})();
+</script>
+</body>
+</html>

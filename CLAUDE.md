@@ -6,6 +6,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a multilingual Jekyll website for Mirigi, a digital concierge service for condominiums. The site showcases features and customer testimonials in English, Spanish, and French. It's built using Jekyll with a Bootstrap-based theme and Docker deployment.
 
+## Marketing Copy Rules
+
+**Never mention technical internals on feature pages, customer pages, brochures, or proposals.** The audience is luxury condominium boards, property managers and residents — not developers. Describe the *experience* (what the user sees and gets), not the *mechanism* (how the code does it).
+
+When summarizing or fact-checking content, replace technical names with the user-visible behavior they enable:
+
+| Internal / technical term | User-facing replacement |
+|---|---|
+| MQTT, WebSocket, long-polling | "real-time updates" / "live notifications" |
+| Twilio, SMS provider names | "SMS" |
+| Cordova, Capacitor, React Native (framework) | "companion app" / "branded mobile app" |
+| MJPEG, RTSP, ONVIF, HLS, HTTP video endpoint | "video streams" |
+| OAuth, OAuth 2.0, OAuth pairing, SSO protocol names | "pairs securely" / "secure API" |
+| RSA, PKCS, JWT, signed JWT | "cryptographically signed" / "secure" |
+| S3, blob storage, CDN | "secure storage" |
+| MIME, multipart, base64 | omit, or "file upload" |
+| HTTP, REST, JSON, GraphQL | "secure API" / "integration" |
+| SQL query, database query, raw query | "fully customizable" / "tailored to the property" / "defined per building" — do not name the authoring mechanism |
+| Prosis, administracion.com.uy (vendor) | "the administrator's accounting platform" |
+| BLI, BeoLiving Intelligence (technical name) | "smart-home controller" (when audience won't recognize BLI). BLI/Khimo OK on the home automation page itself — they are brand-marketed by Bang & Olufsen and recognized by integrators. |
+| Axis (camera brand), specific camera models | "IP cameras" |
+
+**Always-forbidden** (regardless of context — off-brand or false):
+- Alexa (no real integration in code)
+- Prosis / administracion.com.uy (keep accounting generic)
+- Axis (no exclusive camera brand lock-in)
+
+**Always-OK technical terms** (widely understood, marketing-friendly):
+- Markdown, CSV, PDF, QR code, two-factor authentication / 2FA
+
+**When in doubt:** "Residents are notified the moment their car is ready" beats "the system pushes an MQTT event on state change".
+
 ## Development Commands
 
 ### Primary Development Workflow

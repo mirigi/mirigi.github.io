@@ -1,8 +1,9 @@
 ---
 layout: index
 lang: en
-header: AI Concierge
-subheader: At Your Service
+eyebrow: "Twenty years in luxury concierge"
+header: "The concierge that acts."
+subheader: "Booking the valet, placing the order, opening the door — end to end, in any language, at any hour, for the world's most considered residences."
 aboutEyebrow: Meet Mirigi
 aboutTitle: AI Concierge
 emailLabel: Email
@@ -12,9 +13,9 @@ customersText: Behold the architectural marvels that trust Mirigi for their oper
 contactText: Join the ranks of these distinguished structures and elevate your building's potential with Mirigi. Contact us through any of our channels to schedule a demonstration and discover how Mirigi's digital counseling can boost your development! Experience the transformation and innovation that only Mirigi can offer.
 title: Mirigi AI Concierge
 keywords: ai concierge, miri, building management, resident experience, luxury living, automation, smart building
-description: "Meet Miri — the first AI concierge agent that acts. Not just answers: places food orders, calls the valet, books amenities, all in one conversation."
+description: "The first concierge platform whose AI acts for residents — booking the valet, placing the order, opening the door, end to end in one conversation. A modern system for luxury condominiums, built on twenty years of concierge and building-automation experience. Offices in Montevideo and Miami."
 ---
-Mirigi is the **digital concierge platform for luxury condominiums** — managing **reservations, valet parking, deliveries, access control**, and every service your building offers. At its core is **Miri**, the first **AI concierge agent that acts**. Other systems answer questions. Miri places the order, requests your car, books the amenity — *end to end, in a single chat*. No apps to open, no forms to fill. **Just ask.**
+Mirigi is the **first concierge platform whose AI agent — Miri — doesn't just answer residents but acts for them**. She orchestrates **valet, deliveries, reservations, access and the home itself** across every service the building offers, in every resident's language, end to end in a single conversation. Other systems answer questions. Miri *places the order, requests the car, books the amenity*. No forms, no apps to learn, no hold music. **Just ask.**
 
 For **residents**, Mirigi turns every building service into something they reach with a tap or a sentence — *reservations, valet, deliveries, messages, payments* — through a **branded app** that matches the property's identity on phone, tablet, or in-unit touch panel. The same app drives the **smart home**, opens the gate, plays the music, and pages the concierge.
 

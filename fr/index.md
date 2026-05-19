@@ -1,8 +1,9 @@
 ---
 layout: index
 lang: fr
-header: Conciergerie IA
-subheader: À Votre Service
+eyebrow: "Vingt ans en conciergerie de luxe"
+header: "Le concierge qui agit."
+subheader: "Appelle le voiturier, passe la commande, ouvre la porte — de bout en bout, dans sa langue, à toute heure, pour les résidences les plus soignées au monde."
 aboutTitle: Conciergerie IA
 emailLabel: Email
 phoneLabel: Téléphone
@@ -11,9 +12,9 @@ customersText: Contemplez les merveilles architecturales qui font confiance à M
 contactText: Rejoignez les rangs de ces structures distinguées et levez le potentiel de votre immeuble avec Mirigi. Contactez-nous via l'un de nos canaux pour planifier une démonstration et découvrir comment les services de conciergerie numérique de Mirigi peuvent dynamiser votre développement. Vivez la transformation et l'innovation que seul Mirigi peut offrir !
 title: Mirigi Conciergerie IA
 keywords: conciergerie ia, miri, gestion immobilière, expérience résident, vie de luxe, automatisation, immeuble intelligent
-description: "Découvrez Miri — le premier agent de conciergerie IA qui agit. Pas seulement des réponses : elle passe la commande, appelle le voiturier, réserve les installations, en une seule conversation."
+description: "La première plateforme de conciergerie dont l'IA agit pour le résident — appelle le voiturier, passe la commande, ouvre la porte, de bout en bout en une seule conversation. Un système moderne pour les immeubles de luxe, construit sur vingt ans d'expérience en conciergerie et en domotique. Bureaux à Montevideo et Miami."
 ---
-Mirigi est la **plateforme de conciergerie numérique pour les immeubles de luxe** — elle gère les **réservations, le service voiturier, les livraisons, le contrôle d'accès** et chaque service que propose votre immeuble. Au cœur de Mirigi se trouve **Miri**, le premier **agent de conciergerie IA qui agit**. Les autres systèmes répondent à des questions. Miri passe la commande, appelle le voiturier, réserve l'installation — *de bout en bout, dans une seule conversation*. Aucune application à ouvrir, aucun formulaire à remplir. **Il suffit de demander.**
+Mirigi est la **première plateforme de conciergerie dont l'agent IA — Miri — ne se contente pas de répondre mais agit pour le résident**. Elle orchestre **voiturier, livraisons, réservations, accès et la maison elle-même** sur chacun des services de l'immeuble, dans la langue de chaque résident, de bout en bout en une seule conversation. Les autres systèmes répondent à des questions. Miri *passe la commande, appelle le voiturier, réserve l'installation*. Sans formulaires, sans application à apprendre, sans attente. **Il suffit de demander.**
 
 Pour les **résidents**, Mirigi transforme chaque service de l'immeuble en quelque chose que l'on obtient d'un geste ou d'une phrase — *réservations, voiturier, livraisons, messages, paiements* — à travers une **application aux couleurs de l'immeuble** identique sur téléphone, tablette ou écran tactile du logement. La même application pilote la **maison intelligente**, ouvre le portail, règle le climat et appelle la conciergerie.
 

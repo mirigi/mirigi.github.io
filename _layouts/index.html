@@ -6,17 +6,85 @@ layout: default
     <a class="js-scroll-trigger" href="#about">
       <div class="container d-flex h-100 align-items-center ">
         <div class="ml-auto text-right masthead-text">
-          <h1 class="text-white-50 mx-auto mt-2 mb-2">
-            {{page.header}}
+          {% if page.eyebrow %}
+          <p class="masthead-eyebrow">{{ page.eyebrow }}</p>
+          {% endif %}
+          <h1 class="masthead-title mx-auto mt-2 mb-3">
+            {{ page.header }}
           </h1>
-          <h2 class="text-white-40 mx-auto mt-0 mb-5">
-            {{page.subheader}}
+          <h2 class="masthead-subtitle mx-auto mt-0 mb-5">
+            {{ page.subheader }}
           </h2>
         </div>
       </div>
       <span class="arrow" href="#about"></span>
     </a>
   </header>
+  <style>
+/* Right-side warm-stone fade so the text sits on a quiet surface without
+   darkening the whole masthead photo. The building stays visible on the left
+   for visual interest; text on the right reads cleanly. */
+.masthead { position: relative; }
+.masthead::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background:
+    linear-gradient(to left,
+      rgba(242,239,233,0.92) 0%,
+      rgba(242,239,233,0.85) 28%,
+      rgba(242,239,233,0.40) 55%,
+      rgba(242,239,233,0.00) 85%);
+  pointer-events: none;
+  z-index: 1;
+}
+.masthead .container { position: relative; z-index: 2; }
+
+.masthead .masthead-eyebrow {
+  font-family: 'DM Sans','Open Sans',sans-serif;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #c9a961;
+  margin: 0 0 1rem;
+  text-shadow: 0 1px 2px rgba(242,239,233,0.6);
+}
+.masthead .masthead-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #1c1a18 !important;
+  -webkit-text-fill-color: #1c1a18 !important;
+  text-shadow: 0 1px 3px rgba(242,239,233,0.55);
+}
+.masthead .masthead-subtitle {
+  font-family: 'DM Sans','Open Sans',sans-serif;
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #2a2826;
+  text-shadow: 0 1px 2px rgba(242,239,233,0.55);
+  max-width: 560px;
+  margin-left: auto;
+}
+@media (max-width: 992px) {
+  .masthead::after {
+    background:
+      linear-gradient(to left,
+        rgba(242,239,233,0.94) 0%,
+        rgba(242,239,233,0.85) 45%,
+        rgba(242,239,233,0.55) 80%,
+        rgba(242,239,233,0.30) 100%);
+  }
+}
+@media (max-width: 768px) {
+  .masthead .masthead-eyebrow { font-size: .65rem; }
+  .masthead .masthead-subtitle { font-size: 1rem; }
+}
+  </style>
 
   <main>
 

@@ -21,4 +21,4 @@ Pour le **personnel et la gestion**, Mirigi est la **console d'opérations parta
 
 La **passerelle d'automatisation de l'immeuble** intègre les capteurs et commandes déjà en place à la même expérience : les résidents consultent la température de la piscine, ouvrent le portail d'entrée ou déclenchent une scène avec la même simplicité qu'ils demandent leur voiture.
 
-Découvrez les prestigieux immeubles de luxe qui ont adopté Mirigi <a href='#customers' class='js-scroll-trigger'>en cliquant ici</a>.
+Découvrez les prestigieux immeubles de luxe qui ont adopté Mirigi <a href='#customers' class='js-scroll-trigger'>en cliquant ici</a>. Les questions fréquentes sont <a href='#faq' class='js-scroll-trigger'>répondues plus bas</a>.

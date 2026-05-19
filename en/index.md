@@ -22,4 +22,4 @@ For **staff and management**, Mirigi is the **shared operations console** — on
 
 Mirigi's **building automation gateway** brings the property's existing sensors and controls into the same experience: residents check the pool temperature, open the front gate, or trigger a scene the same way they ask for their car.
 
-Discover the prestigious luxury buildings that have embraced Mirigi <a href='#customers' class='js-scroll-trigger'>by clicking here</a>.
+Discover the prestigious luxury buildings that have embraced Mirigi <a href='#customers' class='js-scroll-trigger'>by clicking here</a>. Common questions are <a href='#faq' class='js-scroll-trigger'>answered below</a>.

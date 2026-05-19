@@ -7,6 +7,10 @@ author: "Mirigi"
   #twitter_username: mirigi
 logo: "/img/mirigi-logo.png"
 
+# Twitter card — override jekyll-seo-tag default ("summary") so we emit only summary_large_image
+twitter:
+  card: summary_large_image
+
 # SEO & Social Media
 #social:
 #  name: Mirigi Smart Concierge

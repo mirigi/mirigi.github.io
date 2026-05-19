@@ -150,3 +150,67 @@ follow_seagull: "Sigue la gaviota"
 counter_label: "Contador:"
 easter_egg_text: "Seguir la gaviota es solo un huevo de Pascua para disfrutar — pero el Conserje IA de Mirigi es mucho más relevante. ¡Acumulá puntos y luego conocé el valor real de Mirigi para tu próximo proyecto de condominio!"
 see_mirigi: "Descubrí el Conserje IA de Mirigi &rarr;"
+
+# FAQ — se muestra en el home y se refleja en el JSON-LD FAQPage.
+# Agrupado en cuatro temas para cubrir todo el catálogo, con respuestas
+# fundamentadas en las capacidades reales del producto.
+faq_eyebrow: "Preguntas frecuentes"
+faq:
+  - title: "Sobre Mirigi"
+    items:
+      - q: "¿Qué es Mirigi?"
+        a: "Mirigi es una plataforma de conserjería digital pensada para edificios residenciales de lujo. Gestiona reservas, valet parking, entregas, acceso de visitantes, mantenimiento, automatización del edificio y comunicaciones con residentes desde una sola app con la marca del edificio, un panel táctil en la unidad y una consola para el personal — con un agente conserje de IA, Miri, en el centro."
+      - q: "¿En qué se diferencia Miri de un chatbot?"
+        a: "Miri es un agente conserje de IA que actúa, no solo responde. El residente pide en lenguaje natural y Miri realiza el pedido, coordina el valet o reserva la amenidad de punta a punta, usando los mismos flujos que ya usa el personal del edificio todos los días."
+      - q: "¿Hace cuánto opera Mirigi?"
+        a: "Mirigi se desplegó por primera vez en 2003 y desde entonces gestiona conserjería, valet, entregas y comunicaciones con residentes en edificios de lujo desde hace más de veinte años. La capa de conserje de IA se sumó recientemente sobre esa plataforma ya madura."
+      - q: "¿Dónde está Mirigi?"
+        a: "Mirigi tiene oficinas en Montevideo, Uruguay y en Miami, Florida."
+      - q: "¿Qué idiomas soporta Mirigi?"
+        a: "Cada edificio puede usar el idioma que necesite. Las propiedades eligen un idioma por defecto, y cada residente puede elegir el suyo por encima — Mirigi traduce las comunicaciones al idioma del residente automáticamente. Ideal para residencias multilingües como las de Miami, donde conviven inglés, español, portugués y más bajo el mismo techo."
+      - q: "¿Cómo cuida Mirigi la privacidad de los residentes?"
+        a: "Los datos del residente están segmentados por rol y por unidad, de modo que cada usuario — residente, portero, valet, administrador — ve solo lo que necesita. Mirigi no vende ni comparte información de residentes, y la plataforma la opera directamente el equipo de Mirigi."
+
+  - title: "Para residentes"
+    items:
+      - q: "¿Los residentes tienen que instalar una app?"
+        a: "Mirigi se entrega con una app móvil de marca que la mayoría de los residentes usa y que recomendamos — es una de las formas principales de acceder al sistema. La plataforma también está disponible desde el panel táctil instalado en la unidad y desde un enlace web, así que instalarla en el teléfono no es estrictamente obligatorio. Muchas interacciones simplemente ocurren hablando con Miri."
+      - q: "¿Cómo funcionan las reservas de amenidades?"
+        a: "Los residentes ven un calendario en vivo de lo que está disponible — la parrilla, el spa, el salón de fiestas, el gimnasio — y reservan el horario que quieren en segundos. Las reservas se confirman al instante, los recordatorios salen automáticos y cualquier costo de uso se factura a la unidad. Miri también reserva por pedido."
+      - q: "¿Cómo funciona la función de valet?"
+        a: "El residente pide su auto desde la app, desde el panel táctil o pidiéndoselo a Miri antes de salir de la unidad, y sigue el estado en tiempo real. Mirigi avisa apenas el auto está listo en la entrada, y los invitados pueden pedir su propio auto después con un enlace o QR enviado por el equipo de valet."
+      - q: "¿Qué pasa cuando llega un paquete?"
+        a: "El personal de recepción registra la entrega con el courier y la unidad. El residente recibe una notificación instantánea por el canal que prefiera — push, bandeja de la app o email — con los detalles, y el paquete espera en la sala de almacenamiento del edificio hasta que lo retire. Varios paquetes por unidad se registran por separado."
+      - q: "¿Se puede pedir comida desde Mirigi?"
+        a: "Sí. Los residentes ven el menú completo del restaurante del edificio o de restaurantes asociados, eligen variantes del plato, realizan el pedido y siguen el estado en tiempo real desde la cocina hasta la entrega — todo desde la misma app. Miri también toma el pedido en conversación."
+      - q: "¿Mirigi puede controlar mi hogar inteligente?"
+        a: "Cuando el edificio tiene un controlador de hogar inteligente compatible, Mirigi se vincula con él para que los residentes manejen luces, clima, persianas y escenas desde la misma app. Miri puede ejecutar comandos y macros nombrados junto con todo lo demás que ya hace."
+
+  - title: "Para la administración del edificio"
+    items:
+      - q: "¿Cómo funciona la autorización de visitantes?"
+        a: "Los residentes preautorizan invitados en segundos — nombre, fecha, horario recurrente si hace falta — y la recepción los recibe por nombre sin necesidad de una llamada. Las autorizaciones pueden ser por única vez o recurrentes, y el registro completo de llegadas es buscable por el personal."
+      - q: "¿Cómo gestiona Mirigi las solicitudes de mantenimiento?"
+        a: "Los residentes envían una solicitud de mantenimiento o servicio desde la misma app — describen el tema, eligen un horario, suben una foto si conviene. Las solicitudes se enrutan por categoría, se asignan al personal con niveles de prioridad, se escalan si no se atienden y se cierran con un registro que el residente puede revisar."
+      - q: "¿Se pueden correr reportes sobre lo que pasa en el edificio?"
+        a: "Sí. Los reportes de Mirigi son totalmente personalizables por edificio — cualquier pregunta que tus datos puedan responder, presentada como un gráfico claro en pantalla o descargable como planilla. Los grupos típicos son notificaciones, reservas, entregas, vehículos y solicitudes, y se ejecutan a demanda con los parámetros que importen."
+      - q: "¿Los residentes pueden ver las cámaras del edificio?"
+        a: "Cuando el edificio tiene cámaras IP instaladas, Mirigi trae los feeds seleccionados — área de piscina, lobby, frente al mar, entrada de garaje — a la misma app que los residentes ya usan. Cada cámara se configura por edificio con su propio nombre y reglas de visibilidad."
+      - q: "¿Mirigi maneja anuncios, comunicados y encuestas?"
+        a: "Sí. El módulo de comunicaciones sin papel envía anuncios y comunicados a los residentes por los canales que prefieran, con confirmaciones de lectura y segmentación por unidad. El módulo de encuestas corre votaciones con preguntas estructuradas y resultados agregados — útil para decisiones sobre amenidades, encuestas del consejo y consultas rápidas."
+      - q: "¿Mirigi se integra con el sistema contable del edificio?"
+        a: "Mirigi se conecta con la plataforma contable del administrador para que los residentes vean su saldo actual, recorran el historial de movimientos y paguen en línea. Los cargos generados dentro de Mirigi — cuotas de uso de amenidades, servicios — se envían automáticamente al sistema contable, eliminando la doble carga manual."
+
+  - title: "Cómo empezar"
+    items:
+      - q: "¿La app puede llevar la marca del edificio?"
+        a: "Sí. La app del residente, el panel táctil de la unidad y las notificaciones llevan el nombre, el logo y la identidad visual del edificio, y la propiedad puede publicarse como su propia app de marca en la App Store y Google Play. Cada edificio tiene su propio tema — sin experiencia genérica con marca Mirigi."
+      - q: "¿Qué pasa en caso de pánico o emergencia?"
+        a: "Los residentes disparan una alerta de pánico desde la misma app — incendio, seguridad o médica, con doble confirmación para evitar disparos accidentales. La alerta llega de inmediato a los roles del personal configurados para ese edificio, con la unidad, el nombre del residente y el contacto personal de emergencia, para que la respuesta esté coordinada desde el primer segundo."
+      - q: "¿Cómo funciona la automatización del edificio?"
+        a: "Una pasarela de automatización del edificio incorpora los sensores y controles existentes a Mirigi — temperatura de la piscina, luces del lobby, el portón de entrada, bombas de fuentes — para que residentes y personal actúen desde la misma app. Cualquier elemento conectado del edificio puede aparecer como una lectura para mirar de un vistazo o un botón para presionar, al lado de los mensajes y reservas."
+      - q: "¿Mirigi se puede personalizar para nuestras necesidades?"
+        a: "Sí. Más allá de los módulos estándar, Mirigi cotiza y desarrolla módulos a medida por propiedad — y se entregan dentro de la misma app de marca que los residentes ya usan todos los días. Páginas de información personalizadas, formularios de solicitud a medida, flujos específicos del edificio e integraciones son parte de la oferta."
+      - q: "¿Cómo agendamos una demo?"
+        a: "Use el botón Agendar demo en cualquier parte del sitio o escriba a info@mirigi.com. Coordinamos una demostración privada de 30 minutos a la medida de su propiedad — funciones reales funcionando, sin diapositivas, sin compromiso."
+

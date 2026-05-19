@@ -1,51 +1,178 @@
-<!-- Structured Data for SEO -->
+<!-- Structured Data for SEO / GEO / AEO -->
+
+{%- comment -%}
+  Organization + LocalBusiness + SoftwareApplication JSON-LD.
+  Emitted on every page. Anchors brand identity, NAP, contact points
+  and founding date for Google AI Overviews and answer engines
+  (ChatGPT, Claude, Perplexity, Gemini, Copilot).
+{%- endcomment -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "{{ site.title | default: 'Mirigi Smart Concierge' }}",
-  "description": "{{ site.description }}",
-  "url": "{{ site.url }}",
-  "applicationCategory": "PropertyManagementSoftware",
-  "operatingSystem": "Web Browser, iOS, Android",
-  "provider": {
-    "@type": "Organization",
-    "name": "{{ site.social.name | default: 'Mirigi' }}",
-    "url": "{{ site.url }}",
-    "logo": "{{ site.logo | absolute_url }}",
-    "sameAs": {{ site.social.links | jsonify }}
-  },
-  "featureList": [
-    "Smart Concierge Services",
-    "Amenities Reservations", 
-    "Building Automation Integration",
-    "Cameras and Security Monitoring",
-    "Delivery Tracking",
-    "Expenses Integration",
-    "Fully Customizable Platform",
-    "Intelligent Home Controls",
-    "Other Features and Customization Abilities",
-    "Panic Button Emergency System",
-    "Paperless Communication",
-    "Digital Polls and Surveys",
-    "Restaurant Last Mile Shopping",
-    "Service Requests Management",
-    "Valet Parking Management",
-    "Visitor Authorization and Management"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ site.url }}/#organization",
+      "name": "Mirigi",
+      "alternateName": "Mirigi Smart Concierge",
+      "url": "{{ site.url }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ '/img/mirigi-logo.png' | absolute_url }}"
+      },
+      "image": "{{ '/img/mirigi-social-card.jpg' | absolute_url }}",
+      "description": "Mirigi is a digital concierge platform for luxury condominium buildings, first deployed in 2003 and recently AI-upgraded end-to-end. Its core is Miri, an AI concierge agent that acts on resident requests — placing orders, calling the valet, booking amenities and controlling the smart home in a single conversation.",
+      "foundingDate": "2003",
+      "knowsAbout": [
+        "AI concierge",
+        "Luxury condominium management",
+        "Digital concierge software",
+        "Resident experience platform",
+        "Valet parking management",
+        "Amenity reservations",
+        "Building automation",
+        "Visitor authorization"
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Miami" },
+        { "@type": "City", "name": "Sunny Isles Beach" },
+        { "@type": "City", "name": "Punta del Este" },
+        { "@type": "Place", "name": "Worldwide" }
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "info@mirigi.com",
+          "telephone": "+1-305-692-0362",
+          "areaServed": ["US", "Worldwide"],
+          "availableLanguage": ["English", "Spanish", "French"]
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "info@mirigi.com",
+          "telephone": "+598-2-600-8887",
+          "areaServed": ["UY", "Worldwide"],
+          "availableLanguage": ["English", "Spanish"]
+        }
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "{{ site.url }}/#localbusiness",
+      "name": "Mirigi",
+      "url": "{{ site.url }}",
+      "image": "{{ '/img/mirigi-social-card.jpg' | absolute_url }}",
+      "telephone": "+1-305-692-0362",
+      "email": "info@mirigi.com",
+      "priceRange": "$$$",
+      "areaServed": [
+        { "@type": "City", "name": "Miami" },
+        { "@type": "City", "name": "Sunny Isles Beach" },
+        { "@type": "City", "name": "Punta del Este" }
+      ],
+      "parentOrganization": { "@id": "{{ site.url }}/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "{{ site.url }}/#software",
+      "name": "Mirigi Smart Concierge",
+      "description": "{{ site.description }}",
+      "url": "{{ site.url }}",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "PropertyManagementSoftware",
+      "operatingSystem": "Web, iOS, Android",
+      "provider": { "@id": "{{ site.url }}/#organization" },
+      "featureList": [
+        "AI Concierge Agent (Miri)",
+        "Amenity Reservations",
+        "Building Automation Integration",
+        "IP Camera Monitoring",
+        "Delivery Tracking",
+        "Accounting Platform Integration",
+        "Fully Customizable Branded App",
+        "Intelligent Home Controls",
+        "Panic Button Emergency System",
+        "Paperless Resident Communications",
+        "Digital Polls and Surveys",
+        "Restaurant and Last-Mile Ordering",
+        "Service Requests Management",
+        "Valet Parking Management",
+        "Visitor Authorization",
+        "Operational Reports"
+      ]
+    }
   ]
 }
 </script>
 
+{%- comment -%}
+  BreadcrumbList — improves AI navigation for feature & customer pages.
+{%- endcomment -%}
+{% if page.collection == 'features' or page.collection == 'customers' %}
+{%- assign section_label = 'Features' -%}
+{%- assign section_path = '/' | append: page.lang | append: '/#features' -%}
+{% if page.collection == 'customers' %}
+  {%- assign section_label = 'Buildings' -%}
+  {%- assign section_path = '/' | append: page.lang | append: '/#customers' -%}
+{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Mirigi", "item": "{{ site.url }}/{{ page.lang }}/" },
+    { "@type": "ListItem", "position": 2, "name": "{{ section_label }}", "item": "{{ site.url }}{{ section_path }}" },
+    { "@type": "ListItem", "position": 3, "name": {{ page.title | jsonify }}, "item": "{{ page.url | absolute_url }}" }
+  ]
+}
+</script>
+{% endif %}
+
+{%- comment -%}
+  Service JSON-LD — one per feature page. Each feature is a discrete
+  service Mirigi offers to luxury residential properties.
+{%- endcomment -%}
+{% if page.layout == 'feature' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  {% if page.image %}"image": "{{ page.image | absolute_url }}",{% endif %}
+  "serviceType": {{ page.title | jsonify }},
+  "category": "Digital Concierge Service",
+  "provider": { "@id": "{{ site.url }}/#organization" },
+  "areaServed": [
+    { "@type": "City", "name": "Miami" },
+    { "@type": "City", "name": "Sunny Isles Beach" },
+    { "@type": "City", "name": "Punta del Este" },
+    { "@type": "Place", "name": "Worldwide" }
+  ],
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Luxury condominium boards, property developers, property management companies, building residents"
+  },
+  "isPartOf": { "@id": "{{ site.url }}/#software" },
+  "url": "{{ page.url | absolute_url }}",
+  "inLanguage": "{{ page.lang }}"
+}
+</script>
+{% endif %}
+
+{%- comment -%}
+  Customer / Building Organization schema.
+{%- endcomment -%}
 {% if page.layout == 'customer' %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "{{ page.title }}",
-  "description": "{{ page.description }}",
-  {% if page.image %}
-  "image": "{{ page.image | absolute_url }}",
-  {% endif %}
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  {% if page.image %}"image": "{{ page.image | absolute_url }}",{% endif %}
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "{{ page.city }}",
@@ -56,19 +183,37 @@
 </script>
 {% endif %}
 
-{% if page.layout == 'feature' %}
+{%- comment -%}
+  FAQPage JSON-LD — only on the home page of each language.
+  Mirrors the visible FAQ block included in the index layout, so the
+  schema reflects real on-page content.
+{%- endcomment -%}
+{% if page.layout == 'index' %}
+{%- assign faq_groups = site.data[page.lang].faq -%}
+{% if faq_groups and faq_groups.size > 0 %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "{{ page.title }}",
-  "description": "{{ page.description }}",
-  "applicationSubCategory": "{{ page.title }}",
-  "featureList": ["{{ page.title }}"],
-  "isPartOf": {
-    "@type": "SoftwareApplication",
-    "name": "Mirigi Smart Concierge"
-  }
+  "@type": "FAQPage",
+  "inLanguage": "{{ page.lang }}",
+  "mainEntity": [
+    {% comment %}Flatten grouped FAQ into a single list of Q/A pairs.{% endcomment %}
+    {% assign _first = true %}
+    {% for group in faq_groups %}
+      {% for item in group.items %}
+        {% unless _first %},{% endunless %}{% assign _first = false %}
+    {
+      "@type": "Question",
+      "name": {{ item.q | jsonify }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.a | jsonify }}
+      }
+    }
+      {% endfor %}
+    {% endfor %}
+  ]
 }
 </script>
+{% endif %}
 {% endif %}

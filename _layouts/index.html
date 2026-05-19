@@ -83,9 +83,19 @@ layout: default
   line-height: 1.55;
   color: #3c3c3c;
 }
+/* Showcase stacks at 992px (matches _showcase_fede.scss $media-max-width).
+   Below that, image sits ABOVE content, so the seam runs horizontally — the
+   gold rule moves from the side of .content to its top. */
 @media (max-width: 992px) {
-  .feature-hero { min-height: 0; border-left-width: 3px; }
+  .feature-hero { min-height: 0; }
   .feature-hero > .content h3 { font-size: 1.7rem !important; }
+  .feature-hero > .content,
+  .feature-hero.reverse > .content {
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-top: 3px solid #c9a961 !important;
+    box-shadow: inset 0 3px 0 0 #c9a961 !important;
+  }
 }
 
 /* Customer pull-quote strip — rotating resident voices above the buildings grid. */
@@ -216,7 +226,103 @@ layout: default
   </div>
 </section>
 
-{% include customer_pullquote.html %}
+{% assign faq_groups = site.data[page.lang].faq %}
+{% if faq_groups and faq_groups.size > 0 %}
+<style>
+/* Dark theme — FAQ now sits between Features and Buildings, picking up the
+   light → dark cadence the page already has. Reference content stays calm
+   and browseable; the dark surface signals "transitioning out of the
+   features grid" without fighting the accordion's quiet role. */
+.faq-section {
+  background: #1c1a18;
+  padding: 5rem 0 4.5rem;
+}
+.faq-section .faq-label {
+  display: block; text-align: center;
+  font-family: 'DM Sans','Open Sans',sans-serif;
+  font-size: .76rem; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: #c9a961;
+  margin: 0 0 2.4rem;
+}
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.faq-group-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  color: #e8e0d4;
+  margin: 2.6rem 0 .5rem;
+}
+.faq-group:first-of-type .faq-group-title { margin-top: 0; }
+.faq-item {
+  border-bottom: 1px solid rgba(242,239,233,0.14);
+}
+.faq-item:first-of-type { border-top: 1px solid rgba(242,239,233,0.14); }
+.faq-item > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.35rem 2.2rem 1.35rem 0;
+  position: relative;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.22rem;
+  font-weight: 400;
+  color: #f2efe9;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  transition: color .2s;
+}
+.faq-item > summary::-webkit-details-marker { display: none; }
+.faq-item > summary::after {
+  content: '+';
+  position: absolute;
+  right: .2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'DM Sans','Open Sans',sans-serif;
+  font-size: 1.5rem;
+  color: #c9a961;
+  transition: transform .25s ease;
+  line-height: 1;
+}
+.faq-item[open] > summary::after { transform: translateY(-50%) rotate(45deg); }
+.faq-item > summary:hover { color: #d8bd7e; }
+.faq-answer {
+  padding: 0 2.2rem 1.5rem 0;
+  font-family: 'DM Sans','Open Sans',sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #c5bcaf;
+}
+@media (max-width: 768px) {
+  .faq-section { padding: 3.5rem 0 3rem; }
+  .faq-item > summary { font-size: 1.05rem; padding: 1.1rem 1.8rem 1.1rem 0; }
+}
+</style>
+<section class="faq-section" id="faq" itemscope itemtype="https://schema.org/FAQPage">
+  <div class="container">
+    <span class="faq-label">{{ site.data[page.lang].faq_eyebrow | default: "Frequently asked questions" }}</span>
+    <div class="faq-list">
+      {% for group in faq_groups %}
+      <div class="faq-group">
+        <h3 class="faq-group-title">{{ group.title }}</h3>
+        {% for item in group.items %}
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"{% if forloop.first %} open{% endif %}>
+          <summary itemprop="name">{{ item.q }}</summary>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text">{{ item.a }}</div>
+          </div>
+        </details>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
 
 <script>
 (function () {
@@ -295,6 +401,7 @@ layout: default
       </div>
     </div>
 </section>
+
 
 <style>
 /* Contact section — editorial conversion hub */
@@ -429,4 +536,61 @@ layout: default
 
   </div>
 </section>
+
+<!-- Floating "Schedule a demo" pill — appears after the masthead, persistent
+     anchor to #contacts. Doubles as a back-to-CTA on long-scroll. -->
+<a href="#contacts"
+   class="floating-cta js-scroll-trigger"
+   aria-label="{{ site.data[page.lang].schedule_demo_nav | default: 'Schedule a demo' }}">
+  {{ site.data[page.lang].schedule_demo_nav | default: 'Schedule a demo' }} <span aria-hidden="true">&rarr;</span>
+</a>
+<style>
+.floating-cta {
+  position: fixed; bottom: 1.4rem; right: 1.4rem;
+  background: linear-gradient(135deg, #c9a961 0%, #d8bd7e 100%);
+  color: #1c1a18 !important;
+  font-family: 'DM Sans','Open Sans',sans-serif;
+  font-size: .82rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: .75rem 1.25rem;
+  border-radius: 999px;
+  text-decoration: none !important;
+  box-shadow: 0 12px 30px -6px rgba(201,169,97,.55), 0 4px 14px rgba(0,0,0,.18);
+  opacity: 0; transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity .35s ease, transform .35s ease, box-shadow .2s ease;
+  z-index: 1030;
+}
+.floating-cta span { margin-left: .35rem; }
+body.has-scrolled .floating-cta {
+  opacity: 1; transform: translateY(0);
+  pointer-events: auto;
+}
+.floating-cta:hover {
+  box-shadow: 0 16px 36px -6px rgba(201,169,97,.7), 0 6px 18px rgba(0,0,0,.22);
+  transform: translateY(-1px);
+  color: #1c1a18 !important;
+}
+@media (max-width: 480px) {
+  .floating-cta { bottom: 1rem; right: 1rem; font-size: .75rem; padding: .65rem 1rem; }
+}
+@media print {
+  .floating-cta { display: none !important; }
+}
+</style>
+<script>
+(function () {
+  var threshold = function () { return window.innerHeight * 0.8; };
+  var raf = null;
+  function update() {
+    raf = null;
+    document.body.classList.toggle('has-scrolled', window.scrollY > threshold());
+  }
+  window.addEventListener('scroll', function () {
+    if (raf === null) raf = requestAnimationFrame(update);
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
 </main>

@@ -22,4 +22,4 @@ Para el **personal y la administración**, Mirigi es la **consola operativa comp
 
 La **pasarela de automatización del edificio** incorpora los sensores y controles existentes de la propiedad a la misma experiencia: los residentes consultan la temperatura de la piscina, abren la puerta principal o activan una escena con la misma naturalidad con la que piden su coche.
 
-Descubra los prestigiosos edificios de lujo que han adoptado Mirigi <a href='#customers' class='js-scroll-trigger'>haciendo clic aquí</a>.
+Descubra los prestigiosos edificios de lujo que han adoptado Mirigi <a href='#customers' class='js-scroll-trigger'>haciendo clic aquí</a>. Las preguntas frecuentes están <a href='#faq' class='js-scroll-trigger'>respondidas más abajo</a>.

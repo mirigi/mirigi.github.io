@@ -50,24 +50,27 @@ layout: default
 .home-about-body p em     { color: #3c3c3c; font-style: italic; }
 
 /* Hero feature card: every feature gets editorial prominence.
-   Gold accent rule alternates: reverse → left, non-reverse → right. */
+   Gold accent rule sits on the seam between the image and the content,
+   so it always reads as a divider, mirroring per .reverse. */
 .feature-hero {
   min-height: 50vh;
   margin-bottom: 1.5rem;
   background: #f9f6ef !important;
   overflow: visible !important;
-  border-left: 0 !important;
-  border-right: 4px solid #c9a961 !important;
-  box-shadow:
-    inset -4px 0 0 0 #c9a961,
-    0 30px 60px -20px rgba(40,55,85,0.12) !important;
+  border: none !important;
+  box-shadow: 0 30px 60px -20px rgba(40,55,85,0.12) !important;
 }
-.feature-hero.reverse {
-  border-right: 0 !important;
-  border-left: 4px solid #c9a961 !important;
-  box-shadow:
-    inset 4px 0 0 0 #c9a961,
-    0 30px 60px -20px rgba(40,55,85,0.12) !important;
+/* Non-reverse: image LEFT, content RIGHT — gold on the content's LEFT edge. */
+.feature-hero > .content {
+  border-left: 4px solid #c9a961;
+  border-right: 0;
+  box-shadow: inset 4px 0 0 0 #c9a961;
+}
+/* Reverse: image RIGHT, content LEFT — gold on the content's RIGHT edge. */
+.feature-hero.reverse > .content {
+  border-left: 0;
+  border-right: 4px solid #c9a961;
+  box-shadow: inset -4px 0 0 0 #c9a961;
 }
 .feature-hero > .content { padding: 4vh 5vw !important; }
 .feature-hero > .content h3 {

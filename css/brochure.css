@@ -5,13 +5,14 @@
    Luxury Color Palette
    =========================================== */
 :root {
-  --luxury-charcoal: #2C2C2C;
-  --luxury-slate: #4A5568;
-  --luxury-pearl: #F8F9FA;
-  --luxury-cream: #FEFBF6;
-  --luxury-gold: #C9A86A;
-  --luxury-bronze: #8B7355;
-  --luxury-navy: #1A365D;
+  /* Aligned with the Mirigi site palette: warm near-black / warm stone / Mirigi gold */
+  --luxury-charcoal: #1c1a18;   /* Mirigi ink (warm near-black) */
+  --luxury-slate:    #3a3835;   /* secondary dark */
+  --luxury-pearl:    #f2efe9;   /* Mirigi stone (warm off-white) */
+  --luxury-cream:    #f6f3ed;   /* slightly lighter stone for alternation */
+  --luxury-gold:     #c9a961;   /* Mirigi gold (canonical) */
+  --luxury-bronze:   #8b7355;
+  --luxury-navy:     #1c1a18;   /* deprecated: collapsed to ink so old uses align */
 }
 
 /* ===========================================
@@ -101,6 +102,15 @@ html, body {
   z-index: 1;
 }
 
+/* Gold accent rule under the cover subtitle — same editorial signal as the site. */
+.brochure-cover .brochure-subtitle::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--luxury-gold);
+  margin: 1.5rem auto 0;
+}
 .brochure-cover .brochure-subtitle {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
@@ -296,6 +306,13 @@ a.brochure-features-list-item:hover {
   position: relative;
   border: 1px solid rgba(201, 168, 106, 0.15);
 }
+/* Alternating brochure feature rows for print contrast: pure white vs ink. */
+.brochure-feature:nth-child(odd)  { background: #ffffff; }
+.brochure-feature:nth-child(even) { background: var(--luxury-charcoal); color: var(--luxury-pearl); }
+/* Higher specificity to beat .brochure-feature .brochure-feature-content p { color: #555 } */
+.brochure-feature:nth-child(even) .brochure-feature-content h3,
+.brochure-feature:nth-child(even) .brochure-feature-content p { color: var(--luxury-pearl); }
+.brochure-feature:nth-child(even) .brochure-feature-content::before { background: var(--luxury-gold); }
 
 .brochure-feature .brochure-feature-image {
   flex: 0 0 45%;

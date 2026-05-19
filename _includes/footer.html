@@ -1,19 +1,100 @@
-<footer class="small text-center text-white-50">
+<!-- Gold hairline separator (2px) with 4px breathing room on the contact side -->
+<div style="background:#58595b; padding-bottom:4px;">
+  <hr style="margin:0; border:none; border-top:2px solid #c9a961;">
+</div>
+
+<footer style="background:#1c1a18; padding:4rem 0 0; font-family:'DM Sans','Open Sans',sans-serif;">
   <div class="container">
     <div class="row">
-      <div class="mx-auto">
-        <a href="/{{page.lang}}/policy.html">Privacy policy</a>
-        <span>&copy; {{ "now" | date: "%Y" }}</span>
+
+      <!-- Left: Wordmark + tagline + contact -->
+      <div class="col-12 col-md-5 mb-4 mb-md-0">
+        <div style="font-family:'DM Serif Display',Georgia,serif; font-size:1.55rem; color:#f2efe9; letter-spacing:-0.01em; margin-bottom:0.4rem;">
+          Mirigi
+        </div>
+        <div style="font-size:0.72rem; color:#9e9890; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:1.6rem;">
+          {{ site.data[page.lang].footer_tagline | default: "AI Concierge for Residences" }}
+        </div>
+        <div style="margin-bottom:0.45rem;">
+          <a href="mailto:info@mirigi.com"
+             style="font-size:0.85rem; color:#f2efe9; text-decoration:none; letter-spacing:0.01em;"
+             onmouseover="this.style.color='#c9a961'" onmouseout="this.style.color='#f2efe9'">
+            info@mirigi.com
+          </a>
+        </div>
+        <div style="margin-bottom:0.3rem;">
+          <a href="tel:+13056920362"
+             style="font-size:0.85rem; color:#f2efe9; text-decoration:none;"
+             onmouseover="this.style.color='#c9a961'" onmouseout="this.style.color='#f2efe9'">
+            <span style="user-select:none; margin-right:.4rem; opacity:.85;">&#x1F1FA;&#x1F1F8;</span>+1 305 692 0362
+          </a>
+        </div>
+        <div>
+          <a href="tel:+59826008887"
+             style="font-size:0.85rem; color:#f2efe9; text-decoration:none;"
+             onmouseover="this.style.color='#c9a961'" onmouseout="this.style.color='#f2efe9'">
+            <span style="user-select:none; margin-right:.4rem; opacity:.85;">&#x1f1fa;&#x1f1fe;</span>+598 2 600 8887
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="mx-auto">
-        Made with
-        <i class="fas fa-heart"></i>
-        by <a href="https://www.khimo.com">Khimo</a>!
+
+      <!-- Center: breathing room -->
+      <div class="col-md-3 d-none d-md-block"></div>
+
+      <!-- Right: App badges (top, aligned with Mirigi wordmark) + Language picker (below) -->
+      <div class="col-12 col-md-4 d-flex flex-column align-items-start align-items-md-end">
+        <div style="display:flex; gap:1rem; margin-bottom:1.6rem; align-items:center;">
+          <a href="https://apps.apple.com/gm/app/mirigi/id1076011022" target="_blank" rel="noopener noreferrer"
+             aria-label="Download on the App Store"
+             style="display:inline-flex; align-items:center; gap:.45rem; color:#f2efe9; text-decoration:none; opacity:.78; transition:opacity .2s, color .2s;"
+             onmouseover="this.style.opacity='1'; this.style.color='#c9a961'" onmouseout="this.style.opacity='.78'; this.style.color='#f2efe9'">
+            <i class="fab fa-app-store-ios" style="font-size:1.2rem;"></i>
+            <span style="font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;">iOS</span>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.ikatu.mirigi&hl=es_419" target="_blank" rel="noopener noreferrer"
+             aria-label="Get it on Google Play"
+             style="display:inline-flex; align-items:center; gap:.45rem; color:#f2efe9; text-decoration:none; opacity:.78; transition:opacity .2s, color .2s;"
+             onmouseover="this.style.opacity='1'; this.style.color='#c9a961'" onmouseout="this.style.opacity='.78'; this.style.color='#f2efe9'">
+            <i class="fab fa-android" style="font-size:1.2rem;"></i>
+            <span style="font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;">Android</span>
+          </a>
+        </div>
+        <div style="font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:#6b6760; margin-bottom:0.65rem;">
+          Language
+        </div>
+        <div style="font-size:0.85rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:500;">
+          {% assign langs = "en,es,fr" | split: "," %}
+          {% for l in langs %}
+            {% if l == page.lang %}
+              <span style="color:#c9a961;">{{ l }}</span>
+            {% else %}
+              <a href="/{{ l }}/"
+                 style="color:#9e9890; text-decoration:none;"
+                 onmouseover="this.style.color='#c9a961'" onmouseout="this.style.color='#9e9890'">{{ l }}</a>
+            {% endif %}
+            {% unless forloop.last %}<span style="color:#3e3b38; margin:0 0.55rem;">|</span>{% endunless %}
+          {% endfor %}
+        </div>
       </div>
+
+    </div><!-- /.row -->
+
+    <!-- Ghost divider + legal line -->
+    <div style="border-top:1px solid rgba(201,169,97,0.18); margin-top:2.5rem; padding:1.3rem 0 1.6rem; text-align:center;">
+      <span style="font-size:0.68rem; color:#6b6760; letter-spacing:0.04em;">
+        <a href="/{{page.lang}}/policy.html"
+           style="color:#6b6760; text-decoration:none;"
+           onmouseover="this.style.color='#9e9890'" onmouseout="this.style.color='#6b6760'">Privacy policy</a>
+        &nbsp;&middot;&nbsp;
+        &copy; {{ "now" | date: "%Y" }} Mirigi
+        &nbsp;&middot;&nbsp;
+        Made with care by <a href="https://www.khimo.com"
+           style="color:#6b6760; text-decoration:none;"
+           onmouseover="this.style.color='#9e9890'" onmouseout="this.style.color='#6b6760'">Khimo</a>
+      </span>
     </div>
-  </div>
+
+  </div><!-- /.container -->
 </footer>
 
 {% unless page.layout == 'brochure' %}

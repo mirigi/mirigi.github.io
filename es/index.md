@@ -4,7 +4,7 @@ lang: es
 header: Conserje IA
 subheader: A Su Servicio
 aboutEyebrow: Conoce Mirigi
-aboutTitle: CONSERJE IA
+aboutTitle: Conserje IA
 emailLabel: Correo Electrónico
 phoneLabel: Teléfono
 customersTitle: Nuestros clientes de lujo incluyen

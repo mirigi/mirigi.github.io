@@ -3,7 +3,7 @@ layout: index
 lang: fr
 header: Conciergerie IA
 subheader: À Votre Service
-aboutTitle: CONCIERGERIE IA
+aboutTitle: Conciergerie IA
 emailLabel: Email
 phoneLabel: Téléphone
 customersTitle: Nos clients de luxe incluent

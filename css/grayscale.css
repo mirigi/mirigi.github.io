@@ -6,16 +6,20 @@
 #mainNav .navbar-toggler {
   font-size: 80%;
   padding: 0.75rem;
-  color: #999;
-  border: 1px solid #999;
+  color: #c9a961;
+  border: 1px solid #c9a961;
 }
 #mainNav .navbar-toggler:focus {
   outline: none;
 }
 #mainNav .navbar-brand {
-  color: #161616;
-  font-weight: 700;
+  color: #1c1a18;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  font-size: 1.55rem;
   padding: 0.9rem 0;
+  text-transform: none;
 }
 #mainNav .navbar-nav .nav-item:hover {
   color: fade(white, 80%);
@@ -80,15 +84,15 @@
     border-bottom: 0.25rem solid transparent;
   }
   #mainNav.navbar-shrink .nav-link:hover {
-    color: #999;
+    color: #c9a961;
   }
   #mainNav.navbar-shrink .nav-link:active {
-    color: rgb(114.75, 114.75, 114.75);
+    color: rgb(165.0801886792, 131.6462264151, 56.4198113208);
   }
   #mainNav.navbar-shrink .nav-link.active {
-    color: #999;
+    color: #c9a961;
     outline: none;
-    border-bottom: 0.25rem solid #999;
+    border-bottom: 0.25rem solid #c9a961;
   }
 }
 
@@ -105,21 +109,30 @@
   background-size: cover;
 }
 .masthead h1 {
-  font-family: "Varela Round";
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
   font-size: 2.5rem;
-  line-height: 2.5rem;
-  letter-spacing: 0.8rem;
-  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  background: none;
+  -webkit-text-fill-color: unset;
+  -webkit-background-clip: unset;
 }
 .masthead h2 {
-  font-size: 2rem;
+  font-family: "DM Sans", "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 1.05rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 @media (min-width: 768px) {
   .masthead h1 {
     font-size: 4rem;
-    line-height: 4rem;
+    line-height: 1;
+  }
+  .masthead h2 {
+    font-size: 1.2rem;
   }
 }
 @media (min-width: 992px) {
@@ -128,12 +141,12 @@
     padding: 0;
   }
   .masthead h1 {
-    font-size: 6.5rem;
-    line-height: 6.5rem;
-    letter-spacing: 0.8rem;
+    font-size: 5.5rem;
+    line-height: 1;
+    letter-spacing: -0.025em;
   }
   .masthead h2 {
-    font-size: 4rem;
+    font-size: 1.35rem;
   }
 }
 
@@ -148,25 +161,34 @@
 }
 
 .btn-primary {
-  background-color: #999;
+  background-color: #c9a961;
 }
 .btn-primary:hover {
-  background-color: rgb(127.5, 127.5, 127.5);
+  background-color: rgb(184.0849056604, 146.8018867925, 62.9150943396);
 }
 .btn-primary:focus {
-  background-color: rgb(127.5, 127.5, 127.5);
+  background-color: rgb(184.0849056604, 146.8018867925, 62.9150943396);
   color: white;
 }
 .btn-primary:active {
-  background-color: rgb(114.75, 114.75, 114.75) !important;
+  background-color: rgb(165.0801886792, 131.6462264151, 56.4198113208) !important;
 }
 
 .about-section {
   padding-top: 10rem;
-  background: linear-gradient(to bottom, #fff 0%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0.8) 100%);
+  background: linear-gradient(to bottom, #f2efe9 0%, rgba(242, 239, 233, 0.92) 75%, rgba(242, 239, 233, 0.85) 100%);
 }
 .about-section p {
   margin-bottom: 5rem;
+}
+.about-section h2 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: 2.6rem;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: #1c1a18;
+  text-transform: none;
 }
 
 .about-section {
@@ -190,7 +212,7 @@
     padding: 2rem 4rem;
   }
   .projects-section .project-text hr {
-    border-color: #999;
+    border-color: #c9a961;
     border-width: 1px;
     width: 30%;
   }
@@ -216,11 +238,11 @@
 }
 
 .contact-section {
-  padding: 5rem 0 0;
+  padding: 5rem 0 5rem;
 }
 .contact-section .card {
   border: 0;
-  border-bottom: 0.25rem solid #999;
+  border-bottom: 0.25rem solid #c9a961;
 }
 .contact-section .card h4 {
   font-size: 0.8rem;
@@ -229,32 +251,46 @@
   letter-spacing: 0.15rem;
 }
 .contact-section .card hr {
-  border-color: #999;
+  border-color: #c9a961;
   border-width: 0.25rem;
   width: 3rem;
 }
 .contact-section .social {
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 .contact-section .social a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   height: 6rem;
   width: 6rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(201, 169, 97, 0.5);
   border-radius: 100%;
 }
 .contact-section .social a i {
-  line-height: 6rem;
-  font-size: 3rem;
+  line-height: 1;
+  font-size: 2.4rem;
+}
+.contact-section .social a small {
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
 }
 .contact-section .social a {
-  color: rgba(255, 255, 255, 0.3);
+  color: #c9a961;
 }
 .contact-section .social a:hover {
-  color: rgba(255, 255, 255, 0.5);
+  background: rgba(201, 169, 97, 0.15);
+  border-color: #c9a961;
+  color: #fff;
 }
 .contact-section .social a:active {
   color: #fff;
+  background: rgba(201, 169, 97, 0.3);
 }
 
 .slides .showcase a, .slides .showcase.bigimage a {
@@ -276,7 +312,7 @@
   align-items: stretch;
   min-height: 30vh;
   margin: 2ex 0;
-  background-color: #f0f0f0;
+  background-color: #f2efe9;
   overflow: hidden;
 }
 .showcase > .image {
@@ -306,15 +342,18 @@
 .showcase > .content h4,
 .showcase > .content h5,
 .showcase > .content h6 {
-  color: black;
-  text-transform: uppercase;
-  font-size: 1.5rem;
+  color: #1c1a18;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  font-size: 1.85rem;
 }
 .showcase > .content {
   align-self: center; /* Vertically align item2 */
 }
 .showcase > .content hr {
-  border-color: #999;
+  border-color: #c9a961;
   border-width: 1px;
   width: 30%;
   display: inline-block;
@@ -493,7 +532,7 @@
   text-transform: uppercase;
   color: #58595b;
   margin-bottom: 1.5rem;
-  border-left: 4px solid #999;
+  border-left: 4px solid #c9a961;
   padding-left: 1rem;
 }
 .brochure-about .brochure-about-content {
@@ -535,7 +574,7 @@
   text-transform: uppercase;
   color: #58595b;
   margin-bottom: 1rem;
-  border-bottom: 2px solid #999;
+  border-bottom: 2px solid #c9a961;
   padding-bottom: 0.5rem;
 }
 .brochure-feature .brochure-feature-content p {
@@ -552,7 +591,7 @@
 }
 .brochure-feature.reverse .brochure-feature-content h3 {
   border-bottom: none;
-  border-right: 2px solid #999;
+  border-right: 2px solid #c9a961;
   padding-right: 0.5rem;
   padding-bottom: 0;
 }
@@ -10971,17 +11010,22 @@ html, body {
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
-  letter-spacing: 0.0625em;
+  font-family: "DM Sans", "Open Sans", sans-serif;
+  letter-spacing: 0.0125em;
   font-size: 110%;
+  background-color: #f2efe9;
+}
+
+.bg-light {
+  background-color: #f2efe9 !important;
 }
 
 a {
-  color: #999;
+  color: #c9a961;
 }
 a:focus, a:hover {
   text-decoration: none;
-  color: #666666;
+  color: rgb(146.0754716981, 116.4905660377, 49.9245283019);
 }
 
 .bg-black {
@@ -10989,15 +11033,11 @@ a:focus, a:hover {
 }
 
 .bg-primary {
-  background-color: #999 !important;
+  background-color: #c9a961 !important;
 }
 
 .text-primary {
-  color: #999 !important;
-}
-
-footer {
-  padding: 5rem 0;
+  color: #c9a961 !important;
 }
 
 /*
@@ -11015,16 +11055,18 @@ footer {
 }
 .masthead h1 {
   background: none;
-  -webkit-text-fill-color: #2c2c2c;
+  -webkit-text-fill-color: #1c1a18;
   -webkit-background-clip: unset;
-  color: #2c2c2c;
-  text-shadow: none;
+  color: #1c1a18;
+  text-shadow: 0 1px 18px rgba(255, 255, 255, 0.5);
 }
 .masthead h2 {
-  color: #666;
-  font-family: "Varela Round";
-  text-shadow: none;
-  letter-spacing: 0.15rem;
+  color: #6b6b6b;
+  font-family: "DM Sans", "Open Sans", sans-serif;
+  font-weight: 300;
+  text-shadow: 0 1px 12px rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 .masthead .masthead-text {
   max-width: 65%;
@@ -11032,12 +11074,12 @@ footer {
 }
 @media (max-width: 768px) {
   .masthead h1 {
-    letter-spacing: 0.15rem;
+    letter-spacing: -0.015em;
     font-size: 2rem;
   }
   .masthead h2 {
-    font-size: 1.4rem;
-    letter-spacing: 0.08rem;
+    font-size: 1rem;
+    letter-spacing: 0.18em;
   }
   .masthead .masthead-text {
     max-width: 100%;
@@ -11076,7 +11118,7 @@ footer {
 @media (min-width: 1200px) {
   .featured-text-left {
     padding: 2rem;
-    border-right: 0.5rem solid #999;
+    border-right: 0.5rem solid #c9a961;
   }
 }
 
@@ -11086,7 +11128,7 @@ footer {
 @media (min-width: 1200px) {
   .featured-text, .featured-text-right {
     padding: 2rem;
-    border-left: 0.5rem solid #999;
+    border-left: 0.5rem solid #c9a961;
   }
 }
 
@@ -11100,7 +11142,7 @@ footer {
   min-height: 20rem;
 }
 
-.bg-mirigi-dark, .contact-section, footer, .feature {
+.bg-mirigi-dark, .contact-section, .feature {
   background: #58595b !important;
 }
 
@@ -11167,5 +11209,3 @@ footer {
   border: none;
   display: block;
 }
-
-/*# sourceMappingURL=grayscale.css.map */

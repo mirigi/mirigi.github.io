@@ -6,7 +6,7 @@
 .feature-page .container.showcase { margin-top: 0; margin-bottom: 0; }
 
 .feature-page .showcase,
-.feature-page .showcase.bigimage { background-color: #ffffff !important; }
+.feature-page .showcase.bigimage { background-color: #f2efe9 !important; }
 .feature-page .showcase > .image {
   flex: 1 1 40%;
   min-height: 60vh;
@@ -21,7 +21,7 @@
 .feature-page .showcase > .content {
   flex: 1 1 60%;
   align-self: flex-start;
-  background: #ffffff;
+  background: #f2efe9;
   padding: 3rem 5vw 3rem 4rem;
   position: relative;
 }
@@ -59,13 +59,15 @@
   margin: 0 0 .8rem;
 }
 .feature-page .feature-title {
-  font-size: 2.4rem;
-  line-height: 1.08;
-  letter-spacing: -0.025em;
-  font-weight: 700;
-  color: #1a1a1a;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 2.6rem;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+  color: #1c1a18;                /* warm near-black */
   margin: 0 0 1rem;
   padding: 0;
+  text-transform: none;          /* override inherited uppercase from showcase */
 }
 .feature-page .feature-rule {
   width: 56px; height: 2px;
@@ -97,6 +99,40 @@
 .feature-page .feature-body p { margin: 0 0 1.1rem; }
 .feature-page .feature-body p strong, .feature-page .feature-lead p strong {
   color: #1a1a1a; font-weight: 600;
+}
+/* In-page app badge strip (e.g. on the fully-customizable feature) */
+.feature-app-badges {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 1rem; margin: 1.6rem 0 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(201,169,97,0.25);
+}
+.feature-app-badges__label {
+  font-size: .7rem; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: #c9a961;
+  margin-right: auto;
+}
+.feature-app-badge {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .55rem .95rem;
+  border: 1px solid rgba(28,26,24,0.18);
+  border-radius: 6px;
+  color: #1c1a18; text-decoration: none !important;
+  font-size: .82rem; font-weight: 500;
+  letter-spacing: .04em;
+  background: rgba(255,255,255,0.6);
+  transition: background .2s, border-color .2s, color .2s;
+}
+.feature-app-badge i { font-size: 1.05rem; opacity: .85; }
+.feature-app-badge:hover {
+  background: #1c1a18; color: #f2efe9;
+  border-color: #1c1a18;
+}
+.feature-app-badge:hover i { opacity: 1; color: #c9a961; }
+@media (max-width: 720px) {
+  .feature-app-badges { gap: .7rem; }
+  .feature-app-badges__label { width: 100%; margin-right: 0; margin-bottom: .25rem; }
 }
 .feature-page .feature-closer {
   margin: 1.8rem 0 0;

@@ -4,7 +4,7 @@ lang: en
 header: AI Concierge
 subheader: At Your Service
 aboutEyebrow: Meet Mirigi
-aboutTitle: AI CONCIERGE
+aboutTitle: AI Concierge
 emailLabel: Email
 phoneLabel: Phone
 customersTitle: Our luxury customers include

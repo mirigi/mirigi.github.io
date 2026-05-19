@@ -49,6 +49,90 @@ layout: default
 .home-about-body p strong { color: #1a1a1a; font-weight: 600; }
 .home-about-body p em     { color: #3c3c3c; font-style: italic; }
 
+/* Hero feature card: every feature gets editorial prominence.
+   Gold accent rule alternates: reverse → left, non-reverse → right. */
+.feature-hero {
+  min-height: 50vh;
+  margin-bottom: 1.5rem;
+  background: #f9f6ef !important;
+  overflow: visible !important;
+  border-left: 0 !important;
+  border-right: 4px solid #c9a961 !important;
+  box-shadow:
+    inset -4px 0 0 0 #c9a961,
+    0 30px 60px -20px rgba(40,55,85,0.12) !important;
+}
+.feature-hero.reverse {
+  border-right: 0 !important;
+  border-left: 4px solid #c9a961 !important;
+  box-shadow:
+    inset 4px 0 0 0 #c9a961,
+    0 30px 60px -20px rgba(40,55,85,0.12) !important;
+}
+.feature-hero > .content { padding: 4vh 5vw !important; }
+.feature-hero > .content h3 {
+  font-size: 2.4rem !important;
+  letter-spacing: -0.018em;
+  margin-bottom: .9rem;
+}
+.feature-hero > .content p {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #3c3c3c;
+}
+@media (max-width: 992px) {
+  .feature-hero { min-height: 0; border-left-width: 3px; }
+  .feature-hero > .content h3 { font-size: 1.7rem !important; }
+}
+
+/* Customer pull-quote strip — luxury social proof above the buildings grid. */
+.customer-pullquote {
+  background: #1c1a18;
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+}
+.customer-pullquote::before {
+  content: '\201C';
+  position: absolute; top: 1.6rem; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 4rem; line-height: 1;
+  color: #c9a961; opacity: .35;
+}
+.customer-pullquote__quote {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.9rem; font-weight: 400;
+  color: #f2efe9; max-width: 780px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+}
+.customer-pullquote__attribution {
+  font-family: 'DM Sans','Open Sans',sans-serif;
+  font-size: .8rem; font-weight: 300;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: #c9a961;
+}
+@media (max-width: 768px) {
+  .customer-pullquote { padding: 3.5rem 1.5rem; }
+  .customer-pullquote__quote { font-size: 1.35rem; }
+}
+
+/* Section heading (features, customers): same editorial register as about. */
+.home-section-heading { margin: 0 0 2.4rem; }
+.home-section-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: 2.2rem;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: #1c1a18;
+  text-transform: none;
+  margin: 0 0 .3rem;
+}
+.home-section-heading .home-rule { margin-bottom: 0; }
+
 /* Gold-key link color on feature cards, matching the eyebrow/rule palette. */
 .projects-section .showcase .content a {
   color: #c9a961;
@@ -89,18 +173,33 @@ layout: default
 </section>
 <section class="projects-section bg-light" id="features">
   <div class="container">
-    <h2>{{site.data[page.lang].features}}</h2>
+    <div class="home-section-heading">
+      <span class="home-eyebrow">{{ site.data[page.lang].features_eyebrow | default: "What Mirigi does" }}</span>
+      <h2 class="home-section-title">{{site.data[page.lang].features}}</h2>
+      <hr class="home-rule" />
+    </div>
     {% assign features = site.features | where: 'lang',page.lang %}
     {% for feature in features %}
       {% assign is_even = forloop.index | modulo: 2 %}
-      {% include feature_div.html feature=feature is_even=is_even %}
+      {% include feature_div.html feature=feature is_even=is_even is_hero=forloop.first %}
     {% endfor %}
   </div>
 </section>
 
+{% if site.data[page.lang].pullquote_quote %}
+<aside class="customer-pullquote" aria-label="Customer testimonial">
+  <p class="customer-pullquote__quote">&ldquo;{{ site.data[page.lang].pullquote_quote }}&rdquo;</p>
+  <p class="customer-pullquote__attribution">{{ site.data[page.lang].pullquote_attribution }}</p>
+</aside>
+{% endif %}
+
 <section class="projects-section" id="customers">
   <div class="container mt-5">
-    <h2>{{site.data[page.lang].customers}}</h2>
+    <div class="home-section-heading">
+      <span class="home-eyebrow">{{ site.data[page.lang].customers_eyebrow | default: "Buildings that trust Mirigi" }}</span>
+      <h2 class="home-section-title">{{site.data[page.lang].customers}}</h2>
+      <hr class="home-rule" />
+    </div>
     <div id="customerCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         {% assign customers = site.customers | where: 'lang',page.lang %}
@@ -135,65 +234,137 @@ layout: default
     </div>
 </section>
 
+<style>
+/* Contact section — editorial conversion hub */
+.contact-section {
+  padding: 5rem 0 4rem !important;
+}
+.contact-hero {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  color: #f2efe9;
+}
+.contact-hero .home-eyebrow { color: #c9a961; }
+.contact-hero h2 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: 2.6rem;
+  line-height: 1.05;
+  letter-spacing: -0.018em;
+  color: #f2efe9 !important;
+  text-transform: none !important;
+  margin: .2rem 0 .9rem;
+}
+.contact-hero hr.home-rule { margin: .2rem auto 1.6rem; }
+.contact-hero p {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: rgba(242,239,233,0.78);
+  margin: 0;
+}
+.contact-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+.contact-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-family: 'DM Sans','Open Sans',sans-serif;
+  font-size: .92rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  text-decoration: none !important;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+}
+.contact-cta--primary {
+  background: linear-gradient(135deg, #c9a961 0%, #d8bd7e 100%);
+  color: #1c1a18;
+  box-shadow: 0 10px 30px -10px rgba(201,169,97,0.55), 0 4px 14px rgba(0,0,0,0.18);
+}
+.contact-cta--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 36px -10px rgba(201,169,97,0.65), 0 6px 18px rgba(0,0,0,0.22);
+  color: #1c1a18;
+}
+.contact-cta--secondary {
+  background: transparent;
+  color: #f2efe9;
+  border: 1px solid rgba(242,239,233,0.35);
+}
+.contact-cta--secondary:hover {
+  background: rgba(242,239,233,0.08);
+  border-color: #c9a961;
+  color: #c9a961;
+}
+
+.contact-direct {
+  text-align: center;
+  font-family: 'DM Sans','Open Sans',sans-serif;
+  color: rgba(242,239,233,0.65);
+  font-size: .85rem;
+  letter-spacing: .02em;
+}
+.contact-direct__label {
+  display: block;
+  font-size: .7rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #c9a961;
+  opacity: .85;
+  margin-bottom: .9rem;
+}
+.contact-direct a {
+  color: #f2efe9;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(242,239,233,0.18);
+  padding-bottom: 1px;
+  transition: color .2s, border-color .2s;
+}
+.contact-direct a:hover { color: #c9a961; border-color: #c9a961; }
+.contact-direct__sep {
+  display: inline-block;
+  margin: 0 .8rem;
+  color: rgba(242,239,233,0.25);
+}
+@media (max-width: 768px) {
+  .contact-hero h2 { font-size: 1.9rem; }
+  .contact-direct__sep { display: block; height: 0; visibility: hidden; margin: .35rem 0; }
+}
+</style>
+
 <section id="contacts" class="contact-section">
   <div class="container">
-    <div class="row justify-content-center">
-      <br/>
-      <div class="col-md-12 mb-2 mb-md-0">
-        <div class="well h-100 text-white text-center ">
-          {{ page.contactText }}
-        </div>
-      </div>
-      <br/>
+
+    <div class="contact-hero">
+      <span class="home-eyebrow">{{ site.data[page.lang].contact_eyebrow | default: "Let's talk" }}</span>
+      <h2>{{ site.data[page.lang].contact_title | default: "See Mirigi running in your building" }}</h2>
+      <hr class="home-rule" />
+      <p>{{ site.data[page.lang].contact_lead | default: "Book a private 30-minute walkthrough tailored to your property. See how residents place orders, request the valet, and reach the concierge in a single conversation — and how your team runs the day from one console. No slides, no commitment." }}</p>
     </div>
 
-    <br/>
-    <div class="row justify-content-center">
-      <div class="col-md-6 mb-3 mb-md-0">
-        <div class="card py-4 h-100">
-          <a href="mailto:info@mirigi.com?subject=Mirigi">
-            <div class="card-body text-center">
-              <i class="fas fa-envelope text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">{{page.emailLabel}}</h4>
-              <hr class="my-4">
-              <div class="small text-black-50">
-                info@mirigi.com
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-6 mb-3 mb-md-0">
-        <div class="card py-4 h-100">
-          <div class="card-body text-center">
-            <i class="fas fa-mobile-alt text-primary mb-2"></i>
-            <h4 class="text-uppercase m-0">{{page.phoneLabel}}</h4>
-            <hr class="my-4">
-            <div class="small">
-              <a href="tel:+13056920362"><span style="user-select: none;">&#x1F1FA;&#x1F1F8;</span> +1 (305) 692 0362 </a>
-
-
-            </div>
-            <div class="small text-black-50">
-              <a href="tel:+59826008887"><span style="user-select: none;">&#x1f1fa;&#x1f1fe;</span> +598 2 600 8887 </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
+    <div class="contact-cta-row">
+      <a class="contact-cta contact-cta--primary"
+         href="mailto:info@mirigi.com?subject={{ site.data[page.lang].contact_subject | default: 'Demo request' | url_encode }}&body={{ site.data[page.lang].contact_body | default: 'Hi Mirigi team, I would like to schedule a 30-minute demo for our building.' | url_encode }}">
+        {{ site.data[page.lang].contact_cta_primary | default: "Schedule a demo" }} &rarr;
+      </a>
     </div>
-    <div class="row justify-content-center">
-      <div class="social d-flex justify-content-center">
-        <a href="https://play.google.com/store/apps/details?id=com.ikatu.mirigi&hl=es_419" class="mx-2" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-android"></i><br />
-          <small> Android</small>
-        </a>
-        <a href="https://apps.apple.com/gm/app/mirigi/id1076011022" class="mx-2" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-app-store-ios"></i><br />
-          <small>iOS</small><br /><span style="opacity:0; font-size: 0.1px;margin-top:-5rem">ipad tablet iphone</span>
-        </a>
-      </div>
+
+    <div class="contact-direct">
+      <span class="contact-direct__label">{{ site.data[page.lang].contact_direct_label | default: "Or reach us directly" }}</span>
+      <a href="mailto:info@mirigi.com">info@mirigi.com</a>
+      <span class="contact-direct__sep">·</span>
+      <a href="tel:+13056920362"><span style="user-select:none; margin-right:.35rem;">&#x1F1FA;&#x1F1F8;</span>+1 305 692 0362</a>
+      <span class="contact-direct__sep">·</span>
+      <a href="tel:+59826008887"><span style="user-select:none; margin-right:.35rem;">&#x1f1fa;&#x1f1fe;</span>+598 2 600 8887</a>
     </div>
+
   </div>
 </section>
 </main>

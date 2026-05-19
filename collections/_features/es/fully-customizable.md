@@ -4,7 +4,7 @@ image: "/img/features/fully-customizable.jpg"
 layout: feature
 miniapp: features/fully-customizable
 keywords: personalización, marca, aplicación móvil, app store, experiencia de usuario, flexibilidad
-description: Personalice Mirigi con la marca y las funciones de su edificio.
+description: "Una app móvil totalmente personalizada a su propiedad — su nombre en el ícono, su identidad en cada pantalla, en la App Store y Google Play."
 ---
 
 Mirigi **no es una aplicación única para todos** — es una plataforma que **viste la identidad de su edificio**. Cada implementación se **tematiza a nivel de la propiedad**, desde la paleta de colores y la tipografía hasta los iconos, texturas y logotipos, aplicados de forma coherente en las interfaces de residentes y personal en **escritorio, tableta, teléfono y pantallas táctiles dentro de la unidad**. Ya existen temas visuales a medida para propiedades como *Jade Signature, Jade Beach, Avenue 89, Gryphon House, Fifteen Fifteen, Loma Verde y Montalbán*, y **se pueden encargar nuevos temas visuales** para adaptarse al lenguaje de diseño de cualquier desarrollador. Cuando se desea presencia en la **Apple App Store y Google Play**, Mirigi puede publicar una **aplicación móvil con la marca del edificio** que lleva su nombre e identidad gráfica — un icono reconocible en los teléfonos de los residentes y un **activo de marketing** que comunica comodidad de vanguardia a posibles inquilinos y compradores.
@@ -12,3 +12,15 @@ Mirigi **no es una aplicación única para todos** — es una plataforma que **v
 Bajo la superficie, cada edificio funciona con su propia **configuración dedicada**: un nombre de host único como *suedificio.mirigi.com*, nombre para mostrar, zona horaria, datos de contacto e idiomas admitidos. Un **almacén de ajustes por edificio** controla decenas de parámetros operativos — formatos de fecha y hora, dominio del remitente de correo, límites de carga de imágenes, temporizadores de rampa de valet, sonidos de notificación e intervalos de recordatorios — para que cada propiedad se comporte exactamente como su equipo y residentes esperan. La **propia página de inicio se ensambla** a partir de un conjunto configurable de módulos — **Mensajes, Entregas, Amenidades Reservables, Valet, Concierge, Mantenimiento, Clima**, páginas de información personalizadas y formularios de solicitud personalizados — cada uno **activado, ordenado y titulado por edificio**, con diseños dedicados para cada tamaño de pantalla. Las **amenidades reservables** se definen propiedad por propiedad con sus propios horarios, tiempos de antelación y reglas de reserva.
 
 La **localización, las comunicaciones y los accesos** son igualmente moldeables. Las interfaces orientadas al residente son **totalmente traducibles**, y *se pueden habilitar idiomas adicionales a pedido* — los archivos de traducción son **activos de primera clase** en Mirigi, por lo que cualquier idioma que una propiedad necesite puede incorporarse. Las **plantillas de notificación** para entregas, valet, reservas, mantenimiento y eventos de cuenta son **editables por evento y por idioma**, con marcadores para el nombre del residente, número de unidad, fechas y detalles del vehículo, para que los mensajes siempre suenen como si vinieran de su propiedad. Un **sistema de roles con alcance por edificio y unidad** otorga a **residentes, invitados, personal y administradores** exactamente el acceso que necesitan, mientras que las páginas personalizadas y los formularios de solicitud permiten a cada propiedad destacar los servicios, reglas y contactos que importan a su comunidad.
+
+<div class="feature-app-badges">
+  <span class="feature-app-badges__label">Ya en los teléfonos de los residentes</span>
+  <a href="https://apps.apple.com/gm/app/mirigi/id1076011022" target="_blank" rel="noopener" class="feature-app-badge">
+    <i class="fab fa-app-store-ios"></i>
+    <span>App Store</span>
+  </a>
+  <a href="https://play.google.com/store/apps/details?id=com.ikatu.mirigi&hl=es_419" target="_blank" rel="noopener" class="feature-app-badge">
+    <i class="fab fa-android"></i>
+    <span>Google Play</span>
+  </a>
+</div>

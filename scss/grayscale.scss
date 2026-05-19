@@ -18,10 +18,14 @@ html, body {
 
 body {
 //  font-family: 'Nunito';
-  font-family: 'Open Sans', sans-serif;
-  letter-spacing: 0.0625em;
+  font-family: 'DM Sans', 'Open Sans', sans-serif;
+  letter-spacing: 0.0125em;
   font-size: 110%;
+  background-color: #f2efe9;       // Mirigi stone — warm off-white
 }
+
+// Brand-wide background override: replace Bootstrap's gray-100 with warm stone.
+.bg-light { background-color: #f2efe9 !important; }
 
 a {
   color: $primary;
@@ -44,9 +48,7 @@ a {
   color: $primary !important;
 }
 
-footer {
-  padding: 5rem 0;
-}
+// footer padding is now set inline in _includes/footer.html (4rem 0 0)
 /*
  * MIRIGI
  */
@@ -61,16 +63,18 @@ footer {
     background-size: cover !important;
   h1 {
     background: none;
-    -webkit-text-fill-color: #2c2c2c;
+    -webkit-text-fill-color: #1c1a18;
     -webkit-background-clip: unset;
-    color: #2c2c2c;
-    text-shadow: none;
+    color: #1c1a18;                           // warm near-black (Mirigi ink)
+    text-shadow: 0 1px 18px rgba(255,255,255,0.5);
   }
   h2 {
-    color: #666;
-    font-family: 'Varela Round';
-    text-shadow: none;
-    letter-spacing: 0.15rem;
+    color: #6b6b6b;
+    font-family: 'DM Sans', 'Open Sans', sans-serif;
+    font-weight: 300;
+    text-shadow: 0 1px 12px rgba(255,255,255,0.5);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
   .masthead-text {
     max-width: 65%;
@@ -78,12 +82,12 @@ footer {
   }
   @media (max-width: 768px) {
     h1 {
-      letter-spacing: 0.15rem;
+      letter-spacing: -0.015em;
       font-size: 2rem;
     }
     h2 {
-      font-size: 1.4rem;
-      letter-spacing: 0.08rem;
+      font-size: 1rem;
+      letter-spacing: 0.18em;
     }
     .masthead-text {
       max-width: 100%;
@@ -149,7 +153,8 @@ footer {
   @extend .bg-mirigi-dark;
 }
 
-.feature, .contact-section, footer {
+// footer extracted: its background is set inline (warm near-black #1c1a18)
+.feature, .contact-section {
   @extend .bg-mirigi-dark;
 }
 .feature > div * {

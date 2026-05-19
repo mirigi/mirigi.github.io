@@ -1,5 +1,5 @@
 $showcase-padding: 5vh 5vw;
-$showcase-bg-color: #f0f0f0;
+$showcase-bg-color: #f2efe9;   // warm off-white (Mirigi stone)
 $showcase-dark-bg-color: #58595b;
 $showcase-dark-color: rgba(255, 255, 255, .5);
 
@@ -62,9 +62,12 @@ $media-bigimage-width: 1200px;
     border: 0;
     font-size: 0.9rem;
     h1, h2, h3, h4, h5, h6 {
-      color: black;
-      text-transform: uppercase;
-      font-size: 1.5rem;
+      color: #1c1a18;                       // warm near-black (Mirigi ink)
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      text-transform: none;                 // editorial register, not labels
+      font-size: 1.85rem;
     }
   }
   > .content {

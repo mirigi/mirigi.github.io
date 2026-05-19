@@ -4,7 +4,7 @@ image: "/img/features/fully-customizable.jpg"
 layout: feature
 miniapp: features/fully-customizable
 keywords: customization, branding, mobile app, app store, user experience, flexibility
-description: Customize Mirigi with your building's branding and features.
+description: "A fully branded mobile app tailored to your property — your name on the icon, your identity in every screen, on the App Store and Google Play."
 ---
 
 Mirigi is **not a one-size-fits-all app** — it is a platform that **wears your building's identity**. Every deployment is **themed at the property level**, from color palette and typography to icons, textures and logos, applied consistently across resident and staff interfaces on **desktop, tablet, phone and in-unit touchscreens**. Bespoke skins already exist for properties such as *Jade Signature, Jade Beach, Avenue 89, Gryphon House, Fifteen Fifteen, Loma Verde and Montalbán*, and **new skins can be commissioned** to match any developer's design language. When a presence on the **Apple App Store and Google Play** is desired, Mirigi can publish a **building-branded mobile app** carrying your name and graphic identity — a recognizable icon on residents' phones and a **marketing asset** that signals cutting-edge convenience to prospective tenants and buyers.
@@ -12,3 +12,15 @@ Mirigi is **not a one-size-fits-all app** — it is a platform that **wears your
 Under the surface, each building runs on its own **dedicated configuration**: a unique hostname such as *yourbuilding.mirigi.com*, display name, time zone, contact details and supported languages. A **per-building settings store** drives dozens of operational parameters — date and time formats, email sender domain, image-upload limits, valet ramp timers, notification sounds and reminder intervals — so every property behaves exactly the way its team and residents expect. The **homepage itself is assembled** from a configurable set of modules — **Messages, Deliveries, Reservable Amenities, Valet, Concierge, Maintenance, Weather**, custom information pages and custom request forms — each **enabled, ordered and titled per building**, with dedicated layouts for every screen size. **Reservable amenities** are defined property by property with their own schedules, lead times and booking rules.
 
 **Localization, communications and access** are equally malleable. Resident-facing interfaces are **fully translatable**, and *additional languages can be enabled on request* — translation files are **first-class assets** in Mirigi, so any locale a property needs can be onboarded. **Notification templates** for deliveries, valet, reservations, maintenance and account events are **editable per event and per locale**, with placeholders for resident name, unit number, dates and vehicle details, so messages always sound like they come from your property. A **role system scoped to building and unit** gives **residents, guests, staff and administrators** precisely the access they need, while custom pages and request forms let each property surface the services, rules and contacts that matter to its community.
+
+<div class="feature-app-badges">
+  <span class="feature-app-badges__label">Already on residents' phones</span>
+  <a href="https://apps.apple.com/gm/app/mirigi/id1076011022" target="_blank" rel="noopener" class="feature-app-badge">
+    <i class="fab fa-app-store-ios"></i>
+    <span>App Store</span>
+  </a>
+  <a href="https://play.google.com/store/apps/details?id=com.ikatu.mirigi&hl=es_419" target="_blank" rel="noopener" class="feature-app-badge">
+    <i class="fab fa-android"></i>
+    <span>Google Play</span>
+  </a>
+</div>

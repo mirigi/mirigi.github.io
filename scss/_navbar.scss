@@ -11,9 +11,13 @@
     }
   }
   .navbar-brand {
-    color: $black;
-    font-weight: 700;
+    color: #1c1a18;                     // warm near-black (Mirigi ink)
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    font-size: 1.55rem;
     padding: .9rem 0;
+    text-transform: none;
   }
   .navbar-nav {
     .nav-item {

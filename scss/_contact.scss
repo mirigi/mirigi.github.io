@@ -1,5 +1,5 @@
 .contact-section {
-  padding: 5rem 0 0;
+  padding: 5rem 0 5rem;
   .card {
     border: 0;
     border-bottom: 0.25rem solid $primary;
@@ -16,23 +16,37 @@
     }
   }
   .social {
-    margin-top: 5rem;
+    margin-top: 3rem;
     a {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       height: 6rem;
       width: 6rem;
-      background: fade-out($white, 0.9);
+      background: fade-out($white, 0.85);
+      border: 1px solid fade-out($primary, 0.5);
       border-radius: 100%;
       i {
-      line-height: 6rem;
-      font-size: 3rem;
-    }
-      color: fade-out($white, 0.7);
+        line-height: 1;
+        font-size: 2.4rem;
+      }
+      small {
+        font-size: 0.6rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-top: 0.2rem;
+      }
+      color: $primary;
       &:hover {
-        color: fade-out($white, 0.5);
+        background: fade-out($primary, 0.85);
+        border-color: $primary;
+        color: $white;
       }
       &:active {
         color: $white;
+        background: fade-out($primary, 0.7);
       }
     }
   }

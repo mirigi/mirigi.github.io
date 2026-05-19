@@ -127,7 +127,28 @@ if (window.frameElement && 'IntersectionObserver' in window) {
 }
 ```
 
-### 6. Marketing copy rules apply
+### 6. Ship a static `preview.png`
+
+Every miniapp folder should contain a `preview.png` (or `.jpg`) alongside its
+`index.html`. The brochure, social-media link previews, PDF exports and any
+other non-iframe context use this still image instead of trying to render the
+miniapp. The `brochure_feature.html` include automatically uses
+`/miniapps/{miniapp}/preview.png` when the feature page declares `miniapp:` in
+its frontmatter.
+
+To regenerate previews from the live miniapps (Jekyll must be running on :4000):
+
+```bash
+node scripts/render-miniapp-preview.js              # all miniapps
+node scripts/render-miniapp-preview.js reports      # one miniapp
+node scripts/render-miniapp-preview.js --settle=3500 --width=900 --height=675
+```
+
+The script uses puppeteer (already a devDep), loads each miniapp with
+`?lang=en&size=large`, waits ~2.2s for animations to land in a representative
+pose, then writes `preview.png`. Run it whenever the miniapp's visual changes.
+
+### 7. Marketing copy rules apply
 
 No internals in user-visible strings. The rules in `/CLAUDE.md` ("No internals
 in marketing copy") apply equally to miniapp text. Replace SQL/MQTT/Twilio/OAuth

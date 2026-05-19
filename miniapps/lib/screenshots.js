@@ -22,8 +22,11 @@
   var SHOTS = CFG.shots || [];
   var INTERVAL_MS = CFG.intervalMs || 4800;
 
-  var lang = (new URLSearchParams(location.search).get('lang') || 'en').toLowerCase();
+  var params = new URLSearchParams(location.search);
+  var lang = (params.get('lang') || 'en').toLowerCase();
   if (['en', 'es', 'fr'].indexOf(lang) === -1) lang = 'en';
+  var previewMode = params.get('preview');           // 'fan' for the brochure still
+  if (previewMode === 'fan') document.body.classList.add('preview-fan');
 
   var stage = document.getElementById('stage');
   if (!stage || SHOTS.length === 0) return;

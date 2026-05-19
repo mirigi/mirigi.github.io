@@ -141,6 +141,44 @@ body::after {
   .shot-label { font-size: .62rem; padding: .25rem .5rem; left: 10px; bottom: 10px; }
 }
 
+/* === Fan-of-cards preview mode (abanico) ===
+   Activated when ?preview=fan is on the URL. The carousel stops animating,
+   every shot becomes visible at once, and each rotates around a common pivot
+   point far below the cards so the spread reads as a hand of playing cards.
+   Used by scripts/render-miniapp-preview.js to capture preview.png. */
+body.preview-fan {
+  padding: 1rem;
+}
+body.preview-fan .shot {
+  opacity: 1 !important;
+  transition: none !important;
+  animation: none !important;
+  pointer-events: none;
+  height: 56%;
+  max-height: 380px;
+  left: 50%; top: 50%;
+  /* Shared pivot ~200% below the card → cards fan around a common point.
+     Combined with translate(-50%, -65%) the cards visually center in the frame
+     rather than spilling past the bottom edge. */
+  transform-origin: 50% 200%;
+}
+body.preview-fan .shot.is-current::after,
+body.preview-fan .shot::before,
+body.preview-fan .shot-label,
+body.preview-fan .dots {
+  display: none !important;
+}
+body.preview-fan .shot img { transform: scale(1) !important; }
+
+body.preview-fan .shot:nth-child(1) { transform: translate(-50%, -65%) rotate(-28deg); z-index: 1; }
+body.preview-fan .shot:nth-child(2) { transform: translate(-50%, -65%) rotate(-17deg); z-index: 2; }
+body.preview-fan .shot:nth-child(3) { transform: translate(-50%, -65%) rotate(-6deg);  z-index: 3; }
+body.preview-fan .shot:nth-child(4) { transform: translate(-50%, -65%) rotate(6deg);   z-index: 4; }
+body.preview-fan .shot:nth-child(5) { transform: translate(-50%, -65%) rotate(17deg);  z-index: 5; }
+body.preview-fan .shot:nth-child(6) { transform: translate(-50%, -65%) rotate(28deg);  z-index: 6; }
+body.preview-fan .shot:nth-child(7) { transform: translate(-50%, -65%) rotate(39deg);  z-index: 7; }
+body.preview-fan .shot:nth-child(8) { transform: translate(-50%, -65%) rotate(50deg);  z-index: 8; }
+
 /* Visually hidden but readable by scrapers and screen readers. */
 .sr-only {
   position: absolute;

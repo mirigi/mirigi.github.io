@@ -5,10 +5,18 @@ position: 0 = normal (image left), 1 = reversed (image right)
 index: feature number for anchor linking
 {% endcomment %}
 
-{% if include.feature.image contains "http://" or include.feature.image contains "https://" or include.feature.image | slice: 0, 1 == "/" %}
-{% assign image = include.feature.image %}
+{%- comment -%}
+  Pick the static image for the brochure card:
+  - if the feature has a miniapp, prefer /miniapps/{miniapp}/preview.png so the
+    brochure shows the actual widget's still rather than the lifestyle backdrop
+  - else fall back to feature.image
+{%- endcomment -%}
+{% if include.feature.miniapp %}
+  {% assign image = '/miniapps/' | append: include.feature.miniapp | append: '/preview.png' %}
+{% elsif include.feature.image contains "http://" or include.feature.image contains "https://" or include.feature.image | slice: 0, 1 == "/" %}
+  {% assign image = include.feature.image %}
 {% else %}
-{% assign image = "/" | append: include.feature.image %}
+  {% assign image = "/" | append: include.feature.image %}
 {% endif %}
 
 {% if include.position == 0 %}

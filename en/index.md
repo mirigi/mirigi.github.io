@@ -3,6 +3,7 @@ layout: index
 lang: en
 header: AI Concierge
 subheader: At Your Service
+aboutEyebrow: Meet Mirigi
 aboutTitle: AI CONCIERGE
 emailLabel: Email
 phoneLabel: Phone
@@ -13,12 +14,12 @@ title: Mirigi AI Concierge
 keywords: ai concierge, miri, building management, resident experience, luxury living, automation, smart building
 description: "Meet Miri — the first AI concierge agent that acts. Not just answers: places food orders, calls the valet, books amenities, all in one conversation."
 ---
-Mirigi is the digital concierge platform for luxury condominiums — managing reservations, valet parking, deliveries, access control, and every service your building offers. At its core is Miri, the first AI concierge agent that acts. Other systems answer questions. Miri places the order, requests your car, books the amenity — end to end, in a single chat. No apps to open, no forms to fill. Just ask.
+Mirigi is the **digital concierge platform for luxury condominiums** — managing **reservations, valet parking, deliveries, access control**, and every service your building offers. At its core is **Miri**, the first **AI concierge agent that acts**. Other systems answer questions. Miri places the order, requests your car, books the amenity — *end to end, in a single chat*. No apps to open, no forms to fill. **Just ask.**
 
-Experience the future of condominium living with Mirigi, the groundbreaking concierge service that transforms resident-building interactions into seamless digital experiences. Elevate your lifestyle with luxury interfaces for reservations, valet parking, workflows, deliveries, and <a href='#features' class='js-scroll-trigger'>more</a>.
+For **residents**, Mirigi turns every building service into something they reach with a tap or a sentence — *reservations, valet, deliveries, messages, payments* — through a **branded app** that matches the property's identity on phone, tablet, or in-unit touch panel. The same app drives the **smart home**, opens the gate, plays the music, and pages the concierge.
 
-Empower your building staff with Mirigi, enabling them to deliver unparalleled service with efficiency and precision. Streamline operations and boost productivity while residents indulge in luxurious access to condominium services via their mobile devices or in-wall touch panels.
+For **staff and management**, Mirigi is the **shared operations console** — one place to see arrivals, deliveries, requests and reservations as they happen, with **role-based access** so each person sees exactly what they need. Operations are tighter, decisions are backed by data, and *residents feel the difference* without ever opening a dashboard.
 
-With Mirigi's integration into building automation, residents gain unprecedented control over their living spaces. From accessing security cameras to unlocking doors directly from the app, enjoy enhanced convenience and security like never before.
+Mirigi's **building automation gateway** brings the property's existing sensors and controls into the same experience: residents check the pool temperature, open the front gate, or trigger a scene the same way they ask for their car.
 
 Discover the prestigious luxury buildings that have embraced Mirigi <a href='#customers' class='js-scroll-trigger'>by clicking here</a>.

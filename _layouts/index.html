@@ -19,6 +19,52 @@ layout: default
   </header>
 
   <main>
+
+  <style>
+/* Editorial touches on the home about body text — typography only.
+   Layout, image, margins and headings remain stock. */
+.home-eyebrow {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: #c9a961;
+  margin: 0 0 .6rem;
+}
+.home-rule {
+  width: 56px; height: 2px;
+  background: linear-gradient(90deg, #c9a961 0%, #d8bd7e 100%);
+  margin: .4rem 0 1.4rem;
+  border: none;
+}
+.home-about-body p:first-of-type::first-letter {
+  font-size: 2.4em;
+  font-weight: 700;
+  float: left;
+  line-height: 1;
+  padding: .35rem .55rem 0 0;
+  color: #c9a961;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+.home-about-body p strong { color: #1a1a1a; font-weight: 600; }
+.home-about-body p em     { color: #3c3c3c; font-style: italic; }
+
+/* Gold-key link color on feature cards, matching the eyebrow/rule palette. */
+.projects-section .showcase .content a {
+  color: #c9a961;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: .04em;
+}
+.projects-section .showcase .content a:hover {
+  color: #b08e44;
+  text-decoration: underline;
+}
+.projects-section .showcase .content hr {
+  border-color: rgba(201,169,97,0.35);
+}
+  </style>
+
 <section class="about-section bg-light"  >
   <div class="container">
     <div class="row align-items-center no-gutters mb-4 mb-lg-5" id="about" >
@@ -30,9 +76,11 @@ layout: default
       </div>
       <div class="col-xl-8">
         <div class="featured-text-right text-right text-lg-left">
+          <span class="home-eyebrow">{{ page.aboutEyebrow | default: site.data[page.lang].about_eyebrow | default: "Mirigi" }}</span>
           <h2>{{page.aboutTitle}}</h2>
-          <div class="mb-0 text-black-50">
-            <p>{{ content | markdownify }}</p>
+          <hr class="home-rule" />
+          <div class="mb-0 text-black-50 home-about-body">
+            {{ content | markdownify }}
           </div>
         </div>
       </div>

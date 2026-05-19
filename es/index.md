@@ -3,6 +3,7 @@ layout: index
 lang: es
 header: Conserje IA
 subheader: A Su Servicio
+aboutEyebrow: Conoce Mirigi
 aboutTitle: CONSERJE IA
 emailLabel: Correo Electrónico
 phoneLabel: Teléfono
@@ -13,12 +14,12 @@ title: Mirigi Conserje IA
 keywords: conserje ia, miri, gestión de edificios, experiencia del residente, vida de lujo, automatización, edificio inteligente
 description: "Conoce a Miri — la primera agente conserje IA que actúa. No solo responde: hace el pedido, llama al valet, reserva amenidades, todo en una conversación."
 ---
-Mirigi es la plataforma de conserjería digital para condominios de lujo — gestionando reservas, valet parking, entregas, control de acceso y cada servicio que ofrece su edificio. En su núcleo está Miri, la primera agente conserje IA que actúa. Otros sistemas responden preguntas. Miri hace el pedido, llama al valet, reserva la amenidad — de principio a fin, en un solo chat. Sin aplicaciones que abrir, sin formularios que completar. Solo pregunta.
+Mirigi es la **plataforma de conserjería digital para condominios de lujo** — gestiona **reservas, valet parking, entregas, control de acceso** y cada servicio que ofrece su edificio. En su núcleo está **Miri**, el primer **agente conserje de IA que actúa**. Otros sistemas responden preguntas. Miri hace el pedido, llama al valet, reserva la amenidad — *de principio a fin, en un solo chat*. Sin aplicaciones que abrir, sin formularios que completar. **Solo pregunta.**
 
-Experimente el futuro de la vida en condominio con Mirigi, el innovador servicio de conserjería que transforma las interacciones entre residentes y edificios en experiencias digitales sin fisuras. Eleve su estilo de vida con interfaces de lujo para reservas, valet parking, flujos de trabajo, entregas y <a href='#features' class='js-scroll-trigger'>más</a>.
+Para los **residentes**, Mirigi convierte cada servicio del edificio en algo que se resuelve con un toque o una frase — *reservas, valet, entregas, mensajes, pagos* — a través de una **app con la marca del edificio** que se ve igual en el teléfono, la tablet o el panel táctil de la unidad. La misma app maneja el **hogar inteligente**, abre el portón, ajusta el clima y llama a conserjería.
 
-Empodere a su personal de edificio con Mirigi, permitiéndoles ofrecer un servicio inigualable con eficiencia y precisión. Optimice las operaciones y aumente la productividad mientras los residentes disfrutan de un acceso lujoso a los servicios de condominio a través de sus dispositivos móviles o paneles táctiles en la pared.
+Para el **personal y la administración**, Mirigi es la **consola operativa compartida** — un solo lugar para ver llegadas, entregas, solicitudes y reservas en tiempo real, con **acceso por roles** para que cada persona vea exactamente lo que necesita. Las operaciones se vuelven más eficientes, las decisiones se respaldan con datos, y *los residentes sienten la diferencia* sin abrir nunca un panel.
 
-Con la integración de Mirigi en la automatización de edificios, los residentes obtienen un control sin precedentes sobre sus espacios de vida. Desde acceder a cámaras de seguridad hasta desbloquear puertas directamente desde la aplicación, disfrute de una comodidad y seguridad mejoradas como nunca antes.
+La **pasarela de automatización del edificio** incorpora los sensores y controles existentes de la propiedad a la misma experiencia: los residentes consultan la temperatura de la piscina, abren la puerta principal o activan una escena con la misma naturalidad con la que piden su coche.
 
 Descubra los prestigiosos edificios de lujo que han adoptado Mirigi <a href='#customers' class='js-scroll-trigger'>haciendo clic aquí</a>.

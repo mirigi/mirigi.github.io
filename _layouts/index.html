@@ -74,15 +74,42 @@ layout: default
   .masthead::after {
     background:
       linear-gradient(to left,
-        rgba(242,239,233,0.94) 0%,
-        rgba(242,239,233,0.85) 45%,
-        rgba(242,239,233,0.55) 80%,
-        rgba(242,239,233,0.30) 100%);
+        rgba(242,239,233,0.96) 0%,
+        rgba(242,239,233,0.92) 50%,
+        rgba(242,239,233,0.80) 85%,
+        rgba(242,239,233,0.55) 100%);
   }
 }
 @media (max-width: 768px) {
-  .masthead .masthead-eyebrow { font-size: .65rem; }
-  .masthead .masthead-subtitle { font-size: 1rem; }
+  /* Long-flowing subtitle reads better left-aligned at narrow widths than
+     right-aligned with a ragged left edge. Keep the right-anchored column
+     but switch text alignment inside to left so each line starts cleanly. */
+  .masthead .masthead-text { text-align: left !important; }
+  .masthead .masthead-title,
+  .masthead .masthead-subtitle { margin-left: 0; margin-right: auto; }
+  .masthead::after {
+    background:
+      linear-gradient(to bottom,
+        rgba(242,239,233,0.98) 0%,
+        rgba(242,239,233,0.94) 60%,
+        rgba(242,239,233,0.88) 100%);
+  }
+  .masthead .masthead-eyebrow {
+    font-size: .7rem;
+    letter-spacing: .14em;
+  }
+  .masthead .masthead-title { font-size: 2.75rem; line-height: 1.02; }
+  .masthead .masthead-subtitle {
+    font-size: 1.08rem;
+    line-height: 1.45;
+    font-weight: 500;
+    color: #1c1a18;
+  }
+}
+@media (max-width: 480px) {
+  .masthead .masthead-title { font-size: 2.4rem; }
+  .masthead .masthead-subtitle { font-size: 1.02rem; }
+  .masthead .masthead-eyebrow { font-size: .66rem; letter-spacing: .12em; }
 }
   </style>
 
@@ -265,7 +292,7 @@ layout: default
         </p>
       </div>
       <div class="col-xl-8">
-        <div class="featured-text-right text-right text-lg-left">
+        <div class="featured-text-right text-md-right text-lg-left">
           <span class="home-eyebrow">{{ page.aboutEyebrow | default: site.data[page.lang].about_eyebrow | default: "Mirigi" }}</span>
           <h2>{{page.aboutTitle}}</h2>
           <hr class="home-rule" />

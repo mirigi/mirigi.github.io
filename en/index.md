@@ -19,7 +19,7 @@ Mirigi is the **first concierge platform whose AI agent — Miri — doesn't jus
 
 For **residents**, Mirigi turns every building service into something they reach with a tap or a sentence — *reservations, valet, deliveries, messages, payments* — through a **branded app** that matches the property's identity on phone, tablet, or in-unit touch panel. The same app drives the **smart home**, opens the gate, plays the music, and pages the concierge.
 
-For **staff and management**, Mirigi is the **shared operations console** — one place to see arrivals, deliveries, requests and reservations as they happen, with **role-based access** so each person sees exactly what they need. Operations are tighter, decisions are backed by data, and *residents feel the difference* without ever opening a dashboard.
+For **staff and management**, Mirigi is the **shared operations console** — one place to see arrivals, deliveries, requests and reservations as they happen, with **dedicated views for every staff role**: *front desk, concierge, management, security, valet, maintenance, restaurant*. Each person sees exactly the work that belongs to them, in the moment it lands. Twenty years of front-desk refinement, in one screen — and *residents feel the difference* without ever opening a dashboard.
 
 Mirigi's **building automation gateway** brings the property's existing sensors and controls into the same experience: residents check the pool temperature, open the front gate, or trigger a scene the same way they ask for their car.
 

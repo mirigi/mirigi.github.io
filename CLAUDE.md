@@ -6,6 +6,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a multilingual Jekyll website for Mirigi, a digital concierge service for condominiums. The site showcases features and customer testimonials in English, Spanish, and French. It's built using Jekyll with a Bootstrap-based theme and Docker deployment.
 
+## Sibling reference repositories (read-only, for grounding marketing claims)
+
+When fact-checking or extending any feature/FAQ/copy, ground claims against the actual implementation. The three sibling repos cover the three product surfaces:
+
+| Repo | Path (local sibling) | Tech | Use it to verify... |
+|---|---|---|---|
+| **Backend** | `/home/fede/repos/mirigi/mirigi/mirigi-backend/` | Python (`app/`) | Source of truth. Endpoints, business logic, state machines, AI tools (`mirigi_*` in `app/resident/ws/v2/ai_chat.py`), event constants, schema, all real capabilities. Search `app/staff/`, `app/resident/`, `app/model/` for grounding. |
+| **Resident frontend** | `/home/fede/repos/mirigi/mirigi-frontend/` | React | What residents see/do. Use to verify the resident-side UI for any feature claim. |
+| **Staff portal** | `/home/fede/repos/mirigi/mirigi-staff/` | React 19 + Vite + TypeScript + Tailwind v4, runs on `:3001`, see `src/pages/` and `src/api/` | What staff and management see/do. Use to verify staff-console claims (operations dashboards, reports, valet queue, package log, role-based access). |
+
+**Grounding rule:** if a claim names a specific capability — "residents can ask Miri to book the amenity", "the staff console flags packages for pickup", "boards run custom reports on demand" — open the matching repo and verify the endpoint/page/tool exists before publishing. If it doesn't, soften the claim or remove it. The fact-check agents dispatched from this repo have explicit access to all three paths above.
+
 ## Marketing Copy Rules
 
 **Never mention technical internals on feature pages, customer pages, brochures, or proposals.** The audience is luxury condominium boards, property managers and residents — not developers. Describe the *experience* (what the user sees and gets), not the *mechanism* (how the code does it).

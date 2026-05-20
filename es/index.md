@@ -19,7 +19,7 @@ Mirigi es la **primera plataforma de conserjería cuya agente de IA — Miri —
 
 Para los **residentes**, Mirigi convierte cada servicio del edificio en algo que se resuelve con un toque o una frase — *reservas, valet, entregas, mensajes, pagos* — a través de una **app con la marca del edificio** que se ve igual en el teléfono, la tablet o el panel táctil de la unidad. La misma app maneja el **hogar inteligente**, abre el portón, ajusta el clima y llama a conserjería.
 
-Para el **personal y la administración**, Mirigi es la **consola operativa compartida** — un solo lugar para ver llegadas, entregas, solicitudes y reservas en tiempo real, con **acceso por roles** para que cada persona vea exactamente lo que necesita. Las operaciones se vuelven más eficientes, las decisiones se respaldan con datos, y *los residentes sienten la diferencia* sin abrir nunca un panel.
+Para el **personal y la administración**, Mirigi es la **consola operativa compartida** — un solo lugar para ver llegadas, entregas, solicitudes y reservas en tiempo real, con **vistas dedicadas para cada rol del equipo**: *recepción, conserjería, administración, seguridad, valet, mantenimiento, restaurante*. Cada persona ve exactamente el trabajo que le corresponde, en el instante en que ocurre. Veinte años de afinamiento de recepción, en una sola pantalla — y *los residentes sienten la diferencia* sin abrir nunca un panel.
 
 La **pasarela de automatización del edificio** incorpora los sensores y controles existentes de la propiedad a la misma experiencia: los residentes consultan la temperatura de la piscina, abren la puerta principal o activan una escena con la misma naturalidad con la que piden su coche.
 

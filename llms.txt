@@ -22,6 +22,7 @@ Contact: info@mirigi.com · +1 305 692 0362 · +598 2 600 8887
 ## Features
 
 - [Miri — AI Concierge Agent](https://mirigi.com/en/features/0-ai-concierge): The first AI concierge that acts, not just answers. Places orders, calls the valet, books amenities end-to-end.
+- [Staff Console & Front-Desk Operations](https://mirigi.com/en/features/staff-console): Real-time operations cockpit with dedicated views for front desk, concierge, management, security, valet, maintenance and restaurant — refined over twenty years of luxury residential operations.
 - [Amenity Reservations](https://mirigi.com/en/features/amenities-reservations): Pool, gym, spa, party room, padel, golf — booked from app, panel, or by talking to Miri.
 - [Valet Parking](https://mirigi.com/en/features/valet-parking): Residents request their car; staff sees the queue in real time.
 - [Delivery Tracking](https://mirigi.com/en/features/delivery-tracking): Packages logged at the front desk, residents notified instantly.

@@ -188,6 +188,12 @@ faq:
 
   - title: "Para la administración del edificio"
     items:
+      - q: "¿La consola del personal de Mirigi es lo suficientemente sólida para operar una recepción activa?"
+        a: "Sí — la operación de front-of-house es donde Mirigi empezó. La consola del personal es una cabina de operaciones en tiempo real refinada durante veinte años de operación de edificios, con vistas dedicadas para los equipos de recepción, conserjería, administración, seguridad, valet, mantenimiento y restaurante. Entregas pendientes, la cola del valet en vivo con código de color por tiempo de espera, invitados preautorizados, solicitudes abiertas y actividad reciente aterrizan en una sola pantalla, actualizada al instante en que algo cambia. Pensada primero para quienes abren la puerta — no es un producto de back-office con una pestaña de recepción agregada."
+      - q: "¿Pueden los distintos miembros del personal ver cosas diferentes?"
+        a: "Sí. Mirigi define el acceso de cada miembro del equipo por rol — recepción, conserjería, administrador, asistente de administración, seguridad, valet, jefe de valet, mantenimiento, personal de restaurante. Cada rol ve exactamente el trabajo que le corresponde, con un rastro de auditoría completo de quién hizo qué y cuándo. Roles y permisos se configuran por edificio, de modo que la propiedad decide cómo se estructura su operación."
+      - q: "¿El equipo puede operar el edificio desde una tablet o un teléfono?"
+        a: "Sí. La consola del personal funciona en navegador de escritorio en recepción, en tablet detrás del bar y en teléfono en la mano del técnico de mantenimiento. Las acciones sensibles están protegidas por autenticación de dos factores, y la interfaz es multilingüe para que el equipo en cada ciudad trabaje en su idioma."
       - q: "¿Cómo funciona la autorización de visitantes?"
         a: "Los residentes preautorizan invitados en segundos — nombre, fecha, horario recurrente si hace falta — y la recepción los recibe por nombre sin necesidad de una llamada. Las autorizaciones pueden ser por única vez o recurrentes, y el registro completo de llegadas es buscable por el personal."
       - q: "¿Cómo gestiona Mirigi las solicitudes de mantenimiento?"

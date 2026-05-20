@@ -188,6 +188,12 @@ faq:
 
   - title: "Pour la gestion de l'immeuble"
     items:
+      - q: "La console du personnel de Mirigi est-elle assez solide pour piloter une réception très active ?"
+        a: "Oui — le front-of-house est là où Mirigi a commencé. La console du personnel est un cockpit d'opérations en temps réel affiné par vingt ans d'opération d'immeubles, avec des vues dédiées pour les équipes de réception, conciergerie, direction, sécurité, voiturier, maintenance et restauration. Livraisons en attente, la file du voiturier en direct avec code couleur sur le temps d'attente, invités préautorisés, demandes ouvertes et activité récente atterrissent sur un seul écran, rafraîchi à l'instant où quelque chose change. Pensée d'abord pour ceux qui ouvrent la porte — pas un produit de back-office avec un onglet de réception ajouté."
+      - q: "Les différents membres du personnel peuvent-ils voir des choses différentes ?"
+        a: "Oui. Mirigi définit l'accès de chaque membre de l'équipe par rôle — réception, conciergerie, directeur, directeur adjoint, sécurité, voiturier, chef voiturier, maintenance, personnel de restauration. Chaque rôle voit exactement le travail qui lui revient, avec une piste d'audit complète de qui a fait quoi et quand. Rôles et permissions se configurent par immeuble, de sorte que la propriété décide de la structure de son opération."
+      - q: "L'équipe peut-elle piloter l'immeuble depuis une tablette ou un téléphone ?"
+        a: "Oui. La console du personnel fonctionne sur navigateur de bureau à la réception, sur tablette derrière le bar et sur téléphone dans la main du technicien de maintenance. Les actions sensibles sont protégées par une authentification à deux facteurs, et l'interface est multilingue pour que l'équipe de chaque ville travaille dans sa langue."
       - q: "Comment fonctionne l'autorisation des visiteurs ?"
         a: "Les résidents préautorisent les invités en quelques secondes — nom, date, horaire récurrent si besoin — et la réception les accueille par leur nom sans appel téléphonique. Les autorisations peuvent être ponctuelles ou récurrentes, et l'historique complet des arrivées est consultable par le personnel."
       - q: "Comment Mirigi gère-t-elle la maintenance et les demandes de service ?"

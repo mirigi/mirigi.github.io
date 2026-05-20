@@ -187,6 +187,12 @@ faq:
 
   - title: "For building management"
     items:
+      - q: "Is Mirigi's staff console strong enough to run a busy condominium front desk?"
+        a: "Yes — front-of-house is where Mirigi started. The staff console is a real-time operations cockpit refined over twenty years of building operations, with dedicated views for the front desk, concierge, management, security, valet, maintenance and restaurant teams. Pending deliveries, the live valet queue with wait-time colour coding, pre-authorized guests, open requests and recent activity all land on one screen, refreshed the instant something changes. Built first for the people who open the door — not a back-office product with a front-desk tab grafted on."
+      - q: "Can different staff members see different things?"
+        a: "Yes. Mirigi defines every team member's access by role — front desk, concierge, manager, assistant manager, security, valet, valet manager, maintenance, restaurant staff. Each role sees exactly the work that belongs to them, with a full audit trail of who did what and when. Roles and permissions are configured per building, so the property decides how its operation is structured."
+      - q: "Can the team run the building from a tablet or phone too?"
+        a: "Yes. The staff console works on desktop browser at the front desk, tablet behind the bar, and phone in the maintenance technician's hand. Sensitive actions are protected by two-factor authentication, and the interface is multilingual so the team in each city works in its own language."
       - q: "How does visitor authorization work?"
         a: "Residents pre-authorize guests in seconds — name, date, recurring schedule if needed — and the front desk admits them by name without any phone call. Authorizations can be single-visit or recurring, and the full arrival log is searchable by staff."
       - q: "How does Mirigi handle maintenance and service requests?"

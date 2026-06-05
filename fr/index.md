@@ -10,9 +10,9 @@ phoneLabel: Téléphone
 customersTitle: Nos clients de luxe incluent
 customersText: Contemplez les merveilles architecturales qui font confiance à Mirigi pour leur excellence opérationnelle. Ces bâtiments emblématiques font partie de notre clientèle estimée, montrant l'intégration transparente et l'efficacité supérieure que Mirigi apporte.
 contactText: Rejoignez les rangs de ces structures distinguées et levez le potentiel de votre immeuble avec Mirigi. Contactez-nous via l'un de nos canaux pour planifier une démonstration et découvrir comment les services de conciergerie numérique de Mirigi peuvent dynamiser votre développement. Vivez la transformation et l'innovation que seul Mirigi peut offrir !
-title: Mirigi Conciergerie IA
-keywords: conciergerie ia, miri, gestion immobilière, expérience résident, vie de luxe, automatisation, immeuble intelligent
-description: "La première plateforme de conciergerie dont l'IA agit pour le résident — appelle le voiturier, passe la commande, ouvre la porte, de bout en bout en une seule conversation. Un système moderne pour les immeubles de luxe, construit sur vingt ans d'expérience en conciergerie et en domotique. Bureaux à Montevideo et Miami."
+title: "Logiciel de Gestion de Copropriété et Conciergerie | Mirigi"
+keywords: logiciel de gestion de copropriété, logiciel de syndic, logiciel de conciergerie, conciergerie digitale, gestion immobilière, expérience résident, réservation d'installations, gestion d'immeuble, immeuble de luxe, immeuble intelligent, Mirigi
+description: "Mirigi est un logiciel de gestion de copropriété et de conciergerie digitale pour les immeubles de luxe — une IA qui agit pour le résident : appelle le voiturier, passe la commande, ouvre la porte, de bout en bout en une seule conversation. Construit sur vingt ans d'expérience en conciergerie et en domotique. Bureaux à Montevideo et Miami."
 ---
 Mirigi est la **première plateforme de conciergerie dont l'agent IA — Miri — ne se contente pas de répondre mais agit pour le résident**. Elle orchestre **voiturier, livraisons, réservations, accès et la maison elle-même** sur chacun des services de l'immeuble, dans la langue de chaque résident, de bout en bout en une seule conversation. Les autres systèmes répondent à des questions. Miri *passe la commande, appelle le voiturier, réserve l'installation*. Sans formulaires, sans application à apprendre, sans attente. **Il suffit de demander.**
 

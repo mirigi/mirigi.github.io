@@ -11,9 +11,9 @@ phoneLabel: Teléfono
 customersTitle: Nuestros clientes de lujo incluyen
 customersText: Contemple las maravillas arquitectónicas que confían en Mirigi por su excelencia operativa. Estos edificios icónicos son parte de nuestra estimada clientela, mostrando la integración perfecta y la eficiencia superior que Mirigi aporta.
 contactText: Únase a las filas de estas distinguidas estructuras y eleve el potencial de su edificio con Mirigi. Contáctenos a través de cualquiera de nuestros canales para programar una demostración y descubrir cómo los servicios de conserjería digital de Mirigi pueden impulsar su desarrollo. Experimente la transformación e innovación que solo Mirigi puede ofrecer!
-title: Mirigi Conserje IA
-keywords: conserje ia, miri, gestión de edificios, experiencia del residente, vida de lujo, automatización, edificio inteligente
-description: "La primera plataforma de conserjería cuya IA actúa por el residente — llama al valet, hace el pedido, abre la puerta, de punta a punta en una sola conversación. Un sistema moderno para condominios de lujo, construido sobre veinte años de experiencia en conserjería y automatización de edificios. Oficinas en Montevideo y Miami."
+title: "Software de Administración de Edificios y Conserjería Digital | Mirigi"
+keywords: software para administración de edificios, software para administración de consorcios, software para condominios, software de conserjería, conserjería digital, experiencia del residente, gestión de edificios, reserva de amenidades, administración de consorcios, edificio inteligente, Mirigi
+description: "Mirigi es software de administración de edificios y conserjería digital para condominios de lujo — una IA que actúa por el residente: llama al valet, hace el pedido, abre la puerta, de punta a punta en una sola conversación. Construido sobre veinte años de experiencia en conserjería y automatización de edificios. Oficinas en Montevideo y Miami."
 ---
 Mirigi es la **primera plataforma de conserjería cuya agente de IA — Miri — no solo responde sino que actúa por el residente**. Coordina **valet, entregas, reservas, accesos y la propia casa** en cada servicio del edificio, en el idioma de cada residente, de punta a punta en una sola conversación. Los demás responden preguntas. Miri *hace el pedido, llama al valet, reserva la amenidad*. Sin formularios, sin apps que aprender, sin esperas. **Solo pregunta.**
 

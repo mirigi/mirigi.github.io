@@ -11,9 +11,9 @@ phoneLabel: Phone
 customersTitle: Our luxury customers include
 customersText: Behold the architectural marvels that trust Mirigi for their operational excellence. These iconic buildings are part of our esteemed clientele, showcasing the seamless integration and superior efficiency that Mirigi brings. 
 contactText: Join the ranks of these distinguished structures and elevate your building's potential with Mirigi. Contact us through any of our channels to schedule a demonstration and discover how Mirigi's digital counseling can boost your development! Experience the transformation and innovation that only Mirigi can offer.
-title: Mirigi AI Concierge
-keywords: ai concierge, miri, building management, resident experience, luxury living, automation, smart building
-description: "The first concierge platform whose AI acts for residents — booking the valet, placing the order, opening the door, end to end in one conversation. A modern system for luxury condominiums, built on twenty years of concierge and building-automation experience. Offices in Montevideo and Miami."
+title: "Building Concierge & Condo Management Software | Mirigi"
+keywords: condo management software, building concierge software, digital concierge software for condos, resident experience platform, amenity booking software, HOA management software, luxury condominium management, condo software, building management software, package tracking, valet management, smart building technology, Mirigi
+description: "Mirigi is building concierge and condo management software for luxury condominiums — an AI concierge that acts for residents, booking the valet, placing the order, opening the door, end to end in one conversation. Built on twenty years of concierge and building-automation experience. Offices in Montevideo and Miami."
 ---
 Mirigi is the **first concierge platform whose AI agent — Miri — doesn't just answer residents but acts for them**. She orchestrates **valet, deliveries, reservations, access and the home itself** across every service the building offers, in every resident's language, end to end in a single conversation. Other systems answer questions. Miri *places the order, requests the car, books the amenity*. No forms, no apps to learn, no hold music. **Just ask.**
 

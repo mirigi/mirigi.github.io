@@ -28,3 +28,6 @@ package-lock.json
 # Agent working dirs
 docs/superpowers/
 
+# Miniapp video renders
+video-out/
+

@@ -47,10 +47,10 @@ $media-bigimage-width: 1200px;
   // Slide-in transitions — always present so they fire when js-reveal is removed
   > .image,
   > .content {
-    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
   }
   > .content {
-    transition-delay: 0.1s; // content follows image
+    transition-delay: 0.04s; // content follows image
   }
   > .image,
   > .content {
@@ -147,10 +147,23 @@ $media-bigimage-width: 1200px;
 // Scroll-reveal: initial off-screen positions. JS removes js-reveal when card enters viewport.
 // Transitions defined above fire on class removal, animating from these to natural positions.
 .showcase.js-reveal {
-  &:not(.reverse) > .image   { transform: translateX(-110%); opacity: 0; }
-  &:not(.reverse) > .content { transform: translateX( 110%); opacity: 0; }
-  &.reverse        > .image   { transform: translateX( 110%); opacity: 0; }
-  &.reverse        > .content { transform: translateX(-110%); opacity: 0; }
+  &:not(.reverse) > .image   { transform: translateX(-24px); opacity: 0.82; }
+  &:not(.reverse) > .content { transform: translateX(24px); opacity: 0.82; }
+  &.reverse        > .image   { transform: translateX(24px); opacity: 0.82; }
+  &.reverse        > .content { transform: translateX(-24px); opacity: 0.82; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase > .image,
+  .showcase > .content {
+    transition: none;
+  }
+
+  .showcase.js-reveal > .image,
+  .showcase.js-reveal > .content {
+    transform: none;
+    opacity: 1;
+  }
 }
 
 @media (max-width: $media-bigimage-width) {

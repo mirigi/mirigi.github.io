@@ -3,7 +3,8 @@
     "name": "startbootstrap-grayscale",
     "version": "5.0.8",
     "scripts": {
-        "start": "node_modules/.bin/gulp watch"
+        "start": "node_modules/.bin/gulp watch",
+        "render:video": "node scripts/render-miniapp-video.js"
     },
     "description": "A grayscale one page HTML theme for Bootstrap.",
     "keywords": [
@@ -45,6 +46,7 @@
         "gulp-rename": "1.4.0",
         "gulp-sass": "4.0.2",
         "gulp-uglify": "3.0.2",
-        "merge-stream": "2.0.0"
+        "merge-stream": "2.0.0",
+        "puppeteer": "^24.42.0"
     }
 }

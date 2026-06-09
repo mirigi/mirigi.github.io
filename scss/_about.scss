@@ -22,3 +22,29 @@
     max-height: 15rem; 
   }
 }
+
+@media (max-width: 768px) {
+  .about-section {
+    padding-top: 3rem;
+  }
+
+  .about-section .row {
+    margin-bottom: 2rem !important;
+  }
+
+  .about-section .image-container {
+    height: auto;
+    max-height: none;
+    margin-bottom: 2rem;
+  }
+
+  .about-section .home-about-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .about-section p {
+    margin-bottom: 2rem;
+  }
+}

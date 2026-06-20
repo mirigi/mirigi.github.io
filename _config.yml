@@ -32,6 +32,10 @@ languages:
   - es
   - fr
 
+# Demo-request modal → Google Sheet (Apps Script Web App URL).
+# Paste the /exec URL from docs/demo-form-setup.md here. Leave empty to disable submit.
+demo_form_endpoint: "https://script.google.com/macros/s/AKfycbzoc393pcHJWgMWt0ZHElqHeIaMJSt7SCpvKluSikGFmPAaEl355im4MM6tjkE_qqWj/exec"
+
 
 collections:
   features:

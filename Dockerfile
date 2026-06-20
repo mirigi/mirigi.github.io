@@ -1,8 +1,11 @@
-# Use the official Ruby image as the base image
-FROM ruby:latest
+# Pin to a stable Ruby that Jekyll 4.x supports. `ruby:latest` floated to
+# Ruby 4.0, which dropped logger/csv from the default gems and breaks Jekyll.
+FROM ruby:3.3
 
-# Install dependencies
-RUN apt-get update -qq && apt-get install -y nodejs npm
+# Note: Node/npm are NOT needed here. The container only runs `jekyll serve`;
+# frontend assets (gulp/SCSS) are compiled on the host via `make all` and
+# committed under css/. Installing nodejs+npm pulled a huge, fragile dep tree
+# (gyp/node-gyp/eslint) that broke the image build, so it was removed.
 
 # Set the working directory
 WORKDIR /usr/src/app

@@ -66,6 +66,7 @@
     updateCounter();
     setSegPristine(true);   // no default selection → invite a tap each open
     updateSegThumb();
+    setSending(false);      // restore the submit button (stale "Sending…" after a prior success)
   }
 
   // Set the Country field to the geo-detected default, unless the user has

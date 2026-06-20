@@ -615,6 +615,7 @@ layout: default
 
     <div class="contact-cta-row">
       <a class="contact-cta contact-cta--primary"
+         data-demo-open
          href="mailto:info@mirigi.com?subject={{ site.data[page.lang].contact_subject | default: 'Demo request' | url_encode }}&body={{ site.data[page.lang].contact_body | default: 'Hi Mirigi team, I would like to schedule a 30-minute demo for our building.' | url_encode }}">
         {{ site.data[page.lang].contact_cta_primary | default: "Schedule a demo" }} &rarr;
       </a>
@@ -635,7 +636,8 @@ layout: default
 <!-- Floating "Schedule a demo" pill — appears after the masthead, persistent
      anchor to #contacts. Doubles as a back-to-CTA on long-scroll. -->
 <a href="#contacts"
-   class="floating-cta js-scroll-trigger"
+   class="floating-cta"
+   data-demo-open
    aria-label="{{ site.data[page.lang].schedule_demo_nav | default: 'Schedule a demo' }}">
   {{ site.data[page.lang].schedule_demo_nav | default: 'Schedule a demo' }} <span aria-hidden="true">&rarr;</span>
 </a>
@@ -688,4 +690,11 @@ body.has-scrolled .floating-cta {
   update();
 })();
 </script>
+
+<!-- Demo-request modal + lead-capture form -->
+<meta name="demo-form-endpoint" content="{{ site.demo_form_endpoint }}">
+{% include demo-modal.html %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.min.css">
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
+<script src="{{ '/js/demo-form.js' | relative_url }}"></script>
 </main>

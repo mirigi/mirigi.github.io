@@ -1,0 +1,352 @@
+{%- assign t = site.data[page.lang] -%}
+<!-- Demo-request modal. Opened by any [data-demo-open] trigger. See js/demo-form.js -->
+<div class="demo-modal" id="demoModal" aria-hidden="true">
+  <div class="demo-modal__overlay" data-demo-close></div>
+  <div class="demo-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle">
+    <button type="button" class="demo-modal__close" data-demo-close
+            aria-label="{{ t.demo_form_close | default: 'Close' }}">&times;</button>
+
+    <div class="demo-modal__panel" data-demo-panel="form">
+      <header class="demo-modal__head">
+        <span class="home-eyebrow">{{ t.contact_eyebrow | default: "Let's talk" }}</span>
+        <h2 id="demoModalTitle">{{ t.demo_form_title | default: "Schedule a demo" }}</h2>
+        <p>{{ t.demo_form_subtitle | default: "Tell us a little about your building and we'll arrange a private 30-minute walkthrough." }}</p>
+      </header>
+
+      <form class="demo-form" id="demoForm" novalidate>
+        <!-- Honeypot: must stay empty. Visually hidden, off-screen, aria-hidden. -->
+        <div class="demo-form__hp" aria-hidden="true">
+          <label>Company website<input type="text" name="company_url" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="demo-form__field">
+          <label for="df-name">{{ t.demo_form_name_label | default: "Full name" }} <span class="demo-form__req">*</span></label>
+          <input type="text" id="df-name" name="name" autocomplete="name"
+                 placeholder="{{ t.demo_form_name_placeholder | default: 'Jane Doe' }}">
+          <p class="demo-form__error" data-error-for="name"></p>
+        </div>
+
+        <div class="demo-form__row">
+          <div class="demo-form__field">
+            <label for="df-email">{{ t.demo_form_email_label | default: "Email" }}</label>
+            <input type="email" id="df-email" name="email" autocomplete="email"
+                   role="combobox" aria-expanded="false" aria-autocomplete="list"
+                   placeholder="{{ t.demo_form_email_placeholder | default: 'jane@example.com' }}">
+            <ul class="demo-email-suggest" data-email-suggest role="listbox"
+                aria-label="{{ t.demo_form_email_label | default: 'Email' }}"></ul>
+            <p class="demo-form__error" data-error-for="email"></p>
+          </div>
+          <div class="demo-form__field">
+            <label for="df-phone">{{ t.demo_form_phone_label | default: "Phone" }}</label>
+            <input type="tel" id="df-phone" name="phone" autocomplete="tel">
+            <p class="demo-form__error" data-error-for="phone"></p>
+          </div>
+        </div>
+        <p class="demo-form__hint">{{ t.demo_form_contact_hint | default: "Add your email, your phone, or both — at least one so we can reach you." }}</p>
+
+        <div class="demo-form__field">
+          <label for="df-country">{{ t.demo_form_country_label | default: "Country" }}</label>
+          <div class="demo-combo" data-combo>
+            <span class="demo-combo__selected-flag" data-combo-flag aria-hidden="true"></span>
+            <input type="text" id="df-country" class="demo-combo__input" role="combobox"
+                   aria-expanded="false" aria-autocomplete="list" autocomplete="off"
+                   placeholder="{{ t.demo_form_country_placeholder | default: 'Search country…' }}">
+            <input type="hidden" name="country">
+            <ul class="demo-combo__list" role="listbox"></ul>
+          </div>
+        </div>
+
+        <div class="demo-form__field">
+          <span class="demo-form__seglabel">{{ t.demo_form_size_label | default: "Building size (units)" }}
+            <span class="demo-seg__hint" data-seg-hint>{{ t.demo_form_size_hint | default: "— tap to select" }}</span>
+          </span>
+          <div class="demo-seg is-pristine" role="radiogroup" aria-label="{{ t.demo_form_size_label | default: 'Building size (units)' }}">
+            <span class="demo-seg__thumb" aria-hidden="true"></span>
+            <label class="demo-seg__opt">
+              <input type="radio" name="building_size" value="1-100">
+              <span>{{ t.demo_form_size_1 | default: "1–100" }}</span>
+            </label>
+            <label class="demo-seg__opt">
+              <input type="radio" name="building_size" value="101-200">
+              <span>{{ t.demo_form_size_2 | default: "101–200" }}</span>
+            </label>
+            <label class="demo-seg__opt">
+              <input type="radio" name="building_size" value="200+">
+              <span>{{ t.demo_form_size_3 | default: "200+" }}</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="demo-form__field">
+          <label for="df-comments">{{ t.demo_form_comments_label | default: "Anything we should know?" }}</label>
+          <textarea id="df-comments" name="comments" maxlength="300" rows="3"
+                    placeholder="{{ t.demo_form_comments_placeholder | default: "Tell us about your property, timeline, or what you'd like to see." }}"></textarea>
+          <span class="demo-form__counter" data-counter data-counter-tpl="{count}/300">0/300</span>
+        </div>
+
+        <p class="demo-form__error demo-form__error--global" data-error-for="global"></p>
+
+        <button type="submit" class="contact-cta contact-cta--primary demo-form__submit"
+                data-label-submit="{{ t.demo_form_submit | default: 'Request my demo' }}"
+                data-label-sending="{{ t.demo_form_sending | default: 'Sending…' }}">
+          {{ t.demo_form_submit | default: "Request my demo" }}
+        </button>
+        <a class="demo-form__mailto" href="mailto:info@mirigi.com">{{ t.demo_form_mailto_fallback | default: "Or email us at info@mirigi.com" }}</a>
+      </form>
+    </div>
+
+    <div class="demo-modal__panel demo-modal__success" data-demo-panel="success" hidden>
+      <div class="demo-modal__check" aria-hidden="true">&#10003;</div>
+      <h2>{{ t.demo_form_success_title | default: "Thank you — we'll be in touch." }}</h2>
+      <p>{{ t.demo_form_success_body | default: "We've received your request and will reach out shortly to arrange your walkthrough." }}</p>
+      <button type="button" class="contact-cta contact-cta--secondary" data-demo-close>{{ t.demo_form_close | default: "Close" }}</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.DEMO_FORM_STRINGS = {
+    errName: {{ t.demo_form_err_name | default: "Please enter your name." | jsonify }},
+    errContact: {{ t.demo_form_err_contact | default: "Please add an email or a phone number." | jsonify }},
+    errEmail: {{ t.demo_form_err_email | default: "Please enter a valid email address." | jsonify }},
+    errPhone: {{ t.demo_form_err_phone | default: "Please enter a valid phone number." | jsonify }},
+    errNetwork: {{ t.demo_form_err_network | default: "Something went wrong. Please try again, or email us directly." | jsonify }}
+  };
+</script>
+
+<style>
+.demo-modal {
+  position: fixed; inset: 0; z-index: 1100;
+  display: none; align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.demo-modal.is-open { display: flex; }
+.demo-modal__overlay {
+  position: absolute; inset: 0;
+  /* Solid-ish dark scrim instead of backdrop-filter: blur(). A live blur over
+     the homepage's running animations (carousel, typewriter) is recomputed every
+     frame and pegs the CPU. A plain rgba scrim gives the same focus, cheaply. */
+  background: rgba(16,14,12,0.92);
+  opacity: 0; transition: opacity .25s ease;
+}
+.demo-modal.is-open .demo-modal__overlay { opacity: 1; }
+.demo-modal__dialog {
+  position: relative;
+  width: 100%; max-width: 560px;
+  max-height: 92vh; overflow-y: auto;
+  background: #1c1a18;
+  border: 1px solid rgba(201,169,97,0.28);
+  border-radius: 10px;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,0.7);
+  padding: 2.4rem 2.2rem 2rem;
+  color: #f2efe9;
+  transform: translateY(14px) scale(.985); opacity: 0;
+  transition: transform .28s cubic-bezier(.2,.7,.2,1), opacity .28s ease;
+}
+.demo-modal.is-open .demo-modal__dialog { transform: none; opacity: 1; }
+.demo-modal__close {
+  position: absolute; top: .7rem; right: .9rem;
+  background: none; border: none; cursor: pointer;
+  color: rgba(242,239,233,0.6); font-size: 1.9rem; line-height: 1;
+  transition: color .2s;
+}
+.demo-modal__close:hover { color: #c9a961; }
+
+.demo-modal__head { text-align: center; margin-bottom: 1.6rem; }
+.demo-modal__head .home-eyebrow { color: #c9a961; }
+.demo-modal__head h2 {
+  font-family: 'DM Serif Display', Georgia, serif; font-weight: 400;
+  font-size: 1.9rem; line-height: 1.1; letter-spacing: -0.015em;
+  color: #f2efe9 !important; text-transform: none !important; margin: .3rem 0 .6rem;
+}
+.demo-modal__head p {
+  font-size: .95rem; line-height: 1.5; color: rgba(242,239,233,0.72); margin: 0;
+}
+
+.demo-form__field { margin-bottom: 1rem; }
+.demo-form__row { display: flex; gap: 1rem; }
+.demo-form__row .demo-form__field { flex: 1; min-width: 0; }
+.demo-form label, .demo-form__seglabel {
+  display: block; font-family: 'DM Sans','Open Sans',sans-serif;
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(242,239,233,0.7); margin-bottom: .4rem;
+}
+.demo-form__req { color: #c9a961; }
+.demo-form input[type=text],
+.demo-form input[type=email],
+.demo-form input[type=tel],
+.demo-form textarea {
+  width: 100%; box-sizing: border-box;
+  background: rgba(242,239,233,0.05);
+  border: 1px solid rgba(242,239,233,0.18);
+  border-radius: 5px; padding: .7rem .8rem;
+  color: #f2efe9; font-family: 'DM Sans','Open Sans',sans-serif; font-size: .95rem;
+  transition: border-color .2s, background .2s;
+}
+.demo-form textarea { resize: vertical; }
+.demo-form input:focus, .demo-form textarea:focus {
+  outline: none; border-color: #c9a961; background: rgba(242,239,233,0.08);
+}
+.demo-form ::placeholder { color: rgba(242,239,233,0.32); }
+.demo-form__hint { font-size: .78rem; color: rgba(242,239,233,0.5); margin: -.4rem 0 1rem; }
+.demo-form__error {
+  font-size: .78rem; color: #e3a08a; margin: .35rem 0 0; min-height: 0; display: none;
+}
+.demo-form__error.is-visible { display: block; }
+.demo-form__error--global { text-align: center; margin: .2rem 0 .8rem; }
+.demo-form__counter {
+  display: block; text-align: right; font-size: .72rem;
+  color: rgba(242,239,233,0.4); margin-top: .3rem;
+}
+.demo-form__counter.is-near { color: #c9a961; }
+
+/* honeypot — fully hidden */
+.demo-form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* "tap to select" hint next to the label — fades until a choice is made */
+.demo-seg__hint {
+  font-size: .7rem; letter-spacing: .04em; text-transform: none;
+  color: #c9a961; margin-left: .35rem;
+  animation: segHintBlink 2.8s ease-in-out infinite;
+}
+.demo-seg__hint.is-hidden { display: none; }
+@keyframes segHintBlink { 0%,100% { opacity: .6; } 50% { opacity: .95; } }
+
+/* segmented building-size selector */
+.demo-seg {
+  position: relative; display: flex; gap: .25rem;
+  background: rgba(242,239,233,0.05);
+  border: 1px solid rgba(242,239,233,0.18);
+  border-radius: 8px; padding: .25rem;
+}
+.demo-seg__thumb {
+  position: absolute; top: .25rem; bottom: .25rem; left: .25rem;
+  width: 0; border-radius: 6px;
+  background: linear-gradient(135deg, #c9a961 0%, #d8bd7e 100%);
+  box-shadow: 0 4px 14px -4px rgba(201,169,97,0.6);
+  transition: transform .28s cubic-bezier(.2,.7,.2,1), width .28s cubic-bezier(.2,.7,.2,1), opacity .2s;
+  opacity: 0; pointer-events: none;
+}
+.demo-seg__opt {
+  position: relative; z-index: 1; flex: 1; margin: 0 !important;
+  text-align: center; cursor: pointer;
+}
+.demo-seg__opt input { position: absolute; opacity: 0; pointer-events: none; }
+.demo-seg__opt span {
+  display: block; padding: .6rem .4rem;
+  font-family: 'DM Sans','Open Sans',sans-serif; font-size: .9rem; font-weight: 600;
+  letter-spacing: .02em; color: rgba(242,239,233,0.72);
+  text-transform: none;
+  border-radius: 6px; transition: color .2s ease, transform .15s ease;
+}
+.demo-seg__opt input:checked + span { color: #1c1a18; }
+.demo-seg__opt input:focus-visible + span { box-shadow: 0 0 0 2px rgba(201,169,97,0.55); }
+.demo-seg__opt.is-tapped span { transform: scale(1.04); }
+
+.demo-form__submit { width: 100%; justify-content: center; margin-top: .4rem; }
+.demo-form__submit[disabled] { opacity: .7; cursor: default; }
+.demo-form__mailto {
+  display: block; text-align: center; margin-top: .9rem;
+  font-size: .82rem; color: rgba(242,239,233,0.55); text-decoration: none;
+}
+.demo-form__mailto:hover { color: #c9a961; }
+
+/* searchable country combobox */
+.demo-combo { position: relative; }
+.demo-combo__list {
+  position: absolute; z-index: 5; top: calc(100% + 4px); left: 0; right: 0;
+  list-style: none; margin: 0; padding: .25rem;
+  max-height: 220px; overflow-y: auto;
+  background: #24211e; border: 1px solid rgba(201,169,97,0.3); border-radius: 6px;
+  box-shadow: 0 18px 40px -14px rgba(0,0,0,0.6);
+  display: none;
+}
+.demo-combo__list.is-open { display: block; }
+.demo-combo__list li {
+  padding: .5rem .6rem; border-radius: 4px; cursor: pointer;
+  font-size: .9rem; color: rgba(242,239,233,0.85);
+  display: flex; align-items: center; gap: .55rem;
+}
+.demo-combo__list li.is-active, .demo-combo__list li:hover {
+  background: rgba(201,169,97,0.16); color: #f2efe9;
+}
+.demo-combo__flag { font-size: 1.05rem; }
+.demo-combo__dial { margin-left: auto; color: rgba(242,239,233,0.45); font-size: .82rem; }
+/* selected-country flag shown inside the field */
+.demo-combo__selected-flag {
+  position: absolute; left: .8rem; top: 50%; transform: translateY(-50%);
+  font-size: 1.1rem; line-height: 1; pointer-events: none; z-index: 1; display: none;
+}
+.demo-combo.has-flag .demo-combo__selected-flag { display: block; }
+.demo-combo.has-flag .demo-combo__input { padding-left: 2.5rem; }
+
+/* email domain autocomplete chips */
+.demo-email-suggest {
+  list-style: none; margin: .55rem 0 0; padding: 0;
+  display: none; flex-wrap: wrap; gap: .4rem;
+}
+.demo-email-suggest.is-open { display: flex; }
+.demo-email-chip {
+  padding: .35rem .7rem; border-radius: 999px; cursor: pointer;
+  font-family: 'DM Sans','Open Sans',sans-serif; font-size: .82rem;
+  color: rgba(242,239,233,0.85);
+  background: rgba(242,239,233,0.06);
+  border: 1px solid rgba(242,239,233,0.16);
+  white-space: nowrap; transition: background .15s, border-color .15s, color .15s;
+}
+.demo-email-chip.is-active, .demo-email-chip:hover {
+  background: rgba(201,169,97,0.16); border-color: rgba(201,169,97,0.4); color: #f2efe9;
+}
+
+/* success panel */
+.demo-modal__success { text-align: center; padding: 1.5rem 0; }
+.demo-modal__check {
+  width: 64px; height: 64px; margin: 0 auto 1.2rem;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; font-size: 1.8rem; color: #1c1a18;
+  background: linear-gradient(135deg, #c9a961 0%, #d8bd7e 100%);
+  box-shadow: 0 10px 30px -8px rgba(201,169,97,0.6);
+}
+.demo-modal__success h2 {
+  font-family: 'DM Serif Display', Georgia, serif; font-weight: 400;
+  font-size: 1.7rem; color: #f2efe9 !important; text-transform: none !important; margin: 0 0 .7rem;
+}
+.demo-modal__success p { color: rgba(242,239,233,0.72); font-size: .95rem; margin: 0 0 1.6rem; }
+
+/* intl-tel-input (v23) dark theme.
+   Doubled class selectors (.x.x) raise specificity above the CDN stylesheet's
+   single-class rules, so these win regardless of CSS load order AND whether the
+   dropdown is rendered inline or appended to <body>. */
+.iti { width: 100%; }
+.iti { --iti-hover-color: rgba(201,169,97,0.16); --iti-text-gray: rgba(242,239,233,0.5); --iti-border-gray: rgba(242,239,233,0.18); }
+.iti__dropdown-content.iti__dropdown-content {
+  background-color: #24211e;
+  border: 1px solid rgba(201,169,97,0.3);
+  box-shadow: 0 18px 40px -14px rgba(0,0,0,0.6);
+  color: #f2efe9;
+}
+.iti__search-input.iti__search-input {
+  background: #1c1a18; color: #f2efe9;
+  border-bottom: 1px solid rgba(242,239,233,0.12);
+}
+.iti__search-input.iti__search-input::placeholder { color: rgba(242,239,233,0.4); }
+.iti__country.iti__country { color: #f2efe9; }
+.iti__country-name.iti__country-name { color: #f2efe9; }
+.iti__dial-code.iti__dial-code { color: rgba(242,239,233,0.55); }
+.iti__country.iti__highlight { background-color: rgba(201,169,97,0.16); }
+/* the selected-flag button sitting inside the dark phone input */
+.iti__selected-dial-code.iti__selected-dial-code { color: #f2efe9; }
+.iti__arrow.iti__arrow { border-top-color: rgba(242,239,233,0.6); }
+.iti__arrow--up.iti__arrow--up { border-bottom-color: rgba(242,239,233,0.6); }
+
+@media (max-width: 480px) {
+  .demo-modal__dialog { padding: 2rem 1.3rem 1.6rem; max-height: 94vh; }
+  .demo-modal__head h2 { font-size: 1.6rem; }
+  .demo-form__row { flex-direction: column; gap: 0; }
+}
+@media (max-width: 420px) {
+  /* tactile horizontal picker for building size */
+  .demo-seg { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .demo-seg__opt { flex: 0 0 40%; scroll-snap-align: center; }
+}
+</style>

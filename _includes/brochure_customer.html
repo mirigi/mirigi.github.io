@@ -1,6 +1,7 @@
 {% comment %}
 Brochure Customer Component
 Usage: {% include brochure_customer.html customer=customer %}
+Renders image, name, location/description, and optional pull quote.
 {% endcomment %}
 
 {% if include.customer.image contains "http://" or include.customer.image contains "https://" or include.customer.image | slice: 0, 1 == "/" %}
@@ -11,8 +12,14 @@ Usage: {% include brochure_customer.html customer=customer %}
 
 <div class="brochure-customer">
   <div class="brochure-customer-image" style="background-image: url('{{ image }}')"></div>
-  <h4>{{ include.customer.name }}</h4>
-  {% if include.customer.description %}
-  <p class="brochure-customer-location">{{ include.customer.description }}</p>
-  {% endif %}
+  <div class="brochure-customer-meta">
+    <h4>{{ include.customer.name }}</h4>
+    {% assign loc = include.customer.location | default: include.customer.description %}
+    {% if loc %}
+    <p class="brochure-customer-location">{{ loc }}</p>
+    {% endif %}
+    {% if include.customer.pullquote %}
+    <p class="brochure-customer-pullquote">&ldquo;{{ include.customer.pullquote }}&rdquo;</p>
+    {% endif %}
+  </div>
 </div>

@@ -2,15 +2,15 @@
 layout: brochure
 lang: en
 title: Mirigi Smart Concierge
-brochure_subtitle: Digital Concierge for Luxury Buildings
+brochure_subtitle: AI Concierge for Luxury Buildings
 aboutTitle: About Mirigi
 customersTitle: Buildings That Trust Us
-contactText: Join the ranks of these distinguished structures and elevate your building's potential with Mirigi. Contact us to schedule a demonstration and discover how Mirigi's digital concierge can transform your development.
 keywords: smart concierge, building management, resident experience, luxury living, automation, smart building, brochure
-description: "Mirigi Smart Concierge product brochure - Digital concierge services for luxury condominium buildings."
+description: "Mirigi Smart Concierge product brochure - AI concierge services for luxury condominium buildings."
 ---
-Mirigi **revolutionizes** condominium living by offering a **digital concierge service** that enhances resident-building interactions. It provides luxury interfaces for various services like reservations, valet parking, and deliveries, accessible via mobile devices or in-wall touch panels.
 
-Mirigi empowers building staff to deliver **exceptional service** efficiently, streamlining operations and boosting productivity. With integration into building automation, residents enjoy **unprecedented control** over their living spaces, including security features.
+Mirigi is the **complete concierge platform** for a luxury condominium — one system that lets residents reach every service and lets staff run every operation, all under the building's own brand.
 
-Discover the prestigious buildings that have adopted Mirigi for an elevated lifestyle experience.
+At its center is **Miri**, the first AI concierge agent built to **act, not just answer**. Residents ask in plain language — *"bring my car up in ten minutes,"* *"book the spa for Thursday morning"* — and Miri carries the request through to completion. The conversation is the interface.
+
+For the building, Mirigi means a **front desk that handles more with less friction**, shared spaces that run without spreadsheets, and residents who feel genuinely looked after. A concierge that works every hour your staff cannot.

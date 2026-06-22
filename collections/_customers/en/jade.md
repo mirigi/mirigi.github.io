@@ -9,5 +9,7 @@ link: https://maps.app.goo.gl/EVUXegpLRBz7W2Fb6
 title: Jade Beach
 keywords: Jade Beach, Sunny Isles Beach, Miami, luxury condominium, oceanfront living
 description: "Jade Beach, Sunny Isles Beach: Experience luxury oceanfront living with breathtaking views and world-class amenities."
+location: "Sunny Isles Beach, Miami"
+pullquote: "Packages arrive with an instant notification — no concierge calls."
 ---
 Jade Beach offers luxurious beachfront living with stunning ocean views and state-of-the-art amenities in the heart of Sunny Isles Beach.

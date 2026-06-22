@@ -7,5 +7,7 @@ image_credits: ''
 title: Joy Montevideo
 keywords: Joy Montevideo, Uruguay, appartements de luxe, vie moderne, vues uniques
 description: "Joy Montevideo: Découvrez une nouvelle ère de vie de luxe en Uruguay avec des vues uniques et un design moderne."
+location: "Montevideo, Uruguay"
+pullquote: "Les invités sont préautorisés en quelques secondes — la réception les accueille par leur nom."
 ---
 Une nouvelle façon de vivre en Uruguay avec des vues uniques, des typologies variées et une atmosphère inspirante qui exprime le style au-delà de l'apparence.

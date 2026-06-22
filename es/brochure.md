@@ -2,15 +2,15 @@
 layout: brochure
 lang: es
 title: Conserjería Digital Mirigi
-brochure_subtitle: Conserjería Digital para Edificios de Lujo
+brochure_subtitle: Conserje IA para Edificios de Lujo
 aboutTitle: Sobre Mirigi
 customersTitle: Edificios Que Confían en Nosotros
-contactText: Únase a las filas de estas distinguidas estructuras y eleve el potencial de su edificio con Mirigi. Contáctenos para programar una demostración y descubrir cómo la conserjería digital de Mirigi puede transformar su desarrollo.
 keywords: conserjería inteligente, gestión de edificios, experiencia del residente, vida de lujo, automatización, edificio inteligente, folleto
-description: "Folleto de Mirigi Smart Concierge - Servicios de conserjería digital para edificios de condominios de lujo."
+description: "Folleto de Mirigi Smart Concierge - Servicios de conserjería IA para edificios de condominios de lujo."
 ---
-Mirigi **revoluciona** la vida en condominio al ofrecer un **servicio de conserjería digital** que mejora las interacciones entre residentes y edificios. Proporciona interfaces de lujo para diversos servicios como reservas, valet parking y entregas, accesibles a través de dispositivos móviles o paneles táctiles en la pared.
 
-Mirigi empodera al personal del edificio para brindar un **servicio excepcional** de manera eficiente, optimizando las operaciones y aumentando la productividad. Con la integración en la automatización del edificio, los residentes disfrutan de un **control sin precedentes** sobre sus espacios de vida, incluyendo funciones de seguridad.
+Mirigi es la **plataforma de conserjería completa** para un condominio de lujo — un único sistema que permite a los residentes acceder a todos los servicios y al personal gestionar toda la operación, bajo la propia identidad del edificio.
 
-Descubra los prestigiosos edificios que han adoptado Mirigi para una experiencia de vida elevada.
+En su centro está **Miri**, la primera agente de conserjería IA diseñada para **actuar, no solo responder**. Los residentes preguntan en lenguaje natural — *"tráeme el auto en diez minutos,"* *"reserva el spa para el jueves por la mañana"* — y Miri lleva la solicitud hasta su conclusión. La conversación es la interfaz.
+
+Para el edificio, Mirigi significa una **recepción que resuelve más con menos fricción**, espacios comunes que funcionan sin hojas de cálculo, y residentes que se sienten verdaderamente atendidos. Una conserjería que trabaja cada hora que tu equipo no puede.

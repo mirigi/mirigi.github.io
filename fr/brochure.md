@@ -2,15 +2,15 @@
 layout: brochure
 lang: fr
 title: Conciergerie Numérique Mirigi
-brochure_subtitle: Conciergerie Numérique pour Immeubles de Luxe
+brochure_subtitle: Conciergerie IA pour Immeubles de Luxe
 aboutTitle: À Propos de Mirigi
 customersTitle: Les Immeubles Qui Nous Font Confiance
-contactText: Rejoignez les rangs de ces structures distinguées et élevez le potentiel de votre immeuble avec Mirigi. Contactez-nous pour planifier une démonstration et découvrir comment la conciergerie numérique de Mirigi peut transformer votre développement.
 keywords: conciergerie intelligente, gestion immobilière, expérience résident, vie de luxe, automatisation, immeuble intelligent, brochure
-description: "Brochure Mirigi Smart Concierge - Services de conciergerie numérique pour immeubles de copropriété de luxe."
+description: "Brochure Mirigi Smart Concierge - Services de conciergerie IA pour immeubles de copropriété de luxe."
 ---
-Mirigi **révolutionne** la vie en copropriété en offrant un **service de conciergerie numérique** qui améliore les interactions entre résidents et immeubles. Il fournit des interfaces de luxe pour divers services comme les réservations, le service de voiturier et les livraisons, accessibles via des appareils mobiles ou des écrans tactiles muraux.
 
-Mirigi permet au personnel de l'immeuble de fournir un **service exceptionnel** de manière efficace, rationalisant les opérations et augmentant la productivité. Grâce à l'intégration dans l'automatisation du bâtiment, les résidents bénéficient d'un **contrôle sans précédent** sur leurs espaces de vie, y compris les fonctionnalités de sécurité.
+Mirigi est la **plateforme de conciergerie complète** pour une résidence de luxe — un système unique qui permet aux résidents d'accéder à tous les services et au personnel de gérer toute l'opération, sous la propre identité de l'immeuble.
 
-Découvrez les immeubles prestigieux qui ont adopté Mirigi pour une expérience de vie élevée.
+En son centre se trouve **Miri**, le premier agent de conciergerie IA conçu pour **agir, pas seulement répondre**. Les résidents s'expriment en langage naturel — *"montez ma voiture dans dix minutes,"* *"réservez le spa jeudi matin"* — et Miri conduit la demande jusqu'à son terme. La conversation est l'interface.
+
+Pour l'immeuble, Mirigi signifie une **réception qui traite plus avec moins de friction**, des espaces communs qui fonctionnent sans tableurs, et des résidents qui se sentent véritablement pris en charge. Une conciergerie qui travaille chaque heure que votre équipe ne peut pas.

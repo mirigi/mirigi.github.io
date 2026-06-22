@@ -127,16 +127,27 @@ function _esc(s) {
 // Select `testEmail` in the toolbar's function dropdown and click Run.
 // First run triggers the send-email authorization prompt (Allow it).
 // If it still fails, the editor shows the exact error here.
-function testEmail() {
-  // Placeholder: a renowned designer + reserved (RFC 2606 / 555) contact
-  // details, so the sample data is elegant and carries no legal exposure.
+//
+// Sample leads use a renowned woman designer per language + reserved-for-docs
+// contact details (example.com per RFC 2606, 555-01xx fictional numbers), so
+// the data is elegant and carries no legal exposure.
+var TEST_LEADS = {
+  en: { name: 'Eileen Gray',        email: 'eileen.gray@example.com',        phone: '+1 555 0142', country: 'Ireland' },
+  es: { name: 'Clara Porset',       email: 'clara.porset@example.com',       phone: '+1 555 0153', country: 'Mexico'  },
+  fr: { name: 'Charlotte Perriand', email: 'charlotte.perriand@example.com', phone: '+1 555 0164', country: 'France'  },
+  pt: { name: 'Lina Bo Bardi',      email: 'lina.bobardi@example.com',       phone: '+1 555 0175', country: 'Brazil'  }
+};
+
+function testEmail(lang) {
+  lang = lang || 'en';
+  var who = TEST_LEADS[lang] || TEST_LEADS.en;
   _notify({
-    name: 'Eileen Gray', email: 'eileen.gray@example.com', phone: '+1 555 0142',
-    country: 'France', building_size: '101-200',
+    name: who.name, email: who.email, phone: who.phone,
+    country: who.country, building_size: '101-200',
     comments: 'This is a test from the Apps Script editor.',
-    language: 'en', source: 'testEmail()'
+    language: lang, source: 'testEmail(' + lang + ')'
   });
-  Logger.log('testEmail: MailApp.sendEmail returned without throwing. ' +
+  Logger.log('testEmail[' + lang + ']: MailApp.sendEmail returned without throwing. ' +
              'Quota left today: ' + MailApp.getRemainingDailyQuota());
 }
 

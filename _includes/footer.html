@@ -36,6 +36,13 @@
             <span style="user-select:none; margin-right:.4rem; opacity:.85;">&#x1f1fa;&#x1f1fe;</span>+598 2 600 8887
           </a>
         </div>
+        <div style="margin-top:1.4rem;">
+          <a href="/downloads/brochure-{{ page.lang | default: 'en' }}.pdf" download
+             style="display:inline-flex; align-items:center; gap:.5rem; font-size:0.74rem; color:#c9a961; text-decoration:none; letter-spacing:0.12em; text-transform:uppercase; border:1px solid rgba(201,169,97,0.45); padding:.6rem 1rem; border-radius:2px; transition:background .2s, color .2s;"
+             onmouseover="this.style.background='#c9a961'; this.style.color='#1c1a18'" onmouseout="this.style.background='transparent'; this.style.color='#c9a961'">
+            <i class="fas fa-file-pdf"></i> {{ site.data[page.lang].download_brochure | default: "Download Brochure" }}
+          </a>
+        </div>
       </div>
 
       <!-- Center: breathing room -->

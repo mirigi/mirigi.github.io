@@ -92,16 +92,10 @@
 
   </div>
 
-  <!-- Print Button (hidden when printing) -->
-  <button class="brochure-print-btn no-print" onclick="window.print()">
-    <i class="fas fa-print"></i> {{ site.data[page.lang].print_brochure | default: "Print Brochure" }}
-  </button>
-
-  <div class="brochure-print-instructions no-print">
-    <p><strong>{{ site.data[page.lang].print_tip | default: "Tip" }}:</strong></p>
-    <p>File &rarr; Print &rarr; Save as PDF</p>
-    <p>{{ site.data[page.lang].print_enable_backgrounds | default: "Enable 'Background graphics'" }}</p>
-  </div>
+  <!-- Download Button (hidden when printing) -->
+  <a class="brochure-print-btn no-print" href="{{ '/downloads/brochure-' | append: page.lang | append: '.pdf' | relative_url }}" download>
+    <i class="fas fa-file-pdf"></i> {{ site.data[page.lang].download_brochure | default: "Download Brochure" }}
+  </a>
 
 </body>
 </html>

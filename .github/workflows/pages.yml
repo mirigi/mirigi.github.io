@@ -52,8 +52,12 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Node deps (puppeteer + Chromium)
-        run: npm install --no-audit --no-fund
+      - name: Install puppeteer (+ Chromium)
+        # Install ONLY puppeteer, not the whole package.json. The project's
+        # devDependencies include gulp-sass → node-sass, whose native build
+        # needs python2/node-gyp and fails on Node 20. --omit=dev skips them;
+        # we only need puppeteer (its postinstall fetches Chromium).
+        run: npm install puppeteer@^24.42.0 --no-save --no-audit --no-fund --omit=dev
 
       - name: Render brochure PDFs
         run: node scripts/render-brochure-pdf.js --site=_site --out=_site/downloads

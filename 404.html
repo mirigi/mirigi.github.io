@@ -1,0 +1,151 @@
+---
+permalink: /404.html
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Page not found · Mirigi</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #1c1a18;
+      --ink: #f2efe9;
+      --muted: #9e9890;
+      --gold: #c9a961;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 2rem;
+    }
+    /* Gold corner ornaments — echo the brochure cover */
+    .corner {
+      position: fixed;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(201, 169, 97, 0.45);
+      pointer-events: none;
+    }
+    .corner.tl { top: 28px; left: 28px; border-right: 0; border-bottom: 0; }
+    .corner.tr { top: 28px; right: 28px; border-left: 0; border-bottom: 0; }
+    .corner.bl { bottom: 28px; left: 28px; border-right: 0; border-top: 0; }
+    .corner.br { bottom: 28px; right: 28px; border-left: 0; border-top: 0; }
+
+    .wrap { max-width: 560px; }
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.6rem;
+    }
+    .code {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(4.5rem, 18vw, 8rem);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      margin: 0;
+    }
+    .rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.6rem auto;
+      opacity: 0.8;
+    }
+    .headline {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 5vw, 1.9rem);
+      margin: 0 0 0.9rem;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0 auto 2.2rem;
+      max-width: 30rem;
+    }
+    .home {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid rgba(201, 169, 97, 0.5);
+      padding: 0.8rem 1.6rem;
+      border-radius: 2px;
+      transition: background .2s ease, color .2s ease;
+    }
+    .home:hover { background: var(--gold); color: var(--bg); }
+    .langs {
+      margin-top: 2.4rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .langs a {
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color .2s ease;
+    }
+    .langs a:hover { color: var(--gold); }
+    .langs .sep { color: #3e3b38; margin: 0 0.6rem; }
+    .brand {
+      position: fixed;
+      bottom: 2rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <span class="corner tl"></span><span class="corner tr"></span>
+  <span class="corner bl"></span><span class="corner br"></span>
+
+  <div class="wrap">
+    <p class="eyebrow">Error 404</p>
+    <h1 class="code">404</h1>
+    <div class="rule"></div>
+    <p class="headline">This page has checked out.</p>
+    <p class="sub">The address may have changed, or the page is no longer here. Allow our concierge to guide you back.</p>
+    <a class="home" href="/"><span aria-hidden="true">&larr;</span> Return to Mirigi</a>
+
+    <nav class="langs" aria-label="Languages">
+      <a href="/">EN</a><span class="sep">·</span>
+      <a href="/es/">ES</a><span class="sep">·</span>
+      <a href="/fr/">FR</a><span class="sep">·</span>
+      <a href="/pt/">PT</a>
+    </nav>
+  </div>
+
+  <div class="brand">Mirigi</div>
+</body>
+</html>

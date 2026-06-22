@@ -27,8 +27,11 @@ by a small Google Apps Script. One-time setup, ~10 minutes.
 3. Click **Save** (💾).
 
 ```javascript
-// Mirigi demo-request endpoint. Appends each submission as a row.
+// Mirigi demo-request endpoint. Appends each submission as a row AND emails
+// the team a copy. The spreadsheet stays the system of record; the email is
+// just a notification.
 var SHEET_NAME = 'Sheet1'; // change if your tab is named differently
+var NOTIFY_EMAILS = 'support@mirigi.com,support@khimo.com'; // comma-separated
 
 function doPost(e) {
   try {
@@ -48,25 +51,76 @@ function doPost(e) {
       return _json({ ok: false, error: 'missing_required' });
     }
 
+    var lead = {
+      name: name,
+      email: email,
+      phone: phone,
+      country: (data.country || '').toString().trim(),
+      building_size: (data.building_size || '').toString().trim(),
+      comments: (data.comments || '').toString().slice(0, 300),
+      language: (data.language || '').toString(),
+      source: (data.source || '').toString()
+    };
+
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME)
              || SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
 
     sheet.appendRow([
       new Date(),                                  // Timestamp (server-side)
-      name,
-      email,
-      phone,
-      (data.country || '').toString().trim(),
-      (data.building_size || '').toString().trim(),
-      (data.comments || '').toString().slice(0, 300),
-      (data.language || '').toString(),
-      (data.source || '').toString()
+      lead.name,
+      lead.email,
+      lead.phone,
+      lead.country,
+      lead.building_size,
+      lead.comments,
+      lead.language,
+      lead.source
     ]);
+
+    // Email the team. Wrapped so a mail failure never blocks the submission
+    // (the row is already saved, and the visitor still gets a success reply).
+    try { _notify(lead); } catch (mailErr) { /* logged below, non-fatal */
+      console.error('notify failed: ' + mailErr);
+    }
 
     return _json({ ok: true });
   } catch (err) {
     return _json({ ok: false, error: String(err) });
   }
+}
+
+// Sends the lead to NOTIFY_EMAILS as a readable email.
+function _notify(lead) {
+  var rows = [
+    ['Name', lead.name],
+    ['Email', lead.email || '—'],
+    ['Phone', lead.phone || '—'],
+    ['Country', lead.country || '—'],
+    ['Building size', lead.building_size || '—'],
+    ['Comments', lead.comments || '—'],
+    ['Language', lead.language || '—'],
+    ['Source', lead.source || '—'],
+    ['Received', new Date().toString()]
+  ];
+
+  var subject = 'New demo request: ' + lead.name +
+                (lead.country ? ' (' + lead.country + ')' : '');
+  var body = rows.map(function (r) { return r[0] + ': ' + r[1]; }).join('\n');
+  var htmlBody = '<h3>New demo request</h3><table cellpadding="4">' +
+    rows.map(function (r) {
+      return '<tr><td><strong>' + _esc(r[0]) + '</strong></td><td>' + _esc(r[1]) + '</td></tr>';
+    }).join('') + '</table>';
+
+  var options = { name: 'Mirigi Website', htmlBody: htmlBody };
+  // Reply-To the lead's email when present, so a reply reaches them directly.
+  if (lead.email) options.replyTo = lead.email;
+
+  MailApp.sendEmail(NOTIFY_EMAILS, subject, body, options);
+}
+
+function _esc(s) {
+  return s.toString()
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 // GET handler so you can open the URL in a browser to confirm it's live.
@@ -80,6 +134,8 @@ function _json(obj) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 ```
+
+> **To change who gets notified**, edit `NOTIFY_EMAILS` at the top (comma-separated list).
 
 > If your sheet tab is **not** called `Sheet1`, change `SHEET_NAME` at the top — or
 > leave it; the script falls back to the first tab automatically.
@@ -129,10 +185,17 @@ If you edit the Apps Script, you must **redeploy** for changes to take effect:
 **Deploy → Manage deployments → (your deployment) → Edit ✏ → Version: New version → Deploy.**
 The `/exec` URL stays the same, so you don't need to touch `_config.yml` again.
 
+> **First time you save the email version:** Google will ask you to **re-authorize**
+> because the script now needs permission to **send email** (`MailApp`). Run `doPost`
+> once from the editor (or just Save and follow the authorization prompt) and **Allow**.
+> Emails are sent from the Google account that owns the script. Heads-up: consumer
+> Gmail accounts can send ~100 emails/day via Apps Script — plenty for demo leads.
+
 ## Tips
 
-- **Email alerts on new leads:** in the Sheet, *Tools → Notification settings* (or add a
-  `MailApp.sendEmail(...)` line inside `doPost`) to get pinged on every submission.
+- **Email alerts on new leads:** built in — every submission is emailed to the
+  addresses in `NOTIFY_EMAILS` (currently `support@mirigi.com`, `support@khimo.com`)
+  in addition to being written to the Sheet. Edit that constant to change recipients.
 - **Spam:** the honeypot + 2-second time-gate are enforced on both the page and the
   script. If you ever see junk, you can add Google reCAPTCHA later.
 - **Privacy:** all data stays in your Google account. Nothing passes through Mirigi or

@@ -64,19 +64,19 @@ jobs:
           NODE_PATH: ${{ runner.temp }}/pp/node_modules
         run: node scripts/render-brochure-pdf.js --site=_site --out=_site/downloads
 
-      - name: Compress brochure PDFs (ghostscript, preinstalled on ubuntu)
+      - name: Install ghostscript
+        run: sudo apt-get update && sudo apt-get install -y ghostscript
+
+      - name: Compress brochure PDFs
         run: |
-          if command -v gs >/dev/null 2>&1; then
-            for f in _site/downloads/brochure-*.pdf; do
-              [ -f "$f" ] || continue
-              gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 \
-                 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH \
-                 -sOutputFile="$f.tmp" "$f" && mv "$f.tmp" "$f"
-              echo "compressed $f -> $(du -h "$f" | cut -f1)"
-            done
-          else
-            echo "ghostscript not found; shipping uncompressed PDFs"
-          fi
+          for f in _site/downloads/brochure-*.pdf; do
+            [ -f "$f" ] || continue
+            before=$(du -h "$f" | cut -f1)
+            gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 \
+               -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH \
+               -sOutputFile="$f.tmp" "$f" && mv "$f.tmp" "$f"
+            echo "compressed $f: $before -> $(du -h "$f" | cut -f1)"
+          done
 
       - name: Write CNAME (custom domain)
         run: echo "mirigi.com" > _site/CNAME

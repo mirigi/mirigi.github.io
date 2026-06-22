@@ -123,6 +123,21 @@ function _esc(s) {
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+// --- Diagnostic: run THIS from the editor to test email + grant permission ---
+// Select `testEmail` in the toolbar's function dropdown and click Run.
+// First run triggers the send-email authorization prompt (Allow it).
+// If it still fails, the editor shows the exact error here.
+function testEmail() {
+  _notify({
+    name: 'Test Lead', email: 'test@example.com', phone: '+1 555 0100',
+    country: 'Uruguay', building_size: '101-200',
+    comments: 'This is a test from the Apps Script editor.',
+    language: 'en', source: 'testEmail()'
+  });
+  Logger.log('testEmail: MailApp.sendEmail returned without throwing. ' +
+             'Quota left today: ' + MailApp.getRemainingDailyQuota());
+}
+
 // GET handler so you can open the URL in a browser to confirm it's live.
 function doGet() {
   return _json({ ok: true, status: 'Mirigi demo endpoint is running' });
@@ -190,6 +205,38 @@ The `/exec` URL stays the same, so you don't need to touch `_config.yml` again.
 > once from the editor (or just Save and follow the authorization prompt) and **Allow**.
 > Emails are sent from the Google account that owns the script. Heads-up: consumer
 > Gmail accounts can send ~100 emails/day via Apps Script — plenty for demo leads.
+
+## Not receiving the emails? (row saves but no email)
+
+The row still lands in the Sheet but no email arrives — that means the email step
+failed silently (it's intentionally wrapped so it never breaks a submission). Work
+through these, most likely first:
+
+1. **Run `testEmail()` from the editor.** Open Apps Script, pick `testEmail` in the
+   function dropdown, click **Run**. This is the fastest diagnosis:
+   - If Google shows an **authorization prompt** → that was the problem. **Allow** the
+     *send email* permission, then re-test the form. (Adding `MailApp` needs a fresh
+     consent the web-app deployment didn't have.)
+   - If it throws an error → the editor shows exactly why (read it / **View → Executions**).
+   - If it says "returned without throwing" but no mail arrives → check **spam** in the
+     `support@mirigi.com` and `support@khimo.com` inboxes (mail from a Gmail account to
+     your own domains can get filtered). Also confirm those addresses actually exist.
+
+2. **Check the execution log.** **View → Executions** in the editor shows each `doPost`
+   call; a failed send logs `notify failed: …` with the reason.
+
+3. **Confirm the deployment runs the new code.** Editing `Code.gs` is not enough — you
+   must **Deploy → Manage deployments → Edit ✏ → Version: *New version* → Deploy**.
+   If you created a brand-new deployment, make sure the site's `demo_form_endpoint`
+   points at *that* deployment's `/exec` URL.
+
+4. **Check "Execute as".** In the deployment settings it must be **Execute as: Me**
+   (the owner). If it's set to "User accessing the web app", anonymous visitors have no
+   email identity and `MailApp` can't send.
+
+> 90% of the time it's #1 — the new send-email permission was never granted, because the
+> authorization prompt only appears when *you* run the script in the editor, not when the
+> website POSTs to it anonymously. Running `testEmail()` once fixes it.
 
 ## Tips
 

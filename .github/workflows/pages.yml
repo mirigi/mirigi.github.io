@@ -1,0 +1,92 @@
+name: Build & Deploy to GitHub Pages
+
+# Builds Jekyll, renders the brochure PDFs from the built site, and deploys
+# everything to GitHub Pages on every push to master (plus a manual button).
+#
+# IMPORTANT — this only becomes the live builder once you set
+#   Settings → Pages → Source → "GitHub Actions".
+# Until you flip that dropdown, the classic "Deploy from a branch" build keeps
+# serving the site and this workflow's `deploy` job will no-op/fail harmlessly.
+# Rollback at any time: set Pages Source back to "Deploy from a branch"
+# (master) and GitHub resumes the classic build from your unchanged source.
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+# Allow the deploy job to publish to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two deploys at once; let an in-progress run finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Install gems
+        run: |
+          gem install bundler
+          bundle install --jobs 4
+
+      - name: Build Jekyll site
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build -d _site --trace
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Node deps (puppeteer + Chromium)
+        run: npm install --no-audit --no-fund
+
+      - name: Render brochure PDFs
+        run: node scripts/render-brochure-pdf.js --site=_site --out=_site/downloads
+
+      - name: Compress brochure PDFs (ghostscript, preinstalled on ubuntu)
+        run: |
+          if command -v gs >/dev/null 2>&1; then
+            for f in _site/downloads/brochure-*.pdf; do
+              [ -f "$f" ] || continue
+              gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 \
+                 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH \
+                 -sOutputFile="$f.tmp" "$f" && mv "$f.tmp" "$f"
+              echo "compressed $f -> $(du -h "$f" | cut -f1)"
+            done
+          else
+            echo "ghostscript not found; shipping uncompressed PDFs"
+          fi
+
+      - name: Write CNAME (custom domain)
+        run: echo "mirigi.com" > _site/CNAME
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

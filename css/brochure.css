@@ -568,6 +568,9 @@ a.brochure-features-list-item:hover {
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .brochure-print-btn:hover {

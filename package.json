@@ -4,7 +4,8 @@
     "version": "5.0.8",
     "scripts": {
         "start": "node_modules/.bin/gulp watch",
-        "render:video": "node scripts/render-miniapp-video.js"
+        "render:video": "node scripts/render-miniapp-video.js",
+        "render:brochure": "node scripts/render-brochure-pdf.js"
     },
     "description": "A grayscale one page HTML theme for Bootstrap.",
     "keywords": [

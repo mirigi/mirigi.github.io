@@ -31,6 +31,7 @@ languages:
   - en
   - es
   - fr
+  - pt
 
 # Demo-request modal → Google Sheet (Apps Script Web App URL).
 # Paste the /exec URL from docs/demo-form-setup.md here. Leave empty to disable submit.
@@ -67,6 +68,12 @@ defaults:
     values:
       permalink: 'fr/caracteristiques/:title'
       lang: "fr"
+  - scope:
+      path: 'collections/_features/pt'
+      type: 'features'
+    values:
+      permalink: 'pt/recursos/:title'
+      lang: "pt"
   # customers collection:
   - scope:
       path: 'collections/_customers'
@@ -91,6 +98,12 @@ defaults:
     values:
       permalink: 'fr/clients/:name'
       lang: "fr"
+  - scope:
+      path: 'collections/_customers/pt'
+      type: 'customers'
+    values:
+      permalink: 'pt/clientes/:title'
+      lang: "pt"
   # Translations
   - scope:
       path: "en/"
@@ -104,6 +117,10 @@ defaults:
       path: "fr/"
     values:
       lang: "fr"
+  - scope:
+      path: "pt/"
+    values:
+      lang: "pt"
   # Exclude proposal pages from sitemap (internal sales tools)
   - scope:
       path: "proposal*.html"

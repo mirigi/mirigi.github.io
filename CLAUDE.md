@@ -77,16 +77,17 @@ gulp vendor         # Copy node_modules dependencies to /vendor/
 ## Architecture & Structure
 
 ### Multilingual Setup
-- **Languages**: English (en), Spanish (es), French (fr)
+- **Languages**: English (en), Spanish (es), French (fr), Brazilian Portuguese (pt)
 - **Collections**: Features (`_features`) and Customers (`_customers`)
 - **URL structure**: 
   - English: `/en/features/`, `/en/customers/`
   - Spanish: `/es/funcionalidades/`, `/es/clientes/`  
   - French: `/fr/caracteristiques/`, `/fr/clients/`
+  - Brazilian Portuguese: `/pt/recursos/`, `/pt/clientes/`
 
 ### Key Directories
-- `collections/_features/[lang]/` - Feature descriptions (en, es, fr subdirectories)
-- `collections/_customers/[lang]/` - Customer testimonials (en, es, fr subdirectories)
+- `collections/_features/[lang]/` - Feature descriptions (en, es, fr, pt subdirectories)
+- `collections/_customers/[lang]/` - Customer testimonials (en, es, fr, pt subdirectories)
 - `_layouts/` - Jekyll layout templates (feature.html, customer.html, index.html)
 - `_includes/` - Reusable components (header.html, footer.html, feature_div.html)
 - `_data/[lang].yml` - UI labels and translations, accessed via `site.data[page.lang]`
@@ -127,10 +128,11 @@ The `lang` and `permalink` are auto-set by `_config.yml` defaults based on file 
 - No test suite exists; the codebase relies on browser API stability
 
 ### Multilingual Content Pattern
-When adding content, create the same file (same filename) in all three language directories:
+When adding content, create the same file (same filename) in all four language directories:
 - `collections/_features/en/my-feature.md`
 - `collections/_features/es/my-feature.md`
 - `collections/_features/fr/my-feature.md`
+- `collections/_features/pt/my-feature.md`
 
 ## Brochure System
 
@@ -154,7 +156,7 @@ Key CSS classes:
 The same CSS framework and components (`_includes/brochure_feature.html`, `_includes/brochure_customer.html`) are reused in `proposal.html` for dynamic proposals.
 
 ### Server-rendered brochure PDF (GitHub Actions)
-The brochure is published as a downloadable, multi-page PDF — **not** browser print-to-PDF (which clipped to one page). `.github/workflows/pages.yml` builds Jekyll, then `scripts/render-brochure-pdf.js` renders `/brochure.html`, `/es/brochure.html`, `/fr/brochure.html` in headless Chromium (print emulation, `preferCSSPageSize`, Letter) to `_site/downloads/brochure-{en,es,fr}.pdf`, ghostscript-compressed (~1.5 MB). The footer + brochure "Download Brochure" links point at those files. Pages **Source is "GitHub Actions"** (`build_type: workflow`) — the legacy branch build is retired; the workflow writes `_site/CNAME` (`mirigi.com`) to keep the custom domain. Rollback: Settings → Pages → Source → "Deploy from a branch".
+The brochure is published as a downloadable, multi-page PDF — **not** browser print-to-PDF (which clipped to one page). `.github/workflows/pages.yml` builds Jekyll, then `scripts/render-brochure-pdf.js` renders `/brochure.html`, `/es/brochure.html`, `/fr/brochure.html`, `/pt/brochure.html` in headless Chromium (print emulation, `preferCSSPageSize`, Letter) to `_site/downloads/brochure-{en,es,fr,pt}.pdf`, ghostscript-compressed (~1.5 MB). The footer + brochure "Download Brochure" links point at those files. Pages **Source is "GitHub Actions"** (`build_type: workflow`) — the legacy branch build is retired; the workflow writes `_site/CNAME` (`mirigi.com`) to keep the custom domain. Rollback: Settings → Pages → Source → "Deploy from a branch".
 
 The brochure's last page carries a build stamp (`date · 4-char git sha`) from `_data/build.yml`, which the workflow regenerates each run (`_data/build.yml` is gitignored — never commit it).
 
@@ -162,7 +164,7 @@ The brochure's last page carries a build stamp (`date · 4-char git sha`) from `
 
 A modal lead-capture form (`_includes/demo-modal.html` + `js/demo-form.js`) opens from any `[data-demo-open]` trigger and POSTs to a Google Apps Script Web App (`site.demo_form_endpoint` in `_config.yml`). It is included by `_layouts/index.html`.
 
-**⚠️ Permanent contract — keep `?demo=1` and `#demo` supported.** `js/demo-form.js` auto-opens the modal when the URL has `?demo=1` or `#demo` (see `maybeAutoOpen`). **Printed and distributed brochure QR codes permanently encode `https://mirigi.com/?demo=1` (and `/es/`, `/fr/`).** Those codes can never be edited after printing, so this query-string/hash trigger must keep opening the form indefinitely. If you refactor the modal, preserve this behavior. Worst case (JS disabled) must still land gracefully on the homepage — so the parameter form (landing + `?demo=1`) is deliberately chosen over a dedicated `/demo/` page.
+**⚠️ Permanent contract — keep `?demo=1` and `#demo` supported.** `js/demo-form.js` auto-opens the modal when the URL has `?demo=1` or `#demo` (see `maybeAutoOpen`). **Printed and distributed brochure QR codes permanently encode `https://mirigi.com/?demo=1` (and `/es/`, `/fr/`, `/pt/`).** Those codes can never be edited after printing, so this query-string/hash trigger must keep opening the form indefinitely. If you refactor the modal, preserve this behavior. Worst case (JS disabled) must still land gracefully on the homepage — so the parameter form (landing + `?demo=1`) is deliberately chosen over a dedicated `/demo/` page.
 
 ## Proposal System
 
@@ -232,10 +234,11 @@ console.log('ACCESS_HMAC:', ACCESS_HMAC);
 ```
 
 ### Proposal Builder Pages
-All three language versions use the shared layout with just frontmatter:
+All four language versions use the shared layout with just frontmatter:
 - `proposal-builder.html` (en)
 - `es/proposal-builder.html` (es)
 - `fr/proposal-builder.html` (fr)
+- `pt/proposal-builder.html` (pt)
 
 ### Login Translations
 Login UI strings are in `_data/[lang].yml`:

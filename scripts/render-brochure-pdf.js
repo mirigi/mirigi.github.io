@@ -45,6 +45,7 @@ const TARGETS = [
   { lang: 'en', urlPath: '/brochure.html' },
   { lang: 'es', urlPath: '/es/brochure.html' },
   { lang: 'fr', urlPath: '/fr/brochure.html' },
+  { lang: 'pt', urlPath: '/pt/brochure.html' },
 ];
 
 const MIME = {

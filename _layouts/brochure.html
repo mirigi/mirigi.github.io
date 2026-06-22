@@ -281,7 +281,7 @@
 
         <div class="brochure-contact-qr-note">
           <div class="brochure-contact-qr-box">
-            <i class="fas fa-qrcode"></i>
+            <img src="{{ '/img/brochure/demo-qr-' | append: page.lang | append: '.png' | relative_url }}" alt="{{ site.data[page.lang].brochure_contact_qr_note | default: 'Scan to schedule your demo online' }}">
           </div>
           <p>{{ site.data[page.lang].brochure_contact_qr_note | default: "Scan to schedule your demo online" }}</p>
         </div>

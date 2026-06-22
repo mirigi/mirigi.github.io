@@ -474,7 +474,16 @@
   });
 
   /* ---------- boot ---------- */
-  function boot() { initPhone(); initCountryCombo(); initEmailSuggest(); }
+  // Deep link: /?demo=1 or #demo opens the form straight away (used by the
+  // brochure QR code so "scan to schedule" lands on the request form).
+  function maybeAutoOpen() {
+    try {
+      var wants = /[?&]demo=1\b/.test(window.location.search) ||
+                  window.location.hash === '#demo';
+      if (wants) openModal(null);
+    } catch (e) { /* no-op */ }
+  }
+  function boot() { initPhone(); initCountryCombo(); initEmailSuggest(); maybeAutoOpen(); }
   if (window.intlTelInput) boot();
   else window.addEventListener('load', boot);
 })();

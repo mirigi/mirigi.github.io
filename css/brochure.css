@@ -983,8 +983,15 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.2);
-  font-size: 2.5rem;
+  background: #fff;
+  padding: 0.06in;
+}
+
+.brochure-contact-qr-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .brochure-contact-qr-note p {
@@ -998,9 +1005,7 @@ html, body {
 }
 
 .brochure-contact-logo-wrapper {
-  padding: 0.65rem 1.5rem;
-  border: 1px solid rgba(255,255,255,0.15);
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .brochure-contact-logo {

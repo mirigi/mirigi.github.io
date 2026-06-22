@@ -128,9 +128,11 @@ function _esc(s) {
 // First run triggers the send-email authorization prompt (Allow it).
 // If it still fails, the editor shows the exact error here.
 function testEmail() {
+  // Placeholder: a renowned designer + reserved (RFC 2606 / 555) contact
+  // details, so the sample data is elegant and carries no legal exposure.
   _notify({
-    name: 'Test Lead', email: 'test@example.com', phone: '+1 555 0100',
-    country: 'Uruguay', building_size: '101-200',
+    name: 'Eileen Gray', email: 'eileen.gray@example.com', phone: '+1 555 0142',
+    country: 'France', building_size: '101-200',
     comments: 'This is a test from the Apps Script editor.',
     language: 'en', source: 'testEmail()'
   });

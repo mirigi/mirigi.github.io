@@ -1,14 +1,14 @@
 ---
-title: Política de Privacidade da Mirigi
+title: Política de Privacidade do Mirigi
 layout: defaultcontent
 lang: pt
-keywords: política de privacidade, proteção de dados, RGPD, dados do usuário, segurança
-description: "A Política de Privacidade da Mirigi descreve como coletamos, usamos e protegemos os dados dos usuários, garantindo privacidade e segurança."
+keywords: política de privacidade, proteção de dados, LGPD, dados do usuário, segurança
+description: "A Política de Privacidade do Mirigi descreve como coletamos, usamos e protegemos os dados dos usuários, garantindo privacidade e segurança."
 ---
 
-# Política de Privacidade da Mirigi
+# Política de Privacidade do Mirigi
 
-A privacidade dos dados é importante para a nossa empresa (referida neste documento como “nós”); respeitamos os direitos de privacidade dos usuários e reconhecemos a importância de proteger as informações coletadas sobre você. Esta Política de Privacidade explica como as informações são coletadas, utilizadas e divulgadas quando o produto Mirigi (“serviço”) é utilizado. A Mirigi é um software de serviço de concierge digital para condomínios que oferece ao usuário (“você”) funções de automação residencial por meio de serviços como Khimo ou Lutron e permite uma comunicação eficiente com a equipe do edifício para prestar serviços como Acompanhamento de Entregas, Reservas de Áreas Comuns, Notificações e muito mais.
+A privacidade dos dados é importante para a nossa empresa (referida neste documento como “nós”); respeitamos os direitos de privacidade dos usuários e reconhecemos a importância de proteger as informações coletadas sobre você. Esta Política de Privacidade explica como as informações são coletadas, utilizadas e divulgadas quando o produto Mirigi (“serviço”) é utilizado. O Mirigi é um software de serviço de concierge digital para condomínios que oferece ao usuário (“você”) funções de automação residencial por meio de serviços como Khimo ou Lutron e permite uma comunicação eficiente com a equipe do edifício para prestar serviços como Acompanhamento de Entregas, Reservas de Áreas Comuns, Notificações e muito mais.
 
 ## Quem somos?
 
@@ -18,7 +18,7 @@ A Khimo é uma empresa que desenvolve e fornece soluções para edifícios intel
 
 Ao utilizar o nosso serviço, você fornece conscientemente informações pessoais que são armazenadas em nossos servidores. Essas informações serão utilizadas apenas para oferecer a você as funções do nosso serviço e sempre da maneira que você razoavelmente esperaria.
 
-Os arquivos de registro de todo o processamento realizado na Mirigi são guardados nos servidores. Esses arquivos de registro nos ajudam a depurar e corrigir qualquer possível erro e não serão utilizados para nenhum outro propósito além desse. Os registros podem conter qualquer um dos dados pessoais listados a seguir.
+Os arquivos de registro de todo o processamento realizado no Mirigi são guardados nos servidores. Esses arquivos de registro nos ajudam a depurar e corrigir qualquer possível erro e não serão utilizados para nenhum outro propósito além desse. Os registros podem conter qualquer um dos dados pessoais listados a seguir.
 
 Além de criar os registros, as informações também serão processadas para as finalidades especificadas em cada item:
 
@@ -32,7 +32,7 @@ Além de criar os registros, as informações também serão processadas para as
   Para fornecer as funcionalidades básicas do nosso serviço. Os eventos são registrados para fornecer notificações, comunicar-se com a equipe, etc.
 
 - **Cookies de sessão**  
-  Quando a Mirigi é utilizada em um navegador, cookies de sessão são usados para melhorar o uso do serviço.
+  Quando o Mirigi é utilizado em um navegador, cookies de sessão são usados para melhorar o uso do serviço.
 
 ## Compartilhamos informações com terceiros?
 

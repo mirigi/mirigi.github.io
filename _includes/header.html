@@ -98,9 +98,7 @@
                 {% else %}
                   {% assign _lang_url = '/' | append: lang | append: '/' %}
                 {% endif %}
-              <a href="{{ _lang_url }}" class="nav-lang{% if lang == page.lang %} is-current{% endif %}" title="{{site.data[lang].label }}">
-                {{ lang | upcase }} {{ site.data[lang].icon }}
-              </a>&nbsp;
+              <a href="{{ _lang_url }}" class="nav-lang{% if lang == page.lang %} is-current{% endif %}" title="{{site.data[lang].label }}">{{ lang | upcase }}&nbsp;{{ site.data[lang].icon }}</a>&nbsp;
               {% endfor %}
               </small>
             </div>

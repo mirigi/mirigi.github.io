@@ -35,11 +35,15 @@
   }
 
   /* Language switcher — match nav text color, not the gold link default */
+  .nav-langs {
+    font-size: 0.72rem;          // a touch smaller than the rest of the nav
+  }
   .nav-langs a.nav-lang {
     color: rgba(0,0,0,0.55);     // Bootstrap navbar-light nav-link tone
     text-decoration: none;
     transition: color .15s ease;
     font-weight: 500;
+    white-space: nowrap;         // keep the code + flag on the same line
   }
   .nav-langs a.nav-lang:hover,
   .nav-langs a.nav-lang:focus {

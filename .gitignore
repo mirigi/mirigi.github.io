@@ -31,3 +31,6 @@ docs/superpowers/
 # Miniapp video renders
 video-out/
 
+
+# Generated per-build by the Pages workflow (date + short git sha)
+_data/build.yml

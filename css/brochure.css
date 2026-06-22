@@ -1008,6 +1008,15 @@ html, body {
   margin-top: 0.75rem;
 }
 
+.brochure-version {
+  margin-top: 1.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+}
+
 .brochure-contact-logo {
   max-width: 120px;
   max-height: 48px;

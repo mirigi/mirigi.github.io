@@ -153,6 +153,17 @@ Key CSS classes:
 
 The same CSS framework and components (`_includes/brochure_feature.html`, `_includes/brochure_customer.html`) are reused in `proposal.html` for dynamic proposals.
 
+### Server-rendered brochure PDF (GitHub Actions)
+The brochure is published as a downloadable, multi-page PDF — **not** browser print-to-PDF (which clipped to one page). `.github/workflows/pages.yml` builds Jekyll, then `scripts/render-brochure-pdf.js` renders `/brochure.html`, `/es/brochure.html`, `/fr/brochure.html` in headless Chromium (print emulation, `preferCSSPageSize`, Letter) to `_site/downloads/brochure-{en,es,fr}.pdf`, ghostscript-compressed (~1.5 MB). The footer + brochure "Download Brochure" links point at those files. Pages **Source is "GitHub Actions"** (`build_type: workflow`) — the legacy branch build is retired; the workflow writes `_site/CNAME` (`mirigi.com`) to keep the custom domain. Rollback: Settings → Pages → Source → "Deploy from a branch".
+
+The brochure's last page carries a build stamp (`date · 4-char git sha`) from `_data/build.yml`, which the workflow regenerates each run (`_data/build.yml` is gitignored — never commit it).
+
+## Demo Request Modal
+
+A modal lead-capture form (`_includes/demo-modal.html` + `js/demo-form.js`) opens from any `[data-demo-open]` trigger and POSTs to a Google Apps Script Web App (`site.demo_form_endpoint` in `_config.yml`). It is included by `_layouts/index.html`.
+
+**⚠️ Permanent contract — keep `?demo=1` and `#demo` supported.** `js/demo-form.js` auto-opens the modal when the URL has `?demo=1` or `#demo` (see `maybeAutoOpen`). **Printed and distributed brochure QR codes permanently encode `https://mirigi.com/?demo=1` (and `/es/`, `/fr/`).** Those codes can never be edited after printing, so this query-string/hash trigger must keep opening the form indefinitely. If you refactor the modal, preserve this behavior. Worst case (JS disabled) must still land gracefully on the homepage — so the parameter form (landing + `?demo=1`) is deliberately chosen over a dedicated `/demo/` page.
+
 ## Proposal System
 
 The site includes a sales proposal generator system that allows salespeople to create customized PDF proposals for buildings.

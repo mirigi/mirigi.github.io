@@ -289,6 +289,8 @@
         <div class="brochure-contact-logo-wrapper">
           <img src="{{ '/img/mirigi-logo-transparent.png' | relative_url }}" alt="Mirigi" class="brochure-contact-logo">
         </div>
+
+        <p class="brochure-version">{{ site.data.build.date | default: site.time | date: "%Y-%m-%d" }} · {{ site.data.build.sha | default: "dev" }}</p>
       </div>
     </div>
 

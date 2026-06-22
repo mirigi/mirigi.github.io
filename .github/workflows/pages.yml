@@ -42,6 +42,13 @@ jobs:
           gem install bundler
           bundle install --jobs 4
 
+      - name: Stamp build version (date + short git hash)
+        run: |
+          mkdir -p _data
+          printf 'date: "%s"\nsha: "%s"\n' \
+            "$(date -u +%Y-%m-%d)" "${GITHUB_SHA:0:4}" > _data/build.yml
+          cat _data/build.yml
+
       - name: Build Jekyll site
         env:
           JEKYLL_ENV: production

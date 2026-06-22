@@ -2,7 +2,7 @@
 title: Política de Privacidad de Mirigi
 layout: defaultcontent
 lang: es
-keywords: política de privacidad, protección de datos, RGPD, datos del usuario, seguridad
+keywords: política de privacidad, protección de datos, buenas prácticas de privacidad, datos del usuario, seguridad
 description: "La Política de Privacidad de Mirigi describe cómo recopilamos, usamos y protegemos los datos de los usuarios, garantizando la privacidad y seguridad."
 ---
 
@@ -50,7 +50,7 @@ Si desea acceder, revisar, actualizar o eliminar cualquier información personal
 
 ## ¿Dónde almacenamos su información?
 
-Nuestros servidores están ubicados en los EE. UU., lo que significa que sus datos personales se transferirán allí. La transmisión y el almacenamiento de esta información se realizan bajo las medidas de seguridad adecuadas y se realizarán a través de un mecanismo de cumplimiento, como un acuerdo de procesamiento de datos. El socio de alojamiento está sujeto al acuerdo Privacy Shield con la UE/EEE.
+Nuestros servidores están ubicados en los EE. UU., lo que significa que sus datos personales se transferirán allí. La transmisión y el almacenamiento de esta información están protegidos por medidas de seguridad adecuadas y regidos por un acuerdo de procesamiento de datos con nuestro socio de alojamiento. Seguimos buenas prácticas reconocidas de protección de datos para mantener su información segura.
 
 ## ¿Podría cambiar esta política?
 

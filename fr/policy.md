@@ -2,7 +2,7 @@
 title: Politique de Confidentialité de Mirigi
 layout: defaultcontent
 lang: fr
-keywords: politique de confidentialité, protection des données, RGPD, données utilisateur, sécurité
+keywords: politique de confidentialité, protection des données, bonnes pratiques de confidentialité, données utilisateur, sécurité
 description: "La Politique de Confidentialité de Mirigi décrit comment nous collectons, utilisons et protégeons les données des utilisateurs."
 ---
 
@@ -50,7 +50,7 @@ Si vous souhaitez accéder, consulter, mettre à jour ou supprimer des informati
 
 ## Où stockons-nous vos informations ?
 
-Nos serveurs sont situés aux États-Unis, ce qui signifie que vos données personnelles y seront transférées. La transmission et le stockage de ces informations sont soumis à des mesures de sécurité appropriées et seront effectués via un mécanisme de conformité tel qu'un accord de traitement des données. Le partenaire d'hébergement est soumis à l'accord Privacy Shield avec l'UE/EEE.
+Nos serveurs sont situés aux États-Unis, ce qui signifie que vos données personnelles y seront transférées. La transmission et le stockage de ces informations sont protégés par des mesures de sécurité appropriées et encadrés par un accord de traitement des données avec notre partenaire d'hébergement. Nous suivons les bonnes pratiques reconnues en matière de protection des données pour préserver la sécurité de vos informations.
 
 ## Cette politique pourrait-elle changer ?
 

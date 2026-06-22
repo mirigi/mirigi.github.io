@@ -2,7 +2,7 @@
 title: Mirigi Privacy Policy
 layout: defaultcontent
 lang: en
-keywords: privacy policy, data protection, GDPR, user data, security
+keywords: privacy policy, data protection, data privacy best practices, user data, security
 description: "Mirigi's Privacy Policy outlines how we collect, use, and protect user data, ensuring privacy and security."
 ---
 
@@ -50,7 +50,7 @@ If you wish to access, review, update, or delete any personal information we hol
 
 ## Where do we store your information?
 
-Our servers are located in the US, meaning your personal data will be transferred there. The transmission and storing of this information are under appropriate security measures and will be done through a compliance mechanism such as a data processing agreement. The hosting partner is subject to the Privacy Shield agreement with the EU/EUU.
+Our servers are located in the US, meaning your personal data will be transferred there. The transmission and storing of this information are protected by appropriate security measures and governed by a data processing agreement with our hosting partner. We follow recognized data-protection good practices to keep your information safe.
 
 ## Could this policy change?
 

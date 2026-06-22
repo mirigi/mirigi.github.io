@@ -53,13 +53,15 @@ jobs:
           node-version: '20'
 
       - name: Install puppeteer (+ Chromium)
-        # Install ONLY puppeteer, not the whole package.json. The project's
-        # devDependencies include gulp-sass → node-sass, whose native build
-        # needs python2/node-gyp and fails on Node 20. --omit=dev skips them;
-        # we only need puppeteer (its postinstall fetches Chromium).
-        run: npm install puppeteer@^24.42.0 --no-save --no-audit --no-fund --omit=dev
+        # Install puppeteer into an ISOLATED prefix so npm never reads the
+        # repo's package.json. The project's devDependencies include
+        # gulp-sass → node-sass, whose native build needs python2/node-gyp and
+        # fails on Node 20. The render step finds puppeteer via NODE_PATH.
+        run: npm install --prefix "$RUNNER_TEMP/pp" --no-audit --no-fund puppeteer@^24.42.0
 
       - name: Render brochure PDFs
+        env:
+          NODE_PATH: ${{ runner.temp }}/pp/node_modules
         run: node scripts/render-brochure-pdf.js --site=_site --out=_site/downloads
 
       - name: Compress brochure PDFs (ghostscript, preinstalled on ubuntu)

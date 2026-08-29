@@ -44,36 +44,31 @@ html, body {
 .slide.slide--gold { background: linear-gradient(160deg, #2a2318 0%, #14110a 100%); }
 
 /*
-  Photo-driven slide: a full-bleed background photo (.bg), a slow Ken Burns
-  drift, and a bottom scrim (.scrim) so text stays legible over any image.
-  This is the DEFAULT look — most slides in the deck should set `bg` in
-  js/slides.js. Text-only slides (kind: 'title', or content slides with no
-  `bg`) fall back to the flat gradient above.
+  Photo-driven slide: a full-bleed background photo, Ken Burns pan/zoom, and
+  a bottom scrim gradient so text stays legible over any image. This is the
+  DEFAULT look — most slides in the deck should set `bg` in js/slides.js.
+  Text-only slides (kind: 'title', or content slides with no `bg`) fall back
+  to the flat gradient above.
+
+  The photo + Ken Burns + scrim are rendered by a single shared WebGL canvas
+  (js/bg-webgl.js), reparented into whichever `.slide` is active — not plain
+  CSS background-image/gradients. That canvas computes the scrim gradient
+  and dithers it in-shader, which survives video re-compression far better
+  than a CSS gradient + static noise overlay (see bg-webgl.js's own
+  comments for why). `.bg-canvas` below is that canvas's styling.
 */
 .slide.has-bg { justify-content: flex-end; }
 
-.slide .bg {
-  position: absolute;
-  inset: -3%;
-  background-size: cover;
-  background-position: center;
-  animation: kenburns 9000ms ease-in-out infinite alternate;
-  z-index: 0;
-}
-
-.slide .scrim {
+.slide > .bg-canvas {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.15) 45%, rgba(8,8,9,0.88) 78%, rgba(6,6,7,0.96) 100%);
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: block;
 }
 
 .slide > * { position: relative; z-index: 2; }
-
-@keyframes kenburns {
-  from { transform: scale(1) translate(0, 0); }
-  to   { transform: scale(1.08) translate(-1%, -1.5%); }
-}
 
 /* A solid pill behind every kicker guarantees contrast regardless of how
    busy the underlying photo is (e.g. the ai-concierge.jpg chat collage) —
@@ -109,11 +104,6 @@ html, body {
 }
 
 .slide.slide--full-bg { justify-content: center; padding: 8vh 8vw; }
-.slide.slide--full-bg .scrim {
-  background:
-    radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.72) 68%, rgba(0,0,0,0.88) 100%),
-    linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.35) 38%, rgba(0,0,0,0.7) 65%, rgba(0,0,0,0.9) 100%);
-}
 
 /* Hook act (slides 1-4): one continuous piece with the splash — bigger serif
    headline, same heavy vignette, same legacy/future accent language. Every

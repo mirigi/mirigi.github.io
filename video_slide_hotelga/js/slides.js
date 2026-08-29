@@ -18,7 +18,7 @@
   Each slide: { kind, variant, kicker, title, body, bg, miri, miriStyle, durationMs }
   - kind: 'title' | 'content'.
   - bg: repo-root-relative background photo. Image-first — nearly every slide
-    carries one (see css/slides.css .bg/.scrim).
+    carries one, rendered by the shared WebGL canvas (js/bg-webgl.js).
   - miri: optional chat popup, one of three shapes:
       action — { user, ask, status, confirmed, confirmWord? } : Miri
         PROPOSES ("ask", a question) and only acts once the guest visibly
@@ -391,6 +391,7 @@ var SLIDES = [
   var progress = document.getElementById('progress');
   var qrBadge = document.getElementById('qr-badge');
   var current = 0;
+  var bgLayerCounter = 0;
   var timer = null;
   var miriTimers = [];
   var MIRI_STYLES = ['app', 'whatsapp'];
@@ -525,9 +526,11 @@ var SLIDES = [
     el.className = classes.join(' ');
     el.dataset.index = index;
 
-    var bgHtml = slide.bg
-      ? '<div class="bg" style="background-image:url(\'' + slide.bg + '\')"></div><div class="scrim"></div>'
-      : '';
+    // No `.bg`/`.scrim` divs here — photo-driven slides get their
+    // background (Ken Burns pan + dithered scrim gradient) from the shared
+    // WebGL canvas (js/bg-webgl.js), reparented into the active slide by
+    // show() below. See that file for why this moved off plain CSS.
+    var bgHtml = '';
 
     if (slide.kind === 'title') {
       el.innerHTML = bgHtml +
@@ -767,6 +770,18 @@ var SLIDES = [
 
     var slide = SLIDES[current];
     if (qrBadge) qrBadge.classList.toggle('is-focused', !!slide.qrFocus);
+    // Two alternating WebGL layers, not one shared canvas: the outgoing
+    // slide keeps whichever layer it already has attached — still
+    // rendering its own photo — for the whole ~1.1s CSS crossfade, instead
+    // of losing its background the instant the incoming slide claims it
+    // (which is what caused the black flash mid-transition). See
+    // js/bg-webgl.js's file header for the full explanation.
+    if (window.BgWebGL && window.BgWebGL.supported && slide.bg) {
+      var bgLayer = window.BgWebGL.layers[bgLayerCounter % 2];
+      bgLayerCounter++;
+      bgLayer.attachTo(slideNodes[current]);
+      bgLayer.setBackground(slide.bg, slideNodes[current].classList.contains('slide--full-bg'), performance.now());
+    }
     if (slide.miri) playMiriPopup(slideNodes[current], slide.miri, slide._skin);
     if (autoplay) scheduleNext();
   }

@@ -113,14 +113,20 @@
       '    // so UV distance must be rescaled by sqrt(2) to land stops correctly.\n' +
       '    float d = distance(vUv, vec2(0.5)) * 1.4142135;\n' +
       '    float radialA = d < 0.68 ? mix(0.4, 0.72, d / 0.68) : mix(0.72, 0.88, clamp((d - 0.68) / 0.32, 0.0, 1.0));\n' +
-      '    float linearA = stops4(vUv.y, 0.38, 0.6, 0.35, 0.65, 0.7, 1.0, 0.9);\n' +
+      // 1.0 - vUv.y, not vUv.y: this canvas's vUv.y=0 renders at the
+      // screen BOTTOM (the photo texture sampling that also reads vUv
+      // already accounts for this correctly — only the scrim's own "0% at
+      // top" assumption, inherited from the CSS linear-gradient(180deg) it
+      // mirrors, needed correcting). Flipping vUv itself earlier "fixed"
+      // this but flipped the photo upside down instead — don't do that.
+      '    float linearA = stops4(1.0 - vUv.y, 0.38, 0.6, 0.35, 0.65, 0.7, 1.0, 0.9);\n' +
       '    scrimAlpha = radialA + linearA * (1.0 - radialA);\n' +
       '    scrimColor = vec3(0.0);\n' +
       '  } else {\n' +
       '    // default: bottom-pinned linear vignette (photo stays clear up\n' +
       '    // top, near-opaque by the bottom so text sits legibly on it) —\n' +
       '    // matches linear-gradient(180deg, 0 0%, .15 45%, .88 78%, .96 100%).\n' +
-      '    scrimAlpha = stops4(vUv.y, 0.45, 0.0, 0.15, 0.78, 0.88, 1.0, 0.96);\n' +
+      '    scrimAlpha = stops4(1.0 - vUv.y, 0.45, 0.0, 0.15, 0.78, 0.88, 1.0, 0.96);\n' +
       '    scrimColor = vec3(9.0, 9.0, 8.0) / 255.0;\n' +
       '  }\n' +
       '\n' +

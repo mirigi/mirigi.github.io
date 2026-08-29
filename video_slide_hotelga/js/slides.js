@@ -759,31 +759,52 @@ var SLIDES = [
     return playAnswer(pop, miri);
   }
 
+  // Kept in sync with .slide's `transition: opacity <ms>` in slides.css.
+  var SHOW_FADE_MS = 450;
+
   function show(index) {
-    miriTimers.forEach(clearTimeout);
-    miriTimers = [];
-    if (slideNodes[current]) resetMiriPopup(slideNodes[current]);
+    var outgoingEl = slideNodes[current];
+    var wasActive = !!(outgoingEl && outgoingEl.classList.contains('is-active'));
+    var nextIndex = ((index % SLIDES.length) + SLIDES.length) % SLIDES.length;
 
-    current = ((index % SLIDES.length) + SLIDES.length) % SLIDES.length;
-    slideNodes.forEach(function (el, i) { el.classList.toggle('is-active', i === current); });
-    dotNodes.forEach(function (el, i) { el.classList.toggle('is-active', i === current); });
+    // Sequential fade, not a cross-dissolve: fade the outgoing slide fully
+    // to opacity 0 first, THEN start fading the incoming slide in — so the
+    // deck passes through a true near-black beat between slides instead of
+    // both being partially visible/overlapping at once.
+    if (wasActive) outgoingEl.classList.remove('is-active');
 
-    var slide = SLIDES[current];
-    if (qrBadge) qrBadge.classList.toggle('is-focused', !!slide.qrFocus);
-    // Two alternating WebGL layers, not one shared canvas: the outgoing
-    // slide keeps whichever layer it already has attached — still
-    // rendering its own photo — for the whole ~1.1s CSS crossfade, instead
-    // of losing its background the instant the incoming slide claims it
-    // (which is what caused the black flash mid-transition). See
-    // js/bg-webgl.js's file header for the full explanation.
-    if (window.BgWebGL && window.BgWebGL.supported && slide.bg) {
-      var bgLayer = window.BgWebGL.layers[bgLayerCounter % 2];
-      bgLayerCounter++;
-      bgLayer.attachTo(slideNodes[current]);
-      bgLayer.setBackground(slide.bg, slideNodes[current].classList.contains('slide--full-bg'), performance.now());
+    function activateNext() {
+      miriTimers.forEach(clearTimeout);
+      miriTimers = [];
+      if (outgoingEl) resetMiriPopup(outgoingEl);
+
+      current = nextIndex;
+      slideNodes.forEach(function (el, i) { el.classList.toggle('is-active', i === current); });
+      dotNodes.forEach(function (el, i) { el.classList.toggle('is-active', i === current); });
+
+      var slide = SLIDES[current];
+      if (qrBadge) qrBadge.classList.toggle('is-focused', !!slide.qrFocus);
+      // Two alternating WebGL layers, not one shared canvas: the outgoing
+      // slide keeps whichever layer it already has attached — still
+      // rendering its own photo — until it's fully faded out, instead of
+      // losing its background the instant the incoming slide claims it
+      // (which is what caused an earlier black-flash bug). See
+      // js/bg-webgl.js's file header for the full explanation.
+      if (window.BgWebGL && window.BgWebGL.supported && slide.bg) {
+        var bgLayer = window.BgWebGL.layers[bgLayerCounter % 2];
+        bgLayerCounter++;
+        bgLayer.attachTo(slideNodes[current]);
+        bgLayer.setBackground(slide.bg, slideNodes[current].classList.contains('slide--full-bg'), performance.now());
+      }
+      if (slide.miri) playMiriPopup(slideNodes[current], slide.miri, slide._skin);
+      if (autoplay) scheduleNext();
     }
-    if (slide.miri) playMiriPopup(slideNodes[current], slide.miri, slide._skin);
-    if (autoplay) scheduleNext();
+
+    if (wasActive) {
+      setTimeout(activateNext, SHOW_FADE_MS);
+    } else {
+      activateNext();
+    }
   }
 
   function scheduleNext() {
@@ -812,6 +833,10 @@ var SLIDES = [
   // Exposed for the render script (scripts/render-hotelga-video.js): the
   // exact total playback time (ms) of one full pass through the deck, so
   // the recording stops right after the last slide's animation completes
-  // instead of guessing a fixed duration.
-  window.MIRIGI_TOTAL_DURATION_MS = SLIDES.reduce(function (sum, s) { return sum + effectiveDuration(s); }, 0);
+  // instead of guessing a fixed duration. Includes the SHOW_FADE_MS
+  // fade-out beat show() now inserts before every transition but the
+  // first — omitting it would make renders stop slightly before the deck
+  // actually finishes playing.
+  window.MIRIGI_TOTAL_DURATION_MS = SLIDES.reduce(function (sum, s) { return sum + effectiveDuration(s); }, 0) +
+    (SLIDES.length - 1) * SHOW_FADE_MS;
 })();

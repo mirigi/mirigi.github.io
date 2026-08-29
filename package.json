@@ -50,6 +50,7 @@
         "gulp-uglify": "3.0.2",
         "merge-stream": "2.0.0",
         "playwright": "^1.62.1",
-        "puppeteer": "^24.42.0"
+        "puppeteer": "^24.42.0",
+        "web-video-creator": "^0.0.34"
     }
 }

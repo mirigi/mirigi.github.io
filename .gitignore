@@ -31,6 +31,11 @@ docs/superpowers/
 # Miniapp video renders
 video-out/
 
+# WebVideoCreator (scripts/render-hotelga-video-wvc.mjs): downloads its own
+# Chrome build into .bin/ on first run, and uses tmp/ as its browser profile
+.bin/
+tmp/
+
 
 # Generated per-build by the Pages workflow (date + short git sha)
 _data/build.yml

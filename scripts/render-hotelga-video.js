@@ -5,46 +5,49 @@
   Usage:
     node scripts/render-hotelga-video.js                              # English, 30fps webm
     node scripts/render-hotelga-video.js --lang=es                    # Spanish, 30fps webm
-    node scripts/render-hotelga-video.js --lang=es --fps=60           # genuine 60fps webm
+    node scripts/render-hotelga-video.js --lang=es --fps=60           # 60fps webm (interpolated)
     node scripts/render-hotelga-video.js --lang=es --mp4              # also produce the mp4
     node scripts/render-hotelga-video.js --lang=es --mp4 --width=2160 --height=3840   # 4K vertical mp4
 
   ─────────────────────────────────────────────────────────────────────────
-  Deterministic, frame-exact capture (not Playwright's recordVideo)
+  Capture method: Playwright's recordVideo, not deterministic CDP capture
   ─────────────────────────────────────────────────────────────────────────
-  Two earlier approaches were tried and rejected:
-    1. Playwright's built-in `context.recordVideo` — Chromium's encoder here
-       is hardcoded to ~1Mbit/s VP8 and has a known frame-timestamp rounding
-       jitter (microsoft/playwright#35776). Both defects are baked into the
-       encoded output and cannot be fully recovered afterwards — the jitter
-       shows as visibly uneven/"chunky" motion, and the low bitrate shows as
-       banding on our dark gradient backgrounds. Re-encoding that raw output
-       through ffmpeg (minterpolate + deband) only ever patched over damage
-       that had already happened.
-    2. Hand-rolled CDP `Page.startScreencast` — Chrome stalled screencast
-       delivery after a handful of frames; an ack/throttling issue not worth
-       chasing.
+  A deterministic, frame-exact pipeline (Chromium's `Emulation.setVirtualTimePolicy`
+  CDP domain, driving the deck's setTimeout/CSS-animation engine one virtual
+  frame at a time, screenshotting each — the technique Remotion/HyperFrames
+  use) was built and abandoned: it hit a reproducible hang in
+  `Page.captureScreenshot` in this environment, in three different forms
+  (missing-advance-before-first-screenshot; and two more once that was
+  fixed), with zero CPU on any process while stuck. Root cause not
+  identified — reproduced with both Playwright's default pipe transport and
+  a manual `connectOverCDP` TCP transport, so it isn't an fd-leak into a
+  spawned ffmpeg. Not reliable enough to ship on; reverted.
 
-  This script instead uses Chromium's `Emulation.setVirtualTimePolicy` (CDP),
-  the technique real HTML-to-video renderers use (e.g. Remotion, HyperFrames)
-  for exactly this problem: it freezes the browser's clock and lets us
-  advance it in exact, arbitrary steps. Our deck's engine is plain
-  `setTimeout`-driven and its CSS uses ordinary transitions/@keyframes — both
-  are virtualized by this CDP domain with no code changes needed beyond a
-  small start-gate (see `capture=1` handling in js/slides.js). For each
-  virtual-time step we grab a lossless PNG screenshot and stream it straight
-  into ffmpeg's stdin (`image2pipe`), so there is exactly one lossy
-  compression step in the whole pipeline (the final video encode) instead of
-  two. Because there's no real-time constraint, `--fps` now captures that
-  many *genuine* browser-rendered frames per second — no interpolation
-  fakery required.
+  This script instead uses Playwright's built-in `context.recordVideo`.
+  Known defects, both real and NOT fully fixable after the fact:
+    - Chromium's recordVideo encoder here is hardcoded to ~1Mbit/s VP8 and
+      has a known frame-timestamp rounding jitter (microsoft/playwright#35776).
+    - The raw capture alone looks chunky/stepped, especially on our dark
+      gradient backgrounds (jitter + low bitrate).
+  Every render therefore re-encodes the raw capture through ffmpeg:
+  `minterpolate` retimes it to a constant fps (irons out the jitter),
+  `deband` softens the gradient banding baked in by the low source bitrate,
+  and real VP9 Profile-2 10-bit (`yuv420p10le`) crf-based quality replaces
+  Playwright's forced low bitrate — 10-bit measurably reduces the encoder's
+  own added banding even from an 8-bit source.
 
-  Gradient banding: even a lossless source still gets requantized to 8-bit
-  YUV4:2:0 by the final encode, so js/slides.js's markup includes a fixed,
-  low-opacity SVG noise overlay (`#grain` in index.html/css/slides.css) that
-  dithers the gradients *before* capture — the standard trick from video
+  Gradient banding at the *source*: Chromium's screenshot/DOM rendering
+  pipeline is 8-bit sRGB with no way to get more color depth out of it (no
+  bit-depth parameter exists in the CDP `Page.captureScreenshot` schema) —
+  confirmed against node_modules/devtools-protocol directly. So
+  js/slides.js's markup includes a fixed, low-opacity SVG noise overlay
+  (`#grain` in index.html/css/slides.css) that dithers the gradients
+  *before* that 8-bit truncation happens — the standard trick from video
   color grading for breaking up banding that no post-hoc encoder filter can
-  fully undo once it's already happened.
+  fully undo once it's already happened. A genuine fix for the 8-bit ceiling
+  would mean re-rendering the deck's gradients via WebGL/WebGPU with a
+  floating-point framebuffer and reading raw pixels — a much larger project
+  than this deck's scope; not attempted here.
 
   Requirements: playwright (chromium), ffmpeg-static — both devDeps.
   The deck exposes window.MIRIGI_TOTAL_DURATION_MS (computed against
@@ -55,7 +58,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const { spawn, spawnSync } = require('child_process');
+const { spawnSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..');
 const OUT_DIR = path.resolve(ROOT, 'video-out');
@@ -70,7 +73,8 @@ const LANG = (args.lang || 'en').trim();
 const WIDTH = parseInt(args.width || '1080', 10);
 const HEIGHT = parseInt(args.height || '1920', 10);
 const PORT = parseInt(args.port || '8766', 10);
-const FPS = parseInt(args.fps || '30', 10);
+const FPS = args.fps ? parseInt(args.fps, 10) : null;
+const SECONDS = args.seconds ? parseFloat(args.seconds) : null;
 const TAIL_BUFFER_MS = 500;
 
 const DECK_PATH = '/video_slide_hotelga/';
@@ -103,50 +107,14 @@ function startServer(rootDir, port) {
   });
 }
 
-// Advances Chromium's virtualized clock by exactly `budgetMs` and resolves
-// once that budget has fully elapsed (all setTimeouts/CSS animation ticks
-// due within it have fired) — the deterministic replacement for
-// `page.waitForTimeout`.
-function advanceVirtualTime(client, budgetMs) {
-  return new Promise((resolve, reject) => {
-    client.once('Emulation.virtualTimeBudgetExpired', resolve);
-    client.send('Emulation.setVirtualTimePolicy', { policy: 'advance', budget: budgetMs }).catch(reject);
-  });
-}
-
-async function captureFrames(page, client, totalMs, fps, ffmpegStdin) {
-  const frameMs = 1000 / fps;
-  const frameCount = Math.ceil(totalMs / frameMs) + 1; // +1 for the frame-0 still
-  let elapsed = 0;
-  for (let i = 0; i < frameCount; i++) {
-    if (i > 0) {
-      const targetMs = Math.round(i * frameMs);
-      await advanceVirtualTime(client, targetMs - elapsed);
-      elapsed = targetMs;
-    }
-    // Raw CDP screenshot, not page.screenshot() — Playwright's wrapper waits
-    // for a stabilizing requestAnimationFrame internally, which never fires
-    // while the virtual clock is paused between our explicit advances.
-    const { data } = await client.send('Page.captureScreenshot', { format: 'png' });
-    const png = Buffer.from(data, 'base64');
-    const ok = ffmpegStdin.write(png);
-    if (!ok) await new Promise(resolve => ffmpegStdin.once('drain', resolve));
-    if ((i + 1) % Math.round(fps * 5) === 0 || i === frameCount - 1) {
-      process.stdout.write(`\r  frame ${i + 1}/${frameCount} (${elapsed}ms / ${totalMs}ms)`);
-    }
-  }
-  process.stdout.write('\n');
-}
-
-function spawnFfmpegEncoder(finalWebmPath, fps) {
+function reencodeWebm(rawWebmPath, finalWebmPath, fps) {
   const ffmpegPath = require('ffmpeg-static');
-  const vf = 'pad=ceil(iw/2)*2:ceil(ih/2)*2';
-  const proc = spawn(ffmpegPath, [
-    '-y',
-    '-f', 'image2pipe',
-    '-vcodec', 'png',
-    '-framerate', String(fps),
-    '-i', '-',
+  const targetFps = fps || 30;
+  const vf = `minterpolate=fps=${targetFps}:mi_mode=blend,` +
+    'deband=1thr=0.08:2thr=0.08:3thr=0.08:4thr=0.08:range=32,' +
+    'pad=ceil(iw/2)*2:ceil(ih/2)*2';
+  const r = spawnSync(ffmpegPath, [
+    '-y', '-i', rawWebmPath,
     '-vf', vf,
     '-c:v', 'libvpx-vp9',
     '-profile:v', '2',
@@ -157,16 +125,20 @@ function spawnFfmpegEncoder(finalWebmPath, fps) {
     '-cpu-used', '1',
     '-an',
     finalWebmPath,
-  ], { stdio: ['pipe', 'inherit', 'inherit'] });
-  return proc;
+  ], { stdio: 'inherit' });
+  if (r.status !== 0) throw new Error(`ffmpeg webm re-encode failed for ${rawWebmPath}`);
 }
 
-function transcodeToMp4(webmPath) {
+function transcodeToMp4(webmPath, fps) {
   const ffmpegPath = require('ffmpeg-static');
-  const mp4Path = webmPath.replace(/\.webm$/, '.mp4');
+  const suffix = fps ? `-${fps}fps` : '';
+  const mp4Path = webmPath.replace(/\.webm$/, `${suffix}.mp4`);
+  const vf = fps
+    ? `minterpolate=fps=${fps}:mi_mode=blend,pad=ceil(iw/2)*2:ceil(ih/2)*2`
+    : 'pad=ceil(iw/2)*2:ceil(ih/2)*2';
   const r = spawnSync(ffmpegPath, [
     '-y', '-i', webmPath,
-    '-vf', 'pad=ceil(iw/2)*2:ceil(ih/2)*2',
+    '-vf', vf,
     '-c:v', 'libx264',
     '-preset', 'slow',
     '-crf', '18',
@@ -187,6 +159,7 @@ function transcodeToMp4(webmPath) {
   }
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
+  const videoDir = fs.mkdtempSync(path.join(require('os').tmpdir(), 'hotelga-video-'));
 
   const server = await startServer(ROOT, PORT);
   const baseUrl = `http://127.0.0.1:${PORT}`;
@@ -194,56 +167,47 @@ function transcodeToMp4(webmPath) {
 
   const browser = await chromium.launch();
   try {
-    const context = await browser.newContext({ viewport: { width: WIDTH, height: HEIGHT } });
+    const context = await browser.newContext({
+      viewport: { width: WIDTH, height: HEIGHT },
+      recordVideo: { dir: videoDir, size: { width: WIDTH, height: HEIGHT } },
+    });
     const page = await context.newPage();
-    const client = await context.newCDPSession(page);
 
-    const url = `${baseUrl}${DECK_PATH}?auto=1&capture=1&lang=${LANG}`;
+    const url = `${baseUrl}${DECK_PATH}?auto=1&lang=${LANG}`;
     console.log(`[${LANG}] loading ${url}`);
-    // Real time until the page (fonts, images) is fully settled — then, and
-    // only then, do we freeze the clock and hand control to js/slides.js's
-    // capture=1 gate (see js/slides.js), so frame 0 is deterministic.
     await page.goto(url, { waitUntil: 'networkidle' });
-    // state: 'attached', not the default 'visible' — with capture=1 the deck
-    // defers its first show(0) call (see js/slides.js), so no slide carries
-    // is-active/visibility:visible yet at this point.
-    await page.waitForSelector('.slide', { state: 'attached', timeout: 8000 });
-    await page.evaluate(() => document.fonts.ready);
-    await page.evaluate(() => typeof window.__startCapture === 'function' || Promise.reject(new Error('window.__startCapture missing — capture=1 gate not wired up in js/slides.js')));
+    await page.waitForSelector('.slide', { timeout: 8000 });
 
     const totalMs = await page.evaluate(() => window.MIRIGI_TOTAL_DURATION_MS);
     if (!totalMs) throw new Error('window.MIRIGI_TOTAL_DURATION_MS was not set by the deck — check js/slides.js');
-    const durationMs = totalMs + TAIL_BUFFER_MS;
-    console.log(`[${LANG}] capturing ${durationMs}ms at ${WIDTH}x${HEIGHT}, ${FPS}fps (deterministic virtual-time capture) ...`);
+    const recordMs = SECONDS ? Math.min(totalMs, SECONDS * 1000) : totalMs;
+    const tailMs = SECONDS && recordMs < totalMs ? 0 : TAIL_BUFFER_MS;
+    console.log(`[${LANG}] recording ${recordMs}ms${SECONDS ? ` (--seconds=${SECONDS} preview cap)` : ` (+${TAIL_BUFFER_MS}ms tail)`} at ${WIDTH}x${HEIGHT} ...`);
 
-    await client.send('Emulation.setVirtualTimePolicy', { policy: 'pause' });
-    await page.evaluate(() => window.__startCapture());
+    await page.waitForTimeout(recordMs + tailMs);
 
-    const webmPath = path.join(OUT_DIR, `hotelga-24-7-${LANG}.webm`);
-    const ffmpeg = spawnFfmpegEncoder(webmPath, FPS);
-    const ffmpegDone = new Promise((resolve, reject) => {
-      ffmpeg.on('close', code => code === 0 ? resolve() : reject(new Error(`ffmpeg encoder exited ${code}`)));
-      ffmpeg.on('error', reject);
-    });
+    const video = page.video();
+    await context.close();
 
-    await captureFrames(page, client, durationMs, FPS, ffmpeg.stdin);
-    ffmpeg.stdin.end();
-    await ffmpegDone;
-
+    const recordedPath = await video.path();
+    const webmPath = path.join(OUT_DIR, `hotelga-24-7-${LANG}${SECONDS ? '-preview' : ''}.webm`);
+    console.log(`[${LANG}] re-encoding (minterpolate + deband + 10-bit VP9)...`);
+    reencodeWebm(recordedPath, webmPath, FPS);
     const stat = fs.statSync(webmPath);
     console.log(`[${LANG}] webm: ${path.relative(ROOT, webmPath)} (${(stat.size / 1024).toFixed(0)} KB)`);
 
     if (args.mp4) {
-      const mp4Path = transcodeToMp4(webmPath);
+      const mp4Path = transcodeToMp4(webmPath, FPS);
       const stat2 = fs.statSync(mp4Path);
       console.log(`[${LANG}] mp4:  ${path.relative(ROOT, mp4Path)} (${(stat2.size / 1024).toFixed(0)} KB)`);
     } else {
-      console.log(`[${LANG}] skipping mp4 (pass --mp4 to also transcode).`);
+      console.log(`[${LANG}] skipping mp4 (pass --mp4 to also transcode) — webm only, for fast content iteration.`);
     }
 
     console.log(`\nDone. Output: ${path.relative(ROOT, OUT_DIR)}/`);
   } finally {
     await browser.close();
     server.close();
+    fs.rmSync(videoDir, { recursive: true, force: true });
   }
 })().catch(err => { console.error(err); process.exit(1); });

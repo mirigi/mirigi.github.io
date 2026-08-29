@@ -483,8 +483,14 @@ html, body {
   inset: 0;
   z-index: 50;
   pointer-events: none;
-  opacity: 0.05;
+  /* Stronger + coarser than a typical UI dither: Playwright's raw capture
+     is itself a lossy ~1Mbit/s VP8 encode before our own ffmpeg pass ever
+     sees a frame, and video codecs specifically attenuate fine, per-pixel
+     noise as "detail that doesn't matter" during DCT quantization — a
+     subtle dither gets encoded away twice over. Coarser blobs (lower
+     baseFrequency, bigger tile) and higher amplitude survive that better. */
+  opacity: 0.16;
   mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  background-size: 180px 180px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.35' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 260px 260px;
 }

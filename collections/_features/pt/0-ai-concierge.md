@@ -8,7 +8,7 @@ keywords: concierge com ia, miri, chat, inteligência artificial, experiência d
 description: "A Miri é o primeiro agente concierge com IA que age — não apenas responde. Ela faz pedidos, chama o valet e reserva áreas comuns de ponta a ponta."
 ---
 
-A Miri é o **primeiro agente concierge com IA criado para agir**, não apenas para responder. Os moradores simplesmente pedem — *"Spaghetti Carbonara para a minha unidade"* ou *"suba meu carro em dez minutos"* — e a Miri **leva o pedido até a conclusão**. Sem menus, sem formulários, sem espera no telefone. **A conversa é a interface**.
+A Miri é o **primeiro agente concierge com IA criado para agir**, não apenas para responder. Os moradores simplesmente pedem — *"Spaghetti Carbonara para a minha unidade"* ou *"suba meu carro em dez minutos"* — e a Miri **leva o pedido até a conclusão**. Sem menus, sem formulários, sem espera no telefone. **A conversa é a interface** — no aplicativo com a marca do prédio, ou direto pelo **WhatsApp**, sem instalar nada.
 
 Para os moradores, a Miri está conectada aos módulos centrais do Mirigi do edifício: **pedidos ao restaurante**, **valet parking**, **reservas de áreas comuns**, **solicitações de serviço**, **autorizações de visitantes** e **inscrições em eventos**. Ela trabalha com o cardápio ao vivo do edifício, a **disponibilidade das áreas comuns em tempo real** e as preferências de cada morador; em seguida, **faz o pedido, registra a solicitação e retorna a confirmação**. O que antes exigia uma ligação telefônica ou uma ida ao lobby agora acontece *em uma frase*.
 

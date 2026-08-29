@@ -8,7 +8,7 @@ keywords: conserjería con ia, miri, chat, inteligencia artificial, experiencia 
 description: "Miri es el primer agente de conserjería con IA que actúa, no solo responde. Hace pedidos, llama al valet y reserva amenidades de principio a fin."
 ---
 
-Miri es el **primer agente de conserjería con IA creado para actuar**, no solo para responder. Los residentes simplemente piden — *"Spaghetti Carbonara a mi unidad"* o *"sube mi auto en diez minutos"* — y Miri **lleva la solicitud hasta su finalización**. Sin menús, sin formularios, sin esperas en el teléfono. **La conversación es la interfaz**.
+Miri es el **primer agente de conserjería con IA creado para actuar**, no solo para responder. Los residentes simplemente piden — *"Spaghetti Carbonara a mi unidad"* o *"sube mi auto en diez minutos"* — y Miri **lleva la solicitud hasta su finalización**. Sin menús, sin formularios, sin esperas en el teléfono. **La conversación es la interfaz** — en la app de marca, o directo por **WhatsApp**, sin instalar nada.
 
 Para los residentes, Miri está conectada a los módulos centrales de Mirigi del edificio: **pedidos al restaurante**, **valet parking**, **reservas de amenidades**, **solicitudes de servicio**, **autorizaciones de visitantes** e **inscripciones a eventos**. Trabaja con el menú en vivo del edificio, la **disponibilidad de amenidades en tiempo real** y las preferencias de cada residente; luego **realiza el pedido, registra la solicitud y devuelve la confirmación**. Lo que antes requería una llamada telefónica o un viaje al lobby ahora ocurre *en una frase*.
 

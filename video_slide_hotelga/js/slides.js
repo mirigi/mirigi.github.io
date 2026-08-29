@@ -759,18 +759,23 @@ var SLIDES = [
     return playAnswer(pop, miri);
   }
 
-  // Kept in sync with .slide's `transition: opacity <ms>` in slides.css.
+  // Kept in sync with .slide's `transition: opacity <ms> linear` in slides.css.
   var SHOW_FADE_MS = 450;
+  // The incoming slide starts fading in once the outgoing one has faded
+  // this far down (0.9 = 90% through its fade-out, i.e. at 10% opacity) —
+  // not fully to 0 first. Overlapping only that last, darkest sliver
+  // avoids both a jarring full cross-dissolve and a dead instant of solid
+  // black between slides.
+  var SHOW_FADE_OVERLAP = 0.9;
 
   function show(index) {
     var outgoingEl = slideNodes[current];
     var wasActive = !!(outgoingEl && outgoingEl.classList.contains('is-active'));
     var nextIndex = ((index % SLIDES.length) + SLIDES.length) % SLIDES.length;
 
-    // Sequential fade, not a cross-dissolve: fade the outgoing slide fully
-    // to opacity 0 first, THEN start fading the incoming slide in — so the
-    // deck passes through a true near-black beat between slides instead of
-    // both being partially visible/overlapping at once.
+    // Mostly-sequential fade: fade the outgoing slide down to ~10% opacity,
+    // THEN start fading the incoming slide in — the two only overlap for
+    // the final sliver of the outgoing fade instead of the whole thing.
     if (wasActive) outgoingEl.classList.remove('is-active');
 
     function activateNext() {
@@ -801,7 +806,7 @@ var SLIDES = [
     }
 
     if (wasActive) {
-      setTimeout(activateNext, SHOW_FADE_MS);
+      setTimeout(activateNext, SHOW_FADE_MS * SHOW_FADE_OVERLAP);
     } else {
       activateNext();
     }
@@ -833,10 +838,11 @@ var SLIDES = [
   // Exposed for the render script (scripts/render-hotelga-video.js): the
   // exact total playback time (ms) of one full pass through the deck, so
   // the recording stops right after the last slide's animation completes
-  // instead of guessing a fixed duration. Includes the SHOW_FADE_MS
-  // fade-out beat show() now inserts before every transition but the
-  // first — omitting it would make renders stop slightly before the deck
-  // actually finishes playing.
+  // instead of guessing a fixed duration. Includes the SHOW_FADE_MS *
+  // SHOW_FADE_OVERLAP delay show() now inserts before every transition but
+  // the first (the incoming slide only becomes current once the outgoing
+  // one has faded down to 10%) — omitting it would make renders stop
+  // slightly before the deck actually finishes playing.
   window.MIRIGI_TOTAL_DURATION_MS = SLIDES.reduce(function (sum, s) { return sum + effectiveDuration(s); }, 0) +
-    (SLIDES.length - 1) * SHOW_FADE_MS;
+    (SLIDES.length - 1) * SHOW_FADE_MS * SHOW_FADE_OVERLAP;
 })();

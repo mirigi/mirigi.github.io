@@ -15,11 +15,14 @@ html, body {
   height: 100vh;
 }
 
-/* A sequential fade — NOT a cross-dissolve. slides.js's show() removes
-   is-active from the outgoing slide and waits for this transition to fully
-   finish (SHOW_FADE_MS, kept in sync with the duration below) before
-   giving the incoming slide is-active, so there's a real (if brief) beat
-   of true black between slides rather than both blending together. */
+/* Mostly-sequential fade, not a full cross-dissolve. slides.js's show()
+   removes is-active from the outgoing slide, then waits until it's ~90%
+   faded out (SHOW_FADE_MS * SHOW_FADE_OVERLAP, kept in sync with the
+   duration below) before giving the incoming slide is-active — so the two
+   only overlap for the last, darkest 10% of the fade instead of the whole
+   thing, avoiding both a jarring 50/50 blend AND a dead instant of pure
+   black. `linear` (not `ease`) so that 90% of the time really is 10%
+   opacity, not skewed by an easing curve. */
 .slide {
   position: absolute;
   inset: 0;
@@ -34,7 +37,7 @@ html, body {
   visibility: hidden;
   background: linear-gradient(160deg, #202022 0%, #131314 100%);
   will-change: opacity;
-  transition: opacity 450ms ease, visibility 450ms;
+  transition: opacity 450ms linear, visibility 450ms;
 }
 
 .slide.is-active {

@@ -234,8 +234,7 @@ html, body {
   left: 50%;
   top: 15vh;
   width: 76vw;
-  max-width: 640px;
-  transform: translate(-50%, 14px);
+  transform: translate(-50%, 0.75vh);
   opacity: 0;
   z-index: 4;
   border-radius: 2vh;
@@ -485,7 +484,18 @@ html, body {
      noise as "detail that doesn't matter" during DCT quantization — a
      subtle dither gets encoded away twice over. Coarser blobs (lower
      baseFrequency, bigger tile) and higher amplitude survive that better. */
-  opacity: 0.16;
+  /* Was 0.16, tuned back when this was the only dithering in the pipeline
+     and had to survive Playwright's own lossy raw capture on top of the
+     final encode. Now js/bg-webgl.js's shader dither covers every
+     photo/scrim slide (the vast majority of the deck) at the moment of
+     generation, and scripts/render-hotelga-video.js's mp4 step dithers its
+     own 10-bit->8-bit reduction (zscale=dither=error_diffusion) instead of
+     silently truncating. Stacking full-strength grain on top of both now
+     reads as visible noise, not "grain" — see the banding in the shadow
+     behind "Un Nuevo Modelo" that prompted this. Left non-zero only as a
+     safety net for pure-gradient slides with no `bg` (never WebGL-covered)
+     and any future run where WebGL2 isn't available. */
+  opacity: 0.05;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.35' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   background-size: 260px 260px;

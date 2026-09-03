@@ -70,8 +70,17 @@ const args = Object.fromEntries(
 );
 
 const LANG = (args.lang || 'en').trim();
+// WIDTH/HEIGHT are the CSS viewport (what every vw/vh in slides.css sees) —
+// always the 1080x1920 layout, regardless of output resolution. DPR
+// (Playwright deviceScaleFactor) scales the captured pixel density on top
+// of that *same* layout instead of changing the viewport, so nothing needs
+// to be sized in real px ever again to survive a resolution change (see
+// the .miri-pop max-width bug this replaced — a literal 2160x3840 viewport
+// changed the layout itself, not just the pixel density). Output pixels =
+// WIDTH*DPR x HEIGHT*DPR.
 const WIDTH = parseInt(args.width || '1080', 10);
 const HEIGHT = parseInt(args.height || '1920', 10);
+const DPR = parseInt(args.dpr || '1', 10);
 const PORT = parseInt(args.port || '8766', 10);
 const FPS = args.fps ? parseInt(args.fps, 10) : null;
 const SECONDS = args.seconds ? parseFloat(args.seconds) : null;
@@ -133,16 +142,21 @@ function transcodeToMp4(webmPath, fps) {
   const ffmpegPath = require('ffmpeg-static');
   const suffix = fps ? `-${fps}fps` : '';
   const mp4Path = webmPath.replace(/\.webm$/, `${suffix}.mp4`);
-  const vf = fps
-    ? `minterpolate=fps=${fps}:mi_mode=blend,pad=ceil(iw/2)*2:ceil(ih/2)*2`
-    : 'pad=ceil(iw/2)*2:ceil(ih/2)*2';
+  // zscale=dither=error_diffusion does the 10-bit -> 8-bit reduction with
+  // dithering; a plain `-pix_fmt yuv420p` (no zscale) just truncates and
+  // reintroduces the banding the 10-bit VP9 intermediate was meant to avoid.
+  const vf = [
+    fps ? `minterpolate=fps=${fps}:mi_mode=blend` : null,
+    'zscale=dither=error_diffusion',
+    'format=yuv420p',
+    'pad=ceil(iw/2)*2:ceil(ih/2)*2',
+  ].filter(Boolean).join(',');
   const r = spawnSync(ffmpegPath, [
     '-y', '-i', webmPath,
     '-vf', vf,
     '-c:v', 'libx264',
     '-preset', 'slow',
     '-crf', '18',
-    '-pix_fmt', 'yuv420p',
     '-movflags', '+faststart',
     mp4Path,
   ], { stdio: 'inherit' });
@@ -151,10 +165,15 @@ function transcodeToMp4(webmPath, fps) {
 }
 
 (async () => {
-  let chromium;
-  try { ({ chromium } = require('playwright')); }
+  const browserName = (args.browser || 'chromium').trim();
+  let browserType;
+  try { browserType = require('playwright')[browserName]; }
   catch {
     console.error('playwright is not installed. Run:\n  npm install --save-dev playwright && npx playwright install chromium');
+    process.exit(1);
+  }
+  if (!browserType) {
+    console.error(`Unknown --browser=${browserName}. Use chromium, firefox, or webkit.`);
     process.exit(1);
   }
 
@@ -165,24 +184,25 @@ function transcodeToMp4(webmPath, fps) {
   const baseUrl = `http://127.0.0.1:${PORT}`;
   console.log(`Serving ${ROOT} on ${baseUrl}`);
 
-  const browser = await chromium.launch();
+  const browser = await browserType.launch();
   try {
     const context = await browser.newContext({
       viewport: { width: WIDTH, height: HEIGHT },
-      recordVideo: { dir: videoDir, size: { width: WIDTH, height: HEIGHT } },
+      deviceScaleFactor: DPR,
+      recordVideo: { dir: videoDir, size: { width: WIDTH * DPR, height: HEIGHT * DPR } },
     });
     const page = await context.newPage();
 
     const url = `${baseUrl}${DECK_PATH}?auto=1&lang=${LANG}`;
     console.log(`[${LANG}] loading ${url}`);
-    await page.goto(url, { waitUntil: 'networkidle' });
+    await page.goto(url, { waitUntil: 'load' });
     await page.waitForSelector('.slide', { timeout: 8000 });
 
     const totalMs = await page.evaluate(() => window.MIRIGI_TOTAL_DURATION_MS);
     if (!totalMs) throw new Error('window.MIRIGI_TOTAL_DURATION_MS was not set by the deck — check js/slides.js');
     const recordMs = SECONDS ? Math.min(totalMs, SECONDS * 1000) : totalMs;
     const tailMs = SECONDS && recordMs < totalMs ? 0 : TAIL_BUFFER_MS;
-    console.log(`[${LANG}] recording ${recordMs}ms${SECONDS ? ` (--seconds=${SECONDS} preview cap)` : ` (+${TAIL_BUFFER_MS}ms tail)`} at ${WIDTH}x${HEIGHT} ...`);
+    console.log(`[${LANG}] recording ${recordMs}ms${SECONDS ? ` (--seconds=${SECONDS} preview cap)` : ` (+${TAIL_BUFFER_MS}ms tail)`} at ${WIDTH}x${HEIGHT}${DPR > 1 ? ` @${DPR}x DPR (${WIDTH * DPR}x${HEIGHT * DPR} output)` : ''} ...`);
 
     await page.waitForTimeout(recordMs + tailMs);
 
@@ -190,7 +210,8 @@ function transcodeToMp4(webmPath, fps) {
     await context.close();
 
     const recordedPath = await video.path();
-    const webmPath = path.join(OUT_DIR, `hotelga-24-7-${LANG}${SECONDS ? '-preview' : ''}.webm`);
+    const resSuffix = WIDTH * DPR * HEIGHT * DPR > 1080 * 1920 ? '-4k' : '';
+    const webmPath = path.join(OUT_DIR, `hotelga-24-7-${LANG}${resSuffix}${SECONDS ? '-preview' : ''}.webm`);
     console.log(`[${LANG}] re-encoding (minterpolate + deband + 10-bit VP9)...`);
     reencodeWebm(recordedPath, webmPath, FPS);
     const stat = fs.statSync(webmPath);

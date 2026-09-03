@@ -104,7 +104,7 @@ var SLIDES = [
       en: 'From the <span class="legacy">hotel app</span> to the<br><span class="future">hotel Artificial Intelligence assistant</span>',
       es: 'Del <span class="legacy">app del hotel</span> al<br><span class="future">asistente de Inteligencia Artificial del hotel</span>',
     },
-    subline: { en: 'Miri — the AI that acts.', es: 'Miri — la IA que actúa.' },
+    subline: { en: 'Miri: the AI that acts.', es: 'Miri: la IA que actúa.' },
     durationMs: 5000,
   },
   {
@@ -114,7 +114,7 @@ var SLIDES = [
     bg: '/img_mirigi/bg-masthead.jpg',
     kicker: { en: 'The problem', es: 'El problema' },
     title: { en: 'Guests expect instant, always-on service.', es: 'Los huéspedes esperan un servicio instantáneo, siempre disponible.' },
-    body: { en: 'Front desk, concierge, housekeeping, valet, F&B — all stretched thin.', es: 'Recepción, conserjería, limpieza, valet, gastronomía — todos al límite.' },
+    body: { en: 'Front desk, concierge, housekeeping, valet, F&B: all stretched thin.', es: 'Recepción, conserjería, limpieza, valet, gastronomía: todos al límite.' },
   },
   {
     kind: 'content',
@@ -134,8 +134,8 @@ var SLIDES = [
     kicker: { en: 'Artificial Intelligence Concierge', es: 'Conserjería con Inteligencia Artificial' },
     title: { en: 'Meet Miri.', es: 'Conocé a Miri.' },
     body: {
-      en: 'She <span class="future">acts</span>, not just answers — always with the guest’s OK.',
-      es: 'Ella <span class="future">actúa</span>, no solo responde — siempre con el visto bueno del huésped.',
+      en: 'She <span class="future">acts</span>, not just answers, always with the guest’s OK.',
+      es: 'Ella <span class="future">actúa</span>, no solo responde, siempre con el visto bueno del huésped.',
     },
   },
 
@@ -143,29 +143,29 @@ var SLIDES = [
   {
     kind: 'content',
     bg: '/img_mirigi/additional_v2.jpg',
-    kicker: { en: 'New — Miri on WhatsApp', es: 'Nuevo — Miri en WhatsApp' },
+    kicker: { en: 'New: Miri on WhatsApp', es: 'Nuevo: Miri en WhatsApp' },
     title: { en: 'No app to install. No interface to learn.', es: 'Sin apps que instalar. Sin interfaz que aprender.' },
     miriStyle: 'whatsapp',
     miri: {
       user: { en: 'Hi Miri, can you book the gym for me tomorrow at 8am?', es: 'Hola Miri, ¿podés reservarme el gimnasio para mañana a las 8am?' },
       ask: { en: 'Book the gym tomorrow at 8:00 AM?', es: '¿Reservo el gimnasio para mañana a las 8:00 AM?' },
       status: { en: 'Booked', es: 'Reservado' },
-      confirmed: { en: 'Booked — see you at 8:00 AM.', es: 'Reservado — nos vemos a las 8:00 AM.' },
+      confirmed: { en: 'Booked. See you at 8:00 AM.', es: 'Reservado. Nos vemos a las 8:00 AM.' },
     },
   },
   {
     kind: 'content',
     bg: '/img/features/visitors.jpg',
-    kicker: { en: 'New — Temporal Stays', es: 'Nuevo — Estadías Temporales' },
+    kicker: { en: 'New: Temporal Stays', es: 'Nuevo: Estadías Temporales' },
     title: { en: 'Renting your unit? Your guests get full access, too.', es: '¿Alquilás tu unidad? Tus huéspedes también tienen acceso completo.' },
     miriStyle: 'whatsapp',
     miri: {
       conversation: [
         { from: 'miri', text: { en: 'You’re registered as our guest, Day 1–10. Enter your confirmation code to begin.', es: 'Estás registrado como nuestro huésped, del día 1 al 10. Ingresá tu código de confirmación para comenzar.' } },
         { from: 'user', text: 'J123C' },
-        { from: 'miri', text: { en: 'Welcome! You’re all set — ask me anything, anytime.', es: '¡Bienvenido! Ya está todo listo — preguntame lo que quieras, cuando quieras.' } },
-        { from: 'user', text: { en: 'I’ll arrive around 9 — what time is check-in?', es: 'Llego cerca de las 9 — ¿a qué hora es el check-in?' } },
-        { from: 'miri', text: { en: 'Check-in is at 11, but you can leave your luggage at reception. Want to wait at our restaurant — see the menu? Or book the gym while you wait?', es: 'El check-in es a las 11, pero podés dejar tu equipaje en recepción. ¿Querés esperar en nuestro restaurante y ver el menú? ¿O reservar el gimnasio mientras esperás?' } },
+        { from: 'miri', text: { en: 'Welcome! You’re all set: ask me anything, anytime.', es: '¡Bienvenido! Ya está todo listo: preguntame lo que quieras, cuando quieras.' } },
+        { from: 'user', text: { en: 'I’ll arrive around 9. What time is check-in?', es: 'Llego cerca de las 9. ¿A qué hora es el check-in?' } },
+        { from: 'miri', text: { en: 'Check-in is at 11, but you can leave your luggage at reception. Want to wait at our restaurant and see the menu? Or book the gym while you wait?', es: 'El check-in es a las 11, pero podés dejar tu equipaje en recepción. ¿Querés esperar en nuestro restaurante y ver el menú? ¿O reservar el gimnasio mientras esperás?' } },
       ],
     },
   },
@@ -174,13 +174,13 @@ var SLIDES = [
   {
     kind: 'content', bg: '/img_mirigi/restaurants2.png',
     kicker: { en: 'Dining', es: 'Gastronomía' },
-    title: { en: 'Order breakfast, dinner, room service — Miri places it.', es: 'Pedí desayuno, cena, servicio a la habitación — Miri lo hace por vos.' },
+    title: { en: 'Order breakfast, dinner, room service: Miri places it.', es: 'Pedí desayuno, cena, servicio a la habitación: Miri lo hace por vos.' },
     miri: {
       conversation: [
         { from: 'user', text: { en: 'Can I get a club sandwich sent to my room?', es: '¿Podés enviarme un club sándwich a mi habitación?' } },
-        { from: 'miri', text: { en: 'Of course — would you like a beverage with that?', es: 'Claro — ¿te gustaría alguna bebida?' } },
+        { from: 'miri', text: { en: 'Of course, would you like a beverage with that?', es: 'Claro, ¿te gustaría alguna bebida?' } },
         { from: 'user', text: { en: 'Yes, an iced tea, please.', es: 'Sí, un té helado, por favor.' } },
-        { from: 'miri', text: { en: 'Club sandwich and iced tea — on their way to Room 812.', es: 'Club sándwich y té helado — en camino a la Habitación 812.' } },
+        { from: 'miri', text: { en: 'Club sandwich and iced tea, on their way to Room 812.', es: 'Club sándwich y té helado, en camino a la Habitación 812.' } },
       ],
     },
   },
@@ -198,12 +198,12 @@ var SLIDES = [
   {
     kind: 'content', bg: '/img_mirigi/amenities2.jpg',
     kicker: { en: 'Amenities', es: 'Amenidades' },
-    title: { en: 'Spa, pool, gym, courts — booked in one line.', es: 'Spa, pileta, gimnasio, canchas — reservados en una sola línea.' },
+    title: { en: 'Spa, pool, gym, courts: booked in one line.', es: 'Spa, pileta, gimnasio, canchas: reservados en una sola línea.' },
     miri: {
       user: { en: 'Book me a massage at 5pm today.', es: 'Reservame un masaje hoy a las 5pm.' },
       ask: { en: 'Reserve the spa at 5:00 PM?', es: '¿Reservo el spa a las 5:00 PM?' },
       status: { en: 'Booked', es: 'Reservado' },
-      confirmed: { en: 'Booked — see you at 5:00 PM.', es: 'Reservado — nos vemos a las 5:00 PM.' },
+      confirmed: { en: 'Booked. See you at 5:00 PM.', es: 'Reservado. Nos vemos a las 5:00 PM.' },
     },
   },
   {
@@ -212,7 +212,7 @@ var SLIDES = [
     title: { en: 'Notified the moment a package lands.', es: 'Te avisamos en el momento en que llega un paquete.' },
     miri: {
       user: { en: 'Did my package arrive yet?', es: '¿Ya llegó mi paquete?' },
-      answer: { en: 'Yes — it’s at the front desk, on its way up now.', es: 'Sí — está en recepción, ya va camino a tu habitación.' },
+      answer: { en: 'Yes, it’s at the front desk, on its way up now.', es: 'Sí, está en recepción, ya va camino a tu habitación.' },
     },
   },
   {
@@ -221,12 +221,12 @@ var SLIDES = [
     title: { en: 'Authorize a guest before they reach the door.', es: 'Autorizá a un visitante antes de que llegue a la puerta.' },
     miri: {
       conversation: [
-        { from: 'user', text: { en: 'My friend is arriving later — can you register her?', es: 'Mi amiga llega más tarde — ¿podés registrarla?' } },
-        { from: 'miri', text: { en: 'Sure — tell me her name and ID number. Her phone number too, if you have it.', es: 'Claro — decime su nombre y número de documento. También su teléfono, si lo tenés.' } },
+        { from: 'user', text: { en: 'My friend is arriving later. Can you register her?', es: 'Mi amiga llega más tarde. ¿Podés registrarla?' } },
+        { from: 'miri', text: { en: 'Sure, tell me her name and ID number. Her phone number too, if you have it.', es: 'Claro, decime su nombre y número de documento. También su teléfono, si lo tenés.' } },
         { from: 'user', kind: 'audio', duration: '0:14' },
         {
           from: 'miri', kind: 'confirm',
-          text: { en: 'Got it — confirming:', es: 'Listo — confirmando:' },
+          text: { en: 'Got it, confirming:', es: 'Listo, confirmando:' },
           fields: [
             { label: { en: 'Name', es: 'Nombre' }, value: 'Sofía Fernández' },
             { label: { en: 'ID', es: 'Documento' }, value: 'ID-48213' },
@@ -246,8 +246,8 @@ var SLIDES = [
         { from: 'user', text: { en: 'My A/C isn’t working.', es: 'Mi aire acondicionado no funciona.' } },
         { from: 'miri', text: { en: 'Should I report this to maintenance?', es: '¿Aviso a mantenimiento para que lo revisen enseguida?' } },
         { from: 'user', text: { en: 'Yes', es: 'Sí' }, pauseMs: 600 },
-        { from: 'miri', text: { en: 'Sent — your request has been logged.', es: 'Listo, ya avisé a mantenimiento — tu solicitud quedó registrada.' } },
-        { from: 'miri', text: { en: 'The staff answered: “Can you try the second remote? Either way, a technician is on the way — there in 5 minutes.”', es: 'El equipo de mantenimiento respondió: mientras tanto, ¿podrías probar con el segundo control remoto? De todas formas, ya viene en camino un técnico — llega en 5 minutos.' }, pauseMs: 2000 },
+        { from: 'miri', text: { en: 'Sent. Your request has been logged.', es: 'Listo, ya avisé a mantenimiento. Tu solicitud quedó registrada.' } },
+        { from: 'miri', text: { en: 'The staff answered: “Can you try the second remote? Either way, a technician is on the way, there in 5 minutes.”', es: 'El equipo de mantenimiento respondió: mientras tanto, ¿podrías probar con el segundo control remoto? De todas formas, ya viene en camino un técnico, llega en 5 minutos.' }, pauseMs: 2000 },
       ],
     },
   },
@@ -256,12 +256,12 @@ var SLIDES = [
   {
     kind: 'content', bg: '/img_mirigi/kitchen.jpg',
     kicker: { en: 'In-Room Controls', es: 'Controles de la Habitación' },
-    title: { en: 'Lights, climate, curtains — one request away.', es: 'Luces, clima, cortinas — a una sola solicitud de distancia.' },
+    title: { en: 'Lights, climate, curtains: one request away.', es: 'Luces, clima, cortinas: a una sola solicitud de distancia.' },
     miri: {
       user: { en: 'Can you set the room up for relaxing this evening?', es: '¿Podés preparar la habitación para relajarme esta noche?' },
-      ask: { en: 'Run the Relax scene — lights low, A/C cool?', es: '¿Activo la escena Relax — luces tenues, aire fresco?' },
+      ask: { en: 'Run the Relax scene: lights low, A/C cool?', es: '¿Activo la escena Relax: luces tenues, aire fresco?' },
       status: { en: 'Done', es: 'Listo' },
-      confirmed: { en: 'Done — enjoy your evening.', es: 'Listo — que disfrutes tu noche.' },
+      confirmed: { en: 'Done. Enjoy your evening.', es: 'Listo. Que disfrutes tu noche.' },
     },
   },
   {
@@ -279,14 +279,14 @@ var SLIDES = [
     title: { en: 'Real-time guest satisfaction, one voice note.', es: 'Satisfacción del huésped en tiempo real, con un solo audio.' },
     miri: {
       conversation: [
-        { from: 'user', text: { en: 'I really want to congratulate the team — this stay was a pleasure.', es: 'Realmente quiero felicitar al equipo — esta estadía fue un placer.' } },
+        { from: 'user', text: { en: 'I really want to congratulate the team: this stay was a pleasure.', es: 'Realmente quiero felicitar al equipo: esta estadía fue un placer.' } },
         { from: 'miri', text: { en: 'That’s wonderful to hear! Would you like to fill out a satisfaction form?', es: '¡Qué lindo escuchar eso! ¿Te gustaría completar un formulario de satisfacción?' } },
         { from: 'user', text: { en: 'Yes', es: 'Sí' }, pauseMs: 500 },
-        { from: 'miri', text: { en: 'How was your experience — Miri, the restaurant, housekeeping — from 1 to 5?', es: '¿Cómo calificarías tu experiencia — Miri, el restaurante, la limpieza — del 1 al 5?' } },
+        { from: 'miri', text: { en: 'How was your experience (Miri, the restaurant, housekeeping) from 1 to 5?', es: '¿Cómo calificarías tu experiencia (Miri, el restaurante, la limpieza) del 1 al 5?' } },
         { from: 'user', kind: 'audio', duration: '0:11' },
         {
           from: 'miri', kind: 'confirm',
-          text: { en: 'Got it — here’s your form:', es: 'Listo — aquí está tu formulario:' },
+          text: { en: 'Got it, here’s your form:', es: 'Listo, aquí está tu formulario:' },
           fields: [
             { label: { en: 'Miri', es: 'Miri' }, value: '★★★★★' },
             { label: { en: 'Restaurant', es: 'Restaurante' }, value: '★★★★★' },
@@ -311,7 +311,7 @@ var SLIDES = [
     title: { en: 'Charges and balances, always in view.', es: 'Cargos y saldos, siempre a la vista.' },
     miri: {
       user: { en: 'What’s my balance, and when is it due?', es: '¿Cuál es mi saldo, y cuándo vence?' },
-      answer: { en: 'You’re all settled — nothing due until checkout.', es: 'Estás al día — no hay nada pendiente hasta el checkout.' },
+      answer: { en: 'You’re all settled, nothing due until checkout.', es: 'Estás al día, no hay nada pendiente hasta el checkout.' },
     },
   },
   { kind: 'content', bg: '/img/features/bespoke.jpg', kicker: { en: 'Reports', es: 'Reportes' }, title: { en: 'Tailored dashboards, for every property.', es: 'Paneles a medida, para cada propiedad.' } },
@@ -335,13 +335,13 @@ var SLIDES = [
 
   // ---------- Act 3 — Staff operations (no Miri popups: different persona/mode) ----------
   { kind: 'content', bg: '/img_mirigi/staff-frontdesk.webp', kicker: { en: 'Staff Console', es: 'Consola del Personal' }, title: { en: 'One real-time ops screen for the whole team.', es: 'Una pantalla operativa en tiempo real para todo el equipo.' } },
-  { kind: 'content', bg: '/img_mirigi/header.jpg', kicker: { en: 'Front Desk', es: 'Recepción' }, title: { en: 'Every arrival, request, and handoff — in view.', es: 'Cada llegada, solicitud y traspaso — a la vista.' } },
+  { kind: 'content', bg: '/img_mirigi/header.jpg', kicker: { en: 'Front Desk', es: 'Recepción' }, title: { en: 'Every arrival, request, and handoff: in view.', es: 'Cada llegada, solicitud y traspaso: a la vista.' } },
   { kind: 'content', bg: '/img_mirigi/ai-concierge.jpg', kicker: { en: 'Concierge', es: 'Conserjería' }, title: { en: 'Guest requests, routed the moment they land.', es: 'Solicitudes de huéspedes, enrutadas en el momento en que llegan.' } },
   {
     kind: 'content', bg: '/img_mirigi/valet.jpg',
     kicker: { en: 'Valet Queue', es: 'Cola de Valet' },
     title: { en: 'An AI camera spots the car. Staff just park it.', es: 'Una cámara con IA detecta el auto. El personal solo lo estaciona.' },
-    body: { en: 'License plate read, photos captured, record created — no typing.', es: 'Patente leída, fotos capturadas, registro creado — sin tipear.' },
+    body: { en: 'License plate read, photos captured, record created: no typing.', es: 'Patente leída, fotos capturadas, registro creado: sin tipear.' },
   },
   { kind: 'content', bg: '/img_mirigi/blueliving.jpg', kicker: { en: 'Housekeeping', es: 'Mantenimiento' }, title: { en: 'Maintenance and housekeeping, tracked to close.', es: 'Mantenimiento y limpieza, seguidos hasta su cierre.' } },
   { kind: 'content', bg: '/img/features/camera-2.jpg', kicker: { en: 'Security', es: 'Seguridad' }, title: { en: 'Property-wide visibility, one console.', es: 'Visibilidad de toda la propiedad, en una sola consola.' } },

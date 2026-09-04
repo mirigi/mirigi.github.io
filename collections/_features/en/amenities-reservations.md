@@ -16,7 +16,7 @@ miri_ai_example:
   - from: miri
     text: "Booked the BBQ for Saturday 9:00-10:00 PM under your unit. The $15 usage fee was added to your account, and I'll send you a reminder at 8:00 PM. You'll also see it on the reservations calendar."
 ---
-The barbecue on a summer Saturday, the party room for a milestone birthday, the tennis court before work — Mirigi turns **booking a shared amenity** into something residents do **in seconds, from anywhere**. A **live calendar** shows what is open and what is taken, **reservations confirm instantly**, and **timely reminders** make sure no one misses their slot. For the building, every booking is *recorded, accounted for and visible at a glance*.
+The barbecue on a summer Saturday, the party room for a milestone birthday, the tennis court before work: Mirigi turns **booking a shared amenity** into something residents do **in seconds, from anywhere**. A **live calendar** shows what is open and what is taken, **reservations confirm instantly**, and **timely reminders** make sure no one misses their slot. For the building, every booking is *recorded, accounted for and visible at a glance*.
 
 Each amenity is configured as its own **reservable group** with rules that match how the building actually operates. Administrators set **weekly opening hours** and **per-date overrides for holidays**, choose **slot lengths**, define **minimum lead time** and how far in advance residents may book, **cap reservations per unit per day**, and decide whether back-to-back bookings or all-day reservations are allowed. Party rooms, courts and staff-only spaces each follow their own logic, and a **color code** keeps them easy to read on the calendar.
 

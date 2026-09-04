@@ -21,7 +21,7 @@ body {
   font-family: 'DM Sans', 'Open Sans', sans-serif;
   letter-spacing: 0.0125em;
   font-size: 110%;
-  background-color: #f2efe9;       // Mirigi stone — warm off-white
+  background-color: #f2efe9;       // Mirigi stone, warm off-white
 }
 
 // Brand-wide background override: replace Bootstrap's gray-100 with warm stone.
@@ -213,7 +213,7 @@ a {
   }
 }
 
-// Miniapp iframe — fills its .image wrapper so it inherits the showcase layout
+// Miniapp iframe, fills its .image wrapper so it inherits the showcase layout
 .miniapp-image {
   padding: 0 !important;
   position: relative;

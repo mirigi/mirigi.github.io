@@ -11,7 +11,7 @@ html, body { width: 100%; height: 100%; }
 
 /*
   CSS 3D pipeline: body (perspective) → #stage (preserve-3d) → .card (translate3d).
-  #stage must be a DIRECT child of body — any intermediate element flattens the chain.
+  #stage must be a DIRECT child of body, any intermediate element flattens the chain.
   Each card is individually rotated (rotateX + rotateY) for the top-right viewpoint;
   the stage itself is never rotated so the stack arrangement stays screen-straight.
 */
@@ -191,7 +191,7 @@ body {
   <li><strong>Request the car.</strong> User: Please send the car to the entrance in ten minutes. Miri: Understood, I've requested the car for you.</li>
   <li><strong>Reserve the barbecue.</strong> User: Please reserve the barbecue for Saturday evening. Miri: Sure, I've requested the barbecue reservation for Saturday evening.</li>
   <li><strong>Report a broken light.</strong> User: There is a broken light on the ceiling of the hallway in my apartment. Miri: Thanks, I've reported the broken hallway ceiling light to maintenance.</li>
-  <li><strong>Reserve the gym.</strong> User: Can you reserve the gym for tomorrow at 7 am? Miri: Done — the gym is reserved for 7:00 AM tomorrow.</li>
+  <li><strong>Reserve the gym.</strong> User: Can you reserve the gym for tomorrow at 7 am? Miri: Done, the gym is reserved for 7:00 AM tomorrow.</li>
 </ul>
 
 <script>
@@ -240,7 +240,7 @@ body {
   }
 
   /*
-    Per-card rotation — every card looks like it's being viewed from the
+    Per-card rotation, every card looks like it's being viewed from the
     top-right corner. Same rotation for all cards so the stack arrangement
     stays straight on-screen (as requested).
     rotateX(-12deg): tilts the top slightly toward viewer (so top face is visible)
@@ -505,7 +505,7 @@ body {
       user:     { en: "Can you reserve the gym for tomorrow at 7 am?",
                   es: "¿Podés reservar el gimnasio mañana a las 7 am?",
                   fr: "Pouvez-vous réserver la salle de sport demain à 7h ?" },
-      miri:     { en: "Done — the gym is reserved for 7:00 AM tomorrow.",
+      miri:     { en: "Done, the gym is reserved for 7:00 AM tomorrow.",
                   es: "¡Listo! El gimnasio está reservado para mañana a las 7:00 AM.",
                   fr: "C'est fait ! La salle de sport est réservée demain à 7h00." }
     }

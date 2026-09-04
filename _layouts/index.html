@@ -116,7 +116,7 @@ layout: default
   <main>
 
   <style>
-/* Editorial touches on the home about body text — typography only.
+/* Editorial touches on the home about body text: typography only.
    Layout, image, margins and headings remain stock. */
 .home-eyebrow {
   display: inline-block;
@@ -155,13 +155,13 @@ layout: default
   border: none !important;
   box-shadow: 0 30px 60px -20px rgba(40,55,85,0.12) !important;
 }
-/* Non-reverse: image LEFT, content RIGHT — gold on the content's LEFT edge. */
+/* Non-reverse: image LEFT, content RIGHT: gold on the content's LEFT edge. */
 .feature-hero > .content {
   border-left: 4px solid #c9a961;
   border-right: 0;
   box-shadow: inset 4px 0 0 0 #c9a961;
 }
-/* Reverse: image RIGHT, content LEFT — gold on the content's RIGHT edge. */
+/* Reverse: image RIGHT, content LEFT: gold on the content's RIGHT edge. */
 .feature-hero.reverse > .content {
   border-left: 0;
   border-right: 4px solid #c9a961;
@@ -179,7 +179,7 @@ layout: default
   color: #3c3c3c;
 }
 /* Showcase stacks at 992px (matches _showcase_fede.scss $media-max-width).
-   Below that, image sits ABOVE content, so the seam runs horizontally — the
+   Below that, image sits ABOVE content, so the seam runs horizontally: the
    gold rule moves from the side of .content to its top. */
 @media (max-width: 992px) {
   .feature-hero { min-height: 0; }
@@ -193,7 +193,7 @@ layout: default
   }
 }
 
-/* Customer pull-quote strip — rotating resident voices above the buildings grid. */
+/* Customer pull-quote strip: rotating resident voices above the buildings grid. */
 .customer-pullquote {
   background: #1c1a18;
   padding: 5rem 2rem;
@@ -324,7 +324,7 @@ layout: default
 {% assign faq_groups = site.data[page.lang].faq %}
 {% if faq_groups and faq_groups.size > 0 %}
 <style>
-/* Dark theme — FAQ now sits between Features and Buildings, picking up the
+/* Dark theme: FAQ now sits between Features and Buildings, picking up the
    light → dark cadence the page already has. Reference content stays calm
    and browseable; the dark surface signals "transitioning out of the
    features grid" without fighting the accordion's quiet role. */
@@ -499,7 +499,7 @@ layout: default
 
 
 <style>
-/* Contact section — editorial conversion hub */
+/* Contact section: editorial conversion hub */
 .contact-section {
   padding: 5rem 0 4rem !important;
 }
@@ -610,7 +610,7 @@ layout: default
       <span class="home-eyebrow">{{ site.data[page.lang].contact_eyebrow | default: "Let's talk" }}</span>
       <h2>{{ site.data[page.lang].contact_title | default: "See Mirigi running in your building" }}</h2>
       <hr class="home-rule" />
-      <p>{{ site.data[page.lang].contact_lead | default: "Book a private 30-minute walkthrough tailored to your property. See how residents place orders, request the valet, and reach the concierge in a single conversation — and how your team runs the day from one console. No slides, no commitment." }}</p>
+      <p>{{ site.data[page.lang].contact_lead | default: "Book a private 30-minute walkthrough tailored to your property. See how residents place orders, request the valet, and reach the concierge in a single conversation, and how your team runs the day from one console. No slides, no commitment." }}</p>
     </div>
 
     <div class="contact-cta-row">
@@ -633,7 +633,7 @@ layout: default
   </div>
 </section>
 
-<!-- Floating "Schedule a demo" pill — appears after the masthead, persistent
+<!-- Floating "Schedule a demo" pill: appears after the masthead, persistent
      anchor to #contacts. Doubles as a back-to-CTA on long-scroll. -->
 <a href="#contacts"
    class="floating-cta"

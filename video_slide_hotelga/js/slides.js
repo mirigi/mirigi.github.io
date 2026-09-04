@@ -6,21 +6,21 @@
   Localization: ONE source of truth, not a copy per language.
   ---------------------------------------------------------------------------
   Every user-visible string below is either a plain string (identical in
-  every language — brand name, a fixed non-English demo line) or a
+  every language, brand name, a fixed non-English demo line) or a
   `{ en: '...', es: '...' }` object. The engine's `t(field)` helper (defined
   inside the IIFE, where the page's `lang` is known) picks the right one at
   render time. `lang` comes from `?lang=` in the URL, same convention as
-  `/miniapps/CLAUDE.md` §2 (`data-i18n`) — this is that same "one
+  `/miniapps/CLAUDE.md` §2 (`data-i18n`), this is that same "one
   localization pattern" adapted to a JS-object deck instead of DOM attributes,
   not a second mechanism. Adding a language means adding one more key to each
-  `{en, es}` object here — never a second copy of this file.
+  `{en, es}` object here, never a second copy of this file.
 
   Each slide: { kind, variant, kicker, title, body, bg, miri, miriStyle, durationMs }
   - kind: 'title' | 'content'.
-  - bg: repo-root-relative background photo. Image-first — nearly every slide
+  - bg: repo-root-relative background photo. Image-first, nearly every slide
     carries one, rendered by the shared WebGL canvas (js/bg-webgl.js).
   - miri: optional chat popup, one of three shapes:
-      action — { user, ask, status, confirmed, confirmWord? } : Miri
+      action, { user, ask, status, confirmed, confirmWord? } : Miri
         PROPOSES ("ask", a question) and only acts once the guest visibly
         confirms. HOW that confirmation is shown depends on the channel,
         because that's how the two channels actually work:
@@ -28,36 +28,36 @@
             control inside Mirigi's own branded app); it visibly PULSES,
             awaiting the tap, before flipping to the confirmed status.
           - `whatsapp` skin -> the guest literally TYPES a reply (`confirmWord`,
-            default UI_STRINGS[lang].yes) — WhatsApp has no custom UI buttons
+            default UI_STRINGS[lang].yes), WhatsApp has no custom UI buttons
             here, so confirmation has to be a real message. Rendered as a
             4-turn conversation: user asks -> Miri proposes -> user types the
             confirm word -> Miri confirms with `confirmed` (a full sentence;
             `status` is the short word used only for the app-skin chip).
-        Never skip straight from "ask" to "done" — the guest is always shown
+        Never skip straight from "ask" to "done", the guest is always shown
         approving it first, on whichever channel is live.
-      answer — { user, answer } : a plain informational reply, no
+      answer, { user, answer } : a plain informational reply, no
         confirmation step, for moments where Miri isn't taking an action.
-      conversation — { conversation: [turn, ...] } : a fully authored
+      conversation, { conversation: [turn, ...] } : a fully authored
         multi-turn exchange for the flagship storytelling slides (Temporal
         Stays, Housekeeping, Dining, Arrivals, Feedback). Each turn:
           { from: 'user'|'miri', text, meta?, pauseMs?, kind? }
         - meta: small caption above the line (e.g. a time-skip label).
         - pauseMs: overrides the default pre-turn pause.
         - kind: 'audio' renders a voice-note bubble instead of text (for
-          replies with more data than fits a typed line — e.g. dictating a
+          replies with more data than fits a typed line, e.g. dictating a
           friend's name/ID/phone); needs `duration` (e.g. '0:14'). 'confirm'
-          renders a structured read-back card instead of a sentence — Miri
+          renders a structured read-back card instead of a sentence, Miri
           repeating captured data before acting on it; needs `text` (intro
           line), `fields: [{label, value}]`, and optional `footer`. `value`
-          is data (a name, a rating), not deck chrome — usually a plain
+          is data (a name, a rating), not deck chrome, usually a plain
           string, not translated. The "Every Language" slide's whole `miri`
           object is deliberately plain-string Portuguese (not `{en,es}`) on
-          every field — it's a fixed feature demo, independent of the deck's
+          every field, it's a fixed feature demo, independent of the deck's
           own display language.
     Skin auto-cycles across the deck via nextMiriStyle(); set `miriStyle` to
     force one (both WhatsApp-module slides force `whatsapp`).
   - durationMs: optional override; when `miri` is set, the popup's own
-    animation time is folded in automatically (see effectiveDuration) —
+    animation time is folded in automatically (see effectiveDuration) ,
     computed against the CURRENT language's text length, so a longer
     Spanish sentence still gets fully typed before the slide advances.
 
@@ -65,7 +65,7 @@
   and grounded: every `miri` example maps to a real mirigi_* AI tool in
   mirigi-backend/app/resident/ws/v2/ai_chat.py (food ordering, valet
   requests, reservations, guest authorization, service requests, device
-  scenes, polls) — not an invented capability. See CLAUDE.md for the
+  scenes, polls), not an invented capability. See CLAUDE.md for the
   per-slide grounding notes and the deliberate, user-approved exceptions
   (WhatsApp/Temporal-Stays, the Housekeeping staff-reply turn, the Feedback
   slide, the AI-camera Valet Queue slide).
@@ -94,7 +94,7 @@ var UI_STRINGS = {
 };
 
 var SLIDES = [
-  // ---------- Act 1 — Hook ----------
+  // ---------- Act 1, Hook ----------
   {
     kind: 'title',
     variant: 'gold',
@@ -170,7 +170,7 @@ var SLIDES = [
     },
   },
 
-  // ---------- Act 2 — Guest journey (one slide per capability) ----------
+  // ---------- Act 2, Guest journey (one slide per capability) ----------
   {
     kind: 'content', bg: '/img_mirigi/restaurants2.png',
     kicker: { en: 'Dining', es: 'Gastronomía' },
@@ -320,20 +320,20 @@ var SLIDES = [
     kind: 'content', bg: '/img_mirigi/pool_water.jpg',
     kicker: { en: 'Every Language', es: 'Cada Idioma' },
     title: { en: 'Guests, served in their own words.', es: 'Huéspedes, atendidos en sus propias palabras.' },
-    // Deliberately plain-string Portuguese on every miri field — a fixed
+    // Deliberately plain-string Portuguese on every miri field, a fixed
     // feature demo, not translated along with the deck's own display language.
     miri: {
       user: 'Posso pedir o café da manhã no quarto?',
       ask: 'Enviar o café da manhã para o seu quarto?',
       status: 'Enviado',
-      confirmed: 'Enviado — bom apetite.',
+      confirmed: 'Enviado, bom apetite.',
       confirmWord: 'Sim',
     },
   },
   { kind: 'content', bg: '/img_mirigi/bg-masthead.jpg', kicker: { en: 'Trust', es: 'Confianza' }, title: { en: 'Secure by design, every interaction.', es: 'Seguro por diseño, en cada interacción.' } },
   { kind: 'content', bg: '/img_mirigi/additional.jpg', kicker: { en: 'Recap', es: 'Resumen' }, title: { en: 'One guest journey. One app. One Miri.', es: 'Un solo recorrido del huésped. Una sola app. Una sola Miri.' } },
 
-  // ---------- Act 3 — Staff operations (no Miri popups: different persona/mode) ----------
+  // ---------- Act 3, Staff operations (no Miri popups: different persona/mode) ----------
   { kind: 'content', bg: '/img_mirigi/staff-frontdesk.webp', kicker: { en: 'Staff Console', es: 'Consola del Personal' }, title: { en: 'One real-time ops screen for the whole team.', es: 'Una pantalla operativa en tiempo real para todo el equipo.' } },
   { kind: 'content', bg: '/img_mirigi/header.jpg', kicker: { en: 'Front Desk', es: 'Recepción' }, title: { en: 'Every arrival, request, and handoff: in view.', es: 'Cada llegada, solicitud y traspaso: a la vista.' } },
   { kind: 'content', bg: '/img_mirigi/ai-concierge.jpg', kicker: { en: 'Concierge', es: 'Conserjería' }, title: { en: 'Guest requests, routed the moment they land.', es: 'Solicitudes de huéspedes, enrutadas en el momento en que llegan.' } },
@@ -348,7 +348,7 @@ var SLIDES = [
   { kind: 'content', bg: '/img_mirigi/table.jpg', kicker: { en: 'Management', es: 'Administración' }, title: { en: 'Occupancy and operations, at a glance.', es: 'Ocupación y operaciones, de un vistazo.' } },
   { kind: 'content', bg: '/img_mirigi/staff-frontdesk.webp', kicker: { en: 'Role-Based Access', es: 'Acceso por Rol' }, title: { en: 'The right screen for every team member.', es: 'La pantalla correcta para cada miembro del equipo.' } },
 
-  // ---------- Act 4 — Proof + CTA ----------
+  // ---------- Act 4, Proof + CTA ----------
   { kind: 'content', bg: '/img_mirigi/touchpanelJadesignature.jpg', kicker: { en: 'Trusted By', es: 'Confían en Nosotros' }, title: { en: 'Luxury properties run on Mirigi.', es: 'Propiedades de lujo funcionan con Mirigi.' } },
   { kind: 'content', bg: '/img_mirigi/pool_slide.jpg', kicker: { en: 'Why Mirigi', es: 'Por Qué Mirigi' }, title: { en: 'Faster service. Lighter staff load. Happier guests.', es: 'Servicio más rápido. Menos carga para el personal. Huéspedes más felices.' } },
   { kind: 'content', bg: '/img_mirigi/bg-masthead.jpg', kicker: { en: 'Contact', es: 'Contacto' }, title: 'mirigi.com', qrFocus: true, durationMs: 6000 },
@@ -526,7 +526,7 @@ var SLIDES = [
     el.className = classes.join(' ');
     el.dataset.index = index;
 
-    // No `.bg`/`.scrim` divs here — photo-driven slides get their
+    // No `.bg`/`.scrim` divs here, photo-driven slides get their
     // background (Ken Burns pan + dithered scrim gradient) from the shared
     // WebGL canvas (js/bg-webgl.js), reparented into the active slide by
     // show() below. See that file for why this moved off plain CSS.
@@ -687,7 +687,7 @@ var SLIDES = [
   }
 
   // Chip-confirmation flow (app skin only): Miri asks, the chip appears and
-  // visibly PULSES — awaiting the guest's tap — and only after that
+  // visibly PULSES, awaiting the guest's tap, and only after that
   // (simulated) tap does it flip to the confirmed status. See
   // css/slides.css .miri-chip for the pulse animation that sells the wait.
   function playChipConfirm(pop, miri) {
@@ -762,7 +762,7 @@ var SLIDES = [
   // Kept in sync with .slide's `transition: opacity <ms> linear` in slides.css.
   var SHOW_FADE_MS = 450;
   // The incoming slide starts fading in once the outgoing one has faded
-  // this far down (0.9 = 90% through its fade-out, i.e. at 10% opacity) —
+  // this far down (0.9 = 90% through its fade-out, i.e. at 10% opacity) ,
   // not fully to 0 first. Overlapping only that last, darkest sliver
   // avoids both a jarring full cross-dissolve and a dead instant of solid
   // black between slides.
@@ -774,7 +774,7 @@ var SLIDES = [
     var nextIndex = ((index % SLIDES.length) + SLIDES.length) % SLIDES.length;
 
     // Mostly-sequential fade: fade the outgoing slide down to ~10% opacity,
-    // THEN start fading the incoming slide in — the two only overlap for
+    // THEN start fading the incoming slide in, the two only overlap for
     // the final sliver of the outgoing fade instead of the whole thing.
     if (wasActive) outgoingEl.classList.remove('is-active');
 
@@ -790,8 +790,8 @@ var SLIDES = [
       var slide = SLIDES[current];
       if (qrBadge) qrBadge.classList.toggle('is-focused', !!slide.qrFocus);
       // Two alternating WebGL layers, not one shared canvas: the outgoing
-      // slide keeps whichever layer it already has attached — still
-      // rendering its own photo — until it's fully faded out, instead of
+      // slide keeps whichever layer it already has attached, still
+      // rendering its own photo, until it's fully faded out, instead of
       // losing its background the instant the incoming slide claims it
       // (which is what caused an earlier black-flash bug). See
       // js/bg-webgl.js's file header for the full explanation.
@@ -841,7 +841,7 @@ var SLIDES = [
   // instead of guessing a fixed duration. Includes the SHOW_FADE_MS *
   // SHOW_FADE_OVERLAP delay show() now inserts before every transition but
   // the first (the incoming slide only becomes current once the outgoing
-  // one has faded down to 10%) — omitting it would make renders stop
+  // one has faded down to 10%), omitting it would make renders stop
   // slightly before the deck actually finishes playing.
   window.MIRIGI_TOTAL_DURATION_MS = SLIDES.reduce(function (sum, s) { return sum + effectiveDuration(s); }, 0) +
     (SLIDES.length - 1) * SHOW_FADE_MS * SHOW_FADE_OVERLAP;

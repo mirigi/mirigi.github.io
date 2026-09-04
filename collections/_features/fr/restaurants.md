@@ -9,7 +9,7 @@ miri_ai_example:
   - from: user
     text: "Je voudrais un sandwich au thon, s'il vous plaît."
   - from: miri
-    text: "C'est noté — un sandwich au thon. Souhaitez-vous quelque chose à boire avec ?"
+    text: "C'est noté, un sandwich au thon. Souhaitez-vous quelque chose à boire avec ?"
   - from: user
     text: "Un jus d'orange."
   - from: miri
@@ -22,4 +22,4 @@ Pour les résidents, l'application présente la **carte complète** avec descrip
 
 Pour le personnel du restaurant, les commandes entrantes arrivent via une **vue de gestion rationalisée** qui tient les clients **automatiquement informés** à chaque étape. Cela réduit les interruptions, diminue les **erreurs de commande** et permet à l'équipe de se concentrer sur la **préparation des aliments et la qualité du service** plutôt que sur la logistique. La plateforme est **prête à s'intégrer** avec les services de livraison établis, de sorte que les flux d'exécution existants peuvent continuer à fonctionner tandis que l'expérience destinée aux résidents reste cohérente.
 
-Le résultat est une **opération plus efficace** pour le restaurant et une **expérience quotidienne plus raffinée** pour les résidents — un service de restauration qui semble *natif de l'immeuble* plutôt qu'ajouté.
+Le résultat est une **opération plus efficace** pour le restaurant et une **expérience quotidienne plus raffinée** pour les résidents : un service de restauration qui semble *natif de l'immeuble* plutôt qu'ajouté.

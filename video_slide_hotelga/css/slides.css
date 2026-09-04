@@ -18,7 +18,7 @@ html, body {
 /* Mostly-sequential fade, not a full cross-dissolve. slides.js's show()
    removes is-active from the outgoing slide, then waits until it's ~90%
    faded out (SHOW_FADE_MS * SHOW_FADE_OVERLAP, kept in sync with the
-   duration below) before giving the incoming slide is-active — so the two
+   duration below) before giving the incoming slide is-active, so the two
    only overlap for the last, darkest 10% of the fade instead of the whole
    thing, avoiding both a jarring 50/50 blend AND a dead instant of pure
    black. `linear` (not `ease`) so that 90% of the time really is 10%
@@ -52,12 +52,12 @@ html, body {
 /*
   Photo-driven slide: a full-bleed background photo, Ken Burns pan/zoom, and
   a bottom scrim gradient so text stays legible over any image. This is the
-  DEFAULT look — most slides in the deck should set `bg` in js/slides.js.
+  DEFAULT look, most slides in the deck should set `bg` in js/slides.js.
   Text-only slides (kind: 'title', or content slides with no `bg`) fall back
   to the flat gradient above.
 
   The photo + Ken Burns + scrim are rendered by a single shared WebGL canvas
-  (js/bg-webgl.js), reparented into whichever `.slide` is active — not plain
+  (js/bg-webgl.js), reparented into whichever `.slide` is active, not plain
   CSS background-image/gradients. That canvas computes the scrim gradient
   and dithers it in-shader, which survives video re-compression far better
   than a CSS gradient + static noise overlay (see bg-webgl.js's own
@@ -77,7 +77,7 @@ html, body {
 .slide > * { position: relative; z-index: 2; }
 
 /* A solid pill behind every kicker guarantees contrast regardless of how
-   busy the underlying photo is (e.g. the ai-concierge.jpg chat collage) —
+   busy the underlying photo is (e.g. the ai-concierge.jpg chat collage) ,
    text-shadow alone isn't enough over high-detail backgrounds. */
 .slide .kicker {
   display: inline-block;
@@ -111,7 +111,7 @@ html, body {
 
 .slide.slide--full-bg { justify-content: center; padding: 8vh 8vw; }
 
-/* Hook act (slides 1-4): one continuous piece with the splash — bigger serif
+/* Hook act (slides 1-4): one continuous piece with the splash, bigger serif
    headline, same heavy vignette, same legacy/future accent language. Every
    other slide in the deck keeps the smaller bottom-pinned kicker/h1/body. */
 .slide.slide--full-bg .kicker { font-size: 2.1vh; }
@@ -153,7 +153,7 @@ html, body {
 }
 
 /* Old vs. new emphasis, usable in the tagline/h1/body anywhere in the hook
-   act (slides 1-4) — "app"/legacy reads faded and struck through, the
+   act (slides 1-4), "app"/legacy reads faded and struck through, the
    AI/new idea reads as the loud, unmissable thing. Kept as bare classes
    (not scoped to .tagline) so h1/body copy can reuse the same language. */
 .legacy {
@@ -188,7 +188,7 @@ html, body {
   text-shadow: 0 2px 16px rgba(0,0,0,0.7);
 }
 
-/* Staggered entrance for a slide's own text — each element rises in a
+/* Staggered entrance for a slide's own text, each element rises in a
    beat after the last, instead of the whole slide popping in as one flat
    block. Elements sit invisible until the slide is dealt is-active, then
    animate in once (the deck never revisits an earlier slide). */
@@ -222,10 +222,10 @@ html, body {
 }
 
 /*
-  Miri popup — an animated "ask Miri" chat card that pops up over the feature
+  Miri popup, an animated "ask Miri" chat card that pops up over the feature
   background partway through a content slide's dwell time. Two skins cycle
   across the deck (see MIRI_STYLES / js/slides.js): `--app` (Mirigi's own
-  brand — charcoal/pearl/gold, matches the brochure palette) and
+  brand, charcoal/pearl/gold, matches the brochure palette) and
   `--whatsapp` (green header + bubble treatment, evoking WhatsApp without
   reproducing its logo/trademark assets).
 */
@@ -272,7 +272,7 @@ html, body {
 .miri-pop__body { padding: 0.5vh 2.2vh 2.4vh; display: flex; flex-direction: column; gap: 1.2vh; }
 
 /*
-  Every bubble (user or Miri) is hidden until its turn in the sequence —
+  Every bubble (user or Miri) is hidden until its turn in the sequence ,
   needed for multi-turn conversations, where several bubbles already exist
   in the DOM waiting their turn (see MIRI_STYLES / playConversation in
   js/slides.js). Two-turn ask/answer exchanges use the same mechanism.
@@ -325,7 +325,7 @@ html, body {
   30% { transform: translateY(-0.6vh); opacity: 1; }
 }
 
-/* Voice-note bubble — used when a reply needs more data than fits a short
+/* Voice-note bubble, used when a reply needs more data than fits a short
    typed line (e.g. dictating a friend's name/ID/phone for guest registration). */
 .bubble--audio { display: flex; align-items: center; gap: 1.1vh; }
 .audio-play { font-size: 1.9vh; line-height: 1; flex-shrink: 0; opacity: 0.85; }
@@ -334,7 +334,7 @@ html, body {
 .bubble--audio.is-playing .audio-wave i { opacity: 0.95; }
 .audio-duration { font-size: 1.6vh; opacity: 0.7; flex-shrink: 0; }
 
-/* Structured confirmation card — Miri reads a request back before acting on
+/* Structured confirmation card, Miri reads a request back before acting on
    it, so the guest sees exactly what was captured (e.g. from a voice note). */
 .confirm-fields { margin-top: 0.9vh; display: flex; flex-direction: column; gap: 0.5vh; }
 .confirm-row { display: flex; justify-content: space-between; gap: 1.6vh; font-size: 1.7vh; opacity: 0; transform: translateY(4px); transition: opacity 240ms ease, transform 240ms ease; }
@@ -345,7 +345,7 @@ html, body {
 .confirm-footer.is-visible { opacity: 1; }
 
 /*
-  Confirm chip — the visible "the guest is in control" beat. Miri never just
+  Confirm chip, the visible "the guest is in control" beat. Miri never just
   acts: she proposes (the `ask` bubble), this chip appears, and only once it
   flips to a confirmed/checked state (simulating the guest's tap) does the
   status change to done. See playMiriPopup() in js/slides.js.
@@ -370,7 +370,7 @@ html, body {
 .miri-chip.is-tapped { transform: translateY(0) scale(0.94); }
 .miri-chip__check { font-size: 1.7vh; line-height: 1; }
 
-/* — App skin: Mirigi brand (charcoal / pearl / gold) — */
+/*, App skin: Mirigi brand (charcoal / pearl / gold), */
 .miri-pop--app { background: linear-gradient(180deg, rgba(255,255,255,.97) 0%, rgba(247,244,237,.96) 100%); border-top: 0.4vh solid #c8a05a; }
 .miri-pop--app .miri-pop__avatar { background: #232323; color: #c8a05a; }
 .miri-pop--app .miri-pop__headtext { color: #232323; }
@@ -381,7 +381,7 @@ html, body {
 .miri-pop--app .miri-chip { border-color: #232323; color: #232323; }
 .miri-pop--app .miri-chip.is-confirmed { background: #232323; color: #c8a05a; }
 
-/* — WhatsApp skin — */
+/*, WhatsApp skin, */
 .miri-pop--whatsapp { background: #e9e3d8; }
 .miri-pop--whatsapp .miri-pop__head { background: #075e54; }
 .miri-pop--whatsapp .miri-pop__avatar { background: #128c7e; color: #fff; }
@@ -417,7 +417,7 @@ html, body {
 #progress .dot.is-active { background: #c8a05a; }
 
 /*
-  Always-on QR badge — persists across every slide (it's a sibling of #deck,
+  Always-on QR badge, persists across every slide (it's a sibling of #deck,
   not per-slide markup) so it's scannable at any point in the video, not just
   a dedicated contact slide. Fixed top-right, clear of the centered Miri
   popups (which cap at 76vw wide) and the bottom-pinned title/body text.
@@ -465,13 +465,13 @@ html, body {
 
 /* Dithering: our dark charcoal/gold gradients, scrims and the taglineGlow
    text-shadow pulse are all large, near-flat color fields, which is exactly
-   what 8-bit rendering + 8-bit video encoding turns into visible banding —
+   what 8-bit rendering + 8-bit video encoding turns into visible banding ,
    no encoder setting downstream can fully undo a quantization step that has
    already happened. The standard fix (same trick used in film/video color
    grading) is to inject a very faint noise texture BEFORE that quantization
    so each 8-bit step has something to round against instead of a hard edge.
    This sits above everything (z-index above .slide's own z-index:2 content)
-   as a fixed, blended, non-interactive layer — subtle enough to be
+   as a fixed, blended, non-interactive layer, subtle enough to be
    imperceptible as "grain" but enough to break up banding. */
 #grain {
   position: fixed;
@@ -481,7 +481,7 @@ html, body {
   /* Stronger + coarser than a typical UI dither: Playwright's raw capture
      is itself a lossy ~1Mbit/s VP8 encode before our own ffmpeg pass ever
      sees a frame, and video codecs specifically attenuate fine, per-pixel
-     noise as "detail that doesn't matter" during DCT quantization — a
+     noise as "detail that doesn't matter" during DCT quantization, a
      subtle dither gets encoded away twice over. Coarser blobs (lower
      baseFrequency, bigger tile) and higher amplitude survive that better. */
   /* Was 0.16, tuned back when this was the only dithering in the pipeline
@@ -491,7 +491,7 @@ html, body {
      generation, and scripts/render-hotelga-video.js's mp4 step dithers its
      own 10-bit->8-bit reduction (zscale=dither=error_diffusion) instead of
      silently truncating. Stacking full-strength grain on top of both now
-     reads as visible noise, not "grain" — see the banding in the shadow
+     reads as visible noise, not "grain", see the banding in the shadow
      behind "Un Nuevo Modelo" that prompted this. Left non-zero only as a
      safety net for pure-gradient slides with no `bg` (never WebGL-covered)
      and any future run where WebGL2 isn't available. */

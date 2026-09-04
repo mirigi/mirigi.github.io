@@ -15,7 +15,7 @@
     node scripts/render-brochure-pdf.js
     node scripts/render-brochure-pdf.js --site=_site --out=_site/downloads
 
-  Requirements: puppeteer (devDep). No running Jekyll server needed — this
+  Requirements: puppeteer (devDep). No running Jekyll server needed, this
   serves the static _site itself.
 
   Why the injected print CSS: the theme sets `html,body{height:100%}` and the

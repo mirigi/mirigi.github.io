@@ -21,7 +21,7 @@
         "url": "{{ '/img/mirigi-logo.png' | absolute_url }}"
       },
       "image": "{{ '/img/mirigi-social-card.jpg' | absolute_url }}",
-      "description": "Mirigi is a digital concierge platform for luxury condominium buildings, first deployed in 2003 and recently AI-upgraded end-to-end. Its core is Miri, an AI concierge agent that acts on resident requests — placing orders, calling the valet, booking amenities and controlling the smart home in a single conversation.",
+      "description": "Mirigi is a digital concierge platform for luxury condominium buildings, first deployed in 2003 and recently AI-upgraded end-to-end. Its core is Miri, an AI concierge agent that acts on resident requests: placing orders, calling the valet, booking amenities and controlling the smart home in a single conversation.",
       "foundingDate": "2003",
       "knowsAbout": [
         "AI concierge",
@@ -43,7 +43,7 @@
       "location": [
         {
           "@type": "Place",
-          "name": "Mirigi — Miami office",
+          "name": "Mirigi, Miami office",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Miami",
@@ -53,7 +53,7 @@
         },
         {
           "@type": "Place",
-          "name": "Mirigi — Montevideo office",
+          "name": "Mirigi, Montevideo office",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Montevideo",
@@ -62,7 +62,7 @@
         },
         {
           "@type": "Place",
-          "name": "Mirigi — Punta del Este office",
+          "name": "Mirigi, Punta del Este office",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Punta del Este",
@@ -139,7 +139,7 @@
 </script>
 
 {%- comment -%}
-  BreadcrumbList — improves AI navigation for feature & customer pages.
+  BreadcrumbList: improves AI navigation for feature & customer pages.
 {%- endcomment -%}
 {% if page.collection == 'features' or page.collection == 'customers' %}
 {%- assign section_label = 'Features' -%}
@@ -162,7 +162,7 @@
 {% endif %}
 
 {%- comment -%}
-  Service JSON-LD — one per feature page. Each feature is a discrete
+  Service JSON-LD: one per feature page. Each feature is a discrete
   service Mirigi offers to luxury residential properties.
 {%- endcomment -%}
 {% if page.layout == 'feature' %}
@@ -215,7 +215,7 @@
 {% endif %}
 
 {%- comment -%}
-  FAQPage JSON-LD — only on the home page of each language.
+  FAQPage JSON-LD: only on the home page of each language.
   Mirrors the visible FAQ block included in the index layout, so the
   schema reflects real on-page content.
 {%- endcomment -%}

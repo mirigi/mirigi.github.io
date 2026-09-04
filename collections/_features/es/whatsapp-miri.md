@@ -9,7 +9,7 @@ miri_ai_example:
   - from: user
     text: "Hola Miri, ¿me reservás el gimnasio mañana a las 8am?"
   - from: miri
-    text: "Reservado — el gimnasio queda reservado para vos mañana a las 8:00 AM. Te aviso una hora antes."
+    text: "Reservado: el gimnasio queda reservado para vos mañana a las 8:00 AM. Te aviso una hora antes."
   - from: user
     text: "¡Perfecto, gracias!"
 ---

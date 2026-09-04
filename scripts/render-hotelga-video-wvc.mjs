@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /*
   Renders the MIRIGI 24/7 hotel deck (video_slide_hotelga/) to WebM using
-  WebVideoCreator (WVC) — https://github.com/Vinlic/WebVideoCreator.
+  WebVideoCreator (WVC), https://github.com/Vinlic/WebVideoCreator.
 
   Usage:
     node scripts/render-hotelga-video-wvc.mjs                              # English, 30fps webm
@@ -15,23 +15,23 @@
   Why this replaces scripts/render-hotelga-video.js's Playwright recordVideo
   ─────────────────────────────────────────────────────────────────────────
   recordVideo captures Chromium in real wall-clock time at a fixed ~1Mbit/s,
-  ~25fps that can drop/duplicate frames under load — it is not a
+  ~25fps that can drop/duplicate frames under load, it is not a
   frame-accurate capture. A hand-rolled deterministic pipeline was built
   earlier (Chromium's `Emulation.setVirtualTimePolicy` CDP domain, driving
   the page one virtual frame at a time) but hit a reproducible hang in this
   environment that was never root-caused.
 
   WVC solves the exact same problem (Chrome's `HeadlessExperimental.beginFrame`
-  deterministic rendering API — the same one Chrome docs recommend for this)
+  deterministic rendering API, the same one Chrome docs recommend for this)
   as a mature, maintained library rather than hand-rolled CDP calls.
 
   ─────────────────────────────────────────────────────────────────────────
-  Rendering happens in short chunks, not one long session — see --chunk-ms
+  Rendering happens in short chunks, not one long session, see --chunk-ms
   ─────────────────────────────────────────────────────────────────────────
   A single continuous WVC session reliably crashed partway through the full
-  ~296s deck in this environment — confirmed twice: at 4K within 5-60s, and
+  ~296s deck in this environment, confirmed twice: at 4K within 5-60s, and
   separately at 1080p ~19 minutes / 158MB in (a `Page crashed` error,
-  followed by an unrelated internal WVC operation — #seekCSSAnimations —
+  followed by an unrelated internal WVC operation, #seekCSSAnimations ,
   throwing once it tried to keep using the already-dead page). Not
   resolution-specific: a long-running-session problem, root cause not
   identified beyond that.
@@ -39,9 +39,9 @@
   So by default this renders the deck in `--chunk-ms` (default 60000)
   windows, each a fully separate WebVideoCreator instance/browser session
   using WVC's own `startTime`/`duration` options (its capture loop only
-  screenshots frames once virtual time reaches `startTime` — earlier frames
+  screenshots frames once virtual time reaches `startTime`, earlier frames
   are stepped through with lighter per-frame CDP calls, not a full
-  screenshot capture — so seeking to a late startTime is meaningfully
+  screenshot capture, so seeking to a late startTime is meaningfully
   cheaper than capturing through it), then concatenates the per-chunk webm
   files with ffmpeg's concat demuxer (lossless, same codec/resolution/fps
   throughout, so this is just a container-level splice). Each chunk's own
@@ -57,7 +57,7 @@
   4K (and above) is patched to use compatibleRenderingMode automatically
   ─────────────────────────────────────────────────────────────────────────
   At 4K, `HeadlessExperimental.beginFrame` (an experimental/legacy CDP
-  method — see puppeteer#11315, heygen-com/hyperframes#294) hung
+  method, see puppeteer#11315, heygen-com/hyperframes#294) hung
   unpredictably here: sometimes outright (0% CPU, never recovers, even on
   a fresh browser profile with plenty of free RAM), sometimes "succeeding"
   after 70-90+ minutes for a 30s clip with the intermediate webm size
@@ -65,25 +65,25 @@
   symptom of a stalled/retried begin-frame loop confusing libvpx-vp9's
   rate control. Below, `compatibleRenderingMode` is set automatically for
   anything larger than 1080x1920, which swaps the frame-signaling
-  mechanism to plain `Page.screenshot` — determinism doesn't actually come
+  mechanism to plain `Page.screenshot`, determinism doesn't actually come
   from beginFrame itself, it comes from WVC's own injected virtual clock
-  (overriding requestAnimationFrame/performance.now — see
+  (overriding requestAnimationFrame/performance.now, see
   node_modules/web-video-creator/core/CaptureContext.js), so this keeps
   frame-perfect, zero-dropped-frame capture, just ~40% slower per WVC's
   own docs.
 
   Also: node_modules/web-video-creator/core/Browser.js is hand-patched to
   drop the `--single-process` Chrome flag it hardcodes on Linux (no config
-  option exists for this) — --single-process is independently known to be
+  option exists for this), --single-process is independently known to be
   unstable for headless Chromium automation, and this deck runs two
   full-screen WebGL2 contexts (js/bg-webgl.js) that compound the risk.
-  THIS PATCH IS LOST ON ANY `npm install` OF web-video-creator — reapply
+  THIS PATCH IS LOST ON ANY `npm install` OF web-video-creator, reapply
   by replacing `util.isLinux() ? "--single-process" : "--process-per-tab"`
   with `"--process-per-tab"` in that file's #generateArgs() if renders
   start hanging again after a dependency reinstall.
 
   First run downloads WVC's own Chrome build into ./.bin/ (gitignored,
-  silent unless you're watching for it — no progress log during download).
+  silent unless you're watching for it, no progress log during download).
 */
 
 import { fileURLToPath } from 'url';
@@ -101,7 +101,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const OUT_DIR = path.resolve(ROOT, 'video-out');
 
-// Split on the FIRST '=' only — not .split('='), which breaks any value
+// Split on the FIRST '=' only, not .split('='), which breaks any value
 // containing its own '=' (e.g. --url=http://host/path?auto=1&lang=es got
 // truncated to "http://host/path?auto", silently dropping "=1&lang=es" and
 // making every chunk-worker load the deck with no lang param at all →
@@ -122,7 +122,7 @@ const HEIGHT = parseInt(args.height || '1920', 10);
 const PORT = parseInt(args.port || '8767', 10);
 const FPS = parseInt(args.fps || '30', 10);
 const SECONDS = args.seconds ? parseFloat(args.seconds) : null;
-const FAST = !!args.fast; // jpeg frames + yuv420p — for quick content/timing iteration, not final quality checks
+const FAST = !!args.fast; // jpeg frames + yuv420p, for quick content/timing iteration, not final quality checks
 const CHUNK_MS = args['chunk-ms'] !== undefined ? parseInt(args['chunk-ms'], 10) : 60000;
 const TAG = args.tag ? `-${args.tag}` : '';
 const TAIL_BUFFER_MS = 500;
@@ -163,7 +163,7 @@ async function probeDurationMs(url) {
     await page.goto(url, { waitUntil: 'networkidle' });
     await page.waitForSelector('.slide', { timeout: 8000 });
     const totalMs = await page.evaluate(() => window.MIRIGI_TOTAL_DURATION_MS);
-    if (!totalMs) throw new Error('window.MIRIGI_TOTAL_DURATION_MS was not set by the deck — check js/slides.js');
+    if (!totalMs) throw new Error('window.MIRIGI_TOTAL_DURATION_MS was not set by the deck, check js/slides.js');
     return totalMs;
   } finally {
     await browser.close();
@@ -171,7 +171,7 @@ async function probeDurationMs(url) {
 }
 
 // Renders one [startTime, startTime+duration) window to outputPath using a
-// fresh WebVideoCreator instance (i.e. a fresh browser session — see file
+// fresh WebVideoCreator instance (i.e. a fresh browser session, see file
 // header for why sessions are kept short-lived).
 async function renderWindow({ url, outputPath, startTime, duration }) {
   const wvc = new WebVideoCreator();
@@ -211,7 +211,7 @@ async function renderWindow({ url, outputPath, startTime, duration }) {
   });
 
   // Watchdog: WVC's high-level API doesn't surface a Chromium renderer
-  // crash as a promise rejection — the "Page crashed" event lives on an
+  // crash as a promise rejection, the "Page crashed" event lives on an
   // internal Page object under a "crashed" event name that, unless
   // something is listening for it specifically, just gets logged
   // (`logger.error("Page crashed:", err)`, see core/Page.js #emitCrashed)
@@ -236,7 +236,7 @@ async function renderWindow({ url, outputPath, startTime, duration }) {
     } else {
       stallCount++;
       if (stallCount >= STALL_CHECKS_BEFORE_BAIL) {
-        console.error(`[${LANG}] watchdog: no growth for ${(stallCount * STALL_CHECK_MS / 1000).toFixed(0)}s — assuming a silent renderer crash (see core/Page.js #emitCrashed) and exiting`);
+        console.error(`[${LANG}] watchdog: no growth for ${(stallCount * STALL_CHECK_MS / 1000).toFixed(0)}s, assuming a silent renderer crash (see core/Page.js #emitCrashed) and exiting`);
         process.exit(1);
       }
     }
@@ -244,7 +244,7 @@ async function renderWindow({ url, outputPath, startTime, duration }) {
 
   await new Promise((resolve, reject) => {
     video.once('completed', result => {
-      console.log(`[${LANG}] chunk done: ${path.relative(ROOT, outputPath)} — took ${(result.takes / 1000).toFixed(1)}s, RTF ${result.rtf.toFixed(3)}`);
+      console.log(`[${LANG}] chunk done: ${path.relative(ROOT, outputPath)}, took ${(result.takes / 1000).toFixed(1)}s, RTF ${result.rtf.toFixed(3)}`);
       resolve();
     });
     video.once('error', reject);
@@ -267,11 +267,11 @@ function concatWebm(chunkPaths, outputPath) {
 }
 
 // Worker mode: render exactly one [startTime, startTime+duration) window
-// and exit — no duration probe, no HTTP server of its own (connects to the
+// and exit, no duration probe, no HTTP server of its own (connects to the
 // orchestrator's). Run as a genuinely separate OS process per chunk (see
 // orchestrator below), not just a fresh WebVideoCreator instance in the
 // same process: a Chromium renderer crash (confirmed to happen at a
-// specific point in this deck, not just from long sessions — chunks
+// specific point in this deck, not just from long sessions, chunks
 // covering 0-100s completed cleanly, but the chunk starting at 100s
 // crashed immediately) can leave puppeteer-core/WVC's internal state
 // (browser pool, CDP connection) unusable even for a *new* WebVideoCreator
@@ -287,18 +287,18 @@ async function runWorker() {
   });
   // Explicit exit, not a natural return: a successfully-completed worker
   // was observed hanging indefinitely afterward (some WVC/puppeteer
-  // internal handle — browser pool, CDP socket — keeps the event loop
+  // internal handle, browser pool, CDP socket, keeps the event loop
   // alive) with the orchestrator waiting on its 'exit' event the whole
   // time, stalling the whole chunk pipeline on an already-finished chunk.
   process.exit(0);
 }
 
 // Async spawn, not spawnSync: spawnSync blocks Node's single-threaded
-// event loop for the child's entire lifetime — but the orchestrator's own
+// event loop for the child's entire lifetime, but the orchestrator's own
 // HTTP server (which the child needs to reach to load the deck) runs on
 // that same event loop. A blocked parent can't answer the child's
 // page.goto() request, which then times out waiting for a response that
-// can never come — a self-deadlock (reproduced: every attempt failed with
+// can never come, a self-deadlock (reproduced: every attempt failed with
 // "Navigation timeout of 30000 ms exceeded" until this was fixed).
 function spawnChunkWorker({ url, outputPath, startTime, duration }) {
   const workerArgs = [
@@ -340,7 +340,7 @@ const __filename = fileURLToPath(import.meta.url);
     const outputPath = path.join(OUT_DIR, `hotelga-24-7-${LANG}${TAG}${SECONDS ? '-preview' : ''}.webm`);
     // Was 4; bumped after observing a chunk crash 4/4 in a row (a low-
     // probability but real outcome of independent ~25% per-attempt crash
-    // odds, not a deterministic content bug — see the browserUseGPU note
+    // odds, not a deterministic content bug, see the browserUseGPU note
     // above) that a 5th/6th attempt would very likely have absorbed.
     const MAX_ATTEMPTS_PER_CHUNK = 6;
 
@@ -367,7 +367,7 @@ const __filename = fileURLToPath(import.meta.url);
             const r = await spawnChunkWorker({ url, outputPath: chunkPath, startTime, duration });
             if (r.status === 0) break;
             console.error(`[${LANG}] chunk ${i + 1}/${chunkCount} failed (attempt ${attempt}/${MAX_ATTEMPTS_PER_CHUNK})`);
-            if (attempt >= MAX_ATTEMPTS_PER_CHUNK) throw new Error(`chunk ${i + 1}/${chunkCount} (${startTime}ms..${startTime + duration}ms) failed after ${MAX_ATTEMPTS_PER_CHUNK} attempts — likely a deterministic crash on this content, not a transient one`);
+            if (attempt >= MAX_ATTEMPTS_PER_CHUNK) throw new Error(`chunk ${i + 1}/${chunkCount} (${startTime}ms..${startTime + duration}ms) failed after ${MAX_ATTEMPTS_PER_CHUNK} attempts, likely a deterministic crash on this content, not a transient one`);
           }
           chunkPaths.push(chunkPath);
         }

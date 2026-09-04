@@ -1,4 +1,4 @@
-# Miniapps — Principles
+# Miniapps, Principles
 
 This file is the contract for anyone (human or AI) adding or modifying a miniapp.
 Read this **before** writing any miniapp code, then check existing miniapps for the live pattern.
@@ -33,9 +33,9 @@ page through an iframe, so its text is crawlable at the iframe's own URL
 (`/miniapps/features/<slug>/`) but is **not** attributed to the parent feature
 page for ranking purposes. Twitter Cards / OpenGraph previews also do not
 descend into iframes. This is fine for *visual demo* text (captions, axis
-labels, chart titles) — that's what the miniapps are for. But if a miniapp
+labels, chart titles), that's what the miniapps are for. But if a miniapp
 ever contains text that we want the feature page itself to rank on, the text
-must also be mirrored into the feature page — either in the markdown body or
+must also be mirrored into the feature page, either in the markdown body or
 as an `<aside class="sr-only">` block next to the iframe in `_layouts/feature.html`.
 The inline Miri AI example block (rendered server-side from the page's
 `miri_ai_example` frontmatter, **not** iframed) is the established pattern for
@@ -95,7 +95,7 @@ the marketing feature page always loads `size=large`.
 
 ### 4. CSS isolation
 
-The iframe boundary already isolates the miniapp from the parent site's CSS —
+The iframe boundary already isolates the miniapp from the parent site's CSS ,
 Bootstrap, grayscale.scss, `.about-section p { margin: 5rem }`, none of it
 reaches in. **Do not** assume the parent's styles are available; **do not**
 emit styles that try to escape (no `:host`, no parent-targeting tricks).
@@ -104,7 +104,7 @@ Inside the miniapp:
 - Start every stylesheet with `*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }`.
 - Set `html, body { width: 100%; height: 100%; overflow: hidden; }` so the
   miniapp fills its iframe and never produces inner scrollbars.
-- Use any class names you want for one-off miniapps — there's nothing to
+- Use any class names you want for one-off miniapps, there's nothing to
   collide with. For **shared library code** (`miniapps/lib/*`), pick distinctive
   names (e.g. `.shot`, `.cdot`, `.miri-chat__*`) so the lib doesn't have to
   worry about what an instance might re-use.
@@ -157,8 +157,8 @@ mentions with the user-visible behavior they enable.
 ## Code reuse via `miniapps/lib/`
 
 When two or more miniapps share an animation pattern, factor it into the lib:
-- `miniapps/lib/<pattern>.css` — generic styles
-- `miniapps/lib/<pattern>.js` — generic logic that reads `window.MIRIAPP_<NAME>`
+- `miniapps/lib/<pattern>.css`: generic styles
+- `miniapps/lib/<pattern>.js`: generic logic that reads `window.MIRIAPP_<NAME>`
 
 The instance miniapp then becomes a thin config file:
 
@@ -191,15 +191,15 @@ The instance miniapp then becomes a thin config file:
 ```
 
 **Variation lives in CSS variables on `<body>`** (e.g. `--backdrop-url`,
-`--card-aspect`) and in the `window.MIRIAPP_*` config object — never by editing
+`--card-aspect`) and in the `window.MIRIAPP_*` config object, never by editing
 the lib for one consumer.
 
-Lib path: `miniapps/lib/` (no leading underscore — Jekyll excludes `_*` dirs
+Lib path: `miniapps/lib/` (no leading underscore, Jekyll excludes `_*` dirs
 from the build by default).
 
 ## Existing libraries
 
-- **`lib/screenshots.{css,js}`** — phone-shaped (or any aspect-ratio) screenshot
+- **`lib/screenshots.{css,js}`**: phone-shaped (or any aspect-ratio) screenshot
   carousel with a blurred photographic backdrop, spotlight vignette, gold accent
   line, Ken Burns drift, glass-pill captions, click-to-jump dots. Config shape:
   ```js
@@ -214,11 +214,11 @@ from the build by default).
 
 ## Existing one-off miniapps
 
-- **`features/ai-concierge/`** — 3D-stack of conversation cards with Miri.
+- **`features/ai-concierge/`**: 3D-stack of conversation cards with Miri.
   Conversations inlined as `SCENARIOS` array with per-field `{en,es,fr}`.
   Static `<ul class="sr-only">` provides the scraper-readable transcript.
-- **`features/reports/`** — Animated SVG chart carousel for the Reports feature.
-  Card titles, group labels, toolbar pills, tooltip text — all `data-i18n`.
+- **`features/reports/`**: Animated SVG chart carousel for the Reports feature.
+  Card titles, group labels, toolbar pills, tooltip text, all `data-i18n`.
   Dates computed relative to today via JS; month names language-aware.
 
 If a third miniapp would reuse any of these patterns, factor it into `lib/`
@@ -227,12 +227,12 @@ before adding it.
 ## Don'ts
 
 - ❌ Don't `fetch()` content from JSON/data files. Inline it.
-- ❌ Don't put translatable text only in JS — it must appear in static HTML too.
+- ❌ Don't put translatable text only in JS, it must appear in static HTML too.
 - ❌ Don't introduce a 4th localization pattern; the one above is the only one.
 - ❌ Don't mention implementation internals in user-visible strings.
 - ❌ Don't put shared code in `miniapps/_lib/` (leading underscore = Jekyll
   ignores it). Use `miniapps/lib/`.
-- ❌ Don't assume parent-site CSS is available — the iframe isolates everything.
-- ❌ Don't ship a miniapp that keeps animating off-screen — use the pause helper.
+- ❌ Don't assume parent-site CSS is available, the iframe isolates everything.
+- ❌ Don't ship a miniapp that keeps animating off-screen, use the pause helper.
 - ❌ Don't copy-paste an existing miniapp's CSS+JS as the start of a new one when
   the existing code is already shared as a lib; configure the lib instead.

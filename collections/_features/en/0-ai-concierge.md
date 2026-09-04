@@ -1,14 +1,14 @@
 ---
 order: 1
-title: "Miri — The First AI Concierge Agent That Acts"
+title: "Miri: The First AI Concierge Agent That Acts"
 image: "/img_mirigi/ai-concierge.jpg"
 miniapp: features/ai-concierge
 layout: feature
 keywords: ai concierge, miri, chat, artificial intelligence, resident experience, automation
-description: "Miri is the first AI concierge agent that acts — not just answers. She places orders, calls the valet, and books amenities end-to-end."
+description: "Miri is the first AI concierge agent that acts, not just answers. She places orders, calls the valet, and books amenities end-to-end."
 ---
 
-Miri is the **first AI concierge built to act**, not just answer. Residents simply ask — *"Spaghetti Carbonara to my unit,"* or *"bring my car up in ten minutes"* — and Miri **carries the request through to completion**. No menus, no forms, no waiting on hold. **The conversation is the interface** — in the branded app, or right on **WhatsApp**, with nothing to install.
+Miri is the **first AI concierge built to act**, not just answer. Residents simply ask: *"Spaghetti Carbonara to my unit,"* or *"bring my car up in ten minutes,"* and Miri **carries the request through to completion**. No menus, no forms, no waiting on hold. **The conversation is the interface**: in the branded app, or right on **WhatsApp**, with nothing to install.
 
 For residents, Miri is connected to the building's core Mirigi modules: **restaurant ordering**, **valet parking**, **amenity reservations**, **service requests**, **visitor authorizations**, and **event sign-ups**. She works from the building's live menu, **real-time amenity availability**, and each resident's preferences, then **places the order, logs the request, and returns confirmation**. What used to require a phone call or a trip to the lobby now happens *in a sentence*.
 

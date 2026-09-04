@@ -31,7 +31,7 @@
   background-color: transparent;
 }
 #mainNav {
-  /* Mobile collapsed menu — large touch targets */
+  /* Mobile collapsed menu, large touch targets */
 }
 @media (max-width: 991px) {
   #mainNav .navbar-collapse {
@@ -1237,7 +1237,7 @@ mark,
 }
 
 .blockquote-footer::before {
-  content: "— ";
+  content: ", ";
 }
 
 .img-fluid {

@@ -26,7 +26,7 @@ miniapps/
 
 **The system rule (one sentence):** A miniapp is a folder under `miniapps/{area}/{slug}/` containing a self-contained `index.html` and a `data/` folder with one JSON file per language; it accepts `lang` (default: `en`) and `size` (`large` | `small`, default: `large`) as URL query params and must render correctly at both sizes with no external dependencies.
 
-Jekyll passes the `miniapps/` folder through as static files — no Jekyll integration required inside miniapps.
+Jekyll passes the `miniapps/` folder through as static files, no Jekyll integration required inside miniapps.
 
 ---
 
@@ -36,7 +36,7 @@ Add a `miniapp` field to the feature's frontmatter. The `image` field is kept fo
 
 ```yaml
 ---
-title: "Miri — The First AI Concierge Agent That Acts"
+title: "Miri, The First AI Concierge Agent That Acts"
 image: "/img_mirigi/ai-concierge.jpg"
 miniapp: "features/ai-concierge"
 layout: feature
@@ -90,11 +90,11 @@ Both even and odd branches get the same replacement.
 | `large` | Feature page        | ~500px        |
 | `small` | Homepage card       | ~280px        |
 
-The miniapp owns all sizing internally — no CSS is injected from the parent page.
+The miniapp owns all sizing internally, no CSS is injected from the parent page.
 
 ### CSS for iframe containers
 
-Add to `scss/grayscale.scss` (or `_brochure.scss` is out of scope — these are live-page only):
+Add to `scss/grayscale.scss` (or `_brochure.scss` is out of scope, these are live-page only):
 
 ```scss
 .miniapp-frame {
@@ -112,14 +112,14 @@ Add to `scss/grayscale.scss` (or `_brochure.scss` is out of scope — these are 
 
 ---
 
-## 4. AI Concierge Miniapp — Interaction Design
+## 4. AI Concierge Miniapp, Interaction Design
 
 ### Visual structure
 
 A vertical stack of iMessage-style chat cards. The topmost card is always "live" (actively typing). Below it sit the most recently completed cards, slightly scaled down and dimmed to create depth.
 
 ```
-[active card — typing in progress]   ← newest, full size
+[active card, typing in progress]   ← newest, full size
 [completed card]                     ← 92% scale, 85% opacity  
 [completed card, fading out]         ← 85% scale, 70% opacity
 ```
@@ -132,7 +132,7 @@ visibleCount = Math.max(1, Math.floor(
 ))
 ```
 
-No hardcoded maximum — adapts naturally to `large`, `small`, and any future size.
+No hardcoded maximum, adapts naturally to `large`, `small`, and any future size.
 
 ### Animation sequence (per card)
 
@@ -163,7 +163,7 @@ Even without interaction, the card stack tilts subtly toward the cursor or touch
 - Max tilt: ~10° on X and Y axes
 - Applied via `transform: perspective(800px) rotateX() rotateY()`
 - Mouse: driven by cursor position relative to iframe center
-- Mobile: driven by touch position (no `deviceorientation` — too intrusive)
+- Mobile: driven by touch position (no `deviceorientation`, too intrusive)
 - Effect is strongest on the active card, cascades at 60% intensity on cards below
 
 ### Drag + physics
@@ -173,7 +173,7 @@ Even without interaction, the card stack tilts subtly toward the cursor or touch
 - Thrown card bounces off iframe walls with damping (coefficient ~0.6)
 - After settling or leaving bounds for >2s, card fades back into the stack
 - Throwing a card immediately advances to the next card in the sequence
-- Physics: vanilla JS — velocity vector + friction per frame + wall collision detection (~60 lines, no library)
+- Physics: vanilla JS, velocity vector + friction per frame + wall collision detection (~60 lines, no library)
 
 ---
 
@@ -211,10 +211,10 @@ Even without interaction, the card stack tilts subtly toward the cursor or touch
 ```
 
 **Fields:**
-- `scenario` — card title (bold header)
-- `icon` — emoji displayed in card header alongside scenario name
-- `user` — message typed out first (blue bubble, right-aligned)
-- `miri` — response typed out after thinking dots (white bubble, left-aligned, "Miri" label)
+- `scenario`: card title (bold header)
+- `icon`: emoji displayed in card header alongside scenario name
+- `user`: message typed out first (blue bubble, right-aligned)
+- `miri`: response typed out after thinking dots (white bubble, left-aligned, "Miri" label)
 
 Cards play in array order. Each language file may have a different number of cards.
 
@@ -229,13 +229,13 @@ Cards play in array order. Each language file may have a different number of car
 - `miniapps/features/ai-concierge/data/fr.json`
 
 ### Modified files
-- `_layouts/feature.html` — iframe embed when `page.miniapp` is set
-- `_includes/feature_div.html` (or equivalent homepage card include) — iframe embed when `feature.miniapp` is set
-- `collections/_features/en/0-ai-concierge.md` — add `miniapp: "features/ai-concierge"`
-- `collections/_features/es/0-ai-concierge.md` — add `miniapp: "features/ai-concierge"`
-- `collections/_features/fr/0-ai-concierge.md` — add `miniapp: "features/ai-concierge"`
+- `_layouts/feature.html`: iframe embed when `page.miniapp` is set
+- `_includes/feature_div.html` (or equivalent homepage card include): iframe embed when `feature.miniapp` is set
+- `collections/_features/en/0-ai-concierge.md`: add `miniapp: "features/ai-concierge"`
+- `collections/_features/es/0-ai-concierge.md`: add `miniapp: "features/ai-concierge"`
+- `collections/_features/fr/0-ai-concierge.md`: add `miniapp: "features/ai-concierge"`
 
 ### Out of scope
-- Brochure (`brochure.html`) — keeps static image (iframes don't print)
-- Proposal (`proposal.html`) — keeps static image
-- OG/Twitter meta tags — keep using `page.image`
+- Brochure (`brochure.html`), keeps static image (iframes don't print)
+- Proposal (`proposal.html`), keeps static image
+- OG/Twitter meta tags, keep using `page.image`

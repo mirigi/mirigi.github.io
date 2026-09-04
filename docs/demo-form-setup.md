@@ -1,7 +1,7 @@
 # Demo-Request Form → Google Sheet Setup
 
 This connects the website's "Schedule a demo" modal to a Google Spreadsheet you own.
-No third-party services, no servers — submissions are written straight into your Sheet
+No third-party services, no servers, submissions are written straight into your Sheet
 by a small Google Apps Script. One-time setup, ~10 minutes.
 
 ---
@@ -9,7 +9,7 @@ by a small Google Apps Script. One-time setup, ~10 minutes.
 ## 1. Create the spreadsheet
 
 1. Go to <https://sheets.google.com> and create a **new blank spreadsheet**.
-2. Name it e.g. **"Mirigi — Demo Requests"**.
+2. Name it e.g. **"Mirigi, Demo Requests"**.
 3. In the first row, paste these **column headers** (exactly, in this order):
 
    | A | B | C | D | E | F | G | H | I |
@@ -93,13 +93,13 @@ function doPost(e) {
 function _notify(lead) {
   var rows = [
     ['Name', lead.name],
-    ['Email', lead.email || '—'],
-    ['Phone', lead.phone || '—'],
-    ['Country', lead.country || '—'],
-    ['Building size', lead.building_size || '—'],
-    ['Comments', lead.comments || '—'],
-    ['Language', lead.language || '—'],
-    ['Source', lead.source || '—'],
+    ['Email', lead.email || ','],
+    ['Phone', lead.phone || ','],
+    ['Country', lead.country || ','],
+    ['Building size', lead.building_size || ','],
+    ['Comments', lead.comments || ','],
+    ['Language', lead.language || ','],
+    ['Source', lead.source || ','],
     ['Received', new Date().toString()]
   ];
 
@@ -165,7 +165,7 @@ function _json(obj) {
 
 > **To change who gets notified**, edit `NOTIFY_EMAILS` at the top (comma-separated list).
 
-> If your sheet tab is **not** called `Sheet1`, change `SHEET_NAME` at the top — or
+> If your sheet tab is **not** called `Sheet1`, change `SHEET_NAME` at the top, or
 > leave it; the script falls back to the first tab automatically.
 
 ---
@@ -200,7 +200,7 @@ function _json(obj) {
    ```
 
 3. Rebuild / redeploy the site (e.g. `docker run … ` per the README, or your normal
-   deploy). The modal is now live — submissions land in your Sheet.
+   deploy). The modal is now live, submissions land in your Sheet.
 
 > Leaving `demo_form_endpoint` empty disables submitting (the form shows the
 > "email us directly" fallback), so the site never breaks if the URL isn't set yet.
@@ -217,11 +217,11 @@ The `/exec` URL stays the same, so you don't need to touch `_config.yml` again.
 > because the script now needs permission to **send email** (`MailApp`). Run `doPost`
 > once from the editor (or just Save and follow the authorization prompt) and **Allow**.
 > Emails are sent from the Google account that owns the script. Heads-up: consumer
-> Gmail accounts can send ~100 emails/day via Apps Script — plenty for demo leads.
+> Gmail accounts can send ~100 emails/day via Apps Script, plenty for demo leads.
 
 ## Not receiving the emails? (row saves but no email)
 
-The row still lands in the Sheet but no email arrives — that means the email step
+The row still lands in the Sheet but no email arrives, that means the email step
 failed silently (it's intentionally wrapped so it never breaks a submission). Work
 through these, most likely first:
 
@@ -238,7 +238,7 @@ through these, most likely first:
 2. **Check the execution log.** **View → Executions** in the editor shows each `doPost`
    call; a failed send logs `notify failed: …` with the reason.
 
-3. **Confirm the deployment runs the new code.** Editing `Code.gs` is not enough — you
+3. **Confirm the deployment runs the new code.** Editing `Code.gs` is not enough, you
    must **Deploy → Manage deployments → Edit ✏ → Version: *New version* → Deploy**.
    If you created a brand-new deployment, make sure the site's `demo_form_endpoint`
    points at *that* deployment's `/exec` URL.
@@ -247,13 +247,13 @@ through these, most likely first:
    (the owner). If it's set to "User accessing the web app", anonymous visitors have no
    email identity and `MailApp` can't send.
 
-> 90% of the time it's #1 — the new send-email permission was never granted, because the
+> 90% of the time it's #1, the new send-email permission was never granted, because the
 > authorization prompt only appears when *you* run the script in the editor, not when the
 > website POSTs to it anonymously. Running `testEmail()` once fixes it.
 
 ## Tips
 
-- **Email alerts on new leads:** built in — every submission is emailed to the
+- **Email alerts on new leads:** built in: every submission is emailed to the
   addresses in `NOTIFY_EMAILS` (currently `support@mirigi.com`, `support@khimo.com`)
   in addition to being written to the Sheet. Edit that constant to change recipients.
 - **Spam:** the honeypot + 2-second time-gate are enforced on both the page and the

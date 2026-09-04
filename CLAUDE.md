@@ -16,11 +16,11 @@ When fact-checking or extending any feature/FAQ/copy, ground claims against the 
 | **Resident frontend** | `/home/fede/repos/mirigi/mirigi-frontend/` | React | What residents see/do. Use to verify the resident-side UI for any feature claim. |
 | **Staff portal** | `/home/fede/repos/mirigi/mirigi-staff/` | React 19 + Vite + TypeScript + Tailwind v4, runs on `:3001`, see `src/pages/` and `src/api/` | What staff and management see/do. Use to verify staff-console claims (operations dashboards, reports, valet queue, package log, role-based access). |
 
-**Grounding rule:** if a claim names a specific capability — "residents can ask Miri to book the amenity", "the staff console flags packages for pickup", "boards run custom reports on demand" — open the matching repo and verify the endpoint/page/tool exists before publishing. If it doesn't, soften the claim or remove it. The fact-check agents dispatched from this repo have explicit access to all three paths above.
+**Grounding rule:** if a claim names a specific capability, such as "residents can ask Miri to book the amenity", "the staff console flags packages for pickup", or "boards run custom reports on demand", open the matching repo and verify the endpoint/page/tool exists before publishing. If it doesn't, soften the claim or remove it. The fact-check agents dispatched from this repo have explicit access to all three paths above.
 
 ## Marketing Copy Rules
 
-**Never mention technical internals on feature pages, customer pages, brochures, or proposals.** The audience is luxury condominium boards, property managers and residents — not developers. Describe the *experience* (what the user sees and gets), not the *mechanism* (how the code does it).
+**Never mention technical internals on feature pages, customer pages, brochures, or proposals.** The audience is luxury condominium boards, property managers and residents, not developers. Describe the *experience* (what the user sees and gets), not the *mechanism* (how the code does it).
 
 When summarizing or fact-checking content, replace technical names with the user-visible behavior they enable:
 
@@ -35,12 +35,12 @@ When summarizing or fact-checking content, replace technical names with the user
 | S3, blob storage, CDN | "secure storage" |
 | MIME, multipart, base64 | omit, or "file upload" |
 | HTTP, REST, JSON, GraphQL | "secure API" / "integration" |
-| SQL query, database query, raw query | "fully customizable" / "tailored to the property" / "defined per building" — do not name the authoring mechanism |
+| SQL query, database query, raw query | "fully customizable" / "tailored to the property" / "defined per building"; do not name the authoring mechanism |
 | Prosis, administracion.com.uy (vendor) | "the administrator's accounting platform" |
-| BLI, BeoLiving Intelligence (technical name) | "smart-home controller" (when audience won't recognize BLI). BLI/Khimo OK on the home automation page itself — they are brand-marketed by Bang & Olufsen and recognized by integrators. |
+| BLI, BeoLiving Intelligence (technical name) | "smart-home controller" (when audience won't recognize BLI). BLI/Khimo OK on the home automation page itself, they are brand-marketed by Bang & Olufsen and recognized by integrators. |
 | Axis (camera brand), specific camera models | "IP cameras" |
 
-**Always-forbidden** (regardless of context — off-brand or false):
+**Always-forbidden** (regardless of context: off-brand or false):
 - Alexa (no real integration in code)
 - Prosis / administracion.com.uy (keep accounting generic)
 - Axis (no exclusive camera brand lock-in)
@@ -95,14 +95,14 @@ gulp vendor         # Copy node_modules dependencies to /vendor/
 - `img/` and `img_mirigi/` - Static images
 
 ### Layout Hierarchy
-- `default.html` — base with navigation/footer
-- `defaultcontent.html` — extends default with content-specific styling
-- `feature.html`, `customer.html` — collection item pages
-- `index.html`, `index_slide.html` — homepage variants
-- `brochure.html` — static marketing brochure (print-optimized, standalone)
-- `proposal-builder.html` — interactive proposal form (standalone, no nav)
-- `proposal.html` — printable proposal output (standalone, no nav)
-- `post.html` — blog layout
+- `default.html`: base with navigation/footer
+- `defaultcontent.html`: extends default with content-specific styling
+- `feature.html`, `customer.html`: collection item pages
+- `index.html`, `index_slide.html`: homepage variants
+- `brochure.html`: static marketing brochure (print-optimized, standalone)
+- `proposal-builder.html`: interactive proposal form (standalone, no nav)
+- `proposal.html`: printable proposal output (standalone, no nav)
+- `post.html`: blog layout
 
 ### Content Management
 Features and customers are Jekyll collections. Each content piece requires this frontmatter:
@@ -122,7 +122,7 @@ The `lang` and `permalink` are auto-set by `_config.yml` defaults based on file 
 
 ### Frontend Build Process
 - Gulp compiles SCSS from `scss/` to `css/` (both expanded and minified versions)
-- Gulp copies vendor dependencies from `node_modules/` to `vendor/` directory (not linked — enables offline serving)
+- Gulp copies vendor dependencies from `node_modules/` to `vendor/` directory (not linked, enables offline serving)
 - BrowserSync serves on port 3000 with live reload during `gulp watch`
 - Jekyll serves on port 4000 in Docker container
 - No test suite exists; the codebase relies on browser API stability
@@ -148,32 +148,32 @@ $brochure-light-bg: #f5f5f5
 ```
 
 Key CSS classes:
-- `.brochure-page` — page wrapper with min-height 10in
-- `.brochure-feature` — flex row, 40% image / 60% text; `.reverse` flips layout
-- `.brochure-customers` — 2-column grid
-- `@media print` — enforces exact dimensions, forces color (`-webkit-print-color-adjust: exact`), hides UI buttons
+- `.brochure-page`: page wrapper with min-height 10in
+- `.brochure-feature`: flex row, 40% image / 60% text; `.reverse` flips layout
+- `.brochure-customers`: 2-column grid
+- `@media print`: enforces exact dimensions, forces color (`-webkit-print-color-adjust: exact`), hides UI buttons
 
 The same CSS framework and components (`_includes/brochure_feature.html`, `_includes/brochure_customer.html`) are reused in `proposal.html` for dynamic proposals.
 
 ### Server-rendered brochure PDF (GitHub Actions)
-The brochure is published as a downloadable, multi-page PDF — **not** browser print-to-PDF (which clipped to one page). `.github/workflows/pages.yml` builds Jekyll, then `scripts/render-brochure-pdf.js` renders `/brochure.html`, `/es/brochure.html`, `/fr/brochure.html`, `/pt/brochure.html` in headless Chromium (print emulation, `preferCSSPageSize`, Letter) to `_site/downloads/brochure-{en,es,fr,pt}.pdf`, ghostscript-compressed (~1.5 MB). The footer + brochure "Download Brochure" links point at those files. Pages **Source is "GitHub Actions"** (`build_type: workflow`) — the legacy branch build is retired; the workflow writes `_site/CNAME` (`mirigi.com`) to keep the custom domain. Rollback: Settings → Pages → Source → "Deploy from a branch".
+The brochure is published as a downloadable, multi-page PDF, **not** browser print-to-PDF (which clipped to one page). `.github/workflows/pages.yml` builds Jekyll, then `scripts/render-brochure-pdf.js` renders `/brochure.html`, `/es/brochure.html`, `/fr/brochure.html`, `/pt/brochure.html` in headless Chromium (print emulation, `preferCSSPageSize`, Letter) to `_site/downloads/brochure-{en,es,fr,pt}.pdf`, ghostscript-compressed (~1.5 MB). The footer + brochure "Download Brochure" links point at those files. Pages **Source is "GitHub Actions"** (`build_type: workflow`), the legacy branch build is retired; the workflow writes `_site/CNAME` (`mirigi.com`) to keep the custom domain. Rollback: Settings → Pages → Source → "Deploy from a branch".
 
-The brochure's last page carries a build stamp (`date · 4-char git sha`) from `_data/build.yml`, which the workflow regenerates each run (`_data/build.yml` is gitignored — never commit it).
+The brochure's last page carries a build stamp (`date · 4-char git sha`) from `_data/build.yml`, which the workflow regenerates each run (`_data/build.yml` is gitignored, never commit it).
 
 ## Demo Request Modal
 
 A modal lead-capture form (`_includes/demo-modal.html` + `js/demo-form.js`) opens from any `[data-demo-open]` trigger and POSTs to a Google Apps Script Web App (`site.demo_form_endpoint` in `_config.yml`). It is included by `_layouts/index.html`.
 
-**⚠️ Permanent contract — keep `?demo=1` and `#demo` supported.** `js/demo-form.js` auto-opens the modal when the URL has `?demo=1` or `#demo` (see `maybeAutoOpen`). **Printed and distributed brochure QR codes permanently encode `https://mirigi.com/?demo=1` (and `/es/`, `/fr/`, `/pt/`).** Those codes can never be edited after printing, so this query-string/hash trigger must keep opening the form indefinitely. If you refactor the modal, preserve this behavior. Worst case (JS disabled) must still land gracefully on the homepage — so the parameter form (landing + `?demo=1`) is deliberately chosen over a dedicated `/demo/` page.
+**⚠️ Permanent contract, keep `?demo=1` and `#demo` supported.** `js/demo-form.js` auto-opens the modal when the URL has `?demo=1` or `#demo` (see `maybeAutoOpen`). **Printed and distributed brochure QR codes permanently encode `https://mirigi.com/?demo=1` (and `/es/`, `/fr/`, `/pt/`).** Those codes can never be edited after printing, so this query-string/hash trigger must keep opening the form indefinitely. If you refactor the modal, preserve this behavior. Worst case (JS disabled) must still land gracefully on the homepage, so the parameter form (landing + `?demo=1`) is deliberately chosen over a dedicated `/demo/` page.
 
 ## Proposal System
 
 The site includes a sales proposal generator system that allows salespeople to create customized PDF proposals for buildings.
 
 ### JS Module Roles
-- `js/proposal-crypto.js` — HMAC-SHA256 authentication + AES-GCM encryption/decryption; renders login modal with blur-locked UI
-- `js/proposal-storage.js` — IndexedDB persistence; save/load/delete proposals; generates encrypted share URLs
-- `js/proposal-utils.js` — `ProposalURLBuilder`/`ProposalURLParser` classes; HTML escaping; feature slug lookup; clipboard operations
+- `js/proposal-crypto.js`: HMAC-SHA256 authentication + AES-GCM encryption/decryption; renders login modal with blur-locked UI
+- `js/proposal-storage.js`: IndexedDB persistence; save/load/delete proposals; generates encrypted share URLs
+- `js/proposal-utils.js`: `ProposalURLBuilder`/`ProposalURLParser` classes; HTML escaping; feature slug lookup; clipboard operations
 
 ### Proposal Output Sections (proposal.html)
 Decrypts `?d=` URL parameter and dynamically renders:

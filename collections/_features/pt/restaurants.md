@@ -9,7 +9,7 @@ miri_ai_example:
   - from: user
     text: "Gostaria de um sanduíche de atum, por favor."
   - from: miri
-    text: "Anotado — um sanduíche de atum. Gostaria de algo para beber junto?"
+    text: "Anotado: um sanduíche de atum. Gostaria de algo para beber junto?"
   - from: user
     text: "Um suco de laranja."
   - from: miri
@@ -22,4 +22,4 @@ Para os moradores, o aplicativo apresenta o **cardápio completo** com descriç�
 
 Para a equipe do restaurante, os pedidos recebidos chegam por uma **visão de gestão simplificada** que mantém os clientes **informados automaticamente** em cada etapa. Isso reduz interrupções, diminui os **erros de pedido** e permite que a equipe se concentre no **preparo dos alimentos e na qualidade do serviço**, e não na logística. A plataforma está **pronta para integração** com serviços de entrega estabelecidos, para que os fluxos de atendimento existentes possam continuar operando enquanto a experiência voltada ao morador permanece consistente.
 
-O resultado são **operações mais enxutas** para o restaurante e uma **experiência diária mais refinada** para os moradores — um serviço de gastronomia que parece *nativo do edifício*, e não algo improvisado.
+O resultado são **operações mais enxutas** para o restaurante e uma **experiência diária mais refinada** para os moradores: um serviço de gastronomia que parece *nativo do edifício*, e não algo improvisado.

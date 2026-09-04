@@ -3,7 +3,7 @@ name: Build & Deploy to GitHub Pages
 # Builds Jekyll, renders the brochure PDFs from the built site, and deploys
 # everything to GitHub Pages on every push to master (plus a manual button).
 #
-# IMPORTANT — this only becomes the live builder once you set
+# IMPORTANT, this only becomes the live builder once you set
 #   Settings → Pages → Source → "GitHub Actions".
 # Until you flip that dropdown, the classic "Deploy from a branch" build keeps
 # serving the site and this workflow's `deploy` job will no-op/fail harmlessly.

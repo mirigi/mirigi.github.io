@@ -1,8 +1,8 @@
-# Miniapps System — AI Concierge Demo Implementation Plan
+# Miniapps System, AI Concierge Demo Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build the miniapps system and ship the first instance — an interactive AI concierge chat demo that replaces the static image on the AI concierge feature page and homepage card.
+**Goal:** Build the miniapps system and ship the first instance, an interactive AI concierge chat demo that replaces the static image on the AI concierge feature page and homepage card.
 
 **Architecture:** Static HTML files under `miniapps/` are served by Jekyll as-is (no Liquid, no build step). Each miniapp is a single self-contained `index.html` with all CSS/JS inline, plus `data/{lang}.json` files. Miniapps are embedded via `<iframe>` wherever Jekyll detects a `miniapp` frontmatter field.
 
@@ -182,14 +182,14 @@ git commit -m "feat: add ai-concierge miniapp data files (en/es/fr)"
 
 ---
 
-## Task 2: Build the miniapp — complete self-contained HTML
+## Task 2: Build the miniapp, complete self-contained HTML
 
 **Files:**
 - Create: `miniapps/features/ai-concierge/index.html`
 
 - [ ] **Step 1: Create the miniapp HTML file**
 
-Create `miniapps/features/ai-concierge/index.html` with the full content below. This is the complete, final file — do not truncate or abbreviate any section:
+Create `miniapps/features/ai-concierge/index.html` with the full content below. This is the complete, final file, do not truncate or abbreviate any section:
 
 ```html
 <!DOCTYPE html>
@@ -476,7 +476,7 @@ Create `miniapps/features/ai-concierge/index.html` with the full content below. 
     }
 
     // ── Magnetic follow ───────────────────────────────────────────
-    // Tilts the whole container toward the cursor/touch — invites interaction
+    // Tilts the whole container toward the cursor/touch, invites interaction
     function setupMagnetic() {
       const MAX_TILT = 10; // degrees
 
@@ -603,7 +603,7 @@ Create `miniapps/features/ai-concierge/index.html` with the full content below. 
 
 - [ ] **Step 2: Verify miniapp works standalone**
 
-Start a local server from the repo root (the `fetch('data/en.json')` call requires HTTP — `file://` won't work due to CORS):
+Start a local server from the repo root (the `fetch('data/en.json')` call requires HTTP, `file://` won't work due to CORS):
 
 ```bash
 npx serve . -p 5500
@@ -642,7 +642,7 @@ git commit -m "feat: add ai-concierge interactive chat miniapp"
 Add at the very end of `scss/grayscale.scss`:
 
 ```scss
-// Miniapp iframes — sizing container for self-contained interactive miniapps
+// Miniapp iframes, sizing container for self-contained interactive miniapps
 .miniapp-frame {
   border: none;
   width: 100%;
@@ -891,18 +891,18 @@ In `collections/_features/en/0-ai-concierge.md`, add `miniapp: "features/ai-conc
 
 ```yaml
 ---
-title: "Miri — The First AI Concierge Agent That Acts"
+title: "Miri, The First AI Concierge Agent That Acts"
 image: "/img_mirigi/ai-concierge.jpg"
 miniapp: "features/ai-concierge"
 layout: feature
 keywords: ai concierge, miri, chat, artificial intelligence, resident experience, automation
-description: "Miri is the first AI concierge agent that acts — not just answers. She places orders, calls the valet, and books amenities end-to-end."
+description: "Miri is the first AI concierge agent that acts, not just answers. She places orders, calls the valet, and books amenities end-to-end."
 ---
 ```
 
 - [ ] **Step 2: Add `miniapp` field to ES feature**
 
-In `collections/_features/es/0-ai-concierge.md`, add the same `miniapp` line to the frontmatter (exact position and other fields will vary — just add the one new line).
+In `collections/_features/es/0-ai-concierge.md`, add the same `miniapp` line to the frontmatter (exact position and other fields will vary, just add the one new line).
 
 - [ ] **Step 3: Add `miniapp` field to FR feature**
 
@@ -953,5 +953,5 @@ Expected:
 git add collections/_features/en/0-ai-concierge.md \
         collections/_features/es/0-ai-concierge.md \
         collections/_features/fr/0-ai-concierge.md
-git commit -m "feat: register ai-concierge miniapp — replaces static image with interactive chat demo"
+git commit -m "feat: register ai-concierge miniapp, replaces static image with interactive chat demo"
 ```

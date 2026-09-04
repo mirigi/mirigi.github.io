@@ -9,7 +9,7 @@ miri_ai_example:
   - from: user
     text: "Hey Miri, did my Amazon package arrive yet?"
   - from: miri
-    text: "Yes — a package from Amazon was received by the front desk this morning and stored in Storage Room A. It's still pending pickup. Would you like me to ask the concierge to bring it up, or will you stop by the lobby?"
+    text: "Yes, a package from Amazon was received by the front desk this morning and stored in Storage Room A. It's still pending pickup. Would you like me to ask the concierge to bring it up, or will you stop by the lobby?"
   - from: user
     text: "Please have it brought up, thanks."
   - from: miri
@@ -18,7 +18,7 @@ miri_ai_example:
 
 Every package that crosses the lobby deserves a **clean record** and a **calm handover**. Mirigi's delivery tracking gives residents and staff a **complete, auditable view** of every parcel that enters the building, from the moment the courier hands it over to the **final signature at the resident's door**. No more refreshing carrier apps, no more lost packages in a back room, no more guesswork at the front desk. It is a *single, shared source of truth* for the entire building.
 
-For residents, Mirigi sends a **real-time notification** the moment a package is registered at reception, with the key details at hand: **courier, tracking numbers, sender, and the storage room** holding it. Residents can browse their **delivery history** with clear statuses — *Stored, Delivered, Returned* — and open any item to see its complete **event timeline** along with attached **photos or signature proof**. Miri proactively answers the question every resident asks: did my package arrive, and where is it now.
+For residents, Mirigi sends a **real-time notification** the moment a package is registered at reception, with the key details at hand: **courier, tracking numbers, sender, and the storage room** holding it. Residents can browse their **delivery history** with clear statuses (*Stored, Delivered, Returned*) and open any item to see its complete **event timeline** along with attached **photos or signature proof**. Miri proactively answers the question every resident asks: did my package arrive, and where is it now.
 
 For staff, the system covers the **full lifecycle**: receive a delivery while capturing courier, tracking numbers, sender, addressee and storage room; **move it between storage rooms**; store it; **deliver it to the resident**; or **return it to the sender** with a documented note. **Batch operations** let the concierge process many packages at once, delivering or moving a *whole cart in a single confirmed action*.
 

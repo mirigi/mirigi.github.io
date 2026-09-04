@@ -10,6 +10,6 @@ title: Jade Beach
 keywords: Jade Beach, Sunny Isles Beach, Miami, condomínio de luxo, vida à beira-mar
 description: "Jade Beach, Sunny Isles Beach: viva o luxo à beira-mar com vistas deslumbrantes e comodidades de classe mundial."
 location: "Sunny Isles Beach, Miami"
-pullquote: "As encomendas chegam com uma notificação instantânea — sem precisar ligar para a recepção."
+pullquote: "As encomendas chegam com uma notificação instantânea, sem precisar ligar para a recepção."
 ---
 O Jade Beach oferece uma vida de luxo à beira-mar, com vistas deslumbrantes para o oceano e comodidades de última geração, no coração de Sunny Isles Beach.

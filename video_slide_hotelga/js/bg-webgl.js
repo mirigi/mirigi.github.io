@@ -5,16 +5,16 @@
 
   Why: the CSS/DOM version of this (`.bg` + `.scrim` divs, see slides.css)
   produces visible banding on the dark scrim gradients once the deck is
-  captured to video — Chromium's screenshot/video pipeline is 8-bit sRGB
+  captured to video, Chromium's screenshot/video pipeline is 8-bit sRGB
   with no way to get more color depth out of it, and a static SVG noise
   overlay (`#grain`) survives Playwright's own lossy raw capture too poorly
   to fully fix it (see scripts/render-hotelga-video.js's notes). Computing
   the gradient in a shader lets us dither it precisely, at the moment of
   generation, at a strength tuned for what needs to survive re-compression
-  — not a blind approximation via CSS-only noise.
+ , not a blind approximation via CSS-only noise.
 
   Scope: ONLY the photo + scrim background layer. Text, kickers, and the
-  Miri popups stay ordinary DOM/CSS — they aren't where the banding
+  Miri popups stay ordinary DOM/CSS, they aren't where the banding
   complaint is (photos are already lossy 8-bit JPEGs, text has hard edges,
   neither bands), and re-implementing a whole typography/chat-UI engine in
   WebGL would be a much larger, riskier project for no corresponding gain.
@@ -22,7 +22,7 @@
   TWO alternating canvases, not one shared canvas reparented on every slide
   change: a single shared canvas has to move to the incoming slide the
   instant show() runs, which leaves the OUTGOING slide with no background
-  at all for the whole ~1.1s CSS crossfade — it fades to solid black instead
+  at all for the whole ~1.1s CSS crossfade, it fades to solid black instead
   of its photo. slides.js's show() alternates between layer 0 and layer 1
   (see createLayer()/window.BgWebGL.layers below), so the outgoing slide's
   layer stays put, still rendering, until its own fade-out finishes; the
@@ -45,10 +45,10 @@
       '  gl_Position = vec4(p, 0.0, 1.0);\n' +
       '}\n';
 
-    // uKenBurns: vec3(scale, tx, ty) — mirrors the CSS `@keyframes kenburns`
+    // uKenBurns: vec3(scale, tx, ty), mirrors the CSS `@keyframes kenburns`
     // (scale 1 -> 1.08, translate 0,0 -> -1%,-1.5%, 9000ms ease-in-out,
     // alternating) computed on the JS side per-frame.
-    // uCover: vec2(scaleX, scaleY) — the `background-size: cover` fit of the
+    // uCover: vec2(scaleX, scaleY), the `background-size: cover` fit of the
     // image into the canvas (computed from image vs. canvas aspect ratio;
     // see coverScaleFor() below). Applied before Ken Burns, same as CSS
     // applies `background-size: cover` to the element before the transform
@@ -80,7 +80,7 @@
       '  return m[ip.y * 8 + ip.x] / 64.0 - 0.5;\n' +
       '}\n' +
       '\n' +
-      '// Piecewise-linear interpolation across 4 stops — CSS gradients\n' +
+      '// Piecewise-linear interpolation across 4 stops, CSS gradients\n' +
       '// interpolate stops linearly (not eased), so this (not smoothstep)\n' +
       '// is what actually matches the original .scrim design.\n' +
       'float stops4(float t, float p1, float v0, float v1, float p2, float v2, float p3, float v3) {\n' +
@@ -93,7 +93,7 @@
       'void main() {\n' +
       '  vec2 covered = (vUv - 0.5) * uCover + 0.5;\n' +
       '  vec2 centered = (covered - 0.5) * uKenBurns.x + 0.5 + uKenBurns.yz;\n' +
-      // textureLod(...,0.0), not texture() — automatic mip-LOD selection is
+      // textureLod(...,0.0), not texture(), automatic mip-LOD selection is
       // derivative-based (screen-space dFdx/dFdy of the UV), and the Ken
       // Burns zoom/clamp combination produces a discontinuous UV derivative
       // right at the clamped edge, which produced a garbage vertical strip
@@ -104,27 +104,27 @@
       '  vec3 scrimColor;\n' +
       '  float scrimAlpha;\n' +
       '  if (uScrim > 0.5) {\n' +
-      '    // full-bg: matches the old .slide--full-bg .scrim —\n' +
+      '    // full-bg: matches the old .slide--full-bg .scrim ,\n' +
       '    //   radial-gradient(ellipse at center, .4 0%, .72 68%, .88 100%)\n' +
       '    //   composited (source-over) on top of\n' +
       '    //   linear-gradient(180deg, .6 0%, .35 38%, .7 65%, .9 100%)\n' +
       '    // "100%" on a `farthest-corner` ellipse is the distance from\n' +
-      '    // center to a corner, i.e. length(vec2(0.5)) = 1/sqrt(2) in UV —\n' +
+      '    // center to a corner, i.e. length(vec2(0.5)) = 1/sqrt(2) in UV ,\n' +
       '    // so UV distance must be rescaled by sqrt(2) to land stops correctly.\n' +
       '    float d = distance(vUv, vec2(0.5)) * 1.4142135;\n' +
       '    float radialA = d < 0.68 ? mix(0.4, 0.72, d / 0.68) : mix(0.72, 0.88, clamp((d - 0.68) / 0.32, 0.0, 1.0));\n' +
       // 1.0 - vUv.y, not vUv.y: this canvas's vUv.y=0 renders at the
       // screen BOTTOM (the photo texture sampling that also reads vUv
-      // already accounts for this correctly — only the scrim's own "0% at
+      // already accounts for this correctly, only the scrim's own "0% at
       // top" assumption, inherited from the CSS linear-gradient(180deg) it
       // mirrors, needed correcting). Flipping vUv itself earlier "fixed"
-      // this but flipped the photo upside down instead — don't do that.
+      // this but flipped the photo upside down instead, don't do that.
       '    float linearA = stops4(1.0 - vUv.y, 0.38, 0.6, 0.35, 0.65, 0.7, 1.0, 0.9);\n' +
       '    scrimAlpha = radialA + linearA * (1.0 - radialA);\n' +
       '    scrimColor = vec3(0.0);\n' +
       '  } else {\n' +
       '    // default: bottom-pinned linear vignette (photo stays clear up\n' +
-      '    // top, near-opaque by the bottom so text sits legibly on it) —\n' +
+      '    // top, near-opaque by the bottom so text sits legibly on it) ,\n' +
       '    // matches linear-gradient(180deg, 0 0%, .15 45%, .88 78%, .96 100%).\n' +
       '    scrimAlpha = stops4(1.0 - vUv.y, 0.45, 0.0, 0.15, 0.78, 0.88, 1.0, 0.96);\n' +
       '    scrimColor = vec3(9.0, 9.0, 8.0) / 255.0;\n' +
@@ -133,7 +133,7 @@
       '  vec3 composited = mix(photo, scrimColor, scrimAlpha);\n' +
       '  // Dither strength tuned to survive Playwright\'s raw ~1Mbit/s VP8\n' +
       '  // capture (the first, unavoidable lossy step) followed by our own\n' +
-      '  // re-encode — plain 1-LSB dithering gets erased by that; this is\n' +
+      '  // re-encode, plain 1-LSB dithering gets erased by that; this is\n' +
       '  // intentionally coarser/stronger.\n' +
       '  composited += bayer(gl_FragCoord.xy) * (3.0 / 255.0);\n' +
       '  outColor = vec4(composited, 1.0);\n' +
@@ -165,7 +165,7 @@
     var uScrim = gl.getUniformLocation(prog, 'uScrim');
     gl.uniform1i(uTex, 0);
 
-    // A real VBO-backed quad, not attributeless gl_VertexID indexing — the
+    // A real VBO-backed quad, not attributeless gl_VertexID indexing, the
     // latter is valid GLES3 but unreliable on this headless Chromium's
     // SwiftShader software rasterizer (produced a torn, garbage vertical
     // strip on canvas resize/reparent in testing).
@@ -181,7 +181,7 @@
     var texCache = {}; // url -> { tex, w, h } (per-context; textures aren't shareable across GL contexts)
     var current = null;
     var currentScrim = 0;
-    var startedAtMs = null; // Ken Burns phase origin — set once per setBackground so a fresh slide always starts its pan/zoom from scale 1, not wherever the shared clock happens to be
+    var startedAtMs = null; // Ken Burns phase origin, set once per setBackground so a fresh slide always starts its pan/zoom from scale 1, not wherever the shared clock happens to be
 
     function loadTexture(url, onReady) {
       if (texCache[url]) { onReady(texCache[url]); return; }
@@ -205,7 +205,7 @@
 
     // `background-size: cover` equivalent: scales UV around center so the
     // image fills the canvas with no letterboxing, cropping whichever axis
-    // is relatively too generous — exactly what CSS's `cover` keyword does.
+    // is relatively too generous, exactly what CSS's `cover` keyword does.
     function coverScaleFor(imgW, imgH, canvasW, canvasH) {
       var imgAspect = imgW / imgH;
       var boxAspect = canvasW / canvasH;
@@ -254,7 +254,7 @@
     return {
       supported: true,
       canvas: canvas,
-      // First child, z-index:0 — behind the slide's text content, above the
+      // First child, z-index:0, behind the slide's text content, above the
       // slide's own CSS background fill (mirrors the old `.bg` div).
       attachTo: function (slideNode) {
         if (canvas.parentNode !== slideNode) {
@@ -277,7 +277,7 @@
 
   window.BgWebGL = {
     supported: layer0.supported,
-    // Two alternating layers — see the file header comment for why a
+    // Two alternating layers, see the file header comment for why a
     // single shared/reparented canvas causes a black flash on every
     // transition. slides.js's show() picks layers[index % 2] for the
     // incoming slide, leaving the other layer attached to the outgoing

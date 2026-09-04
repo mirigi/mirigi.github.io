@@ -71,7 +71,7 @@
 
   // Set the Country field to the geo-detected default, unless the user has
   // actively picked/typed one. Re-run after every form.reset() (which clears the
-  // visible input but, in some browsers, leaves the hidden input — so we sync both
+  // visible input but, in some browsers, leaves the hidden input, so we sync both
   // explicitly rather than inferring "already set" from the hidden value).
   var geoCountryName = null;
   var geoCountryIso2 = null;
@@ -174,7 +174,7 @@
   // Fallback country (ISO2) used when every geo provider fails.
   var FALLBACK_COUNTRY = 'us';
 
-  // Try several free, no-key geo providers in order — any one returning a country
+  // Try several free, no-key geo providers in order, any one returning a country
   // wins. Single shared lookup for both the phone widget and the country field.
   // ipapi.co is rate-limited, so we fall through to alternates before giving up.
   function fetchGeo(url, extract) {
@@ -218,7 +218,7 @@
       utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js'
     });
 
-    // Make the phone number the only tab stop in the widget — the flag button is
+    // Make the phone number the only tab stop in the widget, the flag button is
     // removed from the tab order. Keyboard users switch country by typing "+code";
     // mouse users can still click the flag to open the dropdown.
     var itiWrap = phoneInput.closest('.iti');
@@ -409,7 +409,7 @@
     if (hasEmail && !validEmail(email)) {
       showError('email', STR.errEmail); ok = false; firstBad = firstBad || form.email;
     }
-    // isValidNumber() returns null until the utils script loads — only reject an explicit false.
+    // isValidNumber() returns null until the utils script loads, only reject an explicit false.
     if (hasPhone && iti && typeof iti.isValidNumber === 'function' && iti.isValidNumber() === false) {
       showError('phone', STR.errPhone); ok = false; firstBad = firstBad || phoneInput;
     }
@@ -451,7 +451,7 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Spam gate — fake success, write nothing.
+    // Spam gate, fake success, write nothing.
     if (form.company_url.value || (Date.now() - openedAt) < 2000) {
       showSuccess();
       return;

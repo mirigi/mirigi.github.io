@@ -182,7 +182,7 @@ body {
 
 <div id="stage" role="region" aria-label="Mirigi Reports demo">
 
-  <!-- Card 1 — notifications per month -->
+  <!-- Card 1: notifications per month -->
   <article class="card is-current" data-card="0">
     <div class="header">
       <div class="title" data-i18n="card1.title">notifications per month</div>
@@ -220,7 +220,7 @@ body {
           <rect class="bar" style="--i:5" x="345" y="60"  width="42" height="120" rx="3"/>
           <rect class="bar" style="--i:6" x="405" y="85"  width="42" height="95"  rx="3"/>
         </g>
-        <!-- x labels — static fallback for scrapers; JS rewrites relative to today -->
+        <!-- x labels, static fallback for scrapers; JS rewrites relative to today -->
         <g class="axistext" text-anchor="middle">
           <text x="66"  y="195" data-month-offset="-6">2025-11</text>
           <text x="126" y="195" data-month-offset="-5">2025-12</text>
@@ -234,7 +234,7 @@ body {
     </div>
   </article>
 
-  <!-- Card 2 — reservations per month -->
+  <!-- Card 2: reservations per month -->
   <article class="card" data-card="1">
     <div class="header">
       <div class="title" data-i18n="card2.title">reservations per month</div>
@@ -261,7 +261,7 @@ body {
         <text class="gridtext" x="22" y="139" text-anchor="end">80</text>
         <text class="gridtext" x="22" y="94"  text-anchor="end">160</text>
         <text class="gridtext" x="22" y="49"  text-anchor="end">240</text>
-        <!-- 25 monthly bars (very dense) — heights approximated from screenshot -->
+        <!-- 25 monthly bars (very dense), heights approximated from screenshot -->
         <g id="resBars"></g>
         <g class="axistext" text-anchor="middle">
           <text x="46"  y="195" data-year-offset="-2">2024</text>
@@ -273,7 +273,7 @@ body {
     </div>
   </article>
 
-  <!-- Card 3 — packages per day -->
+  <!-- Card 3: packages per day -->
   <article class="card" data-card="2">
     <div class="header">
       <div class="title" data-i18n="card3.title">packages per day</div>
@@ -300,7 +300,7 @@ body {
         <text class="gridtext" x="22" y="134" text-anchor="end">7</text>
         <text class="gridtext" x="22" y="84"  text-anchor="end">14</text>
         <text class="gridtext" x="22" y="34"  text-anchor="end">21</text>
-        <!-- Area + line approximating the screenshot — peak around day 5 -->
+        <!-- Area + line approximating the screenshot, peak around day 5 -->
         <path class="area-fill" d="
           M 30,175
           C 50,172 65,170 80,168
@@ -343,7 +343,7 @@ body {
     </div>
   </article>
 
-  <!-- Card 4 — visitors per floor -->
+  <!-- Card 4: visitors per floor -->
   <article class="card" data-card="3">
     <div class="header">
       <div class="title" data-i18n="card4.title">visitors per floor</div>

@@ -9,7 +9,7 @@ miri_ai_example:
   - from: user
     text: "I'd like a tuna sandwich, please."
   - from: miri
-    text: "Got it — a tuna sandwich. Would you like something to drink with it?"
+    text: "Got it, a tuna sandwich. Would you like something to drink with it?"
   - from: user
     text: "An orange juice."
   - from: miri
@@ -22,4 +22,4 @@ For residents, the app surfaces the **complete menu** with descriptions, pricing
 
 For restaurant staff, incoming orders arrive through a **streamlined management view** that keeps customers **automatically informed** at every stage. This reduces interruptions, cuts down on **order errors**, and lets the team concentrate on **food preparation and service quality** rather than logistics. The platform is **integration-ready** for established delivery services, so existing fulfillment workflows can continue to operate while the resident-facing experience remains consistent.
 
-The result is **tighter operations** for the restaurant and a **more refined daily experience** for residents — a dining service that feels *native to the building* rather than bolted on.
+The result is **tighter operations** for the restaurant and a **more refined daily experience** for residents: a dining service that feels *native to the building* rather than bolted on.

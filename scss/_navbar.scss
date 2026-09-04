@@ -34,7 +34,7 @@
     }
   }
 
-  /* Language switcher — match nav text color, not the gold link default */
+  /* Language switcher, match nav text color, not the gold link default */
   .nav-langs {
     font-size: 0.72rem;          // a touch smaller than the rest of the nav
   }
@@ -54,7 +54,7 @@
     color: rgba(0,0,0,0.85);
     font-weight: 600;
   }
-  /* Mobile collapsed menu — large touch targets */
+  /* Mobile collapsed menu, large touch targets */
   @media (max-width: 991px) {
     .navbar-collapse {
       padding: 0.5rem 0 1rem;

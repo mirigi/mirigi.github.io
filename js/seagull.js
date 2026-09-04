@@ -1,4 +1,4 @@
-// Animated seagull on hero masthead — flight, scare counter, panic escape
+// Animated seagull on hero masthead: flight, scare counter, panic escape
 (function () {
   var masthead = document.querySelector('.masthead');
   if (!masthead) return;
@@ -135,7 +135,7 @@
   function flyTo(sx, sy, ex, ey, dur, onDone) {
     cancelFly();
     svg.classList.add('bflying');
-    /* cache dims and size once — avoids per-frame layout reads and object allocation */
+    /* cache dims and size once: avoids per-frame layout reads and object allocation */
     var mw = masthead.offsetWidth, mh = masthead.offsetHeight;
     var bs = birdSize(), bw = bs.w, bh = bs.h;
     var cpx = Math.max(0, Math.min((sx + ex) / 2 + (Math.random() - 0.5) * 160, mw - bw));

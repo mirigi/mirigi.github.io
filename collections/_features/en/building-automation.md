@@ -13,8 +13,8 @@ miri_ai_example:
     text: "The pool is at 27 °C."
 ---
 
-A **building automation gateway** brings the property's existing sensors and controls into Mirigi, so the same app residents already use becomes the place to **check what's happening** and **make things happen**. *Pool temperature, lobby lights, the front gate, a fountain pump* — anything the building has wired up appears as a **reading to glance at** or a **button to press**, right next to messages, deliveries and reservations.
+A **building automation gateway** brings the property's existing sensors and controls into Mirigi, so the same app residents already use becomes the place to **check what's happening** and **make things happen**. *Pool temperature, lobby lights, the front gate, a fountain pump*: anything the building has wired up appears as a **reading to glance at** or a **button to press**, right next to messages, deliveries and reservations.
 
-For **residents**, that means a quiet superpower: open a door, turn on the pool heater, see the *real* temperature outside, all without a separate remote or a second app. Ask **Miri**, and the answer or action arrives in plain language. For **staff and management**, the same gateway becomes a **shared operations view** — the team sees the building's state in one place and intervenes from the console, even *before residents notice* an issue.
+For **residents**, that means a quiet superpower: open a door, turn on the pool heater, see the *real* temperature outside, all without a separate remote or a second app. Ask **Miri**, and the answer or action arrives in plain language. For **staff and management**, the same gateway becomes a **shared operations view**: the team sees the building's state in one place and intervenes from the console, even *before residents notice* an issue.
 
 The result is a property where **all the existing intelligence finally speaks the same language**, presented through the calm, premium interface residents already trust.

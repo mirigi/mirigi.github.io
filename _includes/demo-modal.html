@@ -42,7 +42,7 @@
             <p class="demo-form__error" data-error-for="phone"></p>
           </div>
         </div>
-        <p class="demo-form__hint">{{ t.demo_form_contact_hint | default: "Add your email, your phone, or both — at least one so we can reach you." }}</p>
+        <p class="demo-form__hint">{{ t.demo_form_contact_hint | default: "Add your email, your phone, or both: at least one so we can reach you." }}</p>
 
         <div class="demo-form__field">
           <label for="df-country">{{ t.demo_form_country_label | default: "Country" }}</label>
@@ -58,7 +58,7 @@
 
         <div class="demo-form__field">
           <span class="demo-form__seglabel">{{ t.demo_form_size_label | default: "Building size (units)" }}
-            <span class="demo-seg__hint" data-seg-hint>{{ t.demo_form_size_hint | default: "— tap to select" }}</span>
+            <span class="demo-seg__hint" data-seg-hint>{{ t.demo_form_size_hint | default: "(tap to select)" }}</span>
           </span>
           <div class="demo-seg is-pristine" role="radiogroup" aria-label="{{ t.demo_form_size_label | default: 'Building size (units)' }}">
             <span class="demo-seg__thumb" aria-hidden="true"></span>
@@ -97,7 +97,7 @@
 
     <div class="demo-modal__panel demo-modal__success" data-demo-panel="success" hidden>
       <div class="demo-modal__check" aria-hidden="true">&#10003;</div>
-      <h2>{{ t.demo_form_success_title | default: "Thank you — we'll be in touch." }}</h2>
+      <h2>{{ t.demo_form_success_title | default: "Thank you. We'll be in touch." }}</h2>
       <p>{{ t.demo_form_success_body | default: "We've received your request and will reach out shortly to arrange your walkthrough." }}</p>
       <button type="button" class="contact-cta contact-cta--secondary" data-demo-close>{{ t.demo_form_close | default: "Close" }}</button>
     </div>
@@ -200,10 +200,10 @@
 }
 .demo-form__counter.is-near { color: #c9a961; }
 
-/* honeypot — fully hidden */
+/* honeypot: fully hidden */
 .demo-form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-/* "tap to select" hint next to the label — fades until a choice is made */
+/* "tap to select" hint next to the label: fades until a choice is made */
 .demo-seg__hint {
   font-size: .7rem; letter-spacing: .04em; text-transform: none;
   color: #c9a961; margin-left: .35rem;

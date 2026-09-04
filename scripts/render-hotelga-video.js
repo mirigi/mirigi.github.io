@@ -14,12 +14,12 @@
   ─────────────────────────────────────────────────────────────────────────
   A deterministic, frame-exact pipeline (Chromium's `Emulation.setVirtualTimePolicy`
   CDP domain, driving the deck's setTimeout/CSS-animation engine one virtual
-  frame at a time, screenshotting each — the technique Remotion/HyperFrames
+  frame at a time, screenshotting each, the technique Remotion/HyperFrames
   use) was built and abandoned: it hit a reproducible hang in
   `Page.captureScreenshot` in this environment, in three different forms
   (missing-advance-before-first-screenshot; and two more once that was
   fixed), with zero CPU on any process while stuck. Root cause not
-  identified — reproduced with both Playwright's default pipe transport and
+  identified, reproduced with both Playwright's default pipe transport and
   a manual `connectOverCDP` TCP transport, so it isn't an fd-leak into a
   spawned ffmpeg. Not reliable enough to ship on; reverted.
 
@@ -33,23 +33,23 @@
   `minterpolate` retimes it to a constant fps (irons out the jitter),
   `deband` softens the gradient banding baked in by the low source bitrate,
   and real VP9 Profile-2 10-bit (`yuv420p10le`) crf-based quality replaces
-  Playwright's forced low bitrate — 10-bit measurably reduces the encoder's
+  Playwright's forced low bitrate, 10-bit measurably reduces the encoder's
   own added banding even from an 8-bit source.
 
   Gradient banding at the *source*: Chromium's screenshot/DOM rendering
   pipeline is 8-bit sRGB with no way to get more color depth out of it (no
-  bit-depth parameter exists in the CDP `Page.captureScreenshot` schema) —
+  bit-depth parameter exists in the CDP `Page.captureScreenshot` schema) ,
   confirmed against node_modules/devtools-protocol directly. So
   js/slides.js's markup includes a fixed, low-opacity SVG noise overlay
   (`#grain` in index.html/css/slides.css) that dithers the gradients
-  *before* that 8-bit truncation happens — the standard trick from video
+  *before* that 8-bit truncation happens, the standard trick from video
   color grading for breaking up banding that no post-hoc encoder filter can
   fully undo once it's already happened. A genuine fix for the 8-bit ceiling
   would mean re-rendering the deck's gradients via WebGL/WebGPU with a
-  floating-point framebuffer and reading raw pixels — a much larger project
+  floating-point framebuffer and reading raw pixels, a much larger project
   than this deck's scope; not attempted here.
 
-  Requirements: playwright (chromium), ffmpeg-static — both devDeps.
+  Requirements: playwright (chromium), ffmpeg-static, both devDeps.
   The deck exposes window.MIRIGI_TOTAL_DURATION_MS (computed against
   whichever `?lang=` was requested) so this script never has to guess or
   duplicate the per-slide timing math.
@@ -70,12 +70,12 @@ const args = Object.fromEntries(
 );
 
 const LANG = (args.lang || 'en').trim();
-// WIDTH/HEIGHT are the CSS viewport (what every vw/vh in slides.css sees) —
+// WIDTH/HEIGHT are the CSS viewport (what every vw/vh in slides.css sees) ,
 // always the 1080x1920 layout, regardless of output resolution. DPR
 // (Playwright deviceScaleFactor) scales the captured pixel density on top
 // of that *same* layout instead of changing the viewport, so nothing needs
 // to be sized in real px ever again to survive a resolution change (see
-// the .miri-pop max-width bug this replaced — a literal 2160x3840 viewport
+// the .miri-pop max-width bug this replaced, a literal 2160x3840 viewport
 // changed the layout itself, not just the pixel density). Output pixels =
 // WIDTH*DPR x HEIGHT*DPR.
 const WIDTH = parseInt(args.width || '1080', 10);
@@ -199,7 +199,7 @@ function transcodeToMp4(webmPath, fps) {
     await page.waitForSelector('.slide', { timeout: 8000 });
 
     const totalMs = await page.evaluate(() => window.MIRIGI_TOTAL_DURATION_MS);
-    if (!totalMs) throw new Error('window.MIRIGI_TOTAL_DURATION_MS was not set by the deck — check js/slides.js');
+    if (!totalMs) throw new Error('window.MIRIGI_TOTAL_DURATION_MS was not set by the deck, check js/slides.js');
     const recordMs = SECONDS ? Math.min(totalMs, SECONDS * 1000) : totalMs;
     const tailMs = SECONDS && recordMs < totalMs ? 0 : TAIL_BUFFER_MS;
     console.log(`[${LANG}] recording ${recordMs}ms${SECONDS ? ` (--seconds=${SECONDS} preview cap)` : ` (+${TAIL_BUFFER_MS}ms tail)`} at ${WIDTH}x${HEIGHT}${DPR > 1 ? ` @${DPR}x DPR (${WIDTH * DPR}x${HEIGHT * DPR} output)` : ''} ...`);
@@ -222,7 +222,7 @@ function transcodeToMp4(webmPath, fps) {
       const stat2 = fs.statSync(mp4Path);
       console.log(`[${LANG}] mp4:  ${path.relative(ROOT, mp4Path)} (${(stat2.size / 1024).toFixed(0)} KB)`);
     } else {
-      console.log(`[${LANG}] skipping mp4 (pass --mp4 to also transcode) — webm only, for fast content iteration.`);
+      console.log(`[${LANG}] skipping mp4 (pass --mp4 to also transcode), webm only, for fast content iteration.`);
     }
 
     console.log(`\nDone. Output: ${path.relative(ROOT, OUT_DIR)}/`);

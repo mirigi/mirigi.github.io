@@ -4,19 +4,19 @@
 
 **Goal:** Add Miri as a first-class feature page in all three languages and rebrand the site from "Smart Concierge" to "AI Concierge" on the homepage and metadata.
 
-**Architecture:** Three new feature markdown files (en/es/fr) use Jekyll's standard collection pattern — no layout changes needed. Homepage copy and `_data` translation files are updated in-place. Filename prefix `0-` ensures Miri appears first in the features grid and the proposal builder selector.
+**Architecture:** Three new feature markdown files (en/es/fr) use Jekyll's standard collection pattern, no layout changes needed. Homepage copy and `_data` translation files are updated in-place. Filename prefix `0-` ensures Miri appears first in the features grid and the proposal builder selector.
 
 **Tech Stack:** Jekyll collections, Liquid templates, YAML data files, Markdown
 
 ---
 
-## Prerequisites (manual step — not a code task)
+## Prerequisites (manual step, not a code task)
 
 Before starting Task 1, the user must copy the AI concierge chat screenshot to:
 ```
 img_mirigi/ai-concierge.jpg
 ```
-A placeholder can be used during development — the feature page will render without the image, just with an empty image area. Tasks do not depend on this file existing.
+A placeholder can be used during development, the feature page will render without the image, just with an empty image area. Tasks do not depend on this file existing.
 
 ---
 
@@ -29,18 +29,18 @@ A placeholder can be used during development — the feature page will render wi
 
 ```markdown
 ---
-title: "Miri — AI Concierge"
+title: "Miri, AI Concierge"
 image: "/img_mirigi/ai-concierge.jpg"
 layout: feature
 keywords: ai concierge, miri, chat, artificial intelligence, resident experience, automation
-description: "Meet Miri — Mirigi's AI concierge that acts on any resident request instantly."
+description: "Meet Miri, Mirigi's AI concierge that acts on any resident request instantly."
 ---
 
-Meet Miri, Mirigi's built-in AI concierge. Residents chat naturally — "I'd like Spaghetti Carbonara delivered to my unit" or "bring my car up in 10 minutes" — and Miri handles it end-to-end. No app menus to navigate, no forms to fill. Just ask.
+Meet Miri, Mirigi's built-in AI concierge. Residents chat naturally, "I'd like Spaghetti Carbonara delivered to my unit" or "bring my car up in 10 minutes", and Miri handles it end-to-end. No app menus to navigate, no forms to fill. Just ask.
 
-Miri connects to every Mirigi module: restaurant ordering, valet parking, amenity reservations, service requests, visitor access, and more. She knows the building's live menu, current amenity availability, and your preferences. She doesn't just answer questions — she places the order, logs the request, and sends you confirmation.
+Miri connects to every Mirigi module: restaurant ordering, valet parking, amenity reservations, service requests, visitor access, and more. She knows the building's live menu, current amenity availability, and your preferences. She doesn't just answer questions, she places the order, logs the request, and sends you confirmation.
 
-For building staff, Miri reduces inbound calls and manual coordination. Every action Miri takes flows through the same Mirigi workflows staff already use — nothing changes on the back end, everything improves on the front end.
+For building staff, Miri reduces inbound calls and manual coordination. Every action Miri takes flows through the same Mirigi workflows staff already use, nothing changes on the back end, everything improves on the front end.
 ```
 
 - [ ] **Step 2: Verify Jekyll picks it up**
@@ -49,7 +49,7 @@ Run the Docker container:
 ```bash
 docker build -t mirigi-jekyll-site . && docker run -v $(pwd):/usr/src/app -p 4000:4000 mirigi-jekyll-site
 ```
-Open `http://localhost:4000/en/features/` and confirm "Miri — AI Concierge" appears **first** in the list (before Amenities Reservations). Click through to verify the feature page renders with title, image area, and body text.
+Open `http://localhost:4000/en/features/` and confirm "Miri, AI Concierge" appears **first** in the list (before Amenities Reservations). Click through to verify the feature page renders with title, image area, and body text.
 
 - [ ] **Step 3: Commit**
 
@@ -69,23 +69,23 @@ git commit -m "feat: add Miri AI concierge feature page (en)"
 
 ```markdown
 ---
-title: "Miri — Conserje IA"
+title: "Miri, Conserje IA"
 image: "/img_mirigi/ai-concierge.jpg"
 layout: feature
 keywords: conserje ia, miri, chat, inteligencia artificial, experiencia del residente, automatización
-description: "Conoce a Miri — la conserje IA de Mirigi que actúa ante cualquier solicitud del residente de inmediato."
+description: "Conoce a Miri, la conserje IA de Mirigi que actúa ante cualquier solicitud del residente de inmediato."
 ---
 
-Conoce a Miri, la conserje IA integrada de Mirigi. Los residentes conversan de forma natural — "Quisiera Spaghetti Carbonara entregado en mi unidad" o "sube mi auto en 10 minutos" — y Miri lo gestiona de principio a fin. Sin menús de aplicación que navegar, sin formularios que completar. Solo pregunta.
+Conoce a Miri, la conserje IA integrada de Mirigi. Los residentes conversan de forma natural, "Quisiera Spaghetti Carbonara entregado en mi unidad" o "sube mi auto en 10 minutos", y Miri lo gestiona de principio a fin. Sin menús de aplicación que navegar, sin formularios que completar. Solo pregunta.
 
-Miri se conecta a cada módulo de Mirigi: pedidos de restaurante, valet parking, reservas de amenidades, solicitudes de servicio, acceso de visitantes y más. Conoce el menú en vivo del edificio, la disponibilidad actual de amenidades y tus preferencias. No solo responde preguntas — realiza el pedido, registra la solicitud y te envía la confirmación.
+Miri se conecta a cada módulo de Mirigi: pedidos de restaurante, valet parking, reservas de amenidades, solicitudes de servicio, acceso de visitantes y más. Conoce el menú en vivo del edificio, la disponibilidad actual de amenidades y tus preferencias. No solo responde preguntas, realiza el pedido, registra la solicitud y te envía la confirmación.
 
-Para el personal del edificio, Miri reduce las llamadas entrantes y la coordinación manual. Cada acción que realiza Miri fluye a través de los mismos flujos de trabajo de Mirigi que el personal ya utiliza — nada cambia en el back end, todo mejora en el front end.
+Para el personal del edificio, Miri reduce las llamadas entrantes y la coordinación manual. Cada acción que realiza Miri fluye a través de los mismos flujos de trabajo de Mirigi que el personal ya utiliza, nada cambia en el back end, todo mejora en el front end.
 ```
 
 - [ ] **Step 2: Verify**
 
-Open `http://localhost:4000/es/funcionalidades/` and confirm "Miri — Conserje IA" appears first.
+Open `http://localhost:4000/es/funcionalidades/` and confirm "Miri, Conserje IA" appears first.
 
 - [ ] **Step 3: Commit**
 
@@ -105,23 +105,23 @@ git commit -m "feat: add Miri AI concierge feature page (es)"
 
 ```markdown
 ---
-title: "Miri — Conciergerie IA"
+title: "Miri, Conciergerie IA"
 image: "/img_mirigi/ai-concierge.jpg"
 layout: feature
 keywords: conciergerie ia, miri, chat, intelligence artificielle, expérience résident, automatisation
-description: "Découvrez Miri — la conciergerie IA de Mirigi qui agit immédiatement sur toute demande résident."
+description: "Découvrez Miri, la conciergerie IA de Mirigi qui agit immédiatement sur toute demande résident."
 ---
 
-Découvrez Miri, la conciergerie IA intégrée de Mirigi. Les résidents s'expriment naturellement — "Je voudrais des Spaghetti Carbonara livrés dans mon appartement" ou "montez ma voiture dans 10 minutes" — et Miri gère tout de bout en bout. Pas de menus d'application à parcourir, pas de formulaires à remplir. Il suffit de demander.
+Découvrez Miri, la conciergerie IA intégrée de Mirigi. Les résidents s'expriment naturellement, "Je voudrais des Spaghetti Carbonara livrés dans mon appartement" ou "montez ma voiture dans 10 minutes", et Miri gère tout de bout en bout. Pas de menus d'application à parcourir, pas de formulaires à remplir. Il suffit de demander.
 
-Miri se connecte à chaque module Mirigi : commandes au restaurant, service de voiturier, réservations d'installations, demandes de service, accès visiteurs, et bien plus. Elle connaît le menu en direct de l'immeuble, la disponibilité actuelle des installations et vos préférences. Elle ne se contente pas de répondre aux questions — elle passe la commande, enregistre la demande et vous envoie la confirmation.
+Miri se connecte à chaque module Mirigi : commandes au restaurant, service de voiturier, réservations d'installations, demandes de service, accès visiteurs, et bien plus. Elle connaît le menu en direct de l'immeuble, la disponibilité actuelle des installations et vos préférences. Elle ne se contente pas de répondre aux questions, elle passe la commande, enregistre la demande et vous envoie la confirmation.
 
-Pour le personnel de l'immeuble, Miri réduit les appels entrants et la coordination manuelle. Chaque action effectuée par Miri suit les mêmes flux de travail Mirigi que le personnel utilise déjà — rien ne change en arrière-plan, tout s'améliore côté résident.
+Pour le personnel de l'immeuble, Miri réduit les appels entrants et la coordination manuelle. Chaque action effectuée par Miri suit les mêmes flux de travail Mirigi que le personnel utilise déjà, rien ne change en arrière-plan, tout s'améliore côté résident.
 ```
 
 - [ ] **Step 2: Verify**
 
-Open `http://localhost:4000/fr/caracteristiques/` and confirm "Miri — Conciergerie IA" appears first.
+Open `http://localhost:4000/fr/caracteristiques/` and confirm "Miri, Conciergerie IA" appears first.
 
 - [ ] **Step 3: Commit**
 
@@ -156,9 +156,9 @@ customersText: Behold the architectural marvels that trust Mirigi for their oper
 contactText: Join the ranks of these distinguished structures and elevate your building's potential with Mirigi. Contact us through any of our channels to schedule a demonstration and discover how Mirigi's digital counseling can boost your development! Experience the transformation and innovation that only Mirigi can offer.
 title: Mirigi AI Concierge
 keywords: ai concierge, miri, building management, resident experience, luxury living, automation, smart building
-description: "Meet Miri — Mirigi's AI concierge that acts on any resident request: food orders, valet, reservations, and more, all in one conversation."
+description: "Meet Miri, Mirigi's AI concierge that acts on any resident request: food orders, valet, reservations, and more, all in one conversation."
 ---
-Meet Miri — the AI concierge that just acts. Residents chat naturally to place food orders, request their car, book amenities, and more. No app menus to navigate, no forms to fill. Just ask.
+Meet Miri, the AI concierge that just acts. Residents chat naturally to place food orders, request their car, book amenities, and more. No app menus to navigate, no forms to fill. Just ask.
 
 Experience the future of condominium living with Mirigi, the groundbreaking concierge service that transforms resident-building interactions into seamless digital experiences. Elevate your lifestyle with luxury interfaces for reservations, valet parking, workflows, deliveries, and <a href='#features' class='js-scroll-trigger'>more</a>.
 
@@ -169,13 +169,13 @@ With Mirigi's integration into building automation, residents gain unprecedented
 Discover the prestigious luxury buildings that have embraced Mirigi <a href='#customers' class='js-scroll-trigger'>by clicking here</a>.
 ```
 
-- [ ] **Step 2: Update `_data/en.yml` — change `aboutTitle`**
+- [ ] **Step 2: Update `_data/en.yml`, change `aboutTitle`**
 
 Find the line:
 ```yaml
 # Brochure
 ```
-It does not contain `aboutTitle` — that field is in `index.md` frontmatter directly, so no change to `en.yml` is needed for `aboutTitle`. However, update the `brochure_subtitle` to reflect AI positioning:
+It does not contain `aboutTitle`, that field is in `index.md` frontmatter directly, so no change to `en.yml` is needed for `aboutTitle`. However, update the `brochure_subtitle` to reflect AI positioning:
 
 In `_data/en.yml`, change:
 ```yaml
@@ -226,9 +226,9 @@ customersText: Contemple las maravillas arquitectónicas que confían en Mirigi 
 contactText: Únase a las filas de estas distinguidas estructuras y eleve el potencial de su edificio con Mirigi. Contáctenos a través de cualquiera de nuestros canales para programar una demostración y descubrir cómo los servicios de conserjería digital de Mirigi pueden impulsar su desarrollo. Experimente la transformación e innovación que solo Mirigi puede ofrecer!
 title: Mirigi Conserje IA
 keywords: conserje ia, miri, gestión de edificios, experiencia del residente, vida de lujo, automatización, edificio inteligente
-description: "Conoce a Miri — la conserje IA de Mirigi que actúa ante cualquier solicitud del residente: pedidos de comida, valet, reservas y más, todo en una conversación."
+description: "Conoce a Miri, la conserje IA de Mirigi que actúa ante cualquier solicitud del residente: pedidos de comida, valet, reservas y más, todo en una conversación."
 ---
-Conoce a Miri — la conserje IA que simplemente actúa. Los residentes conversan de forma natural para realizar pedidos de comida, solicitar su auto, reservar amenidades y más. Sin menús de aplicación que navegar, sin formularios que completar. Solo pregunta.
+Conoce a Miri, la conserje IA que simplemente actúa. Los residentes conversan de forma natural para realizar pedidos de comida, solicitar su auto, reservar amenidades y más. Sin menús de aplicación que navegar, sin formularios que completar. Solo pregunta.
 
 Experimente el futuro de la vida en condominio con Mirigi, el innovador servicio de conserjería que transforma las interacciones entre residentes y edificios en experiencias digitales sin fisuras. Eleve su estilo de vida con interfaces de lujo para reservas, valet parking, flujos de trabajo, entregas y <a href='#features' class='js-scroll-trigger'>más</a>.
 
@@ -287,9 +287,9 @@ customersText: Contemplez les merveilles architecturales qui font confiance à M
 contactText: Rejoignez les rangs de ces structures distinguées et levez le potentiel de votre immeuble avec Mirigi. Contactez-nous via l'un de nos canaux pour planifier une démonstration et découvrir comment les services de conciergerie numérique de Mirigi peuvent dynamiser votre développement. Vivez la transformation et l'innovation que seul Mirigi peut offrir !
 title: Mirigi Conciergerie IA
 keywords: conciergerie ia, miri, gestion immobilière, expérience résident, vie de luxe, automatisation, immeuble intelligent
-description: "Découvrez Miri — la conciergerie IA de Mirigi qui agit immédiatement sur toute demande résident : commandes repas, voiturier, réservations et plus, en une seule conversation."
+description: "Découvrez Miri, la conciergerie IA de Mirigi qui agit immédiatement sur toute demande résident : commandes repas, voiturier, réservations et plus, en une seule conversation."
 ---
-Découvrez Miri — la conciergerie IA qui agit, tout simplement. Les résidents s'expriment naturellement pour passer des commandes repas, demander leur voiture, réserver des installations et plus encore. Pas de menus d'application à parcourir, pas de formulaires à remplir. Il suffit de demander.
+Découvrez Miri, la conciergerie IA qui agit, tout simplement. Les résidents s'expriment naturellement pour passer des commandes repas, demander leur voiture, réserver des installations et plus encore. Pas de menus d'application à parcourir, pas de formulaires à remplir. Il suffit de demander.
 
 Découvrez l'avenir de la vie en copropriété avec Mirigi, le service de conciergerie révolutionnaire qui transforme les interactions entre résidents et immeubles en expériences numériques fluides. Élevez votre style de vie avec des interfaces de luxe pour les réservations, le service de voiturier, les flux de travail, les livraisons et <a href='#features' class='js-scroll-trigger'>plus encore</a>.
 
@@ -330,7 +330,7 @@ No file changes. Smoke-test the full site before considering the feature complet
 
 - [ ] **Step 1: Verify proposal builder**
 
-Open `http://localhost:4000/proposal-builder.html`, log in, and confirm "Miri — AI Concierge" appears as the **first** feature in the highlighted features selector.
+Open `http://localhost:4000/proposal-builder.html`, log in, and confirm "Miri, AI Concierge" appears as the **first** feature in the highlighted features selector.
 
 - [ ] **Step 2: Verify feature pages render**
 

@@ -1,0 +1,243 @@
+---
+layout: default
+title: Mirigi Building Setup
+permalink: /building-signup.html
+robots: "noindex, nofollow, noarchive"
+sitemap: false
+no_analytics: true
+---
+<meta name="mirigi-signup-endpoint" content="{{ site.building_signup_endpoint }}">
+
+<style>
+  :root { --signup-ink: #f2efe9; --signup-muted: rgba(242,239,233,.64); --signup-gold: #c9a961; --signup-panel: rgba(242,239,233,.045); }
+  body { background: #100e0c; color: var(--signup-ink); }
+  .signup { min-height: 100vh; max-width: 1180px; margin: 0 auto; padding: 5rem clamp(1.25rem, 5vw, 5rem) 6rem; box-sizing: border-box; }
+  .signup::before { content: 'MIRIGI  /  BUILDING SETUP'; display: block; color: var(--signup-gold); font-size: .7rem; letter-spacing: .22em; margin-bottom: 1.1rem; }
+  .signup h1 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -.025em; margin: 0 0 .8rem; }
+  .signup > p { max-width: 640px; color: var(--signup-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 3rem; }
+  .signup section { margin: 1rem 0; padding: clamp(1.25rem, 3vw, 2rem); background: var(--signup-panel); border: 1px solid rgba(201,169,97,.2); border-radius: 8px; }
+  .signup h2 { color: var(--signup-ink); font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.65rem; margin: 0 0 1.25rem; }
+  .signup label { display: block; margin: .8rem 0 .35rem; color: var(--signup-muted); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
+  .signup input, .signup select, .signup textarea { box-sizing: border-box; width: 100%; padding: .72rem .8rem; background: rgba(242,239,233,.045); color: var(--signup-ink); border: 1px solid rgba(242,239,233,.18); border-radius: 5px; font: inherit; }
+  .signup input:focus, .signup select:focus, .signup textarea:focus { outline: none; border-color: var(--signup-gold); background: rgba(242,239,233,.08); }
+  .signup textarea { min-height: 90px; resize: vertical; }
+  .signup small, .signup .status { color: var(--signup-muted); }
+  .signup .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .25rem 1rem; }
+  .signup .check { display: inline-flex; align-items: center; gap: .45rem; margin: .5rem 1rem .25rem 0; color: var(--signup-muted); font-weight: 400; letter-spacing: 0; text-transform: none; }
+  .signup .check input { width: auto; accent-color: var(--signup-gold); }
+  .signup .repeat { margin: 1rem 0; padding: 1rem; background: rgba(0,0,0,.16); border: 1px solid rgba(242,239,233,.1); border-radius: 6px; }
+  .signup button { cursor: pointer; padding: .75rem 1.1rem; margin: .5rem .5rem .5rem 0; border: 1px solid var(--signup-gold); border-radius: 4px; background: linear-gradient(135deg, #c9a961, #d8bd7e); color: #1c1a18; font: inherit; font-weight: 600; }
+  .signup button.secondary { background: transparent; color: var(--signup-ink); border-color: rgba(242,239,233,.25); }
+  .signup .status { margin-top: 1rem; min-height: 1.4em; }
+  .signup .intro { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; }
+  .signup .progress { position: sticky; top: 1rem; z-index: 2; display: flex; flex-wrap: wrap; gap: .35rem; padding: .65rem; background: rgba(16,14,12,.9); border: 1px solid rgba(201,169,97,.2); border-radius: 6px; }
+  .signup .progress a { color: var(--signup-muted); text-decoration: none; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; padding: .35rem .5rem; }
+  .signup .progress a:hover { color: var(--signup-gold); }
+  .signup .section-note { color: var(--signup-muted); line-height: 1.55; margin: -.7rem 0 1.2rem; max-width: 700px; }
+  .signup .section-number { color: var(--signup-gold); font-size: .68rem; letter-spacing: .18em; }
+  .signup .actions { position: sticky; bottom: 0; z-index: 3; margin: 1.5rem -1rem 0; padding: .8rem 1rem; background: rgba(16,14,12,.94); border-top: 1px solid rgba(201,169,97,.2); }
+  .signup .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .signup .module-card { padding: 1rem; border: 1px solid rgba(242,239,233,.12); border-radius: 6px; background: rgba(0,0,0,.12); }
+  .signup .module-card h3 { margin: 0 0 .35rem; font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.2rem; }
+  .signup .module-card p { color: var(--signup-muted); font-size: .82rem; line-height: 1.45; margin: 0 0 .65rem; }
+  @media (max-width: 700px) { .signup .intro { display: block; } .signup .progress { position: static; margin-bottom: 1.5rem; } }
+  @media (max-width: 600px) { .signup { padding-top: 3rem; } .signup section { padding: 1rem; } }
+</style>
+
+<main class="signup">
+  <div class="intro"><div><h1>Mirigi Building Setup</h1><p>Tell us how your building works. Start with the basics and return whenever you have more details. Your progress is saved on this device and backed up each time you press Save progress.</p></div><div class="progress"><a href="#basics">Basics</a><a href="#operations">Operations</a><a href="#services">Services</a><a href="#modules">Modules</a></div></div>
+
+  <form id="signupForm">
+    <section id="basics">
+      <span class="section-number">01 / START HERE</span><h2>Building basics</h2>
+      <p class="section-note">These details identify the building and establish the structure residents will see in Mirigi.</p>
+      <label for="buildingName">Building name</label>
+      <input id="buildingName" name="buildingName" required>
+      <label for="contactEmail">Primary contact email</label>
+      <input id="contactEmail" name="contactEmail" type="email">
+    </section>
+
+    <section id="operations">
+      <span class="section-number">02 / PEOPLE AND PLACES</span><h2>Staff and residents</h2>
+      <p class="section-note">Add the people who manage the building. Residents can be added now or imported later with unit, name, email, phone number, and language.</p>
+      <div id="staffList"></div><button type="button" class="secondary" data-add="staff">Add staff member</button>
+      <label for="residentImport">Resident import or roster notes</label>
+      <textarea id="residentImport" name="residentImport" placeholder="CSV columns: unit, name, email, phone number, language"></textarea>
+    </section>
+
+    <section>
+      <h2>Structure and technology</h2>
+      <p class="section-note">Describe floors, towers, elevator zones, home automation, and the access control system so we can configure the right connections.</p>
+      <label for="structure">Number of units, how they are distributed, and how they are grouped for notices</label><textarea id="structure" name="structure"></textarea>
+      <div class="grid"><div><label for="unitSystem">Unit system</label><select id="unitSystem" name="unitSystem"><option value="metric">Metric</option><option value="imperial">Imperial</option></select></div><div><label for="automation">Home automation system (brand/model)</label><input id="automation" name="automation"></div><div><label for="locks">Access control system (brand/model)</label><input id="locks" name="locks"></div><div><label for="locksIntegration">Integrate access control with Mirigi?</label><select id="locksIntegration" name="locksIntegration"><option value="">Not decided</option><option value="yes">Yes</option><option value="no">No</option></select></div></div>
+    </section>
+
+    <section>
+      <h2>Packages and deliveries</h2>
+      <p class="section-note">Tell us where deliveries arrive and how staff should record the handoff to a resident.</p>
+      <label for="packages">Receiving rooms/lockers and common couriers</label><textarea id="packages" name="packages"></textarea>
+      <label class="check"><input type="checkbox" name="packageSignature"> Resident signature required</label>
+      <label class="check"><input type="checkbox" name="packagePhoto"> Attach package photo</label>
+    </section>
+
+    <section id="services">
+      <span class="section-number">03 / DAILY SERVICES</span><h2>Reservations</h2>
+      <p class="section-note">Add one card for each amenity. You can describe the schedule and booking limits in plain language.</p>
+      <div id="amenityList"></div><button type="button" class="secondary" data-add="amenity">Add amenity</button>
+    </section>
+
+    <section>
+      <h2>Requests and workflows</h2>
+      <p class="section-note">Create a workflow for each request type. Include the escalation order and, when useful, an AI triage prompt describing who handles each kind of request.</p>
+      <label for="requests">Requests, services, information pages, maintenance types, and internal regulations</label><textarea id="requests" name="requests"></textarea>
+      <div id="workflowList"></div><button type="button" class="secondary" data-add="workflow">Add request workflow</button>
+    </section>
+
+    <section id="modules">
+      <span class="section-number">04 / OPTIONAL MODULES</span><h2>Phonebook and optional modules</h2>
+      <p class="section-note">Select what you want to activate. Configuration can be completed progressively as the building ramps up.</p>
+      <label for="phonebook">Important phone numbers and extensions</label><textarea id="phonebook" name="phonebook"></textarea>
+      <label class="check"><input type="checkbox" name="panicButton"> Panic button</label><label class="check"><input type="checkbox" name="guestAuthorization"> Guest authorization</label><label class="check"><input type="checkbox" name="cameras"> Building cameras</label><label class="check"><input type="checkbox" name="restaurant"> Restaurant/food ordering</label><label class="check"><input type="checkbox" name="valet"> Valet parking/vehicles</label><label class="check"><input type="checkbox" name="events"> Building events</label><label class="check"><input type="checkbox" name="polls"> Polls/surveys</label><label class="check"><input type="checkbox" name="accounting"> Accounting/fees</label><label class="check"><input type="checkbox" name="reports"> Reports</label><label class="check"><input type="checkbox" name="digitalSignatures"> Digital signatures</label><label class="check"><input type="checkbox" name="aiGeneration"> AI generation/translation</label><label class="check"><input type="checkbox" name="whatsapp"> WhatsApp chat, image, and voice input</label><label class="check"><input type="checkbox" name="temporaryStays"> Temporary stays</label><label class="check"><input type="checkbox" name="staffAiAssistant"> AI assistant for staff</label>
+      <div class="module-grid">
+        <div class="module-card"><h3>Panic button</h3><p>Who receives fire, security, and medical alerts? Include emergency contact rules.</p><textarea name="panicDetails" placeholder="Recipients and emergency contact setup"></textarea></div>
+        <div class="module-card"><h3>Guest authorization</h3><p>Describe concierge coverage, visitor ID or photo requirements, and whether an entrance intercom or door station can be answered by Mirigi to authorize guests on its own.</p><textarea name="guestDetails" placeholder="Doorman hours, ID/photo policy, entrance intercom"></textarea></div>
+        <div class="module-card"><h3>Building cameras</h3><p>List cameras, brands, RTSP details, and which are resident or staff only.</p><textarea name="cameraDetails" placeholder="Locations, brand/model, access scope"></textarea></div>
+        <div class="module-card"><h3>Restaurant / food ordering</h3><p>List the restaurants, bars, or cafés that will take orders, plus menus, schedules, ordering options, and restaurant staff.</p><textarea name="restaurantDetails" placeholder="Outlets, staff emails, delivery/pickup rules"></textarea></div>
+        <div class="module-card"><h3>Valet parking / vehicles</h3><p>Describe parking zones, valets, car wash pricing, vehicle delivery times, and where vehicles are received and delivered.</p><textarea name="valetDetails" placeholder="Zones, valet contacts, car wash services/prices"></textarea><label for="valetPoints">Where vehicles are received and delivered</label><textarea id="valetPoints" name="valetPoints" placeholder="Main Entrance, Ballroom, Tower B Lobby"></textarea><label class="check"><input type="checkbox" name="aiLicensePlate"> AI camera license plate processing</label><p>Automatically log inbound and outbound cars?</p><textarea name="aiLicensePlateDetails" placeholder="Camera/provider, entry and exit points, logging rules"></textarea></div>
+        <div class="module-card"><h3>Building events</h3><p>Define event languages, registration, guest limits, and paid events.</p><textarea name="eventDetails" placeholder="Notification languages, registration and guest rules"></textarea></div>
+        <div class="module-card"><h3>Polls / surveys</h3><p>Describe target groups and whether results are public or staff-only.</p><textarea name="pollDetails" placeholder="Activation, audiences, result visibility"></textarea></div>
+        <div class="module-card"><h3>Accounting / fees</h3><p>Provide the accounting system, currency, and unit mapping requirements.</p><textarea name="accountingDetails" placeholder="System, currency, integration notes"></textarea></div>
+        <div class="module-card"><h3>Reports</h3><p>Mirigi comes with prebuilt reports for each module. Describe any specific report you would like created for your setup, and who should receive it.</p><textarea name="reportDetails" placeholder="Report to create and its recipients"></textarea></div>
+        <div class="module-card"><h3>Digital signatures</h3><p>List signature pads or tablets, their locations, and email receipt preferences.</p><textarea name="signatureDetails" placeholder="Number, locations, automatic email preference"></textarea></div>
+        <div class="module-card"><h3>AI generation and translation</h3><p>This sets how Mirigi writes and translates text for the building, such as event and poll descriptions, menus, and notices, so the same content is available in every language the building needs. List the languages required.</p><textarea name="aiDetails" placeholder="Languages and activation details"></textarea></div>
+        <div class="module-card"><h3>WhatsApp access</h3><p>Residents reach the building through Miri, the Mirigi assistant, in the WhatsApp they already use. Confirm chat, image, and voice input.</p><textarea name="whatsappDetails" placeholder="Input types"></textarea></div>
+        <div class="module-card"><h3>Temporary stays</h3><p>Allow residents to invite guests or temporary occupants for a fixed period from the app, through Miri text messages, or both.</p><textarea name="temporaryStayDetails" placeholder="Required information, start/end rules, services, permissions, approval and revocation"></textarea></div>
+        <div class="module-card"><h3>AI assistant for staff</h3><p>Help staff handle complex processes across the system using voice, chat, or both.</p><textarea name="staffAiDetails" placeholder="Voice/chat access, processes, approval steps, roles, restrictions"></textarea></div>
+      </div>
+    </section>
+
+    <p class="section-note">Please do not type passwords, PINs or access keys anywhere in this form. We will ask for credentials separately and securely. What you enter is stored in a private Mirigi spreadsheet and used only to set up your building.</p>
+    <input type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;">
+    <div class="actions"><button type="button" id="saveButton">Save progress</button><button type="submit">Send setup</button><button type="button" id="linkButton" class="secondary" hidden>Copy link to continue</button>
+    <div id="savedVersions"></div><p class="status" id="status" role="status"></p>
+    </div>
+  </form>
+</main>
+
+<script>
+(() => {
+  const form = document.querySelector('#signupForm');
+  const statusEl = document.querySelector('#status');
+  const linkButton = document.querySelector('#linkButton');
+  const endpoint = (document.querySelector('meta[name="mirigi-signup-endpoint"]') || {}).content || '';
+  const draftKey = 'mirigi-building-signup-draft-v2';
+  const versionsKeyPrefix = 'mirigi-building-signup-v2:';
+  const MAX_LOCAL = 50;
+  const lists = { staff: document.querySelector('#staffList'), amenity: document.querySelector('#amenityList'), workflow: document.querySelector('#workflowList') };
+  const templates = {
+    staff: '<div class="repeat"><div class="grid"><input name="staffName" placeholder="Name"><input name="staffEmail" type="email" placeholder="Email"><input name="staffPhone" placeholder="Phone number"><input name="staffRole" placeholder="Role"><input name="staffLanguage" placeholder="Language"></div></div>',
+    amenity: '<div class="repeat"><div class="grid"><input name="amenityName" placeholder="Amenity name"><input name="amenityRules" placeholder="Days, hours, duration, limits"><textarea name="amenityDescription" placeholder="Description"></textarea></div></div>',
+    workflow: '<div class="repeat"><label>Workflow/request name</label><input name="workflowName" placeholder="Maintenance"><label>Escalation list and timing</label><textarea name="workflowEscalation" placeholder="Order of staff/roles, timeout, working hours, days"></textarea><label>Optional AI triage rules prompt</label><textarea name="workflowTriage" placeholder="For bathroom issues assign John; for painting assign Christian; for plumbing and common areas assign Richard."></textarea><label>Fallback assignee or role</label><input name="workflowFallback"></div>'
+  };
+  function add(type, values = {}) { const wrapper = document.createElement('div'); wrapper.innerHTML = templates[type]; const item = wrapper.firstElementChild; item.querySelectorAll('input,textarea').forEach(el => { if (values[el.name] !== undefined) el.value = values[el.name]; }); lists[type].appendChild(item); }
+  function say(text) { statusEl.textContent = text; }
+  function data() { const result = {}; Array.from(form.elements).forEach(el => { if (!el.name || el.name === 'company_url') return; const value = el.type === 'checkbox' ? el.checked : el.value; if (result[el.name] !== undefined) result[el.name] = [].concat(result[el.name], value); else result[el.name] = value; }); return result; }
+  function restore(d) { Object.entries(lists).forEach(([type]) => { const count = Math.max(1, Array.isArray(d[type === 'staff' ? 'staffName' : type === 'amenity' ? 'amenityName' : 'workflowName']) ? d[type === 'staff' ? 'staffName' : type === 'amenity' ? 'amenityName' : 'workflowName'].length : 0); lists[type].innerHTML = ''; for (let i = 0; i < count; i++) add(type); }); Object.entries(d).forEach(([key,value]) => { const els = form.querySelectorAll('[name="'+key+'"]'); (Array.isArray(value) ? value : [value]).forEach((val,j) => { if (!els[j]) return; if (els[j].type === 'checkbox') els[j].checked = val === true || val === 'on'; else els[j].value = val; }); }); }
+
+  // Draft id: one random id per building setup. A resume link (#d=<id>) adopts that id.
+  function newId() { return crypto.randomUUID ? crypto.randomUUID() : Array.from(crypto.getRandomValues(new Uint8Array(16)), b => b.toString(16).padStart(2, '0')).join(''); }
+  function stored(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  const linkId = (location.hash.match(/^#d=([A-Za-z0-9-]{20,64})$/) || [])[1] || '';
+  let draftId = linkId || stored(draftKey) || newId();
+  try { localStorage.setItem(draftKey, draftId); } catch (e) { /* storage blocked */ }
+  if (linkId) history.replaceState(null, '', location.pathname + location.search);
+
+  // Versions kept in this browser. Every save adds one; none is ever overwritten.
+  const versionsKey = () => versionsKeyPrefix + draftId;
+  function versions() { try { const v = JSON.parse(stored(versionsKey()) || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+  function setVersions(all) {
+    const keep = all.filter((v, i) => !v.synced || i >= all.length - MAX_LOCAL);
+    try { localStorage.setItem(versionsKey(), JSON.stringify(keep)); } catch (e) { say('This browser could not store the version. Press Send setup to keep your answers.'); }
+  }
+  function markSynced(savedAt, event, serverVersion) {
+    const all = versions(); const v = all.find(x => x.savedAt === savedAt && (x.event || 'save') === event);
+    if (v) { v.synced = true; v.serverVersion = serverVersion; setVersions(all); }
+  }
+  function render() {
+    document.querySelector('#savedVersions').innerHTML = versions().map((v, i) => '<button type="button" class="secondary" data-load="' + i + '">Load version ' + (i + 1) + ' (' + new Date(v.savedAt).toLocaleString() + ')' + (endpoint && !v.synced ? ', not backed up' : '') + '</button>').join('');
+  }
+
+  // Backup to the spreadsheet. Sends the versions not yet backed up, oldest first.
+  async function post(body) {
+    const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) });
+    const json = await res.json().catch(() => null);
+    if (!res.ok || !json || json.ok !== true) throw new Error((json && json.error) || 'HTTP ' + res.status);
+    return json;
+  }
+  let syncing = null;
+  async function sync() {
+    if (!endpoint) return { error: null };
+    if (syncing) return syncing;
+    syncing = (async () => {
+      const tried = new Set();
+      for (;;) {
+        const next = versions().find(v => !v.synced && !tried.has(v.savedAt + (v.event || 'save')));
+        if (!next) return { error: null };
+        tried.add(next.savedAt + (next.event || 'save'));
+        try { const r = await post({ draftId, event: next.event || 'save', savedAt: next.savedAt, data: next.data, company_url: form.company_url.value }); markSynced(next.savedAt, next.event || 'save', r.version); }
+        catch (error) { return { error }; }
+      }
+    })();
+    try { return await syncing; } finally { syncing = null; render(); }
+  }
+
+  async function save(event) {
+    const all = versions(); all.push({ savedAt: new Date().toISOString(), event, data: data(), synced: false }); setVersions(all); render();
+    const result = await sync();
+    if (event === 'submit') {
+      if (!endpoint) say('The form is not connected yet. Your version is saved on this device.');
+      else if (result.error) say('Could not send yet. Your version is saved on this device and will be retried.');
+      else say('Setup sent successfully. Thank you.');
+    } else if (!endpoint) say('Version saved on this device.');
+    else if (result.error) say('Saved on this device. It is not backed up yet and will be retried.');
+    else say('Version saved and backed up.');
+  }
+
+  function loadLocal(i) { const d = versions()[i]; if (!d) return false; restore(d.data); return true; }
+  async function resumeFromLink() {
+    say('Loading your setup…');
+    try {
+      const res = await fetch(endpoint + '?action=latest&d=' + encodeURIComponent(draftId));
+      const json = await res.json();
+      if (!json || json.ok !== true) throw new Error((json && json.error) || 'HTTP ' + res.status);
+      restore(json.data);
+      const all = versions(); all.push({ savedAt: json.savedAt, event: json.event || 'save', data: json.data, synced: true, serverVersion: json.version }); setVersions(all);
+      say('Loaded the latest saved version.');
+      return true;
+    } catch (e) { say('Could not load that setup. Check the link or try again.'); return false; }
+  }
+
+  document.querySelectorAll('[data-add]').forEach(b => b.addEventListener('click', () => add(b.dataset.add)));
+  document.querySelector('#saveButton').addEventListener('click', () => save('save'));
+  document.querySelector('#savedVersions').addEventListener('click', e => { if (e.target.dataset.load !== undefined && loadLocal(Number(e.target.dataset.load))) say('Version loaded.'); });
+  form.addEventListener('submit', e => { e.preventDefault(); if (!form.reportValidity()) return; save('submit'); });
+  linkButton.addEventListener('click', async () => {
+    if (!versions().some(v => v.synced)) return say('Press Save progress first. The link works once a version is backed up.');
+    const url = location.origin + location.pathname + '#d=' + draftId;
+    try { await navigator.clipboard.writeText(url); say('Link copied. Anyone with it can open and change this setup, so keep it private.'); }
+    catch (e) { say('Copy this private link: ' + url); }
+  });
+  window.addEventListener('online', () => { sync(); });
+
+  (async function boot() {
+    Object.entries(lists).forEach(([type]) => add(type));
+    linkButton.hidden = !endpoint;
+    const hasPending = versions().some(v => !v.synced);
+    let loaded = false;
+    if (linkId && endpoint && !hasPending) loaded = await resumeFromLink();
+    if (!loaded && versions().length && loadLocal(versions().length - 1)) say('Your last saved version was loaded.');
+    render();
+    sync();
+  })();
+})();
+</script>

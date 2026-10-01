@@ -457,7 +457,7 @@
     try {
       window.gtag('event', 'generate_lead', {
         form_id: 'demo_request',
-        language: lang,
+        form_language: lang,   // plain "language" never showed up in the GA4 request in a test; cause unverified
         building_size: form.building_size.value || ''
       });
       if (adsConversion) window.gtag('event', 'conversion', { send_to: adsConversion });

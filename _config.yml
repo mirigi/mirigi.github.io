@@ -48,8 +48,7 @@ demo_form_endpoint: "https://script.google.com/macros/s/AKfycbxC1NHpJxSdN0QsTA81
 # Building setup form (building-signup.html, unlisted): Apps Script web app that stores each
 # saved version in its own Google Sheet. Not the demo form endpoint. Setup steps:
 # internal/building-signup/SETUP.md. Leave empty to keep the form local-only.
-# FIXME: set the /exec URL once the sheet and script exist.
-building_signup_endpoint: ""
+building_signup_endpoint: "https://script.google.com/macros/s/AKfycbyKi-dD1Y5mCjf6bixTKK7CkEV6UTJa8LYDHYreMmjSjxFfiEec0Oc5rleQwqzKLHAcUw/exec"
 
 
 collections:

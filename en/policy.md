@@ -34,6 +34,16 @@ In addition to creating the logs, the information will also be processed for the
 - **Session cookies**  
   When using Mirigi in a browser, session cookies are used to improve the usage of the service.
 
+{% comment %}FIXME: legal review of this section (analytics, ad click ids, page trail) before relying on it.{% endcomment %}
+
+## Website, analytics and demo request form
+
+This website uses Google Analytics, a Google service, to measure visits: which pages are viewed, from which approximate country and on what type of device. To do this, Google sets cookies and other identifiers in your browser. You can block them in your browser settings or with the Google Analytics opt-out add-on.
+
+If you arrive from an ad, we keep the ad click identifier and the campaign parameters (for example the source and the campaign name) in your browser for up to 90 days. We use them to measure which ads work.
+
+If you fill in the demo request form, we use your name, email, phone number, country, building size and comments to contact you. Together with them we store the click identifier and the campaign, if any, the page you landed on and the pages you viewed during that visit, so we can understand what interests you. This data is stored in a Google spreadsheet and our team is notified by email. To access, correct or delete your data, write to [support@mirigi.com](mailto:support@mirigi.com).
+
 ## Do we share information with third parties?
 
 In some cases, the service will need to share personal information with third parties. In particular, the service uses Khimo to provide home automation features. For this purpose, information such as the execution of commands in your home is sent. Please refer to [Khimo's Privacy Policy](https://www.khimo.com/policy) for more information.

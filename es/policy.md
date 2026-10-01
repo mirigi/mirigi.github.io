@@ -34,6 +34,16 @@ Además de crear los registros, la información también se procesará para los 
 - **Cookies de sesión**  
   Cuando se utiliza Mirigi en un navegador, se utilizan cookies de sesión para mejorar el uso del servicio.
 
+{% comment %}FIXME: legal review of this section (analytics, ad click ids, page trail) before relying on it.{% endcomment %}
+
+## Sitio web, analítica y formulario de demostración
+
+Este sitio web usa Google Analytics, un servicio de Google, para medir las visitas: qué páginas se consultan, desde qué país aproximado y con qué tipo de dispositivo. Para eso Google instala cookies y otros identificadores en su navegador. Puede bloquearlos desde la configuración del navegador o con el complemento de inhabilitación de Google Analytics.
+
+Si llega desde un anuncio, guardamos en su navegador, por hasta 90 días, el identificador del clic y los parámetros de la campaña (por ejemplo la fuente y el nombre de la campaña). Los usamos para medir qué anuncios dan resultado.
+
+Si completa el formulario de demostración, usamos su nombre, correo, teléfono, país, tamaño del edificio y comentarios para contactarle. Junto con esos datos guardamos el identificador del clic y la campaña, si los hay, la página por la que ingresó y las páginas que consultó durante esa visita, para entender qué le interesa. Estos datos se guardan en una hoja de cálculo de Google y se envía un aviso por correo a nuestro equipo. Para consultar, corregir o eliminar sus datos, escriba a [support@mirigi.com](mailto:support@mirigi.com).
+
 ## ¿Compartimos información con terceros?
 
 En algunos casos, el servicio deberá compartir información personal con terceros. En particular, el servicio utiliza Khimo para proporcionar funciones de automatización del hogar. Para este propósito, se envía información como la ejecución de comandos en su hogar. Consulte la [Política de Privacidad de Khimo](https://www.khimo.com/policy) para obtener más información.

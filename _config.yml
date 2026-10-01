@@ -38,6 +38,13 @@ languages:
 #demo_form_endpoint: "https://script.google.com/macros/s/AKfycbzoc393pcHJWgMWt0ZHElqHeIaMJSt7SCpvKluSikGFmPAaEl355im4MM6tjkE_qqWj/exec"
 demo_form_endpoint: "https://script.google.com/macros/s/AKfycbxC1NHpJxSdN0QsTA81jwiM49lB2h22Y3E4xPlhcM-UV0SZqKGq5QQZh77dop_iGwW9/exec"
 
+# Google Ads conversion for a saved demo request. The form always reports the GA4
+# event "generate_lead"; these two add a direct Ads conversion. Leave both unset to
+# report only to GA4 (then import generate_lead into Ads as a key event).
+# FIXME: fill in once the ads team creates the Ads account and conversion action.
+#google_ads_id: "AW-XXXXXXXXXX"
+#google_ads_demo_conversion: "AW-XXXXXXXXXX/xxxxxxxxxxxxxxxxxxx"
+
 
 collections:
   features:

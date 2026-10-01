@@ -4,7 +4,9 @@
  * - Animated building-size segmented control.
  * - Validation: name required; email OR phone required.
  * - Spam: honeypot + >=2s time-gate (silent fake-success on bot).
- * - Submits JSON (text/plain, no preflight) to the Apps Script endpoint.
+ * - Submits JSON (text/plain, no preflight) to the Apps Script endpoint, with the
+ *   campaign data from js/attribution.js, and reports a saved request as a
+ *   conversion (trackLead).
  */
 (function () {
   'use strict';
@@ -428,7 +430,7 @@
   }
 
   function payload() {
-    return {
+    var data = {
       name: form.name.value.trim(),
       email: form.email.value.trim(),
       phone: (iti && typeof iti.getNumber === 'function' && iti.getNumber()) ? iti.getNumber() : (phoneInput ? phoneInput.value.trim() : ''),
@@ -440,6 +442,26 @@
       language: lang,
       source: window.location.pathname
     };
+    // Campaign data kept by js/attribution.js: ad click ids, UTMs, landing page, referrer.
+    var attr = (window.mirigiAttribution && window.mirigiAttribution.get()) || {};
+    Object.keys(attr).forEach(function (k) { data[k] = attr[k]; });
+    return data;
+  }
+
+  // Reports a saved request to Google Analytics (key event "generate_lead") and,
+  // when site.google_ads_demo_conversion is set, to Google Ads. Contact details
+  // are never sent. Called only after the endpoint confirmed the save.
+  var adsConversion = (document.querySelector('meta[name="demo-form-ads-conversion"]') || {}).content || '';
+  function trackLead() {
+    if (typeof window.gtag !== 'function') return;  // blocked or not loaded
+    try {
+      window.gtag('event', 'generate_lead', {
+        form_id: 'demo_request',
+        language: lang,
+        building_size: form.building_size.value || ''
+      });
+      if (adsConversion) window.gtag('event', 'conversion', { send_to: adsConversion });
+    } catch (e) { /* tracking must never break the form */ }
   }
 
   function showSuccess() {
@@ -467,7 +489,7 @@
     })
       .then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); })
       .then(function (res) {
-        if (res && res.ok) { showSuccess(); }
+        if (res && res.ok) { trackLead(); showSuccess(); }
         else { showError('global', STR.errNetwork); setSending(false); }
       })
       .catch(function () { showError('global', STR.errNetwork); setSending(false); });

@@ -86,6 +86,9 @@
 
         <p class="demo-form__error demo-form__error--global" data-error-for="global"></p>
 
+        <p class="demo-form__note">{{ t.demo_form_tracking_note | default: "We include the pages you viewed on this site so we can better understand what interests you." }}
+          <a href="/{{ page.lang }}/policy.html">{{ t.demo_form_policy_link | default: "Privacy policy" }}</a>.</p>
+
         <button type="submit" class="contact-cta contact-cta--primary demo-form__submit"
                 data-label-submit="{{ t.demo_form_submit | default: 'Request my demo' }}"
                 data-label-sending="{{ t.demo_form_sending | default: 'Sending…' }}">
@@ -189,6 +192,9 @@
 }
 .demo-form ::placeholder { color: rgba(242,239,233,0.32); }
 .demo-form__hint { font-size: .78rem; color: rgba(242,239,233,0.5); margin: -.4rem 0 1rem; }
+.demo-form__note { font-size: .72rem; line-height: 1.45; color: rgba(242,239,233,0.5); margin: .2rem 0 .8rem; text-align: center; }
+.demo-form__note a { color: inherit; text-decoration: underline; }
+.demo-form__note a:hover { color: #c9a961; }
 .demo-form__error {
   font-size: .78rem; color: #e3a08a; margin: .35rem 0 0; min-height: 0; display: none;
 }

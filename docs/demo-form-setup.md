@@ -16,7 +16,13 @@ by a small Google Apps Script. One-time setup, ~10 minutes.
    |---|---|---|---|---|---|---|---|---|
    | Timestamp | Full name | Email | Phone | Country | Building size | Comments | Language | Source |
 
-   (The script writes columns in this order. Keep them in sync if you rename them.)
+   | J | K | L | M | N | O | P | Q | R | S | T | U |
+   |---|---|---|---|---|---|---|---|---|---|---|---|
+   | GCLID | GBRAID | WBRAID | UTM source | UTM medium | UTM campaign | UTM term | UTM content | Landing page | Referrer | Pages viewed | Interests |
+
+   (The script writes columns in this order. Keep them in sync if you rename them.
+   Columns J to U are the campaign data and the pages viewed; see "Campaign tracking" below.
+   An older sheet only needs these twelve headers added to the right of `Source`.)
 
 ---
 
@@ -59,7 +65,21 @@ function doPost(e) {
       building_size: (data.building_size || '').toString().trim(),
       comments: (data.comments || '').toString().slice(0, 300),
       language: (data.language || '').toString(),
-      source: (data.source || '').toString()
+      source: (data.source || '').toString(),
+      // Campaign data (js/attribution.js). Text from the URL, so _safe() keeps the
+      // Sheet from reading a value that starts with = + - @ as a formula.
+      gclid: _safe(data.gclid),
+      gbraid: _safe(data.gbraid),
+      wbraid: _safe(data.wbraid),
+      utm_source: _safe(data.utm_source),
+      utm_medium: _safe(data.utm_medium),
+      utm_campaign: _safe(data.utm_campaign),
+      utm_term: _safe(data.utm_term),
+      utm_content: _safe(data.utm_content),
+      landing_page: _safe(data.landing_page),
+      referrer: _safe(data.referrer),
+      pages_viewed: _safe(data.pages_viewed),
+      interests: _safe(data.interests)
     };
 
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME)
@@ -74,7 +94,19 @@ function doPost(e) {
       lead.building_size,
       lead.comments,
       lead.language,
-      lead.source
+      lead.source,
+      lead.gclid,
+      lead.gbraid,
+      lead.wbraid,
+      lead.utm_source,
+      lead.utm_medium,
+      lead.utm_campaign,
+      lead.utm_term,
+      lead.utm_content,
+      lead.landing_page,
+      lead.referrer,
+      lead.pages_viewed,
+      lead.interests
     ]);
 
     // Email the team. Wrapped so a mail failure never blocks the submission
@@ -100,6 +132,11 @@ function _notify(lead) {
     ['Comments', lead.comments || ','],
     ['Language', lead.language || ','],
     ['Source', lead.source || ','],
+    ['Campaign', [lead.utm_source, lead.utm_medium, lead.utm_campaign].filter(String).join(' / ') || ','],
+    ['Ad click id', lead.gclid || lead.gbraid || lead.wbraid || ','],
+    ['Landing page', lead.landing_page || ','],
+    ['Interests', lead.interests || ','],
+    ['Pages viewed', lead.pages_viewed || ','],
     ['Received', new Date().toString()]
   ];
 
@@ -116,6 +153,13 @@ function _notify(lead) {
   if (lead.email) options.replyTo = lead.email;
 
   MailApp.sendEmail(NOTIFY_EMAILS, subject, body, options);
+}
+
+// Trimmed, length-capped text for a Sheet cell. A leading = + - @ gets an
+// apostrophe so the Sheet stores it as text instead of evaluating it.
+function _safe(v) {
+  var s = (v || '').toString().trim().slice(0, 200);
+  return /^[=+\-@]/.test(s) ? "'" + s : s;
 }
 
 function _esc(s) {
@@ -250,6 +294,38 @@ through these, most likely first:
 > 90% of the time it's #1, the new send-email permission was never granted, because the
 > authorization prompt only appears when *you* run the script in the editor, not when the
 > website POSTs to it anonymously. Running `testEmail()` once fixes it.
+
+## Campaign tracking (Google Ads)
+
+Two things make leads countable and traceable. Both live in the site; the Apps Script
+above only stores the extra columns.
+
+1. **Conversion event.** When the Script confirms the save, `js/demo-form.js` sends the
+   GA4 event `generate_lead` (no name, email or phone). In GA4: Admin → Events → mark
+   `generate_lead` as a **key event**, then import it into Google Ads (Goals →
+   Conversions → Import → Google Analytics 4). For a direct Ads conversion instead,
+   set `google_ads_id` and `google_ads_demo_conversion` in `_config.yml` (the ads team
+   gives both from the conversion action's tag setup).
+2. **Click id and campaign kept with the lead.** `js/attribution.js` runs on every page.
+   If the visit has `gclid`, `gbraid`, `wbraid` or `utm_*` in the URL, it keeps them
+   (plus landing page and referrer) in the browser for 90 days and the form sends them
+   with the request. The `gclid` in column J is what lets Ads match an offline lead to
+   its click. Make sure the ad's final URL keeps the parameters (auto-tagging on, or a
+   `?utm_source=...` template); `mirigi.com/?demo=1&utm_...` works with the QR contract.
+
+3. **Pages viewed.** The same file keeps the paths of the pages seen in the current
+   visit (at most 15, no query strings, in `sessionStorage`, so it is cleared when the
+   tab closes). The form sends them as `Pages viewed` (column T) plus `Interests`
+   (column U), the feature pages among them, e.g. `0-ai-concierge, valet-parking`.
+   The form shows a one-line notice about this next to the submit button
+   (`demo_form_tracking_note` in `_data/*.yml`).
+
+After editing the Script, redeploy (see "Updating the script later").
+
+> **Consent:** the click id is stored in the visitor's browser and sent with the form,
+> and Google Analytics runs on every page. The privacy policy (`*/policy.md`) now says
+> so in four languages, but a consent banner may still be needed if the ads run in the
+> EU or UK. Have whoever owns legal for the site review both.
 
 ## Tips
 

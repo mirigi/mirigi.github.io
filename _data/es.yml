@@ -52,6 +52,8 @@ demo_form_success_title: "Gracias. Nos pondremos en contacto."
 demo_form_success_body: "Recibimos su solicitud y le contactaremos en breve para coordinar su recorrido."
 demo_form_close: "Cerrar"
 demo_form_mailto_fallback: "O escríbanos a info@mirigi.com"
+demo_form_tracking_note: "Incluimos las páginas que visitó en este sitio para entender mejor su interés."
+demo_form_policy_link: "Política de privacidad"
 # Página de inscripción a evento (/eventos)
 eventos_title: "Inscripción al evento"
 eventos_subtitle: "Completá tus datos y te contactamos con toda la información."

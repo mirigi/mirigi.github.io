@@ -10,7 +10,9 @@
     gtag('js', new Date());
 
     gtag('config', 'G-6DZM0N6KBQ');
+    {% if site.google_ads_id %}gtag('config', '{{ site.google_ads_id }}');{% endif %}
   </script>
+  <script src="{{ '/js/attribution.js' | relative_url }}"></script>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no">

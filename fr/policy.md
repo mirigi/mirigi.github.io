@@ -34,6 +34,16 @@ En plus de la création des journaux, les informations seront également traité
 - **Cookies de session**  
   Lorsque vous utilisez Mirigi dans un navigateur, des cookies de session sont utilisés pour améliorer l'utilisation du service.
 
+{% comment %}FIXME: legal review of this section (analytics, ad click ids, page trail) before relying on it.{% endcomment %}
+
+## Site web, mesure d'audience et formulaire de demande de démonstration
+
+Ce site utilise Google Analytics, un service de Google, pour mesurer les visites : quelles pages sont consultées, depuis quel pays approximatif et avec quel type d'appareil. Pour cela, Google dépose des cookies et d'autres identifiants dans votre navigateur. Vous pouvez les bloquer dans les paramètres de votre navigateur ou avec le module de désactivation de Google Analytics.
+
+Si vous arrivez depuis une annonce, nous conservons dans votre navigateur, jusqu'à 90 jours, l'identifiant du clic et les paramètres de la campagne (par exemple la source et le nom de la campagne). Nous les utilisons pour mesurer quelles annonces donnent des résultats.
+
+Si vous remplissez le formulaire de demande de démonstration, nous utilisons votre nom, votre e-mail, votre téléphone, votre pays, la taille de l'immeuble et vos commentaires pour vous contacter. Avec ces données, nous conservons l'identifiant du clic et la campagne, le cas échéant, la page d'arrivée et les pages consultées pendant cette visite, afin de comprendre ce qui vous intéresse. Ces données sont enregistrées dans une feuille de calcul Google et notre équipe est avertie par e-mail. Pour accéder à vos données, les corriger ou les supprimer, écrivez à [support@mirigi.com](mailto:support@mirigi.com).
+
 ## Partageons-nous des informations avec des tiers ?
 
 Dans certains cas, le service devra partager des informations personnelles avec des tiers. En particulier, le service utilise Khimo pour fournir des fonctionnalités domotiques. À cette fin, des informations telles que l'exécution de commandes dans votre domicile sont envoyées. Veuillez vous référer à la [Politique de Confidentialité de Khimo](https://www.khimo.com/policy) pour plus d'informations.

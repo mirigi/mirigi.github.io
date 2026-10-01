@@ -5,146 +5,666 @@ permalink: /building-signup.html
 robots: "noindex, nofollow, noarchive"
 sitemap: false
 no_analytics: true
+hide_nav: true
 ---
 <meta name="mirigi-signup-endpoint" content="{{ site.building_signup_endpoint }}">
 
 <style>
-  :root { --signup-ink: #f2efe9; --signup-muted: rgba(242,239,233,.64); --signup-gold: #c9a961; --signup-panel: rgba(242,239,233,.045); }
-  body { background: #100e0c; color: var(--signup-ink); }
-  .signup { min-height: 100vh; max-width: 1180px; margin: 0 auto; padding: 5rem clamp(1.25rem, 5vw, 5rem) 6rem; box-sizing: border-box; }
-  .signup::before { content: 'MIRIGI  /  BUILDING SETUP'; display: block; color: var(--signup-gold); font-size: .7rem; letter-spacing: .22em; margin-bottom: 1.1rem; }
-  .signup h1 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -.025em; margin: 0 0 .8rem; }
-  .signup > p { max-width: 640px; color: var(--signup-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 3rem; }
-  .signup section { margin: 1rem 0; padding: clamp(1.25rem, 3vw, 2rem); background: var(--signup-panel); border: 1px solid rgba(201,169,97,.2); border-radius: 8px; }
-  .signup h2 { color: var(--signup-ink); font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.65rem; margin: 0 0 1.25rem; }
-  .signup label { display: block; margin: .8rem 0 .35rem; color: var(--signup-muted); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
-  .signup input, .signup select, .signup textarea { box-sizing: border-box; width: 100%; padding: .72rem .8rem; background: rgba(242,239,233,.045); color: var(--signup-ink); border: 1px solid rgba(242,239,233,.18); border-radius: 5px; font: inherit; }
-  .signup input:focus, .signup select:focus, .signup textarea:focus { outline: none; border-color: var(--signup-gold); background: rgba(242,239,233,.08); }
-  .signup textarea { min-height: 90px; resize: vertical; }
-  .signup small, .signup .status { color: var(--signup-muted); }
-  .signup .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .25rem 1rem; }
-  .signup .check { display: inline-flex; align-items: center; gap: .45rem; margin: .5rem 1rem .25rem 0; color: var(--signup-muted); font-weight: 400; letter-spacing: 0; text-transform: none; }
-  .signup .check input { width: auto; accent-color: var(--signup-gold); }
-  .signup .repeat { margin: 1rem 0; padding: 1rem; background: rgba(0,0,0,.16); border: 1px solid rgba(242,239,233,.1); border-radius: 6px; }
-  .signup button { cursor: pointer; padding: .75rem 1.1rem; margin: .5rem .5rem .5rem 0; border: 1px solid var(--signup-gold); border-radius: 4px; background: linear-gradient(135deg, #c9a961, #d8bd7e); color: #1c1a18; font: inherit; font-weight: 600; }
-  .signup button.secondary { background: transparent; color: var(--signup-ink); border-color: rgba(242,239,233,.25); }
-  .signup .status { margin-top: 1rem; min-height: 1.4em; }
-  .signup .intro { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; }
-  .signup .progress { position: sticky; top: 1rem; z-index: 2; display: flex; flex-wrap: wrap; gap: .35rem; padding: .65rem; background: rgba(16,14,12,.9); border: 1px solid rgba(201,169,97,.2); border-radius: 6px; }
-  .signup .progress a { color: var(--signup-muted); text-decoration: none; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; padding: .35rem .5rem; }
-  .signup .progress a:hover { color: var(--signup-gold); }
-  .signup .section-note { color: var(--signup-muted); line-height: 1.55; margin: -.7rem 0 1.2rem; max-width: 700px; }
-  .signup .section-number { color: var(--signup-gold); font-size: .68rem; letter-spacing: .18em; }
-  .signup .actions { position: sticky; bottom: 0; z-index: 3; margin: 1.5rem -1rem 0; padding: .8rem 1rem; background: rgba(16,14,12,.94); border-top: 1px solid rgba(201,169,97,.2); }
-  .signup .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
-  .signup .module-card { padding: 1rem; border: 1px solid rgba(242,239,233,.12); border-radius: 6px; background: rgba(0,0,0,.12); }
-  .signup .module-card h3 { margin: 0 0 .35rem; font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.2rem; }
-  .signup .module-card p { color: var(--signup-muted); font-size: .82rem; line-height: 1.45; margin: 0 0 .65rem; }
-  @media (max-width: 700px) { .signup .intro { display: block; } .signup .progress { position: static; margin-bottom: 1.5rem; } }
-  @media (max-width: 600px) { .signup { padding-top: 3rem; } .signup section { padding: 1rem; } }
+  :root { --ink: #f2efe9; --muted: rgba(242,239,233,.66); --gold: #c9a961; --panel: rgba(242,239,233,.045); --line: rgba(201,169,97,.22); --field: rgba(242,239,233,.06); }
+  body { background: #100e0c; color: var(--ink); }
+  .signup { position: relative; min-height: 100vh; max-width: 1120px; margin: 0 auto; padding: 4.5rem clamp(1rem, 4vw, 4rem) 7rem; box-sizing: border-box; }
+  .signup::before { content: 'MIRIGI  /  BUILDING SETUP'; display: block; color: var(--gold); font-size: .7rem; letter-spacing: .22em; margin-bottom: 1rem; }
+  .signup[data-lang="es"]::before { content: 'MIRIGI  /  CONFIGURACIÓN DEL EDIFICIO'; }
+  .signup h1 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1; letter-spacing: -.02em; margin: 0 0 .8rem; }
+  .signup .lead { max-width: 660px; color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0 0 1.6rem; }
+  .langswitch { position: absolute; top: 1.3rem; right: clamp(1rem, 4vw, 4rem); display: flex; gap: .4rem; }
+  .langswitch button { background: transparent; border: 1px solid rgba(201,169,97,.4); color: var(--muted); padding: .3rem .85rem; border-radius: 999px; font-size: .75rem; letter-spacing: .08em; cursor: pointer; }
+  .langswitch button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #100e0c; }
+
+  .stepper { position: sticky; top: 0; z-index: 20; display: flex; gap: .4rem; flex-wrap: wrap; padding: .7rem 0; margin-bottom: 1rem; background: linear-gradient(#100e0c 75%, rgba(16,14,12,0)); }
+  .stepper a { display: inline-flex; align-items: center; gap: .5rem; padding: .45rem .9rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); text-decoration: none; font-size: .78rem; letter-spacing: .04em; background: #14110e; }
+  .stepper a:hover { color: var(--ink); border-color: var(--gold); }
+  .stepper .dot { width: .55rem; height: .55rem; border-radius: 50%; border: 1px solid var(--gold); }
+  .stepper a.done .dot { background: var(--gold); }
+
+  .card { scroll-margin-top: 4.2rem; margin: 1.1rem 0; padding: clamp(1.1rem, 3vw, 2rem); background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+  .card .num { color: var(--gold); font-size: .68rem; letter-spacing: .2em; }
+  .card h2 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.7rem; margin: .25rem 0 .4rem; }
+  .card h3 { font-size: 1.02rem; font-weight: 600; margin: 1.8rem 0 .3rem; }
+  .card .intro { color: var(--muted); font-size: .92rem; line-height: 1.55; margin: 0 0 1rem; max-width: 720px; }
+  .hint { color: var(--muted); font-size: .8rem; line-height: 1.45; margin: .15rem 0 .5rem; }
+
+  .field { margin: .9rem 0; }
+  .field > label, .label { display: block; margin: 0 0 .35rem; color: var(--muted); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }
+  .req { color: var(--gold); }
+  .signup input[type=text], .signup input[type=email], .signup input[type=tel], .signup input[type=number], .signup input[type=time], .signup select, .signup textarea {
+    box-sizing: border-box; width: 100%; padding: .65rem .75rem; background: var(--field); color: var(--ink); border: 1px solid rgba(242,239,233,.16); border-radius: 6px; font: inherit; font-size: .92rem; }
+  .signup select option { background: #1b1814; color: var(--ink); }
+  .signup input:focus, .signup select:focus, .signup textarea:focus { outline: none; border-color: var(--gold); background: rgba(242,239,233,.09); }
+  .signup textarea { min-height: 84px; resize: vertical; }
+  .signup ::placeholder { color: rgba(242,239,233,.34); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0 1rem; }
+  .grid > .field { display: flex; flex-direction: column; justify-content: flex-end; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .chip { position: relative; }
+  .chip input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+  .chip span { display: inline-block; padding: .5rem 1rem; border: 1px solid rgba(242,239,233,.2); border-radius: 999px; color: var(--muted); font-size: .85rem; transition: .15s; }
+  .chip input:checked + span { background: var(--gold); border-color: var(--gold); color: #100e0c; font-weight: 600; }
+  .chip input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .switch-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .7rem .9rem; margin: .5rem 0; border: 1px solid rgba(242,239,233,.12); border-radius: 8px; background: rgba(0,0,0,.14); }
+  .switch-row .txt { color: var(--ink); font-size: .92rem; }
+  .switch { position: relative; flex: none; width: 2.7rem; height: 1.5rem; }
+  .switch input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; z-index: 2; }
+  .switch .track { position: absolute; inset: 0; border-radius: 999px; background: rgba(242,239,233,.2); transition: .15s; }
+  .switch .track::after { content: ''; position: absolute; top: .18rem; left: .18rem; width: 1.14rem; height: 1.14rem; border-radius: 50%; background: #f2efe9; transition: .15s; }
+  .switch input:checked ~ .track { background: var(--gold); }
+  .switch input:checked ~ .track::after { transform: translateX(1.2rem); background: #100e0c; }
+  .switch input:focus-visible ~ .track { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .tbl { width: 100%; border-collapse: separate; border-spacing: 0 .4rem; }
+  .tbl th { text-align: left; color: var(--muted); font-size: .66rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; padding: 0 .4rem .2rem; white-space: nowrap; }
+  .tbl td { padding: 0 .4rem 0 0; vertical-align: middle; }
+  .tbl td.act { width: 2.4rem; padding: 0; text-align: right; }
+  .x { width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid rgba(242,239,233,.2); background: transparent; color: var(--muted); font-size: 1.1rem; line-height: 1; cursor: pointer; }
+  .x:hover { color: #ff9b8f; border-color: #ff9b8f; }
+  .add { margin-top: .5rem; background: transparent; color: var(--gold); border: 1px dashed rgba(201,169,97,.55); border-radius: 8px; padding: .55rem 1rem; font-size: .85rem; cursor: pointer; }
+  .add:hover { background: rgba(201,169,97,.1); }
+  .tblwrap { overflow-x: auto; }
+
+  .item { margin: .8rem 0; padding: 1rem 1.1rem; border: 1px solid rgba(242,239,233,.12); border-radius: 8px; background: rgba(0,0,0,.16); }
+  .item-head { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin-bottom: .3rem; }
+  .item-head .ttl { color: var(--gold); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; }
+  details.more { margin-top: .6rem; }
+  details.more summary { cursor: pointer; color: var(--gold); font-size: .85rem; }
+
+  .modules { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: .9rem; align-items: start; margin-top: 1rem; }
+  .module { border: 1px solid rgba(242,239,233,.14); border-radius: 10px; background: rgba(0,0,0,.18); overflow: hidden; transition: border-color .15s; }
+  .module.on { border-color: var(--gold); background: rgba(201,169,97,.06); grid-column: 1 / -1; }
+  .module-head { display: flex; align-items: center; gap: .8rem; padding: .85rem 1rem; }
+  .module-head .ico { flex: none; width: 2.3rem; height: 2.3rem; display: grid; place-items: center; border-radius: 8px; background: rgba(201,169,97,.12); color: var(--gold); }
+  .module-head .ico svg { width: 1.2rem; height: 1.2rem; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .module-head .name { flex: 1; font-weight: 600; font-size: .98rem; }
+  .info { flex: none; width: 1.45rem; height: 1.45rem; border-radius: 50%; border: 1px solid rgba(242,239,233,.35); background: transparent; color: var(--muted); font: italic 700 .8rem Georgia, serif; line-height: 1; cursor: pointer; padding: 0; }
+  .info:hover, .info[aria-expanded="true"] { color: #100e0c; background: var(--gold); border-color: var(--gold); }
+  .info-pop { margin: 0 1rem .8rem; padding: .7rem .85rem; border-left: 2px solid var(--gold); background: rgba(242,239,233,.05); color: var(--muted); font-size: .84rem; line-height: 1.5; }
+  .module-body { padding: .2rem 1rem 1.1rem; border-top: 1px solid rgba(201,169,97,.25); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; margin-top: 1.6rem; }
+  .actions button { padding: .8rem 1.5rem; border-radius: 6px; border: 1px solid var(--gold); background: var(--gold); color: #100e0c; font-weight: 600; cursor: pointer; font-size: .92rem; }
+  .actions button.secondary { background: transparent; color: var(--gold); }
+  #savedVersions { display: flex; flex-wrap: wrap; gap: .4rem; width: 100%; }
+  #savedVersions button { padding: .4rem .8rem; font-size: .74rem; font-weight: 400; }
+  .status { color: var(--muted); width: 100%; margin: .3rem 0 0; min-height: 1.3em; }
+  .privacy { color: var(--muted); font-size: .82rem; line-height: 1.5; margin-top: 1.4rem; }
+
+  @media (max-width: 760px) {
+    .stepper { flex-wrap: nowrap; overflow-x: auto; }
+    .stepper a { flex: none; white-space: nowrap; }
+    .tbl thead { display: none; }
+    .tbl, .tbl tbody, .tbl tr, .tbl td { display: block; width: 100%; box-sizing: border-box; }
+    .tbl tr { position: relative; margin: 0 0 .7rem; padding: 2.5rem .8rem .6rem; border: 1px solid rgba(242,239,233,.12); border-radius: 8px; background: rgba(0,0,0,.16); }
+    .tbl td { padding: 0 0 .5rem; }
+    .tbl td::before { content: attr(data-label); display: block; margin-bottom: .2rem; color: var(--muted); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; }
+    .tbl td.act { position: absolute; top: .4rem; right: .5rem; width: auto; padding: 0; }
+    .tbl td.act::before { display: none; }
+    .langswitch { position: static; margin-bottom: 1rem; }
+  }
 </style>
 
-<main class="signup">
-  <div class="intro"><div><h1>Mirigi Building Setup</h1><p>Tell us how your building works. Start with the basics and return whenever you have more details. Your progress is saved on this device and backed up each time you press Save progress.</p></div><div class="progress"><a href="#basics">Basics</a><a href="#operations">Operations</a><a href="#services">Services</a><a href="#modules">Modules</a></div></div>
+<main class="signup" data-lang="en">
+  <div class="langswitch" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">English</button><button type="button" data-lang="es" aria-pressed="false">Español</button></div>
+  <h1 id="pageTitle">Mirigi Building Setup</h1>
+  <p class="lead" id="pageLead"></p>
+  <nav class="stepper" id="stepper" aria-label="Sections"></nav>
 
-  <form id="signupForm">
-    <section id="basics">
-      <span class="section-number">01 / START HERE</span><h2>Building basics</h2>
-      <p class="section-note">These details identify the building and establish the structure residents will see in Mirigi.</p>
-      <label for="buildingName">Building name</label>
-      <input id="buildingName" name="buildingName" required>
-      <label for="contactEmail">Primary contact email</label>
-      <input id="contactEmail" name="contactEmail" type="email">
-    </section>
-
-    <section id="operations">
-      <span class="section-number">02 / PEOPLE AND PLACES</span><h2>Staff and residents</h2>
-      <p class="section-note">Add the people who manage the building. Residents can be added now or imported later with unit, name, email, phone number, and language.</p>
-      <div id="staffList"></div><button type="button" class="secondary" data-add="staff">Add staff member</button>
-      <label for="residentImport">Resident import or roster notes</label>
-      <textarea id="residentImport" name="residentImport" placeholder="CSV columns: unit, name, email, phone number, language"></textarea>
-    </section>
-
-    <section>
-      <h2>Structure and technology</h2>
-      <p class="section-note">Describe floors, towers, elevator zones, home automation, and the access control system so we can configure the right connections.</p>
-      <label for="structure">Number of units, how they are distributed, and how they are grouped for notices</label><textarea id="structure" name="structure"></textarea>
-      <div class="grid"><div><label for="unitSystem">Unit system</label><select id="unitSystem" name="unitSystem"><option value="metric">Metric</option><option value="imperial">Imperial</option></select></div><div><label for="automation">Home automation system (brand/model)</label><input id="automation" name="automation"></div><div><label for="locks">Access control system (brand/model)</label><input id="locks" name="locks"></div><div><label for="locksIntegration">Integrate access control with Mirigi?</label><select id="locksIntegration" name="locksIntegration"><option value="">Not decided</option><option value="yes">Yes</option><option value="no">No</option></select></div></div>
-    </section>
-
-    <section>
-      <h2>Packages and deliveries</h2>
-      <p class="section-note">Tell us where deliveries arrive and how staff should record the handoff to a resident.</p>
-      <label for="packages">Receiving rooms/lockers and common couriers</label><textarea id="packages" name="packages"></textarea>
-      <label class="check"><input type="checkbox" name="packageSignature"> Resident signature required</label>
-      <label class="check"><input type="checkbox" name="packagePhoto"> Attach package photo</label>
-    </section>
-
-    <section id="services">
-      <span class="section-number">03 / DAILY SERVICES</span><h2>Reservations</h2>
-      <p class="section-note">Add one card for each amenity. You can describe the schedule and booking limits in plain language.</p>
-      <div id="amenityList"></div><button type="button" class="secondary" data-add="amenity">Add amenity</button>
-    </section>
-
-    <section>
-      <h2>Requests and workflows</h2>
-      <p class="section-note">Create a workflow for each request type. Include the escalation order and, when useful, an AI triage prompt describing who handles each kind of request.</p>
-      <label for="requests">Requests, services, information pages, maintenance types, and internal regulations</label><textarea id="requests" name="requests"></textarea>
-      <div id="workflowList"></div><button type="button" class="secondary" data-add="workflow">Add request workflow</button>
-    </section>
-
-    <section id="modules">
-      <span class="section-number">04 / OPTIONAL MODULES</span><h2>Phonebook and optional modules</h2>
-      <p class="section-note">Select what you want to activate. Configuration can be completed progressively as the building ramps up.</p>
-      <label for="phonebook">Important phone numbers and extensions</label><textarea id="phonebook" name="phonebook"></textarea>
-      <label class="check"><input type="checkbox" name="panicButton"> Panic button</label><label class="check"><input type="checkbox" name="guestAuthorization"> Guest authorization</label><label class="check"><input type="checkbox" name="cameras"> Building cameras</label><label class="check"><input type="checkbox" name="restaurant"> Restaurant/food ordering</label><label class="check"><input type="checkbox" name="valet"> Valet parking/vehicles</label><label class="check"><input type="checkbox" name="events"> Building events</label><label class="check"><input type="checkbox" name="polls"> Polls/surveys</label><label class="check"><input type="checkbox" name="accounting"> Accounting/fees</label><label class="check"><input type="checkbox" name="reports"> Reports</label><label class="check"><input type="checkbox" name="digitalSignatures"> Digital signatures</label><label class="check"><input type="checkbox" name="aiGeneration"> AI generation/translation</label><label class="check"><input type="checkbox" name="whatsapp"> WhatsApp chat, image, and voice input</label><label class="check"><input type="checkbox" name="temporaryStays"> Temporary stays</label><label class="check"><input type="checkbox" name="staffAiAssistant"> AI assistant for staff</label>
-      <div class="module-grid">
-        <div class="module-card"><h3>Panic button</h3><p>Who receives fire, security, and medical alerts? Include emergency contact rules.</p><textarea name="panicDetails" placeholder="Recipients and emergency contact setup"></textarea></div>
-        <div class="module-card"><h3>Guest authorization</h3><p>Describe concierge coverage, visitor ID or photo requirements, and whether an entrance intercom or door station can be answered by Mirigi to authorize guests on its own.</p><textarea name="guestDetails" placeholder="Doorman hours, ID/photo policy, entrance intercom"></textarea></div>
-        <div class="module-card"><h3>Building cameras</h3><p>List cameras, brands, RTSP details, and which are resident or staff only.</p><textarea name="cameraDetails" placeholder="Locations, brand/model, access scope"></textarea></div>
-        <div class="module-card"><h3>Restaurant / food ordering</h3><p>List the restaurants, bars, or cafés that will take orders, plus menus, schedules, ordering options, and restaurant staff.</p><textarea name="restaurantDetails" placeholder="Outlets, staff emails, delivery/pickup rules"></textarea></div>
-        <div class="module-card"><h3>Valet parking / vehicles</h3><p>Describe parking zones, valets, car wash pricing, vehicle delivery times, and where vehicles are received and delivered.</p><textarea name="valetDetails" placeholder="Zones, valet contacts, car wash services/prices"></textarea><label for="valetPoints">Where vehicles are received and delivered</label><textarea id="valetPoints" name="valetPoints" placeholder="Main Entrance, Ballroom, Tower B Lobby"></textarea><label class="check"><input type="checkbox" name="aiLicensePlate"> AI camera license plate processing</label><p>Automatically log inbound and outbound cars?</p><textarea name="aiLicensePlateDetails" placeholder="Camera/provider, entry and exit points, logging rules"></textarea></div>
-        <div class="module-card"><h3>Building events</h3><p>Define event languages, registration, guest limits, and paid events.</p><textarea name="eventDetails" placeholder="Notification languages, registration and guest rules"></textarea></div>
-        <div class="module-card"><h3>Polls / surveys</h3><p>Describe target groups and whether results are public or staff-only.</p><textarea name="pollDetails" placeholder="Activation, audiences, result visibility"></textarea></div>
-        <div class="module-card"><h3>Accounting / fees</h3><p>Provide the accounting system, currency, and unit mapping requirements.</p><textarea name="accountingDetails" placeholder="System, currency, integration notes"></textarea></div>
-        <div class="module-card"><h3>Reports</h3><p>Mirigi comes with prebuilt reports for each module. Describe any specific report you would like created for your setup, and who should receive it.</p><textarea name="reportDetails" placeholder="Report to create and its recipients"></textarea></div>
-        <div class="module-card"><h3>Digital signatures</h3><p>List signature pads or tablets, their locations, and email receipt preferences.</p><textarea name="signatureDetails" placeholder="Number, locations, automatic email preference"></textarea></div>
-        <div class="module-card"><h3>AI generation and translation</h3><p>This sets how Mirigi writes and translates text for the building, such as event and poll descriptions, menus, and notices, so the same content is available in every language the building needs. List the languages required.</p><textarea name="aiDetails" placeholder="Languages and activation details"></textarea></div>
-        <div class="module-card"><h3>WhatsApp access</h3><p>Residents reach the building through Miri, the Mirigi assistant, in the WhatsApp they already use. Confirm chat, image, and voice input.</p><textarea name="whatsappDetails" placeholder="Input types"></textarea></div>
-        <div class="module-card"><h3>Temporary stays</h3><p>Allow residents to invite guests or temporary occupants for a fixed period from the app, through Miri text messages, or both.</p><textarea name="temporaryStayDetails" placeholder="Required information, start/end rules, services, permissions, approval and revocation"></textarea></div>
-        <div class="module-card"><h3>AI assistant for staff</h3><p>Help staff handle complex processes across the system using voice, chat, or both.</p><textarea name="staffAiDetails" placeholder="Voice/chat access, processes, approval steps, roles, restrictions"></textarea></div>
-      </div>
-    </section>
-
-    <p class="section-note">Please do not type passwords, PINs or access keys anywhere in this form. We will ask for credentials separately and securely. What you enter is stored in a private Mirigi spreadsheet and used only to set up your building.</p>
+  <form id="signupForm" novalidate>
+    <div id="formRoot"></div>
+    <p class="privacy" id="privacyNote"></p>
     <input type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;">
-    <div class="actions"><button type="button" id="saveButton">Save progress</button><button type="submit">Send setup</button><button type="button" id="linkButton" class="secondary" hidden>Copy link to continue</button>
-    <div id="savedVersions"></div><p class="status" id="status" role="status"></p>
+    <div class="actions">
+      <button type="button" id="saveButton"></button>
+      <button type="submit" id="sendButton"></button>
+      <button type="button" id="linkButton" class="secondary" hidden></button>
+      <div id="savedVersions"></div>
+      <p class="status" id="status" role="status"></p>
     </div>
   </form>
 </main>
-
 <script>
 (() => {
+  'use strict';
+  // ---------- Language helpers: every text is [English, Spanish] ----------
+  let lang = 'en';
+  const L = (en, es) => [en, es];
+  const T = x => Array.isArray(x) ? x[lang === 'es' ? 1 : 0] : x;
+
+  const LANG_OPTIONS = [['en', 'English'], ['es', 'Español'], ['pt', 'Português'], ['ru', 'Русский']];
+  // Staff roles of the Mirigi platform (STAFF_ROLES in the backend).
+  const ROLE_OPTIONS = [
+    ['administrator', L('Administrator', 'Administrador')], ['amenities', L('Amenities', 'Amenities')],
+    ['amenities_manager', L('Amenities manager', 'Responsable de amenities')], ['concierge', L('Concierge', 'Conserje')],
+    ['delivery', L('Deliveries', 'Entregas')], ['engineer', L('Engineer', 'Ingeniero')],
+    ['front_desk', L('Front desk', 'Recepción')], ['housekeeping', L('Housekeeping', 'Limpieza')],
+    ['housekeeping_manager', L('Housekeeping manager', 'Responsable de limpieza')], ['maintenance', L('Maintenance', 'Mantenimiento')],
+    ['manager', L('Manager', 'Gerente')], ['manager_assistant', L('Manager assistant', 'Asistente de gerencia')],
+    ['marketing', L('Marketing', 'Marketing')], ['restaurant', L('Restaurant', 'Restaurante')],
+    ['security', L('Security', 'Seguridad')], ['support', L('Support', 'Soporte')],
+    ['valet', L('Valet', 'Valet')], ['valet_manager', L('Valet manager', 'Responsable de valet')],
+    ['warrantor', L('Warrantor', 'Garante')]
+  ];
+  const DAY_OPTIONS = [['mon', L('Mon', 'Lun')], ['tue', L('Tue', 'Mar')], ['wed', L('Wed', 'Mié')], ['thu', L('Thu', 'Jue')], ['fri', L('Fri', 'Vie')], ['sat', L('Sat', 'Sáb')], ['sun', L('Sun', 'Dom')]];
+  const COURIER_OPTIONS = ['FedEx', 'UPS', 'USPS', 'DHL', 'Amazon', 'Mercado Libre', 'Correo Uruguayo'].map(c => [c, c]);
+  const CURRENCY_OPTIONS = [['USD', L('US dollar (USD)', 'Dólar estadounidense (USD)')], ['UYU', L('Uruguayan peso (UYU)', 'Peso uruguayo (UYU)')], ['EUR', L('Euro (EUR)', 'Euro (EUR)')], ['BRL', L('Brazilian real (BRL)', 'Real brasileño (BRL)')], ['ARS', L('Argentine peso (ARS)', 'Peso argentino (ARS)')], ['other', L('Other', 'Otra')]];
+  const YES_NO_UNSURE = [['no', L('No', 'No')], ['yes', L('Yes', 'Sí')], ['unknown', L('Not sure', 'No sé')]];
+
+  // ---------- Field builders ----------
+  const f = {
+    text: (key, label, o = {}) => Object.assign({ type: 'text', key, label }, o),
+    area: (key, label, o = {}) => Object.assign({ type: 'textarea', key, label }, o),
+    select: (key, label, options, o = {}) => Object.assign({ type: 'select', key, label, options }, o),
+    chips: (key, label, options, o = {}) => Object.assign({ type: 'chips', key, label, options }, o),
+    sw: (key, label, o = {}) => Object.assign({ type: 'switch', key, label }, o),
+    table: (key, label, columns, o = {}) => Object.assign({ type: 'table', key, label, columns }, o),
+    cards: (key, label, fields, o = {}) => Object.assign({ type: 'cards', key, label, fields }, o),
+    more: (label, fields) => ({ type: 'more', label, fields }),
+    h3: label => ({ type: 'h3', label }),
+    hint: label => ({ type: 'hint', label })
+  };
+
+  const SECTIONS = [
+    { id: 'basics', short: L('Building', 'Edificio'), title: L('The building', 'El edificio'),
+      intro: L('Start here. These details identify the building.', 'Empiece por acá. Estos datos identifican el edificio.'),
+      fields: [
+        f.text('buildingName', L('Building name', 'Nombre del edificio'), { required: true, placeholder: L('Torre Mirador', 'Torre Mirador') }),
+        f.text('contactName', L('Primary contact name', 'Nombre del contacto principal')),
+        f.text('contactEmail', L('Primary contact email', 'Correo del contacto principal'), { inputType: 'email' }),
+        f.select('defaultLanguage', L('Main language of the building', 'Idioma principal del edificio'), LANG_OPTIONS,
+          { blank: L('Choose a language', 'Elija un idioma'), hint: L('Each resident can still choose their own language.', 'Cada residente puede elegir igual su propio idioma.') })
+      ] },
+
+    { id: 'people', short: L('People', 'Personas'), title: L('Staff and residents', 'Personal y residentes'),
+      intro: L('Add the people who manage the building and, if you already have them, the residents. Everything can be completed later.',
+               'Agregue a las personas que administran el edificio y, si ya los tiene, a los residentes. Todo se puede completar más adelante.'),
+      fields: [
+        f.table('staff', L('Staff', 'Personal'), [
+          { key: 'name', label: L('Name', 'Nombre'), placeholder: L('Full name', 'Nombre completo') },
+          { key: 'email', label: L('Email', 'Correo'), inputType: 'email' },
+          { key: 'phone', label: L('Phone', 'Teléfono'), inputType: 'tel' },
+          { key: 'role', label: L('Role', 'Cargo'), type: 'select', options: ROLE_OPTIONS, blank: L('Choose a role', 'Elija un cargo') },
+          { key: 'language', label: L('Language', 'Idioma'), type: 'select', options: LANG_OPTIONS, blank: L('Language', 'Idioma') }
+        ], { addLabel: L('Add a person', 'Agregar una persona'),
+             hint: L('Each person receives an invitation to the staff app by email. The role sets what they can do.', 'Cada persona recibe una invitación a la app del personal por correo. El cargo define qué puede hacer.') }),
+        f.table('residents', L('Residents', 'Residentes'), [
+          { key: 'unit', label: L('Unit', 'Unidad'), placeholder: '1001' },
+          { key: 'name', label: L('Name', 'Nombre'), placeholder: L('Full name', 'Nombre completo') },
+          { key: 'email', label: L('Email', 'Correo'), inputType: 'email' },
+          { key: 'phone', label: L('Phone', 'Teléfono'), inputType: 'tel' },
+          { key: 'language', label: L('Language', 'Idioma'), type: 'select', options: LANG_OPTIONS, blank: L('Language', 'Idioma') }
+        ], { addLabel: L('Add a resident', 'Agregar un residente'), paste: true,
+             hint: L('Residents receive an invitation to the app. If you do not have all the emails yet, staff can invite them one by one later.', 'Los residentes reciben una invitación a la app. Si todavía no tiene todos los correos, el personal puede invitarlos de a uno más adelante.') })
+      ] },
+
+    { id: 'structure', short: L('Structure', 'Estructura'), title: L('Structure and technology', 'Estructura y tecnología'),
+      intro: L('Tell us how the building is organized and what equipment it has, so we can set up the right groups and connections.',
+               'Cuéntenos cómo está organizado el edificio y qué equipos tiene, para configurar los grupos y las conexiones correctas.'),
+      fields: [
+        f.text('totalUnits', L('Total number of units', 'Cantidad total de unidades'), { inputType: 'number' }),
+        f.chips('unitSystem', L('Unit system', 'Sistema de medidas'), [['metric', L('Metric', 'Métrico')], ['imperial', L('Imperial', 'Imperial')]]),
+        f.table('structure', L('Towers, wings and zones', 'Torres, alas y zonas'), [
+          { key: 'name', label: L('Name', 'Nombre'), placeholder: L('Tower A', 'Torre A') },
+          { key: 'kind', label: L('Type', 'Tipo'), type: 'select', options: [['tower', L('Tower', 'Torre')], ['wing', L('Wing', 'Ala')], ['block', L('Block', 'Bloque')], ['elevator', L('Elevator zone', 'Zona de ascensores')], ['other', L('Other', 'Otro')]], blank: L('Type', 'Tipo') },
+          { key: 'floors', label: L('Floors', 'Pisos'), inputType: 'number' },
+          { key: 'units', label: L('Units', 'Unidades'), inputType: 'number' }
+        ], { addLabel: L('Add a row', 'Agregar una fila'),
+             hint: L('One row for each tower, wing, block or elevator zone. For a single building, one row is enough.', 'Una fila por cada torre, ala, bloque o zona de ascensores. Si es un solo edificio, alcanza con una fila.') }),
+        f.table('noticeGroups', L('Groups for notices', 'Grupos para avisos'), [
+          { key: 'name', label: L('Group', 'Grupo'), placeholder: L('2nd floor', 'Segundo piso') },
+          { key: 'units', label: L('Which units', 'Qué unidades'), placeholder: L('201 to 210', '201 al 210') }
+        ], { addLabel: L('Add a group', 'Agregar un grupo'),
+             hint: L('Groups that can receive a notice together, such as "2nd floor", "units served by elevator B" or "Tower 2".', 'Grupos que pueden recibir un aviso en conjunto, como "segundo piso", "unidades que usan el ascensor B" o "Torre 2".') }),
+        f.area('structureNotes', L('Anything else about the layout', 'Algo más sobre la distribución')),
+        f.h3(L('Equipment', 'Equipamiento')),
+        f.chips('hasAutomation', L('Home automation in the building or the units', 'Domótica en el edificio o en las unidades'), YES_NO_UNSURE, { rerender: true }),
+        f.text('automation', L('Brand and model', 'Marca y modelo'), { showIf: o => o.hasAutomation === 'yes' }),
+        f.chips('hasAccess', L('Access control (doors, gates, turnstiles, card or code readers)', 'Control de acceso (puertas, portones, molinetes, lectores de tarjeta o código)'), YES_NO_UNSURE, { rerender: true }),
+        f.text('locks', L('Brand and model', 'Marca y modelo'), { showIf: o => o.hasAccess === 'yes' }),
+        f.chips('locksIntegration', L('Should Mirigi connect to it?', '¿Debe Mirigi conectarse con el sistema?'), [['yes', L('Yes', 'Sí')], ['no', L('No', 'No')], ['undecided', L('Not decided', 'Sin decidir')]],
+          { showIf: o => o.hasAccess === 'yes', hint: L('Depending on the system, residents and staff can open doors and gates from the app.', 'Según el sistema, los residentes y el personal pueden abrir puertas y portones desde la app.') })
+      ] },
+
+    { id: 'services', short: L('Services', 'Servicios'), title: L('Daily services', 'Servicios diarios'),
+      intro: L('How packages, reservations and requests work in the building.', 'Cómo funcionan en el edificio los paquetes, las reservas y las solicitudes.'),
+      fields: [
+        f.h3(L('Packages and deliveries', 'Paquetes y entregas')),
+        f.table('receiving', L('Where packages arrive', 'Dónde llegan los paquetes'), [
+          { key: 'name', label: L('Place', 'Lugar'), placeholder: L('Main lobby', 'Hall principal') },
+          { key: 'kind', label: L('Type', 'Tipo'), type: 'select', options: [['room', L('Room', 'Sala')], ['lockers', L('Lockers', 'Casilleros')], ['desk', L('Front desk', 'Recepción')]], blank: L('Type', 'Tipo') }
+        ], { addLabel: L('Add a place', 'Agregar un lugar') }),
+        f.chips('couriers', L('Common couriers', 'Empresas de mensajería habituales'), COURIER_OPTIONS, { multi: true }),
+        f.text('courierOther', L('Other couriers', 'Otras empresas')),
+        f.sw('packageSignature', L('The resident signs when picking up a package', 'El residente firma al retirar un paquete')),
+        f.sw('packagePhoto', L('Attach a photo when registering a package', 'Adjuntar una foto al registrar un paquete')),
+
+        f.h3(L('Reservations', 'Reservas')),
+        f.hint(L('Add one card for each space residents can reserve, such as the gym, party room, barbecue or pool.', 'Agregue una ficha por cada espacio que los residentes pueden reservar, como el gimnasio, el salón de fiestas, la parrilla o la piscina.')),
+        f.cards('amenities', L('Spaces', 'Espacios'), [
+          f.text('name', L('Name', 'Nombre'), { placeholder: L('Gym', 'Gimnasio') }),
+          f.area('description', L('Description', 'Descripción'), { rows: 2 }),
+          { type: 'grid', fields: [
+            f.text('minDays', L('Minimum days ahead', 'Días mínimos de anticipación'), { inputType: 'number' }),
+            f.text('maxDays', L('Maximum days ahead', 'Días máximos de anticipación'), { inputType: 'number' }),
+            f.text('perDay', L('Reservations per day', 'Reservas por día'), { inputType: 'number' }),
+            f.text('perUnit', L('Pending reservations per unit', 'Reservas pendientes por unidad'), { inputType: 'number' }),
+            f.text('duration', L('Duration (minutes)', 'Duración (minutos)'), { inputType: 'number' }),
+            f.text('opens', L('Opens', 'Abre'), { inputType: 'time' }),
+            f.text('closes', L('Closes', 'Cierra'), { inputType: 'time' })
+          ] },
+          f.chips('days', L('Available days', 'Días disponibles'), DAY_OPTIONS, { multi: true }),
+          f.sw('consecutive', L('Allow consecutive reservations', 'Permitir reservas consecutivas')),
+          f.sw('staffOnly', L('Only staff can book it', 'Solo el personal puede reservarlo'))
+        ], { itemTitle: L('Space', 'Espacio'), addLabel: L('Add a space', 'Agregar un espacio') }),
+
+        f.h3(L('Requests and workflows', 'Solicitudes y flujos')),
+        f.hint(L('A request is anything residents ask the staff for, like a repair or a service. Create a workflow for each type, so Mirigi knows who handles it.', 'Una solicitud es todo lo que los residentes le piden al personal, como una reparación o un servicio. Cree un flujo por cada tipo, para que Mirigi sepa quién la atiende.')),
+        f.cards('workflows', L('Request types', 'Tipos de solicitud'), [
+          f.text('name', L('Name', 'Nombre'), { placeholder: L('Maintenance', 'Mantenimiento') }),
+          f.area('escalation', L('Who is notified, in order, and after how long', 'Quién recibe el aviso, en qué orden y después de cuánto tiempo'),
+            { rows: 2, placeholder: L('First the maintenance team; after 30 minutes, the manager.', 'Primero el equipo de mantenimiento; a los 30 minutos, el gerente.') }),
+          f.select('fallback', L('Fallback role', 'Cargo de respaldo'), ROLE_OPTIONS, { blank: L('Choose a role', 'Elija un cargo'), hint: L('Who takes it if nobody answers.', 'Quién la toma si nadie responde.') }),
+          f.more(L('Optional: rules for AI triage', 'Opcional: reglas para la clasificación con IA'), [
+            f.area('triage', L('Who handles each kind of request', 'Quién atiende cada tipo de solicitud'), { placeholder: L('For bathroom issues assign John; for painting assign Christian; for plumbing assign Richard.', 'Para problemas de baños, asignar a Juan; para pintura, a Cristian; para plomería, a Ricardo.') })
+          ])
+        ], { itemTitle: L('Request type', 'Tipo de solicitud'), addLabel: L('Add a request type', 'Agregar un tipo de solicitud') }),
+        f.area('requests', L('Information pages, maintenance types and internal regulations', 'Páginas de información, tipos de mantenimiento y reglamento interno'))
+      ] }
+  ];
+
+  // ---------- Optional modules: a switch, an [i] with the description, and the settings right in place ----------
+  const ICONS = {
+    bell: '<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>',
+    guest: '<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M17 11l2 2 4-4"/>',
+    camera: '<path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/>',
+    food: '<path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/>',
+    car: '<path d="M3 13l2-5a2 2 0 0 1 1.9-1.4h10.2A2 2 0 0 1 19 8l2 5v5h-2v2h-3v-2H8v2H5v-2H3z"/><circle cx="7.5" cy="14.5" r="1"/><circle cx="16.5" cy="14.5" r="1"/>',
+    calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+    chart: '<path d="M18 20V10M12 20V4M6 20v-6"/>',
+    dollar: '<path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+    file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/>',
+    pen: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>',
+    spark: '<path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
+    chat: '<path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/>',
+    home: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',
+    headset: '<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>'
+  };
+
+  const MODULES = [
+    { key: 'panic', icon: 'bell', title: L('Panic button', 'Botón de pánico'),
+      info: L('Residents and staff can raise fire, security and medical alerts. Tell us who receives each one.', 'Residentes y personal pueden enviar alertas de incendio, seguridad y emergencias médicas. Indique quién recibe cada una.'),
+      fields: [f.table('panic.recipients', L('Who receives the alerts', 'Quién recibe las alertas'), [
+        { key: 'name', label: L('Name', 'Nombre') }, { key: 'contact', label: L('Phone or email', 'Teléfono o correo') },
+        { key: 'alert', label: L('Alert type', 'Tipo de alerta'), type: 'select', options: [['all', L('All alerts', 'Todas')], ['fire', L('Fire', 'Incendio')], ['security', L('Security', 'Seguridad')], ['medical', L('Medical', 'Emergencia médica')]], blank: L('Alert type', 'Tipo de alerta') }
+      ], { addLabel: L('Add a recipient', 'Agregar un destinatario') })] },
+    { key: 'guests', icon: 'guest', title: L('Guest authorization', 'Autorización de visitas'),
+      info: L('Residents authorize visitors from the app and staff check them in. Tell us how the entrance works.', 'Los residentes autorizan visitas desde la app y el personal las registra. Cuéntenos cómo funciona la entrada.'),
+      fields: [f.text('guests.hours', L('Doorman hours', 'Horario de portería'), { placeholder: L('24 hours', '24 horas') }),
+        f.sw('guests.id', L('Ask visitors for an ID', 'Pedir documento a las visitas')),
+        f.sw('guests.photo', L('Take a photo of visitors', 'Sacar una foto a las visitas')),
+        f.sw('guests.intercom', L('Mirigi can answer the entrance intercom or door station to authorize guests on its own', 'Mirigi puede atender el portero eléctrico o el intercomunicador de la entrada para autorizar visitas por sí solo')),
+        f.area('guests.notes', L('Anything else', 'Algo más'))] },
+    { key: 'cameras', icon: 'camera', title: L('Building cameras', 'Cámaras del edificio'),
+      info: L('Residents and staff can see cameras from the app. Do not type passwords here; we ask for access details separately.', 'Residentes y personal pueden ver las cámaras desde la app. No escriba contraseñas acá: los datos de acceso los pedimos aparte.'),
+      fields: [f.table('cameras.list', L('Cameras', 'Cámaras'), [
+        { key: 'name', label: L('Location', 'Ubicación'), placeholder: L('Pool', 'Piscina') }, { key: 'brand', label: L('Brand and model', 'Marca y modelo') },
+        { key: 'scope', label: L('Who can see it', 'Quién puede verla'), type: 'select', options: [['both', L('Residents and staff', 'Residentes y personal')], ['staff', L('Staff only', 'Solo el personal')]], blank: L('Who can see it', 'Quién puede verla') }
+      ], { addLabel: L('Add a camera', 'Agregar una cámara') })] },
+    { key: 'restaurant', icon: 'food', title: L('Restaurant and food ordering', 'Restaurante y pedidos de comida'),
+      info: L('Residents order from the restaurants, bars or cafés of the building and staff manage the orders.', 'Los residentes piden a los restaurantes, bares o cafés del edificio y el personal gestiona los pedidos.'),
+      fields: [f.table('restaurant.outlets', L('Restaurants and cafés', 'Restaurantes y cafés'), [
+        { key: 'name', label: L('Name', 'Nombre') }, { key: 'email', label: L('Staff email', 'Correo del personal'), inputType: 'email' },
+        { key: 'service', label: L('Service', 'Servicio'), type: 'select', options: [['both', L('Delivery and pickup', 'Entrega y retiro')], ['delivery', L('Delivery only', 'Solo entrega')], ['pickup', L('Pickup only', 'Solo retiro')]], blank: L('Service', 'Servicio') }
+      ], { addLabel: L('Add a restaurant', 'Agregar un restaurante') }),
+        f.area('restaurant.notes', L('Menus, schedules and ordering options', 'Menús, horarios y formas de pedido'))] },
+    { key: 'valet', icon: 'car', title: L('Valet parking and vehicles', 'Valet parking y vehículos'),
+      info: L('Residents request their car from the app and staff track each vehicle.', 'Los residentes piden su auto desde la app y el personal sigue cada vehículo.'),
+      fields: [f.table('valet.points', L('Where cars are received and delivered', 'Dónde se reciben y se entregan los autos'), [{ key: 'name', label: L('Place', 'Lugar'), placeholder: L('Main entrance', 'Entrada principal') }], { addLabel: L('Add a place', 'Agregar un lugar') }),
+        f.text('valet.contacts', L('Valet contacts', 'Contactos del valet')),
+        f.sw('valet.carwash', L('Car wash service', 'Servicio de lavado'), { rerender: true }),
+        f.area('valet.carwashPrices', L('Services and prices', 'Servicios y precios'), { showIf: o => o['valet.carwash'] }),
+        f.sw('valet.plates', L('Read license plates with AI cameras and log cars in and out', 'Leer matrículas con cámaras e IA y registrar los autos que entran y salen'), { rerender: true }),
+        f.area('valet.platesNotes', L('Cameras or provider, entry and exit points, logging rules', 'Cámaras o proveedor, puntos de entrada y salida, reglas de registro'), { showIf: o => o['valet.plates'] })] },
+    { key: 'events', icon: 'calendar', title: L('Building events', 'Eventos del edificio'),
+      info: L('Residents sign up for events from the app, with guests and, if you want, paid tickets.', 'Los residentes se anotan a los eventos desde la app, con invitados y, si quiere, con entradas pagas.'),
+      fields: [f.chips('events.langs', L('Notification languages', 'Idiomas de las notificaciones'), LANG_OPTIONS, { multi: true }),
+        f.sw('events.registration', L('Residents must register', 'Los residentes deben inscribirse')),
+        f.text('events.guestLimit', L('Guest limit per unit', 'Límite de invitados por unidad'), { inputType: 'number' }),
+        f.sw('events.paid', L('Some events are paid', 'Hay eventos pagos'))] },
+    { key: 'polls', icon: 'chart', title: L('Polls and surveys', 'Encuestas'),
+      info: L('Run polls and surveys for residents and see the results.', 'Realice encuestas para los residentes y vea los resultados.'),
+      fields: [f.select('polls.audience', L('Who answers', 'Quién responde'), [['all', L('All residents', 'Todos los residentes')], ['groups', L('By unit group', 'Por grupo de unidades')], ['staff', L('Staff only', 'Solo el personal')]], { blank: L('Choose', 'Elija') }),
+        f.sw('polls.public', L('Residents can see the results', 'Los residentes pueden ver los resultados'))] },
+    { key: 'accounting', icon: 'dollar', title: L('Accounting and fees', 'Contabilidad y gastos comunes'),
+      info: L('Connects Mirigi with the accounting of the building. We need to know which system you use and how payments map to units.', 'Conecta Mirigi con la contabilidad del edificio. Necesitamos saber qué sistema usa y cómo se asocian los pagos a cada unidad.'),
+      fields: [f.text('accounting.system', L('Accounting system', 'Sistema contable')),
+        f.select('accounting.currency', L('Currency', 'Moneda'), CURRENCY_OPTIONS, { blank: L('Choose a currency', 'Elija una moneda') }),
+        f.area('accounting.notes', L('How payments map to units', 'Cómo se asocian los pagos a cada unidad'))] },
+    { key: 'reports', icon: 'file', title: L('Reports', 'Informes'),
+      info: L('Mirigi includes ready-made reports for each module. Tell us about any special report you need.', 'Mirigi trae informes ya armados para cada módulo. Cuéntenos si necesita alguno especial.'),
+      fields: [f.area('reports.notes', L('Report you would like, and who should receive it', 'Informe que quiere y quién debería recibirlo'))] },
+    { key: 'signatures', icon: 'pen', title: L('Digital signatures', 'Firmas digitales'),
+      info: L('Capture signatures on a tablet or signature pad, for example when a resident picks up a package.', 'Capture firmas en una tableta o un pad de firma, por ejemplo cuando un residente retira un paquete.'),
+      fields: [f.text('signatures.count', L('How many pads or tablets', 'Cuántos pads o tabletas'), { inputType: 'number' }),
+        f.text('signatures.locations', L('Where they are', 'Dónde están')),
+        f.sw('signatures.email', L('Email a receipt automatically', 'Enviar el comprobante por correo automáticamente'))] },
+    { key: 'ai', icon: 'spark', title: L('AI writing and translation', 'Redacción y traducción con IA'),
+      info: L('Mirigi writes and translates notices, event and poll descriptions and menus, so the same content reaches residents in every language the building needs.', 'Mirigi redacta y traduce avisos, descripciones de eventos y encuestas, y menús, para que el mismo contenido llegue a los residentes en todos los idiomas que el edificio necesite.'),
+      fields: [f.chips('ai.langs', L('Languages the building needs', 'Idiomas que necesita el edificio'), LANG_OPTIONS, { multi: true }),
+        f.area('ai.notes', L('Anything else', 'Algo más'))] },
+    { key: 'whatsapp', icon: 'chat', title: L('WhatsApp access', 'Acceso por WhatsApp'),
+      info: L('Residents reach the building through Miri, the Mirigi assistant, in the WhatsApp they already use.', 'Los residentes se comunican con el edificio a través de Miri, el asistente de Mirigi, en el WhatsApp que ya usan.'),
+      fields: [f.chips('whatsapp.inputs', L('Accepted messages', 'Mensajes aceptados'), [['chat', L('Chat', 'Chat')], ['image', L('Images', 'Imágenes')], ['voice', L('Voice notes', 'Notas de voz')]], { multi: true })] },
+    { key: 'stays', icon: 'home', title: L('Temporary stays', 'Estadías temporales'),
+      info: L('Residents can invite guests or temporary occupants for a fixed period, from the app or by messaging Miri.', 'Los residentes pueden invitar a huéspedes u ocupantes temporales por un período fijo, desde la app o escribiéndole a Miri.'),
+      fields: [f.chips('stays.channels', L('How residents invite them', 'Cómo los invitan'), [['app', L('From the app', 'Desde la app')], ['miri', L('By messaging Miri', 'Escribiéndole a Miri')]], { multi: true }),
+        f.area('stays.notes', L('Required information, start and end rules, permissions, approval and revocation', 'Datos requeridos, reglas de inicio y fin, permisos, aprobación y revocación'))] },
+    { key: 'staffai', icon: 'headset', title: L('AI assistant for staff', 'Asistente de IA para el personal'),
+      info: L('Helps staff handle complex processes across the system.', 'Ayuda al personal a resolver procesos complejos en todo el sistema.'),
+      fields: [f.chips('staffai.modes', L('How staff talk to it', 'Cómo le habla el personal'), [['voice', L('Voice', 'Voz')], ['chat', L('Chat', 'Chat')]], { multi: true }),
+        f.area('staffai.notes', L('Processes, approval steps, roles and restrictions', 'Procesos, pasos de aprobación, cargos y restricciones'))] }
+  ];
+  SECTIONS.push({ id: 'modules', short: L('Modules', 'Módulos'), title: L('Phonebook and optional modules', 'Agenda y módulos opcionales'),
+    intro: L('Turn on the modules you want. Each one opens its settings right here, and you can complete them later.', 'Active los módulos que quiera. Cada uno abre su configuración acá mismo, y se puede completar más tarde.'),
+    fields: [f.table('phonebook', L('Important phone numbers', 'Teléfonos importantes'), [
+      { key: 'name', label: L('Name or place', 'Nombre o lugar'), placeholder: L('Pharmacy', 'Farmacia') }, { key: 'number', label: L('Number or extension', 'Número o interno'), inputType: 'tel' }
+    ], { addLabel: L('Add a number', 'Agregar un número') }), { type: 'modules' }] });
+
+  const CHROME = {
+    title: L('Mirigi Building Setup', 'Configuración del edificio en Mirigi'),
+    lead: L('Tell us how your building works. Start with the basics and come back whenever you have more details. Your progress is saved on this device and backed up each time you press Save progress.',
+            'Cuéntenos cómo funciona su edificio. Empiece por lo básico y vuelva cuando tenga más detalles. Su avance se guarda en este dispositivo y se respalda cada vez que presiona Guardar avance.'),
+    privacy: L('Please do not type passwords, PINs or access keys anywhere in this form. We will ask for credentials separately and securely. What you enter is stored in a private Mirigi spreadsheet and used only to set up your building.',
+               'Por favor no escriba contraseñas, PIN ni claves de acceso en este formulario. Las credenciales las pedimos aparte y de forma segura. Lo que ingrese se guarda en una planilla privada de Mirigi y se usa solo para configurar su edificio.'),
+    save: L('Save progress', 'Guardar avance'), send: L('Send setup', 'Enviar configuración'), link: L('Copy link to continue', 'Copiar enlace para continuar'),
+    remove: L('Remove', 'Quitar'), moreInfo: L('More information', 'Más información'), on: L('Turn on', 'Activar'),
+    paste: L('Paste rows from a spreadsheet', 'Pegar filas desde una planilla'),
+    pasteHint: L('One resident per line, with the columns in this order: unit, name, email, phone, language.', 'Un residente por línea, con las columnas en este orden: unidad, nombre, correo, teléfono, idioma.'),
+    pasteButton: L('Add these rows to the table', 'Agregar estas filas a la tabla'),
+    langGroup: L('Language', 'Idioma'), sections: L('Sections', 'Secciones'), choose: L('Choose', 'Elija')
+  };
+
+  // ---------- State and rendering ----------
+  let state = {};
+  let uid = 0;
+  const nextId = () => 'f' + (++uid);
   const form = document.querySelector('#signupForm');
   const statusEl = document.querySelector('#status');
   const linkButton = document.querySelector('#linkButton');
   const endpoint = (document.querySelector('meta[name="mirigi-signup-endpoint"]') || {}).content || '';
-  const draftKey = 'mirigi-building-signup-draft-v2';
-  const versionsKeyPrefix = 'mirigi-building-signup-v2:';
-  const MAX_LOCAL = 50;
-  const lists = { staff: document.querySelector('#staffList'), amenity: document.querySelector('#amenityList'), workflow: document.querySelector('#workflowList') };
-  const templates = {
-    staff: '<div class="repeat"><div class="grid"><input name="staffName" placeholder="Name"><input name="staffEmail" type="email" placeholder="Email"><input name="staffPhone" placeholder="Phone number"><input name="staffRole" placeholder="Role"><input name="staffLanguage" placeholder="Language"></div></div>',
-    amenity: '<div class="repeat"><div class="grid"><input name="amenityName" placeholder="Amenity name"><input name="amenityRules" placeholder="Days, hours, duration, limits"><textarea name="amenityDescription" placeholder="Description"></textarea></div></div>',
-    workflow: '<div class="repeat"><label>Workflow/request name</label><input name="workflowName" placeholder="Maintenance"><label>Escalation list and timing</label><textarea name="workflowEscalation" placeholder="Order of staff/roles, timeout, working hours, days"></textarea><label>Optional AI triage rules prompt</label><textarea name="workflowTriage" placeholder="For bathroom issues assign John; for painting assign Christian; for plumbing and common areas assign Richard."></textarea><label>Fallback assignee or role</label><input name="workflowFallback"></div>'
-  };
-  function add(type, values = {}) { const wrapper = document.createElement('div'); wrapper.innerHTML = templates[type]; const item = wrapper.firstElementChild; item.querySelectorAll('input,textarea').forEach(el => { if (values[el.name] !== undefined) el.value = values[el.name]; }); lists[type].appendChild(item); }
-  function say(text) { statusEl.textContent = text; }
-  function data() { const result = {}; Array.from(form.elements).forEach(el => { if (!el.name || el.name === 'company_url') return; const value = el.type === 'checkbox' ? el.checked : el.value; if (result[el.name] !== undefined) result[el.name] = [].concat(result[el.name], value); else result[el.name] = value; }); return result; }
-  function restore(d) { Object.entries(lists).forEach(([type]) => { const count = Math.max(1, Array.isArray(d[type === 'staff' ? 'staffName' : type === 'amenity' ? 'amenityName' : 'workflowName']) ? d[type === 'staff' ? 'staffName' : type === 'amenity' ? 'amenityName' : 'workflowName'].length : 0); lists[type].innerHTML = ''; for (let i = 0; i < count; i++) add(type); }); Object.entries(d).forEach(([key,value]) => { const els = form.querySelectorAll('[name="'+key+'"]'); (Array.isArray(value) ? value : [value]).forEach((val,j) => { if (!els[j]) return; if (els[j].type === 'checkbox') els[j].checked = val === true || val === 'on'; else els[j].value = val; }); }); }
 
-  // Draft id: one random id per building setup. A resume link (#d=<id>) adopts that id.
+  const hasValue = v => Array.isArray(v) ? v.some(hasValue)
+    : (v && typeof v === 'object') ? Object.values(v).some(hasValue)
+    : v === true || typeof v === 'number' || (typeof v === 'string' && v.trim() !== '');
+
+  function el(tag, props, ...kids) {
+    const n = document.createElement(tag);
+    if (props) Object.entries(props).forEach(([k, v]) => {
+      if (k === 'class') n.className = v;
+      else if (k === 'text') n.textContent = v;
+      else if (v === true) n.setAttribute(k, '');
+      else if (v !== false && v != null) n.setAttribute(k, v);
+    });
+    kids.flat().forEach(c => { if (c != null) n.append(c); });
+    return n;
+  }
+  const rowsOf = (obj, fd) => { if (!Array.isArray(obj[fd.key]) || !obj[fd.key].length) obj[fd.key] = [{}]; return obj[fd.key]; };
+  let dotsQueued = false;
+  function changed() { if (dotsQueued) return; dotsQueued = true; requestAnimationFrame(() => { dotsQueued = false; updateDots(); }); }
+
+  function control(fd, obj) {
+    let c;
+    if (fd.type === 'select') {
+      c = el('select');
+      c.append(el('option', { value: '', text: T(fd.blank || CHROME.choose) }));
+      fd.options.forEach(([v, label]) => c.append(el('option', { value: v, text: T(label) })));
+      c.value = obj[fd.key] || '';
+      c.addEventListener('change', () => { obj[fd.key] = c.value; changed(); });
+    } else if (fd.type === 'textarea') {
+      c = el('textarea', { rows: fd.rows || 3, placeholder: T(fd.placeholder || '') });
+      c.value = obj[fd.key] || '';
+      c.addEventListener('input', () => { obj[fd.key] = c.value; changed(); });
+    } else {
+      c = el('input', { type: fd.inputType || 'text', placeholder: T(fd.placeholder || ''), required: !!fd.required });
+      if (fd.inputType === 'number') { c.setAttribute('min', '0'); c.setAttribute('inputmode', 'numeric'); }
+      c.value = obj[fd.key] || '';
+      c.addEventListener('input', () => { obj[fd.key] = c.value; changed(); });
+    }
+    if (fd.key === 'buildingName') c.id = 'buildingName';
+    return c;
+  }
+  const hintOf = fd => fd.hint ? el('p', { class: 'hint', text: T(fd.hint) }) : null;
+
+  function renderInput(fd, obj) {
+    const c = control(fd, obj); c.id = c.id || nextId();
+    return el('div', { class: 'field' }, el('label', { for: c.id }, T(fd.label), fd.required ? el('span', { class: 'req', text: ' *' }) : null), c, hintOf(fd));
+  }
+  function renderChips(fd, obj) {
+    const name = nextId();
+    const wrap = el('div', { class: 'chips', role: fd.multi ? 'group' : 'radiogroup', 'aria-label': T(fd.label) });
+    fd.options.forEach(([v, label]) => {
+      const input = el('input', { type: fd.multi ? 'checkbox' : 'radio', name, value: v });
+      input.checked = fd.multi ? (obj[fd.key] || []).includes(v) : obj[fd.key] === v;
+      input.addEventListener('change', () => {
+        if (fd.multi) { const cur = new Set(obj[fd.key] || []); if (input.checked) cur.add(v); else cur.delete(v); obj[fd.key] = [...cur]; }
+        else obj[fd.key] = v;
+        changed(); if (fd.rerender) renderAll();
+      });
+      wrap.append(el('label', { class: 'chip' }, input, el('span', { text: T(label) })));
+    });
+    return el('div', { class: 'field' }, el('span', { class: 'label', text: T(fd.label) }), wrap, hintOf(fd));
+  }
+  function renderSwitch(fd, obj) {
+    const input = el('input', { type: 'checkbox', role: 'switch' });
+    input.checked = !!obj[fd.key];
+    input.addEventListener('change', () => { obj[fd.key] = input.checked; changed(); if (fd.rerender) renderAll(); });
+    return el('label', { class: 'switch-row' }, el('span', { class: 'txt', text: T(fd.label) }), el('span', { class: 'switch' }, input, el('span', { class: 'track' })));
+  }
+  const removeButton = onClick => {
+    const x = el('button', { type: 'button', class: 'x', 'aria-label': T(CHROME.remove), title: T(CHROME.remove), text: '×' });
+    x.addEventListener('click', onClick); return x;
+  };
+
+  const LANG_ALIASES = { en: 'en', english: 'en', 'inglés': 'en', ingles: 'en', es: 'es', spanish: 'es', 'español': 'es', espanol: 'es', pt: 'pt', portuguese: 'pt', 'portugués': 'pt', portugues: 'pt', 'português': 'pt', ru: 'ru', russian: 'ru', ruso: 'ru', 'русский': 'ru' };
+  function importRows(text, rows) {
+    const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+    let added = 0;
+    if (rows.every(r => !hasValue(r))) rows.length = 0;
+    lines.forEach((line, i) => {
+      const cells = (line.includes('\t') ? line.split('\t') : line.split(/[;,]/)).map(c => c.trim());
+      if (i === 0 && /^(unit|unidad)$/i.test(cells[0])) return;
+      rows.push({ unit: cells[0] || '', name: cells[1] || '', email: cells[2] || '', phone: cells[3] || '', language: LANG_ALIASES[(cells[4] || '').toLowerCase()] || '' });
+      added++;
+    });
+    return added;
+  }
+  function renderPaste(fd, obj, rebuild) {
+    const ta = el('textarea', { rows: 4, placeholder: 'A-101\tJane Doe\tjane@example.com\t+1 555 0100\ten' });
+    const btn = el('button', { type: 'button', class: 'add', 'data-paste': fd.key, text: T(CHROME.pasteButton) });
+    btn.addEventListener('click', () => { const n = importRows(ta.value, rowsOf(obj, fd)); if (n) { ta.value = ''; changed(); rebuild(); say('pasted', ' ' + n); } });
+    return el('details', { class: 'more' }, el('summary', { text: T(CHROME.paste) }), el('p', { class: 'hint', text: T(CHROME.pasteHint) }), ta, btn);
+  }
+
+  function renderTable(fd, obj) {
+    const box = el('div', { class: 'field' });
+    const build = () => {
+      box.textContent = '';
+      const rows = rowsOf(obj, fd);
+      box.append(el('span', { class: 'label', text: T(fd.label) }));
+      if (fd.hint) box.append(hintOf(fd));
+      const head = el('tr', null, fd.columns.map(c => el('th', { text: T(c.label) })), el('th', { class: 'act' }));
+      const body = el('tbody');
+      rows.forEach((row, i) => {
+        const tr = el('tr');
+        fd.columns.forEach(c => {
+          const ctl = control(Object.assign({ type: 'text' }, c), row);
+          ctl.setAttribute('aria-label', T(c.label));
+          tr.append(el('td', { 'data-label': T(c.label) }, ctl));
+        });
+        tr.append(el('td', { class: 'act' }, removeButton(() => { rows.splice(i, 1); changed(); build(); })));
+        body.append(tr);
+      });
+      box.append(el('div', { class: 'tblwrap' }, el('table', { class: 'tbl' }, el('thead', null, head), body)));
+      const add = el('button', { type: 'button', class: 'add', 'data-add': fd.key, text: '+ ' + T(fd.addLabel) });
+      add.addEventListener('click', () => {
+        rows.push({}); build();
+        const last = box.querySelector('tbody tr:last-child input, tbody tr:last-child select'); if (last) last.focus();
+      });
+      box.append(add);
+      if (fd.paste) box.append(renderPaste(fd, obj, build));
+    };
+    build();
+    return box;
+  }
+  function renderCards(fd, obj) {
+    const box = el('div', { class: 'field' });
+    const build = () => {
+      box.textContent = '';
+      const items = rowsOf(obj, fd);
+      items.forEach((item, i) => {
+        box.append(el('div', { class: 'item' },
+          el('div', { class: 'item-head' }, el('span', { class: 'ttl', text: T(fd.itemTitle) + ' ' + (i + 1) }), removeButton(() => { items.splice(i, 1); changed(); build(); })),
+          fd.fields.map(sub => renderField(sub, item))));
+      });
+      const add = el('button', { type: 'button', class: 'add', 'data-add': fd.key, text: '+ ' + T(fd.addLabel) });
+      add.addEventListener('click', () => { items.push({}); build(); });
+      box.append(add);
+    };
+    build();
+    return box;
+  }
+  function renderModules() {
+    const grid = el('div', { class: 'modules' });
+    MODULES.forEach(m => {
+      const on = !!state[m.key + '.on'];
+      const input = el('input', { type: 'checkbox', role: 'switch', 'aria-label': T(CHROME.on) + ': ' + T(m.title), 'data-module-switch': m.key });
+      input.checked = on;
+      input.addEventListener('change', () => { state[m.key + '.on'] = input.checked; changed(); renderAll(); });
+      const info = el('button', { type: 'button', class: 'info', 'aria-expanded': 'false', 'aria-label': T(CHROME.moreInfo) + ': ' + T(m.title), title: T(CHROME.moreInfo), text: 'i' });
+      const pop = el('div', { class: 'info-pop', hidden: true, text: T(m.info) });
+      info.addEventListener('click', () => { const open = pop.hidden; pop.hidden = !open; info.setAttribute('aria-expanded', String(open)); });
+      const ico = el('span', { class: 'ico' });
+      ico.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICONS[m.icon] + '</svg>';
+      grid.append(el('div', { class: 'module' + (on ? ' on' : ''), 'data-module': m.key },
+        el('div', { class: 'module-head' }, ico, el('span', { class: 'name', text: T(m.title) }), info, el('span', { class: 'switch' }, input, el('span', { class: 'track' }))),
+        pop,
+        on ? el('div', { class: 'module-body' }, m.fields.map(fd => renderField(fd, state))) : null));
+    });
+    return grid;
+  }
+  function renderField(fd, obj) {
+    if (fd.showIf && !fd.showIf(obj)) return null;
+    switch (fd.type) {
+      case 'h3': return el('h3', { text: T(fd.label) });
+      case 'hint': return el('p', { class: 'hint', text: T(fd.label) });
+      case 'grid': return el('div', { class: 'grid' }, fd.fields.map(x => renderField(x, obj)));
+      case 'text': case 'textarea': case 'select': return renderInput(fd, obj);
+      case 'chips': return renderChips(fd, obj);
+      case 'switch': return renderSwitch(fd, obj);
+      case 'table': return renderTable(fd, obj);
+      case 'cards': return renderCards(fd, obj);
+      case 'more': return el('details', { class: 'more' }, el('summary', { text: T(fd.label) }), fd.fields.map(x => renderField(x, obj)));
+      case 'modules': return renderModules();
+      default: return null;
+    }
+  }
+
+  // Which state keys belong to a section: used to mark a section as started.
+  function keysOf(fd, out) {
+    if (fd.type === 'modules') MODULES.forEach(m => out.push(m.key + '.on'));
+    else if (fd.type === 'grid' || fd.type === 'more') fd.fields.forEach(x => keysOf(x, out));
+    else if (fd.key) out.push(fd.key);
+    return out;
+  }
+  function updateDots() {
+    SECTIONS.forEach(sec => {
+      const a = document.querySelector('#stepper a[data-sec="' + sec.id + '"]');
+      if (a) a.classList.toggle('done', sec.fields.reduce((k, fd) => keysOf(fd, k), []).some(k => hasValue(state[k])));
+    });
+  }
+
+  function chrome() {
+    document.documentElement.lang = lang;
+    document.querySelector('.signup').dataset.lang = lang;
+    document.querySelector('#pageTitle').textContent = T(CHROME.title);
+    document.querySelector('#pageLead').textContent = T(CHROME.lead);
+    document.querySelector('#privacyNote').textContent = T(CHROME.privacy);
+    document.querySelector('#saveButton').textContent = T(CHROME.save);
+    document.querySelector('#sendButton').textContent = T(CHROME.send);
+    linkButton.textContent = T(CHROME.link);
+    document.querySelector('.langswitch').setAttribute('aria-label', T(CHROME.langGroup));
+    document.querySelectorAll('.langswitch button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    const stepper = document.querySelector('#stepper');
+    stepper.setAttribute('aria-label', T(CHROME.sections));
+    stepper.textContent = '';
+    SECTIONS.forEach((sec, i) => stepper.append(el('a', { href: '#sec-' + sec.id, 'data-sec': sec.id }, el('span', { class: 'dot' }), String(i + 1) + '. ' + T(sec.short))));
+  }
+  function renderAll() {
+    const y = window.scrollY;
+    uid = 0;
+    const root = document.querySelector('#formRoot');
+    root.textContent = '';
+    SECTIONS.forEach((sec, i) => root.append(el('section', { class: 'card', id: 'sec-' + sec.id },
+      el('span', { class: 'num', text: String(i + 1).padStart(2, '0') + ' / ' + T(sec.short).toUpperCase() }),
+      el('h2', { text: T(sec.title) }), el('p', { class: 'intro', text: T(sec.intro) }),
+      sec.fields.map(fd => renderField(fd, state)))));
+    chrome(); updateDots(); renderVersions();
+    window.scrollTo(0, y);
+  }
+  document.addEventListener('click', e => { if (!e.target.closest('.info, .info-pop')) document.querySelectorAll('.info[aria-expanded="true"]').forEach(b => b.click()); });
+
+  // ---------- What gets saved ----------
+  function snapshot() {
+    const copy = JSON.parse(JSON.stringify(state));
+    Object.keys(copy).forEach(k => {
+      const v = copy[k];
+      if (Array.isArray(v) && v.length && typeof v[0] === 'object') { copy[k] = v.filter(hasValue); if (!copy[k].length) delete copy[k]; }
+    });
+    MODULES.forEach(m => { if (!copy[m.key + '.on']) Object.keys(copy).forEach(k => { if (k.startsWith(m.key + '.') && k !== m.key + '.on') delete copy[k]; }); });
+    copy.formLanguage = lang;
+    return copy;
+  }
+  function restoreData(d) { state = JSON.parse(JSON.stringify(d || {})); delete state.formLanguage; renderAll(); }
+
+  // ---------- Messages ----------
+  const MSG = {
+    storage_fail: L('This browser could not store the version. Press Send setup to keep your answers.', 'Este navegador no pudo guardar la versión. Presione Enviar configuración para conservar sus respuestas.'),
+    saved_local: L('Version saved on this device.', 'Versión guardada en este dispositivo.'),
+    saved_pending: L('Saved on this device. It is not backed up yet and will be retried.', 'Guardada en este dispositivo. Todavía no tiene respaldo y se va a reintentar.'),
+    saved_ok: L('Version saved and backed up.', 'Versión guardada y respaldada.'),
+    submit_noendpoint: L('The form is not connected yet. Your version is saved on this device.', 'El formulario todavía no está conectado. Su versión quedó guardada en este dispositivo.'),
+    submit_fail: L('Could not send yet. Your version is saved on this device and will be retried.', 'No se pudo enviar todavía. Su versión quedó guardada en este dispositivo y se va a reintentar.'),
+    submit_ok: L('Setup sent successfully. Thank you.', 'Configuración enviada. Muchas gracias.'),
+    loading: L('Loading your setup…', 'Cargando su configuración…'),
+    loaded_latest: L('Loaded the latest saved version.', 'Se cargó la última versión guardada.'),
+    load_fail: L('Could not load that setup. Check the link or try again.', 'No se pudo cargar esa configuración. Revise el enlace o intente de nuevo.'),
+    loaded_last_local: L('Your last saved version was loaded.', 'Se cargó su última versión guardada.'),
+    version_loaded: L('Version loaded.', 'Versión cargada.'),
+    link_first: L('Press Save progress first. The link works once a version is backed up.', 'Primero presione Guardar avance. El enlace funciona cuando hay una versión respaldada.'),
+    link_copied: L('Link copied. Anyone with it can open and change this setup, so keep it private.', 'Enlace copiado. Cualquiera que lo tenga puede abrir y modificar esta configuración, así que manténgalo privado.'),
+    link_copy: L('Copy this private link: ', 'Copie este enlace privado: '),
+    load_version: L('Load version', 'Cargar versión'),
+    not_backed_up: L(', not backed up', ', sin respaldo'),
+    pasted: L('Rows added:', 'Filas agregadas:')
+  };
+  let lastStatus = null;
+  const msg = key => T(MSG[key]);
+  function say(key, extra) { lastStatus = [key, extra]; statusEl.textContent = msg(key) + (extra || ''); }
+
+  // ---------- Draft id and the versions kept in this browser ----------
+  const draftKey = 'mirigi-building-signup-draft-v3';
+  const versionsKeyPrefix = 'mirigi-building-signup-v3:';
+  const langKey = 'mirigi-building-signup-lang-v1';
+  const MAX_LOCAL = 50;
   function newId() { return crypto.randomUUID ? crypto.randomUUID() : Array.from(crypto.getRandomValues(new Uint8Array(16)), b => b.toString(16).padStart(2, '0')).join(''); }
   function stored(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   const linkId = (location.hash.match(/^#d=([A-Za-z0-9-]{20,64})$/) || [])[1] || '';
@@ -152,22 +672,21 @@ no_analytics: true
   try { localStorage.setItem(draftKey, draftId); } catch (e) { /* storage blocked */ }
   if (linkId) history.replaceState(null, '', location.pathname + location.search);
 
-  // Versions kept in this browser. Every save adds one; none is ever overwritten.
   const versionsKey = () => versionsKeyPrefix + draftId;
   function versions() { try { const v = JSON.parse(stored(versionsKey()) || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
   function setVersions(all) {
     const keep = all.filter((v, i) => !v.synced || i >= all.length - MAX_LOCAL);
-    try { localStorage.setItem(versionsKey(), JSON.stringify(keep)); } catch (e) { say('This browser could not store the version. Press Send setup to keep your answers.'); }
+    try { localStorage.setItem(versionsKey(), JSON.stringify(keep)); } catch (e) { say('storage_fail'); }
   }
   function markSynced(savedAt, event, serverVersion) {
     const all = versions(); const v = all.find(x => x.savedAt === savedAt && (x.event || 'save') === event);
     if (v) { v.synced = true; v.serverVersion = serverVersion; setVersions(all); }
   }
-  function render() {
-    document.querySelector('#savedVersions').innerHTML = versions().map((v, i) => '<button type="button" class="secondary" data-load="' + i + '">Load version ' + (i + 1) + ' (' + new Date(v.savedAt).toLocaleString() + ')' + (endpoint && !v.synced ? ', not backed up' : '') + '</button>').join('');
+  function renderVersions() {
+    document.querySelector('#savedVersions').innerHTML = versions().map((v, i) => '<button type="button" class="secondary" data-load="' + i + '">' + msg('load_version') + ' ' + (i + 1) + ' (' + new Date(v.savedAt).toLocaleString() + ')' + (endpoint && !v.synced ? msg('not_backed_up') : '') + '</button>').join('');
   }
 
-  // Backup to the spreadsheet. Sends the versions not yet backed up, oldest first.
+  // ---------- Backup to the spreadsheet (versions not yet backed up, oldest first) ----------
   async function post(body) {
     const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) });
     const json = await res.json().catch(() => null);
@@ -184,59 +703,67 @@ no_analytics: true
         const next = versions().find(v => !v.synced && !tried.has(v.savedAt + (v.event || 'save')));
         if (!next) return { error: null };
         tried.add(next.savedAt + (next.event || 'save'));
-        try { const r = await post({ draftId, event: next.event || 'save', savedAt: next.savedAt, data: next.data, company_url: form.company_url.value }); markSynced(next.savedAt, next.event || 'save', r.version); }
+        try { const r = await post({ draftId, event: next.event || 'save', savedAt: next.savedAt, data: next.data, company_url: form.elements.company_url.value }); markSynced(next.savedAt, next.event || 'save', r.version); }
         catch (error) { return { error }; }
       }
     })();
-    try { return await syncing; } finally { syncing = null; render(); }
+    try { return await syncing; } finally { syncing = null; renderVersions(); }
   }
 
   async function save(event) {
-    const all = versions(); all.push({ savedAt: new Date().toISOString(), event, data: data(), synced: false }); setVersions(all); render();
+    const all = versions(); all.push({ savedAt: new Date().toISOString(), event, data: snapshot(), synced: false }); setVersions(all); renderVersions();
     const result = await sync();
     if (event === 'submit') {
-      if (!endpoint) say('The form is not connected yet. Your version is saved on this device.');
-      else if (result.error) say('Could not send yet. Your version is saved on this device and will be retried.');
-      else say('Setup sent successfully. Thank you.');
-    } else if (!endpoint) say('Version saved on this device.');
-    else if (result.error) say('Saved on this device. It is not backed up yet and will be retried.');
-    else say('Version saved and backed up.');
+      if (!endpoint) say('submit_noendpoint');
+      else if (result.error) say('submit_fail');
+      else say('submit_ok');
+    } else if (!endpoint) say('saved_local');
+    else if (result.error) say('saved_pending');
+    else say('saved_ok');
   }
-
-  function loadLocal(i) { const d = versions()[i]; if (!d) return false; restore(d.data); return true; }
+  function loadLocal(i) { const d = versions()[i]; if (!d) return false; restoreData(d.data); return true; }
   async function resumeFromLink() {
-    say('Loading your setup…');
+    say('loading');
     try {
       const res = await fetch(endpoint + '?action=latest&d=' + encodeURIComponent(draftId));
       const json = await res.json();
       if (!json || json.ok !== true) throw new Error((json && json.error) || 'HTTP ' + res.status);
-      restore(json.data);
+      restoreData(json.data);
       const all = versions(); all.push({ savedAt: json.savedAt, event: json.event || 'save', data: json.data, synced: true, serverVersion: json.version }); setVersions(all);
-      say('Loaded the latest saved version.');
+      say('loaded_latest');
       return true;
-    } catch (e) { say('Could not load that setup. Check the link or try again.'); return false; }
+    } catch (e) { say('load_fail'); return false; }
   }
 
-  document.querySelectorAll('[data-add]').forEach(b => b.addEventListener('click', () => add(b.dataset.add)));
+  function setLang(next, remember) {
+    lang = next === 'es' ? 'es' : 'en';
+    if (remember) { try { localStorage.setItem(langKey, lang); } catch (e) { /* storage blocked */ } }
+    renderAll();
+    if (lastStatus) say(lastStatus[0], lastStatus[1]);
+  }
+
+  document.querySelectorAll('.langswitch button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang, true)));
   document.querySelector('#saveButton').addEventListener('click', () => save('save'));
-  document.querySelector('#savedVersions').addEventListener('click', e => { if (e.target.dataset.load !== undefined && loadLocal(Number(e.target.dataset.load))) say('Version loaded.'); });
+  document.querySelector('#savedVersions').addEventListener('click', e => { if (e.target.dataset.load !== undefined && loadLocal(Number(e.target.dataset.load))) say('version_loaded'); });
   form.addEventListener('submit', e => { e.preventDefault(); if (!form.reportValidity()) return; save('submit'); });
   linkButton.addEventListener('click', async () => {
-    if (!versions().some(v => v.synced)) return say('Press Save progress first. The link works once a version is backed up.');
-    const url = location.origin + location.pathname + '#d=' + draftId;
-    try { await navigator.clipboard.writeText(url); say('Link copied. Anyone with it can open and change this setup, so keep it private.'); }
-    catch (e) { say('Copy this private link: ' + url); }
+    if (!versions().some(v => v.synced)) return say('link_first');
+    const url = location.origin + location.pathname + (lang === 'es' ? '?lang=es' : '') + '#d=' + draftId;
+    try { await navigator.clipboard.writeText(url); say('link_copied'); }
+    catch (e) { say('link_copy', url); }
   });
   window.addEventListener('online', () => { sync(); });
 
   (async function boot() {
-    Object.entries(lists).forEach(([type]) => add(type));
+    const fromUrl = new URLSearchParams(location.search).get('lang');
+    lang = fromUrl === 'es' || fromUrl === 'en' ? fromUrl : (stored(langKey) || ((navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en'));
+    if (fromUrl) { try { localStorage.setItem(langKey, lang); } catch (e) { /* storage blocked */ } }
+    renderAll();
     linkButton.hidden = !endpoint;
     const hasPending = versions().some(v => !v.synced);
     let loaded = false;
     if (linkId && endpoint && !hasPending) loaded = await resumeFromLink();
-    if (!loaded && versions().length && loadLocal(versions().length - 1)) say('Your last saved version was loaded.');
-    render();
+    if (!loaded && versions().length && loadLocal(versions().length - 1)) say('loaded_last_local');
     sync();
   })();
 })();

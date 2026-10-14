@@ -4,13 +4,11 @@ title: "Inventory & Supplies"
 image: "/img_mirigi/inventory.png"
 layout: feature
 keywords: "Inventory & Supplies, Mirigi, Miri"
-description: "Track building supplies and equipment, and record materials used by other services, such as a replacement bulb taken for a maintenance request."
+description: "Keep building supplies organized and connected to daily services, giving staff and management better control."
 ---
 
-Know **what the building has, where it is and how it is used**. Mirigi’s inventory brings consumable supplies and reusable equipment into the staff’s daily operation, giving maintenance and management a shared record of stock instead of scattered lists and informal handovers.
+A well-run building needs more than good service. It needs the supplies and equipment to deliver it. Mirigi gives the team **a shared view of the building’s inventory**, so staff know what is available.
 
-**Supplies connected to the work.** Inventory connects with other building modules so teams can **record materials consumed as part of a service**. When maintenance handles a lighting request, for example, the technician can **take a replacement bulb from inventory and record it against that request**. The stock balance reflects the material used, and the request keeps a record of the consumption.
+Inventory connects with daily building services, keeping materials used for maintenance and other tasks part of the same operation.
 
-**Consumables and reusable equipment.** Track supplies that are used up as well as equipment that is checked out and returned. Equipment can also be associated with amenities, connecting the items needed for a reservation with their use and return.
-
-**A clear record for the team.** Staff record stock arrivals, withdrawals and adjustments, with item locations and access organized by building area. Managers can review movements and request-linked materials to understand where supplies went and keep the building’s records current.
+Management can follow how supplies are used, while staff keep their attention on the work. Less guesswork about stock and better control of the resources the building depends on.

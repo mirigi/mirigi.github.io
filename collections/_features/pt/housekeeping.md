@@ -4,7 +4,7 @@ title: "Limpeza e Agendamento"
 image: "/img_mirigi/housekeeping.png"
 layout: feature
 keywords: "Limpeza e Agendamento, Mirigi, Miri"
-description: "Limpeza com controles de hotel ou agendamento, planejamento assistido da equipe e relatos pelo celular em texto ou notas ditadas por voz."
+description: "Limpeza que acompanha a rotina dos moradores, com uma equipe coordenada e menos trabalho para a recepção."
 miri_ai_example:
   - from: user
     text: "Agende a limpeza toda sexta-feira."
@@ -12,12 +12,8 @@ miri_ai_example:
     text: "Claro. Qual faixa de horário você prefere e a partir de qual sexta-feira deseja iniciar o agendamento recorrente?"
 ---
 
-Mantenha cada unidade e espaço compartilhado **pronto para quem o utiliza**. O Mirigi reúne solicitações de limpeza, agendamentos recorrentes e o trabalho diário da equipe em um só lugar. Os moradores sabem como pedir o serviço e a equipe sabe **o que fazer, onde e quando**.
+Um bom serviço de limpeza respeita o tempo e a privacidade do morador. O Mirigi facilita solicitar uma limpeza ou combinar um serviço regular, com **modo hotel ou agendamento** conforme a propriedade.
 
-**Dois modos adaptados à propriedade.** No **modo hotel**, os moradores usam um simples **controle Não perturbe / solicitar limpeza** para indicar se desejam privacidade ou atendimento. No **modo de agendamento**, escolhem um dia e uma faixa de horário disponível, incluindo **agendamentos recorrentes**. A limpeza de toda sexta-feira se torna uma rotina que o edifício pode planejar.
+A administração organiza o trabalho no console da equipe. Os profissionais ficam conectados pelo celular e relatam por voz ou texto, para que a recepção gaste menos tempo pedindo atualizações.
 
-**Planejamento assistido da equipe nos dois modos.** A administração organiza o dia no **console da equipe**, atribui tarefas e revisa a agenda de cada profissional. As verificações de disponibilidade e horários ajudam a identificar conflitos antes da atribuição. A equipe consulta seu **roteiro diário e os detalhes das tarefas**, enquanto a administração acompanha o progresso e ajusta as atribuições.
-
-**Relatos de onde o trabalho acontece.** Os profissionais atualizam o andamento pelo celular e adicionam **relatos em texto ou notas ditadas por voz** enquanto percorrem unidades e áreas comuns. As observações de conclusão e os problemas ficam vinculados à tarefa, mantendo o próximo turno e a administração informados sem voltar à recepção.
-
-**Um agendamento recorrente pode começar com uma conversa.** Peça à Miri: *“Agende a limpeza toda sexta-feira.”* Ela ajuda a definir a faixa de horário e a data de início necessárias para organizar o serviço recorrente, em linguagem cotidiana.
+Os moradores também podem pedir à Miri: *“Agende a limpeza toda sexta-feira.”* Uma rotina organizada com uma simples conversa.

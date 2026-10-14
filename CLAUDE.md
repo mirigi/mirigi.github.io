@@ -20,6 +20,14 @@ When fact-checking or extending any feature/FAQ/copy, ground claims against the 
 
 ## Marketing Copy Rules
 
+### Sell the story, keep the detail for the demo
+
+- Lead with the core experience, the problem it solves and the strongest selling points. Explain why the feature matters to residents, staff or management.
+- Keep feature descriptions brief and easy to scan. Prefer a few short paragraphs over an exhaustive capability list.
+- Describe outcomes without revealing operational recipes, hidden conveniences, configuration rules or step-by-step workflows that others could copy. Ground claims in the implementation, but use that research to ensure accuracy, not to publish every detail.
+- Use a simple example only when it helps tell the story. Save detailed workflows and setup explanations for a private demo or product documentation.
+- Apply this approach to summaries, FAQs and translations as well as feature-page bodies. Stay specific enough to be credible, without turning marketing copy into a manual.
+
 ### Natural writing
 
 Apply these rules to all website copy and translations, including feature pages, FAQs, customer pages, brochures and proposals:

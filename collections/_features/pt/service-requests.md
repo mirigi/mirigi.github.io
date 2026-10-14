@@ -5,7 +5,7 @@ image: "/img_mirigi/blueliving.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
 keywords: solicitações de serviço, manutenção, comunicação, feedback, eficiência, satisfação do morador
-description: Envie e acompanhe solicitações de serviço com eficiência usando o Mirigi.
+description: "Moradores enviam e acompanham solicitações; a equipe usa a Miri para fazer a triagem de ordens de serviço, definir prioridades e atribuir tarefas."
 miri_ai_example:
   - from: user
     text: "Oi Miri, o elevador da minha torre está fazendo um barulho estranho de atrito quando chega ao meu andar. Começou hoje de manhã."
@@ -20,6 +20,8 @@ miri_ai_example:
 Transforme cada preocupação do morador em uma **interação registrada, resolvida e mensurável**. As solicitações de serviço do Mirigi substituem os **e-mails perdidos, os tópicos dispersos de WhatsApp e as reclamações verbais nos corredores** por um *canal único que os moradores realmente gostam de usar*. De um problema de manutenção à reserva de uma área comum, cada solicitação chega à **pessoa certa, no tempo certo**, com um registro completo do que foi feito. O resultado são **resoluções mais rápidas**, moradores mais satisfeitos e uma equipe de administração que finalmente tem **visibilidade sobre as operações diárias**.
 
 Os moradores enviam solicitações em segundos, seja por meio de **formulários totalmente personalizáveis** na tela sensível ao toque de casa ou no smartphone, seja simplesmente **conversando com a Miri**, o concierge com IA do edifício, em linguagem natural. Os formulários são definidos **por edifício e por idioma**, de modo que cada morador veja as opções certas em sua própria língua. Seja para reportar um vazamento, reservar o terraço, sinalizar uma entrega ou registrar uma reclamação, a experiência permanece *simples e consistente*.
+
+**A Miri também ajuda a equipe a gerenciar o trabalho.** O pessoal pode pedir que ela **faça a triagem de ordens de serviço, defina prioridades e as atribua ao pessoal adequado**, usando linguagem cotidiana. A Miri executa essas etapas entre os membros da equipe e transforma as solicitações recebidas em **trabalho organizado e pronto para atendimento**.
 
 Nos bastidores, cada solicitação segue um ciclo de vida claro (**pendente, em andamento e encerrada**), com a opção de **reabrir** se o morador não estiver satisfeito com a resolução. A equipe **confirma** uma solicitação para assumi-la formalmente, **a atribui a um setor específico**, troca **comentários públicos ou internos** e a encerra com uma *nota de resolução obrigatória*. As solicitações são roteadas automaticamente para o setor configurado, e uma **cadeia de escalonamento** garante que qualquer coisa deixada sem atendimento suba antes de se tornar um problema. Uma **escala opcional de prioridade de 1 a 5**, a filtragem em tempo real por estado, tipo ou busca de texto completo e um **alerta sonoro de solicitações pendentes** mantêm as equipes de recepção focadas no que mais importa.
 

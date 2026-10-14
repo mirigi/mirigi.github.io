@@ -4,10 +4,14 @@ title: Staff Console &amp; Front-Desk Operations
 image: "/img_mirigi/staff-frontdesk.webp"
 layout: feature
 keywords: staff console, front desk, building operations, valet queue, deliveries, role-based access, doorman software, property management, building staff app
-description: A real-time operations console for every member of the building's team (front desk, concierge, management, security, valet, maintenance, restaurant), with role-scoped views and twenty years of operational refinement behind every screen.
+description: "A staff console for one or multiple buildings, with Miri as an AI operations agent to manage daily operations, triage work orders and coordinate teams."
 ---
 
 Behind every Mirigi-equipped building, the staff team runs the day from one **real-time operations console**. Every member of the team (*front desk, concierge, management, security, valet, maintenance, restaurant*) signs in to a workspace shaped to their role and sees exactly the work that belongs to them. Nine distinct staff roles, each with their own permissions, their own screens and their own audit trail. No one wastes a click on a screen they don't own.
+
+**Multiple buildings, one staff console.** For companies managing several properties, the console can give authorized staff **access to multiple buildings when required**. Team members can **switch between the buildings they manage** from the same console, with access based on their role in each property. A management company can work across its portfolio while each building keeps its own operations and permissions.
+
+**Miri: AI for the whole building team.** Staff can manage daily building operations **in natural language**, with Miri carrying out tasks and coordinating work across services. Ask her to **triage open work orders, prioritize what needs attention and assign work to the appropriate staff**. She carries out the steps of the workflow, giving front desk, maintenance and management an **AI agent that helps them get the work done**.
 
 The console opens on a **live dashboard** with the four counters that drive the day: *pending deliveries, active valet, open requests, pending orders*. A recent-activity feed shows new deliveries, vehicles ready, valet requests, service requests and food orders as they happen. A quick-action row puts *log delivery, add guest, valet request, new request* one click away.
 

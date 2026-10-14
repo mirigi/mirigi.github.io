@@ -4,10 +4,14 @@ title: Console du Personnel et Réception
 image: "/img_mirigi/staff-frontdesk.webp"
 layout: feature
 keywords: console du personnel, réception, opérations de l'immeuble, file du voiturier, livraisons, accès par rôle, logiciel de gardiennage, gestion immobilière, application pour personnel
-description: Une console d'opérations en temps réel pour chaque membre de l'équipe de l'immeuble (réception, conciergerie, direction, sécurité, voiturier, maintenance, restauration), avec des vues par rôle et vingt ans d'affinage opérationnel derrière chaque écran.
+description: "Une console du personnel pour un ou plusieurs immeubles, avec Miri comme agent IA pour gérer les opérations, prioriser les ordres de travail et coordonner les équipes."
 ---
 
 Derrière chaque immeuble équipé de Mirigi, l'équipe fait tourner la journée depuis une seule **console d'opérations en temps réel**. Chaque membre de l'équipe, *réception, conciergerie, direction, sécurité, voiturier, maintenance, restauration*, se connecte à un espace de travail défini par son rôle et voit exactement la tâche qui lui revient. Neuf rôles distincts du personnel, chacun avec ses permissions, ses écrans et sa propre piste d'audit. Personne ne perd un clic sur un écran qui ne lui appartient pas.
+
+**Plusieurs immeubles, une seule console du personnel.** Pour les sociétés qui gèrent plusieurs propriétés, la console peut donner au personnel autorisé **accès à plusieurs immeubles selon les besoins**. Les membres de l’équipe peuvent **passer d’un immeuble à l’autre** depuis la même console, avec un accès défini par leur rôle dans chaque propriété. La société peut travailler sur l’ensemble de son portefeuille, tandis que chaque immeuble conserve ses propres opérations et permissions.
+
+**Miri : l’IA pour toute l’équipe de l’immeuble.** Le personnel peut gérer les opérations quotidiennes **en langage naturel**, avec Miri qui effectue les tâches et coordonne le travail entre les services. Demandez-lui de **trier les ordres de travail ouverts, de définir les priorités et d’attribuer les tâches au personnel concerné**. Elle exécute les étapes du processus et offre à la réception, à la maintenance et à la direction un **agent IA qui les aide à accomplir leur travail**.
 
 La console s'ouvre sur un **tableau de bord en direct** avec les quatre compteurs qui rythment la journée : *livraisons en attente, voiturier actif, demandes ouvertes, commandes en attente*. Un flux d'activité récente affiche les nouvelles livraisons, les véhicules prêts, les demandes de voiturier, les demandes de service et les commandes de restauration au fur et à mesure. Une rangée d'actions rapides met *enregistrer une livraison, ajouter un invité, demande de voiturier, nouvelle demande* à un clic.
 

@@ -5,7 +5,7 @@ image: "/img_mirigi/blueliving.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
 keywords: demandes de service, maintenance, communication, retour, efficacité, satisfaction des résidents
-description: Soumettez et suivez les demandes de service efficacement avec Mirigi.
+description: "Les résidents soumettent et suivent leurs demandes ; le personnel utilise Miri pour trier, prioriser et attribuer les ordres de travail à l’équipe."
 miri_ai_example:
   - from: user
     text: "Bonjour Miri, l'ascenseur de ma tour fait un étrange bruit de grincement lorsqu'il atteint mon étage. Cela a commencé ce matin."
@@ -20,6 +20,8 @@ miri_ai_example:
 Transformez chaque préoccupation des résidents en une **interaction suivie, résolue et mesurable**. Les demandes de service de Mirigi remplacent les **e-mails perdus, les fils WhatsApp dispersés et les plaintes verbales dans les couloirs** par un *canal unique que les résidents apprécient vraiment d'utiliser*. D'un problème de maintenance à la réservation d'un espace commun, chaque demande parvient à **la bonne personne, à temps**, avec un enregistrement complet de ce qui a été fait. Le résultat : des **résolutions plus rapides**, des résidents plus satisfaits et une équipe de gestion qui dispose enfin d'une **visibilité sur les opérations quotidiennes**.
 
 Les résidents soumettent leurs demandes en quelques secondes, soit via des **formulaires entièrement personnalisables** sur leur écran tactile à domicile ou leur smartphone, soit simplement en **parlant à Miri**, le concierge IA de l'immeuble, en langage naturel. Les formulaires sont définis **par immeuble et par langue**, afin que chaque résident voie les bonnes options dans sa propre langue. Qu'il s'agisse de signaler une fuite, de réserver le toit-terrasse, de signaler une livraison ou de déposer une plainte, l'expérience reste *fluide et cohérente*.
+
+**Miri aide aussi le personnel à gérer le travail.** L’équipe peut lui demander de **trier les ordres de travail, de définir les priorités et de les attribuer au personnel concerné**, en langage courant. Miri exécute ces étapes au sein de l’équipe pour transformer les demandes entrantes en **travail organisé et prêt à être pris en charge**.
 
 En coulisses, chaque demande suit un cycle de vie clair : **en attente, en cours et clôturée**, avec la possibilité de **rouvrir** si le résident n'est pas satisfait de la résolution. Le personnel **accuse réception** d'une demande pour en prendre officiellement la charge, **l'assigne à un rôle spécifique**, échange des **commentaires publics ou internes** et la clôture avec une *note de résolution obligatoire*. Les demandes sont automatiquement acheminées vers le rôle de personnel configuré, et une **chaîne d'escalade** garantit que tout ce qui reste sans réponse remonte avant de devenir un problème. Une **échelle de priorité optionnelle de 1 à 5**, un filtrage en temps réel par état, par type ou par recherche en texte intégral, et une **alerte sonore pour les demandes en attente** permettent aux équipes d'accueil de rester concentrées sur l'essentiel.
 

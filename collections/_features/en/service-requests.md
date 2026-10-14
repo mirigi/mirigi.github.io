@@ -5,7 +5,7 @@ image: "/img_mirigi/blueliving.jpg"
 image_credits: '@<a href="https://www.flickr.com/photos/jikatu/">jikatu</a>'
 layout: feature
 keywords: service requests, maintenance, communication, feedback, efficiency, resident satisfaction
-description: Submit and track service requests efficiently with Mirigi.
+description: "Residents submit and track requests; staff use Miri to triage work orders, set priorities and assign work across the building team."
 miri_ai_example:
   - from: user
     text: "Hi Miri, the elevator in my tower is making a strange grinding noise when it reaches my floor. It started this morning."
@@ -20,6 +20,8 @@ miri_ai_example:
 Turn every resident concern into a **tracked, resolved, and measurable interaction**. Mirigi's service requests replace **lost emails, scattered WhatsApp threads, and verbal hallway complaints** with a *single channel that residents actually enjoy using*. From a maintenance issue to an amenity booking, every request reaches **the right person, on time**, with a full record of what was done. The result is **faster resolutions**, happier residents, and a management team that finally has **visibility over daily operations**.
 
 Residents submit requests in seconds, either through **fully customizable forms** on their in-home touch screen or smartphone, or by simply **talking to Miri**, the building's AI concierge, in natural language. Forms are defined **per building and per language**, so each resident sees the right options in their own tongue. Whether reporting a leak, booking the rooftop, flagging a delivery, or raising a complaint, the experience stays *effortless and consistent*.
+
+**Miri helps staff manage the work, too.** The team can ask her to **triage work orders, set priorities and assign them to the appropriate staff**, using everyday language. Miri carries out these steps across the team, helping turn incoming requests into **organized, actionable work**.
 
 Behind the scenes, every request follows a clear lifecycle: **pending, in progress, and closed**, with the option to **reopen** if the resident is not satisfied with the resolution. Staff **acknowledge** a request to formally take ownership, **assign it to a specific role**, exchange **public or internal comments**, and close it with a *mandatory resolution note*. Requests route automatically to the configured staff role, and an **escalation chain** ensures that anything left unattended moves up before it becomes a problem. An optional **1–5 priority scale**, real-time filtering by state, type or full-text search, and a **pending-request sound alert** keep front-desk teams focused on what matters most.
 

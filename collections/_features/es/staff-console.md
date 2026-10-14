@@ -4,10 +4,14 @@ title: Consola de Personal y Recepción
 image: "/img_mirigi/staff-frontdesk.webp"
 layout: feature
 keywords: consola de personal, recepción, operaciones del edificio, cola del valet, entregas, acceso por roles, software de portería, gestión inmobiliaria, app para personal
-description: Una consola operativa en tiempo real para cada miembro del equipo del edificio, recepción, conserjería, administración, seguridad, valet, mantenimiento, restaurante, con vistas por rol y veinte años de refinamiento operativo detrás de cada pantalla.
+description: "Una consola de personal para uno o varios edificios, con Miri como agente de operaciones con IA para gestionar el día, priorizar órdenes de trabajo y coordinar equipos."
 ---
 
 Detrás de cada edificio con Mirigi, el equipo opera la jornada desde una sola **consola operativa en tiempo real**. Cada miembro del equipo (*recepción, conserjería, administración, seguridad, valet, mantenimiento, restaurante*) entra a un espacio de trabajo definido por su rol y ve exactamente la tarea que le corresponde. Nueve roles distintos del staff, cada uno con sus permisos, sus pantallas y su propio rastro de auditoría. Nadie pierde un clic en una pantalla que no le pertenece.
+
+**Varios edificios, una sola consola de personal.** Para empresas que administran varias propiedades, la consola puede dar al personal autorizado **acceso a múltiples edificios cuando sea necesario**. Los miembros del equipo pueden **cambiar entre los edificios que administran** desde la misma consola, con acceso según su rol en cada propiedad. La empresa puede trabajar con toda su cartera mientras cada edificio mantiene sus propias operaciones y permisos.
+
+**Miri: IA para todo el equipo del edificio.** El personal puede gestionar las operaciones diarias **en lenguaje natural**, con Miri realizando tareas y coordinando el trabajo entre servicios. Basta pedirle que **clasifique las órdenes de trabajo abiertas, priorice lo que necesita atención y asigne las tareas al personal adecuado**. Miri ejecuta los pasos del proceso y ofrece a recepción, mantenimiento y administración un **agente de IA que les ayuda a llevar adelante el trabajo**.
 
 La consola abre sobre un **panel en vivo** con los cuatro contadores que marcan el día: *entregas pendientes, valet activo, solicitudes abiertas, pedidos pendientes*. Un flujo de actividad reciente muestra nuevas entregas, vehículos listos, pedidos de valet, solicitudes de servicio y pedidos de comida a medida que ocurren. Una fila de acciones rápidas pone *registrar entrega, agregar invitado, pedir valet, nueva solicitud* a un clic.
 

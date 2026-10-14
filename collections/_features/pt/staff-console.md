@@ -4,10 +4,14 @@ title: Console da Equipe &amp; Operações de Recepção
 image: "/img_mirigi/staff-frontdesk.webp"
 layout: feature
 keywords: console da equipe, recepção, operações do edifício, fila do valet, entregas, acesso por papéis, software de portaria, gestão imobiliária, aplicativo para a equipe do edifício
-description: Um console operacional em tempo real para cada membro da equipe do edifício (recepção, concierge, administração, segurança, valet, manutenção, restaurante), com visões por papel e vinte anos de refinamento operacional por trás de cada tela.
+description: "Um console da equipe para um ou vários edifícios, com a Miri como agente de operações com IA para gerenciar o dia, priorizar ordens de serviço e coordenar equipes."
 ---
 
 Por trás de cada edifício equipado com o Mirigi, a equipe conduz o dia a partir de um único **console operacional em tempo real**. Cada membro do time (*recepção, concierge, administração, segurança, valet, manutenção, restaurante*) entra em um espaço de trabalho moldado ao seu papel e vê exatamente o trabalho que lhe pertence. Nove papéis distintos de equipe, cada um com suas próprias permissões, suas próprias telas e sua própria trilha de auditoria. Ninguém desperdiça um clique em uma tela que não é sua.
+
+**Vários edifícios, um único console da equipe.** Para empresas que administram várias propriedades, o console pode dar à equipe autorizada **acesso a múltiplos edifícios quando necessário**. Os membros da equipe podem **alternar entre os edifícios que administram** no mesmo console, com acesso conforme sua função em cada propriedade. A administradora pode trabalhar com toda a sua carteira, enquanto cada edifício mantém suas próprias operações e permissões.
+
+**Miri: IA para toda a equipe do edifício.** A equipe pode gerenciar as operações diárias **em linguagem natural**, com a Miri executando tarefas e coordenando o trabalho entre os serviços. Basta pedir que ela **faça a triagem das ordens de serviço abertas, defina prioridades e atribua as tarefas ao pessoal adequado**. Ela executa as etapas do processo e oferece à recepção, à manutenção e à administração um **agente de IA que ajuda a realizar o trabalho**.
 
 O console abre em um **painel ao vivo** com os quatro contadores que comandam o dia: *entregas pendentes, valet ativo, solicitações abertas, pedidos pendentes*. Um feed de atividade recente mostra novas entregas, veículos prontos, solicitações de valet, solicitações de serviço e pedidos de comida à medida que acontecem. Uma linha de ações rápidas coloca *registrar entrega, adicionar convidado, solicitar valet, nova solicitação* a um clique.
 

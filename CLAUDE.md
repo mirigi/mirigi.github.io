@@ -20,6 +20,17 @@ When fact-checking or extending any feature/FAQ/copy, ground claims against the 
 
 ## Marketing Copy Rules
 
+### Natural writing
+
+Apply these rules to all website copy and translations, including feature pages, FAQs, customer pages, brochures and proposals:
+
+- Write like a person explaining the service to another person. Use familiar words, direct sentences and concrete examples of what residents and staff can do.
+- Avoid AI-style language: generic slogans, inflated claims, stock transitions, repetitive sentence patterns and unnecessary jargon. Avoid filler such as "seamlessly", "leverage", "unlock the potential" and "revolutionize". Explain the actual benefit instead.
+- Do not use em dashes or pairs of dashes or hyphens to insert an aside into a sentence. Use commas, parentheses or a separate sentence instead. Normal hyphens within words and dashes in code are unaffected.
+- Use bold sparingly. Do not turn every paragraph into a slogan followed by an explanation, or repeat the same benefit in slightly different words.
+- AI-style phrasing is allowed only when deliberately simulating Miri's dialogue, such as an example conversation. The surrounding marketing copy must still follow these rules.
+- Before finishing, reread the text for natural phrasing, repetition, vague claims and dash-delimited asides. Apply the same review to every translated version.
+
 **Never mention technical internals on feature pages, customer pages, brochures, or proposals.** The audience is luxury condominium boards, property managers and residents, not developers. Describe the *experience* (what the user sees and gets), not the *mechanism* (how the code does it).
 
 When summarizing or fact-checking content, replace technical names with the user-visible behavior they enable:

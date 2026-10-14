@@ -1,7 +1,7 @@
 ---
 order: 5.1
 title: "Limpeza e Agendamento"
-image: "/img_mirigi/blueliving.jpg"
+image: "/img_mirigi/housekeeping.png"
 layout: feature
 keywords: "Limpeza e Agendamento, Mirigi, Miri"
 description: "Limpeza com controles de hotel ou agendamento, planejamento assistido da equipe e relatos pelo celular em texto ou notas ditadas por voz."

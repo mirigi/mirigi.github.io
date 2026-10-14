@@ -1,7 +1,7 @@
 ---
 order: 5.1
 title: "Entretien Ménager et Planification"
-image: "/img_mirigi/blueliving.jpg"
+image: "/img_mirigi/housekeeping.png"
 layout: feature
 keywords: "Entretien Ménager et Planification, Mirigi, Miri"
 description: "Service de ménage de type hôtel ou sur réservation, avec planification assistée du personnel et comptes rendus mobiles par texte ou notes dictées à la voix."

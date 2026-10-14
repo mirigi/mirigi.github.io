@@ -31,6 +31,4 @@ The console opens on a **live dashboard** with the four counters that drive the 
 
 **Reports.** Operators define their own reports per building: exactly the metrics that property needs, run on demand, with a **run-all** button for the recurring weekly or monthly set.
 
-**AI diagnostics.** Because Miri acts on residents' behalf, the console also includes a complete record of every AI conversation: text chats, voice sessions, every tool the agent called, with thumbs-up / thumbs-down feedback aggregated so managers can see how the AI is actually performing for their residents.
-
 The console runs on **desktop browser** at the front desk, **tablet** behind the bar, **phone** in the maintenance technician's hand. Sensitive actions are protected by **two-factor authentication**. The interface is **multilingual**, so the team in each city works in its own language. Twenty years of operational refinement, distilled into one screen.

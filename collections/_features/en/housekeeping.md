@@ -1,7 +1,7 @@
 ---
 order: 5.1
 title: "Housekeeping & Cleaning Scheduling"
-image: "/img_mirigi/blueliving.jpg"
+image: "/img_mirigi/housekeeping.png"
 layout: feature
 keywords: "Housekeeping & Cleaning Scheduling, Mirigi, Miri"
 description: "Hotel-style housekeeping requests or scheduled cleaning, with assisted staff planning and mobile reporting by text or voice-dictated notes."

@@ -1,7 +1,7 @@
 ---
 order: 5.2
 title: "Inventario e Insumos"
-image: "/img_mirigi/delivery.jpg"
+image: "/img_mirigi/inventory.png"
 layout: feature
 keywords: "Inventario e Insumos, Mirigi, Miri"
 description: "Controla insumos y equipos del edificio y registra materiales usados por otros servicios, como una bombilla de reemplazo para una solicitud de mantenimiento."

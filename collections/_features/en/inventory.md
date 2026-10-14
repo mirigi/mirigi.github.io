@@ -1,7 +1,7 @@
 ---
 order: 5.2
 title: "Inventory & Supplies"
-image: "/img_mirigi/delivery.jpg"
+image: "/img_mirigi/inventory.png"
 layout: feature
 keywords: "Inventory & Supplies, Mirigi, Miri"
 description: "Track building supplies and equipment, and record materials used by other services, such as a replacement bulb taken for a maintenance request."

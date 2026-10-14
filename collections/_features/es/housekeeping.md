@@ -1,7 +1,7 @@
 ---
 order: 5.1
 title: "Limpieza y Programación del Servicio"
-image: "/img_mirigi/blueliving.jpg"
+image: "/img_mirigi/housekeeping.png"
 layout: feature
 keywords: "Limpieza y Programación del Servicio, Mirigi, Miri"
 description: "Limpieza con controles de tipo hotel o reservas programadas, planificación asistida del personal y reportes móviles por texto o notas dictadas por voz."

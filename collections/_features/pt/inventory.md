@@ -1,7 +1,7 @@
 ---
 order: 5.2
 title: "Inventário e Suprimentos"
-image: "/img_mirigi/delivery.jpg"
+image: "/img_mirigi/inventory.png"
 layout: feature
 keywords: "Inventário e Suprimentos, Mirigi, Miri"
 description: "Controle suprimentos e equipamentos do edifício e registre materiais usados por outros serviços, como uma lâmpada para uma solicitação de manutenção."

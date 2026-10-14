@@ -1,7 +1,7 @@
 ---
 order: 5.2
 title: "Inventaire et Fournitures"
-image: "/img_mirigi/delivery.jpg"
+image: "/img_mirigi/inventory.png"
 layout: feature
 keywords: "Inventaire et Fournitures, Mirigi, Miri"
 description: "Suivez les fournitures et équipements de l’immeuble et les matériaux utilisés par les autres services, comme une ampoule pour une demande de maintenance."

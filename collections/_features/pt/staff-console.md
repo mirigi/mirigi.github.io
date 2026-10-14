@@ -31,6 +31,4 @@ O console abre em um **painel ao vivo** com os quatro contadores que comandam o 
 
 **Relatórios.** Os operadores definem seus próprios relatórios por edifício: exatamente as métricas de que a propriedade precisa, executados sob demanda, com um botão **executar todos** para o conjunto recorrente semanal ou mensal.
 
-**Diagnóstico de IA.** Como a Miri age em nome dos moradores, o console também inclui um registro completo de cada conversa com a IA: chats de texto, sessões de voz, cada ferramenta que a agente acionou, com feedback de polegar para cima / polegar para baixo agregado, para que a administração veja como a IA realmente está se saindo para seus moradores.
-
 O console roda em **navegador de desktop** na recepção, **tablet** atrás do bar, **celular** na mão do técnico de manutenção. As ações sensíveis são protegidas por **autenticação de dois fatores**. A interface é **multilíngue**, para que a equipe de cada cidade trabalhe em seu próprio idioma. Vinte anos de refinamento operacional, condensados em uma única tela.
